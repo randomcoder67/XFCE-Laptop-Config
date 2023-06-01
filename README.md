@@ -16,9 +16,10 @@ Also needed:
 
 ### Setup 
 
-Clone this repositry into a folder named `~/Programs` 
-Run `init.sh` file
+Clone this repositry into a folder named `~/Programs`  
+`sed -i 's/$HOME/\/home\/YOUR_USERNAME/g' ~/Programs/configure/init.sh  
+Run `~/Programs/configure/init.sh` file
 
 ## Usage 
 
-[See README in configure folder](https://www.google.co.uk)
+[See README in configure folder](https://github.com/randomcoder67/XFCE-Laptop-Config/tree/main/configure#readme)
