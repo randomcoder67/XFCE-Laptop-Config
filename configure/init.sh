@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+mkdir ~/Programs
+mkdir ~/Programs/output
+mkdir ~/Programs/output/log
+mkdir ~/Programs/output/money
+mkdir ~/Programs/output/schedule
+mkdir ~/Programs/output/.streams
+mkdir ~/Programs/output/.streams/panel
+mkdir ~/Programs/output/.timers
+mkdir ~/Programs/output/.pictures
+mkdir ~/Programs/output/.sounds
+mkdir ~/Programs/output/.temp
+mkdir ~/Programs/output/updated
+
+cp ~/Programs/configure/output/* ~/Programs/output/.pictures/
+
 mkdir -m 700 .local/share/gnupg
 localectl set-x11-keymap gb
 mkdir ~/Documents
