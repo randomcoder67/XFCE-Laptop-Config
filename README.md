@@ -21,4 +21,4 @@ Run `init.sh` file
 
 ## Usage 
 
-(See README in configure folder)[https://www.google.co.uk]
+[See README in configure folder](https://www.google.co.uk)
