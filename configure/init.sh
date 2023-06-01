@@ -13,6 +13,8 @@ mkdir ~/Programs/output/.sounds
 mkdir ~/Programs/output/.temp
 mkdir ~/Programs/output/updated
 
+mkdir -p ~/.config/systemd/user
+
 cp ~/Programs/configure/output/* ~/Programs/output/.pictures/
 
 mkdir -m 700 .local/share/gnupg
@@ -60,6 +62,9 @@ cp ~/Programs/configure/gtkGreybird.css ~/.local/share/themes/Greybird-dark/gtk-
 cp ~/Programs/configure/home/.bashrc ~/.bashrc
 cp ~/Programs/configure/home/.inputrc ~/.inputrc
 
+
+cp ~/Programs/configure/home/.config/systemd/user/files.service ~/.config/systemd/user/files.service
+cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/user/files.timer
 cp ~/Programs/configure/home/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 cp ~/Programs/configure/home/.config/btop/btop.conf ~/.config/btop/btop.conf
 cp ~/Programs/configure/home/.config/Code\ -\ OSS/User/settings.json ~/.config/Code\ -\ OSS/User/settings.json
@@ -78,6 +83,12 @@ cp ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/railscasts.xm
 cp ~/Programs/configure/home/.local/share/gtksourceview-4/styles/railscasts.xml ~/.local/share/gtksourceview-4/styles/railscasts.xml
 cp ~/Programs/configure/home/.local/share/rofi/themes/harris.rasi ~/.local/share/rofi/themes/harris.rasi
 
+
+systemctl --user enable files.service
+systemctl --user start files.service
+
+systemctl --user enable files.timer
+systemctl --user start files.timer
 
 
 sudo fc-cache -fv

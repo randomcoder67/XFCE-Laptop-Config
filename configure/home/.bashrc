@@ -9,6 +9,14 @@ if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
 	source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
 
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+  fi
+fi
+
 
 PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
 
