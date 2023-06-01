@@ -1,0 +1,12 @@
+[Unit]
+Description=Timer for checkfiles
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=1800
+Unit=files.service
+
+[Install]
+WantedBy=timers.target

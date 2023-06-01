@@ -1,0 +1,9 @@
+[Unit]
+Description=Run checkfiles program 
+
+[Service]
+Type=simple
+ExecStart=%h/Programs/system/rofi/checkFiles.sh
+
+[Install]
+WantedBy=default.target
