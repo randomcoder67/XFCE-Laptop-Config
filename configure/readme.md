@@ -58,7 +58,6 @@
 ### Info programs
 
 `fitness` fitness program  
-`rules` rules program  
 `schedule` schedule program  
 `log` log program  
 `weather` weather  

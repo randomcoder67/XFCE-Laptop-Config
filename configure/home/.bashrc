@@ -131,7 +131,6 @@ alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args "-
 # Info programs 
 
 alias fitness='~/Programs/terminal/terminalPrograms/fitness.sh'
-alias rules='~/Programs/terminal/terminalPrograms/rules.sh'
 alias schedule='~/Programs/terminal/terminalPrograms/schedule.sh'
 alias log='python3 ~/Programs/terminal/log.py'
 alias weather='curl wttr.in'
