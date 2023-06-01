@@ -1,0 +1,6 @@
+configuration {
+kb-clear-line: "Control+c";
+kb-move-front: "Control+z";
+kb-cancel: "Alt+F1";
+}
+@theme "~/.local/share/rofi/themes/harris.rasi"

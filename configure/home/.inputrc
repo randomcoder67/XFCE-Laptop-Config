@@ -1,0 +1,11 @@
+# Make autocomplete case insensitive
+set completion-ignore-case On
+
+# Ctrl-Delete: delete next word
+"\e[3;5~": shell-kill-word
+
+# Ctrl-Backspace
+"\C-H": shell-backward-kill-word
+
+set colored-stats on
+set colored-completion-prefix on
