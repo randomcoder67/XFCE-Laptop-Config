@@ -33,8 +33,13 @@ mpv_do () {
 	done
 }
 
-ristretto_do () {
-	ristretto $arg & disown
+rs () {
+	inputA=""
+	for arg; do
+		inputA="$inputA $arg"
+	done
+	echo $inputA
+	ristretto $inputA & disown
 }
 
 mpv_do () {
@@ -79,7 +84,6 @@ trim_history () {
 # Program openers 
 
 alias ms='~/Programs/terminal/alias/msnew.sh'
-alias rs='ristretto_do'
 alias mpv='mpv_do'
 
 # Unix terminal programs 
