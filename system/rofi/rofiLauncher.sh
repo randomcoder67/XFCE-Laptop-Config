@@ -2,7 +2,7 @@
 
 # Rofi script to launch applications and open files
 
-selection=$(cat ~/Programs/output/updated/files.txt | rofi -dmenu -i -p "Launcher")
+selection=$(cat ~/Programs/output/updated/files.txt | rofi -dmenu -show-icons -i -p "Launcher")
 
 IFS=$'\n'
 

@@ -20,19 +20,20 @@
 
 IFS=$'\n'
 
-programs=( $(cat ~/Programs/output/updated/programs.txt) )
+#programs=( $(cat ~/Programs/output/updated/programs.txt) )
 
-if (( ${#programs[@]} == 0 )); then
-	exit
-fi
+#if (( ${#programs[@]} == 0 )); then
+#	exit
+#fi
 
 rm ~/Programs/output/updated/files.txt
 
-for x in "${programs[@]}"; do
-	first=$(echo "$x" | cut -d\; -f1)
-	echo "$first" >> ~/Programs/output/updated/files.txt
-done
+#for x in "${programs[@]}"; do
+#	first=$(echo "$x" | cut -d\; -f1)
+#	echo "$first" >> ~/Programs/output/updated/files.txt
+#done
 
+./programsIcons.sh > ~/Programs/output/updated/files.txt
 
 find ~/Documents | sed 's|'"${HOME}"'|~|g' | grep -P "csv$|txt$|mp3$|m4a$|mp4$|webm$|mov$|avi$|png$|webp$|jpg$|jpeg$|inputrc$|xml$|css$|md$|rc$|json$|sh$|git$|conf$|py$|rasi$|mk$|h$|desktop$|AppImage$|crt$|bash$|config$|log$|tmp$|ini$|old$|code$|backup$|vscdb$|haskell$|c$|cnf$|hs$|groff$|java$|dat$|js$|gif$|html$|json~$|bak$|ico$|svg$|yml$|cache$|po$|ac$|m$|install$|x$|y$|cabal$|mdown$|markdown$|micro$|toml$|orig$|yaml$|README$|bat$|cpp$|pl$|app$|icns$|man$|fish$|rtf$|cc$|d$|vscode$|ghc$|sys$|ssh$|pub$|xinitrc$|srt$|kdenlive$|aac$|vtt$|wav$|ma$|mkv$|mozilla$|dmp$|co$|ghcup$|nanorc$|pki$|themes$|gpg$|tar$|gitconfig$|profile$|s$|dmrc$|nano$|bashrc$|lesshst$|xpm$|xbm$|styles$|layout$|menu$|doc$|htm$|ogg$|bmp$|ods$|out$|ms$|cfg$" >> ~/Programs/output/updated/files.txt
 find ~/Downloads | sed 's|'"${HOME}"'|~|g' | grep -P "csv$|txt$|mp3$|m4a$|mp4$|webm$|mov$|avi$|png$|webp$|jpg$|jpeg$|inputrc$|xml$|css$|md$|rc$|json$|sh$|git$|conf$|py$|rasi$|mk$|h$|desktop$|AppImage$|crt$|bash$|config$|log$|tmp$|ini$|old$|code$|backup$|vscdb$|haskell$|c$|cnf$|hs$|groff$|java$|dat$|js$|gif$|html$|json~$|bak$|ico$|svg$|yml$|cache$|po$|ac$|m$|install$|x$|y$|cabal$|mdown$|markdown$|micro$|toml$|orig$|yaml$|README$|bat$|cpp$|pl$|app$|icns$|man$|fish$|rtf$|cc$|d$|vscode$|ghc$|sys$|ssh$|pub$|xinitrc$|srt$|kdenlive$|aac$|vtt$|wav$|ma$|mkv$|mozilla$|dmp$|co$|ghcup$|nanorc$|pki$|themes$|gpg$|tar$|gitconfig$|profile$|s$|dmrc$|nano$|bashrc$|lesshst$|xpm$|xbm$|styles$|layout$|menu$|doc$|htm$|ogg$|bmp$|ods$|out$|ms$|cfg$" >> ~/Programs/output/updated/files.txt
