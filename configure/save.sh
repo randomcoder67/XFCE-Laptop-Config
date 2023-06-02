@@ -9,6 +9,8 @@ cp ~/.inputrc ~/Programs/configure/home/
 cp ~/.gitconfig ~/Programs/configure/home/
 cp -r ~/.ssh ~/Programs/configure/home/
 
+
+
 mkdir -p ~/Programs/configure/home/.config/systemd/user
 cp ~/.config/systemd/user/files.service ~/Programs/configure/home/.config/systemd/user/
 cp ~/.config/systemd/user/files.timer ~/Programs/configure/home/.config/systemd/user/

@@ -252,6 +252,8 @@ xfce4-panel --add genmon # temp logo
 xfce4-panel --add genmon # temp
 xfce4-panel --add genmon # ram logo
 xfce4-panel --add genmon # raw usage
+xfce4-panel --add genmon # network logo
+xfce4-panel --add genmon # network usage 
 xfce4-panel --add clock
 xfce4-panel --add systray
 xfce4-panel --add power-manager-plugin
@@ -347,12 +349,22 @@ xfconf-query -c xfce4-panel -np '/plugins/plugin-19/use-label' -t 'bool' -s 'fal
 xfconf-query -c xfce4-panel -np '/plugins/plugin-19/update-period' -t 'int' -s '2000'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-19/command' -t 'string' -s '$HOME/Programs/system/panel/ram.sh'
 
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/font' -t 'string' -s 'Roboto 16'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/use-label' -t 'bool' -s 'false'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/update-period' -t 'int' -s '30000'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#b6b3eb\'\>\ \ \</span\>\</txt\>\"
+
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/font' -t 'string' -s 'Roboto Mono Medium 15'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/use-label' -t 'bool' -s 'false'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/update-period' -t 'int' -s '2000'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/command' -t 'string' -s '$HOME/Programs/system/panel/networkDown.sh'
 
 
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/digital-layout' -t 'int' -s '2'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/digital-date-format' -t 'string' -s '%a, %b %d'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/digital-date-font' -t 'string' -s 'Roboto Medium 15'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/timezone' -t 'string' -s 'Europe/London'
+
+xfconf-query -c xfce4-panel -np '/plugins/plugin-22/digital-layout' -t 'int' -s '2'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-22/digital-date-format' -t 'string' -s '%a, %b %d'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-22/digital-date-font' -t 'string' -s 'Roboto Medium 15'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-22/timezone' -t 'string' -s 'Europe/London'
 
 #xfconf-query -c xfce4-panel -np '/plugins/plugin-21/rows' -t 'int' -s '1'
 
@@ -362,20 +374,20 @@ xfconf-query -c xfce4-panel -np '/plugins/plugin-20/timezone' -t 'string' -s 'Eu
 
 #xfconf-query -c xfce4-panel -np '/plugins/plugin-24/rows' -t 'int' -s '1'
 
-xfconf-query -c xfce4-panel -np '/plugins/plugin-25/digital-layout' -t 'int' -s '3'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-25/digital-time-format' -t 'string' -s '%H:%M |'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-25/digital-time-font' -t 'string' -s 'Roboto Medium 15'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-25/timezone' -t 'string' -s 'America/New_York'
-
-xfconf-query -c xfce4-panel -np '/plugins/plugin-26/digital-layout' -t 'int' -s '3'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-26/digital-time-format' -t 'string' -s '%H:%M |'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-26/digital-time-font' -t 'string' -s 'Roboto Medium 15'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-26/timezone' -t 'string' -s 'Europe/London'
-
 xfconf-query -c xfce4-panel -np '/plugins/plugin-27/digital-layout' -t 'int' -s '3'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-27/digital-time-format' -t 'string' -s '%H:%M'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-27/digital-time-format' -t 'string' -s '%H:%M |'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-27/digital-time-font' -t 'string' -s 'Roboto Medium 15'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-27/timezone' -t 'string' -s 'Asia/Seoul'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-27/timezone' -t 'string' -s 'America/New_York'
+
+xfconf-query -c xfce4-panel -np '/plugins/plugin-28/digital-layout' -t 'int' -s '3'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-28/digital-time-format' -t 'string' -s '%H:%M |'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-28/digital-time-font' -t 'string' -s 'Roboto Medium 15'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-28/timezone' -t 'string' -s 'Europe/London'
+
+xfconf-query -c xfce4-panel -np '/plugins/plugin-29/digital-layout' -t 'int' -s '3'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-29/digital-time-format' -t 'string' -s '%H:%M'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-29/digital-time-font' -t 'string' -s 'Roboto Medium 15'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-29/timezone' -t 'string' -s 'Asia/Seoul'
 
 xfconf-query -c xfce4-panel -np '/panels/panel-1/position-locked' -t 'bool' -s 'true'
 xfconf-query -c xfce4-panel -np '/panels/panel-1/size' -t 'uint' -s '36'
