@@ -16,7 +16,7 @@ then
 	MEMUSAGE=0$MEMUSAGE
 fi
 
-echo "<txt>$MEMUSAGE GB</txt><txtclick>alacritty -e htop</txtclick>
-<tool>"
+echo "<txt>$MEMUSAGE GB </txt><txtclick>alacritty -e htop</txtclick>"
+echo "<tool>htop</tool>"
 
 exit 0
