@@ -84,7 +84,7 @@
 
 `Super` Launcher  
 `Super+F` Search files (~)  
-`Super+V` Bookmarks (`ctrl+a` to add, `ctrl+w` to remove)  
+`Super+V` Bookmarks (`ctrl+a` to add, `ctrl+w` to remove, `shift+enter` to type selected item)  
 `Super+A` Commands Archive (`ctrl+a` to add, `ctrl+w` to remove)  
 `Super+Return` Alacritty  
 `Super+Shift+Return` Xfce4 Terminal  
