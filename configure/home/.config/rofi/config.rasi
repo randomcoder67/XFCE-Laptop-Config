@@ -2,5 +2,6 @@ configuration {
 kb-clear-line: "Control+c";
 kb-move-front: "Control+z";
 kb-cancel: "Alt+F1";
+kb-accept-alt: "Shift+w";
 }
 @theme "~/.local/share/rofi/themes/harris.rasi"
