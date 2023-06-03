@@ -279,42 +279,42 @@ xfconf-query -c xfce4-panel -np '/plugins/plugin-5/style' -t 'int' -s '0'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-6/font' -t 'string' -s 'Roboto 12'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-6/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-6/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-6/command' -t 'string' -s 'echo "<img>$HOME/Programs/output/.pictures/destinyPanel.jpg</img>"'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-6/command' -t 'string' -s "echo \"<img>$HOME/Programs/output/.pictures/destinyPanel.jpg</img><tool>Destiny</tool>\""
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-7/font' -t 'string' -s 'Roboto 16'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-7/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-7/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-7/command' -t 'string' -s '$HOME/Programs/system/panel/panelDestiny.sh'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-7/command' -t 'string' -s "$HOME/Programs/system/panel/panelDestiny.sh"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-8/font' -t 'string' -s 'Roboto 12'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-8/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-8/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-8/command' -t 'string' -s 'echo "<img>$HOME/Programs/output/.pictures/chudlogicPanel.jpg</img>"'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-8/command' -t 'string' -s "echo \"<img>$HOME/Programs/output/.pictures/chudlogicPanel.jpg</img><tool>Chud Logic</tool>\""
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-9/font' -t 'string' -s 'Roboto 16'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-9/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-9/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-9/command' -t 'string' -s '$HOME/Programs/system/panel/panelChudLogic.sh'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-9/command' -t 'string' -s "$HOME/Programs/system/panel/panelChudLogic.sh"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-10/font' -t 'string' -s 'Roboto 12'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-10/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-10/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-10/command' -t 'string' -s 'echo "<img>$HOME/Programs/output/.pictures/nerdcubedPanel.jpg</img>"'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-10/command' -t 'string' -s "echo \"<img>$HOME/Programs/output/.pictures/nerdcubedPanel.jpg</img><tool>NerdCubed</tool>\""
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-11/font' -t 'string' -s 'Roboto 16'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-11/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-11/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-11/command' -t 'string' -s '$HOME/Programs/system/panel/panelNerdCubed.sh'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-11/command' -t 'string' -s "$HOME/Programs/system/panel/panelNerdCubed.sh"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-12/font' -t 'string' -s 'Roboto 12'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-12/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-12/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-12/command' -t 'string' -s 'echo "<img>$HOME/Programs/output/.pictures/matnPanel.jpg</img>"'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-12/command' -t 'string' -s "echo \"<img>$HOME/Programs/output/.pictures/matnPanel.jpg</img><tool>Many A True Nerd</tool>\""
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-13/font' -t 'string' -s 'Roboto 16'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-13/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-13/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-13/command' -t 'string' -s '$HOME/Programs/system/panel/panelMATN.sh'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-13/command' -t 'string' -s "$HOME/Programs/system/panel/panelMATN.sh"
 
 
 # System Monitors
@@ -322,42 +322,42 @@ xfconf-query -c xfce4-panel -np '/plugins/plugin-13/command' -t 'string' -s '$HO
 xfconf-query -c xfce4-panel -np '/plugins/plugin-14/font' -t 'string' -s 'Roboto 16'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-14/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-14/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-14/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#6d9cbe\'\>\ \ \</span\>\</txt\>\"
+xfconf-query -c xfce4-panel -np '/plugins/plugin-14/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#6d9cbe\'\>\ \ \</span\>\</txt\>\<tool\>CPU\ Usage\</tool\>\"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-15/font' -t 'string' -s 'Roboto Mono Medium 15'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-15/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-15/update-period' -t 'int' -s '2000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-15/command' -t 'string' -s '$HOME/Programs/system/panel/cpu.py'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-15/command' -t 'string' -s "$HOME/Programs/system/panel/cpu.py"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-16/font' -t 'string' -s 'Roboto 16'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-16/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-16/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-16/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#da4939\'\>\ \ \</span\>\</txt\>\"
+xfconf-query -c xfce4-panel -np '/plugins/plugin-16/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#da4939\'\>\ \ \</span\>\</txt\>\<tool\>CPU\ Temperature\</tool\>\"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-17/font' -t 'string' -s 'Roboto Mono Medium 15'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-17/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-17/update-period' -t 'int' -s '2000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-17/command' -t 'string' -s '$HOME/Programs/system/panel/cputemp.sh'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-17/command' -t 'string' -s "$HOME/Programs/system/panel/cputemp.sh"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-18/font' -t 'string' -s 'Roboto 16'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-18/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-18/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-18/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#ffc66d\'\>\ \ \</span\>\</txt\>\"
+xfconf-query -c xfce4-panel -np '/plugins/plugin-18/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#ffc66d\'\>\ \ \</span\>\</txt\>\<tool\>RAM\ Usage\</tool\>\"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-19/font' -t 'string' -s 'Roboto Mono Medium 15'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-19/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-19/update-period' -t 'int' -s '2000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-19/command' -t 'string' -s '$HOME/Programs/system/panel/ram.sh'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-19/command' -t 'string' -s "$HOME/Programs/system/panel/ram.sh"
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-20/font' -t 'string' -s 'Roboto 16'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-20/use-label' -t 'bool' -s 'false'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-20/update-period' -t 'int' -s '30000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#b6b3eb\'\>\ \ \</span\>\</txt\>\"
+xfconf-query -c xfce4-panel -np '/plugins/plugin-20/command' -t 'string' -s echo\ \"\<txt\>\<span\ foreground=\'#b6b3eb\'\>\ \ \</span\>\</txt\>\<tool\>Network\ Download\</tool\>\"
 
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/font' -t 'string' -s 'Roboto Mono Medium 15'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/use-label' -t 'bool' -s 'false'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/update-period' -t 'int' -s '2000'
-xfconf-query -c xfce4-panel -np '/plugins/plugin-20/command' -t 'string' -s '$HOME/Programs/system/panel/networkDown.sh'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-21/font' -t 'string' -s 'Roboto Mono Medium 15'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-21/use-label' -t 'bool' -s 'false'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-21/update-period' -t 'int' -s '2000'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-21/command' -t 'string' -s "$HOME/Programs/system/panel/networkDown.sh"
 
 
 
@@ -378,16 +378,19 @@ xfconf-query -c xfce4-panel -np '/plugins/plugin-27/digital-layout' -t 'int' -s 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-27/digital-time-format' -t 'string' -s '%H:%M |'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-27/digital-time-font' -t 'string' -s 'Roboto Medium 15'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-27/timezone' -t 'string' -s 'America/New_York'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-27/tooltip-format' -t 'string' -s 'New York'
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-28/digital-layout' -t 'int' -s '3'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-28/digital-time-format' -t 'string' -s '%H:%M |'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-28/digital-time-font' -t 'string' -s 'Roboto Medium 15'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-28/timezone' -t 'string' -s 'Europe/London'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-28/tooltip-format' -t 'string' -s 'London'
 
 xfconf-query -c xfce4-panel -np '/plugins/plugin-29/digital-layout' -t 'int' -s '3'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-29/digital-time-format' -t 'string' -s '%H:%M'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-29/digital-time-font' -t 'string' -s 'Roboto Medium 15'
 xfconf-query -c xfce4-panel -np '/plugins/plugin-29/timezone' -t 'string' -s 'Asia/Seoul'
+xfconf-query -c xfce4-panel -np '/plugins/plugin-29/tooltip-format' -t 'string' -s 'Seoul'
 
 xfconf-query -c xfce4-panel -np '/panels/panel-1/position-locked' -t 'bool' -s 'true'
 xfconf-query -c xfce4-panel -np '/panels/panel-1/size' -t 'uint' -s '36'

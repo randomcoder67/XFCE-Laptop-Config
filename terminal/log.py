@@ -160,7 +160,7 @@ def findFavSong(yearA, removeOnes):
 			monthString = currentFile.read()
 			monthJson = json.loads(monthString)
 			currentFile.close()
-			print(monthJson.keys())
+			#print(monthJson.keys())
 			for key in monthJson:
 				songName = monthJson.get(key).get("song")
 				if songName in songsDict:

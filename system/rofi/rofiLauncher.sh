@@ -4,6 +4,8 @@
 
 selection=$(cat ~/Programs/output/updated/files.txt | rofi -dmenu -show-icons -i -p "Launcher")
 
+[[ "$selection" == "" ]] && exit
+
 IFS=$'\n'
 
 declare -A programs
@@ -15,8 +17,8 @@ if (( ${#programsA[@]} == 0 )); then
 fi
 
 for x in "${programsA[@]}"; do
-	first=$(echo "$x" | cut -d\; -f1)
-	second=$(echo "$x" | cut -d\; -f2)
+	first=${x%%;*}
+	second=${x##*;}
 	programs["$first"]=$second
 done
 
@@ -45,7 +47,7 @@ elif [[ $selection == "LibreOffice Writer" ]]; then
 elif [[ "$selection" == "Shuffle Playlist" ]]; then
 	mpv --title='${metadata/title}'\ -\ '${metadata/artist}' --geometry=25% --shuffle --no-resume-playback "~/Music/currentPlaylist"
 elif [[ $selection == "Kick - Destiny" ]]; then
-	firefox www.kick.com/destiny
+	firefox https://www.kick.com/destiny
 elif [[ $selection == "Rumble - Destiny" ]]; then
 	firefox https://rumble.com/c/Destiny
 elif [[ $selection == "Twitter - Destiny" ]]; then
