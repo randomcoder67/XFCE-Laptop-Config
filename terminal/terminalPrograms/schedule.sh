@@ -83,7 +83,7 @@ printSchedule () {
 	#sed -i '$ d' ~/Programs/output/.temp/schedule.md
 	done
 
-	glow unbuffer ~/Programs/output/.temp/schedule.md
+	unbuffer glow ~/Programs/output/.temp/schedule.md
 }
 
 addEntry () {
@@ -98,7 +98,7 @@ getDateFromDay () {
 
 	curDay=$((curDay-1))
 
-	startOfWeekA=$((curDate-curDay))
+	startOfWeekA=$(date -d $curDate-$curDay"days" +"%y%m%d")
 	startOfWeek=$(date --date=$startOfWeekA)
 
 	if [[ "$1" == "mon" ]]; then
