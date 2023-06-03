@@ -18,9 +18,9 @@ if ! shopt -oq posix; then
 fi
 
 
-#PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
+PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
 
-PS1='\[\033[1;36m\]user\[\033[1;31m\]@\[\033[1;32m\]laptop:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
+#PS1='\[\033[1;36m\]user\[\033[1;31m\]@\[\033[1;32m\]laptop:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
 
 # PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\033[1;33m\][\t]\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
 
@@ -132,6 +132,7 @@ alias steamapps='cd ~/.local/share/Steam/steamapps/common'
 alias nf='neofetch'
 alias py='python3'
 alias sq='ncdu'
+alias bat='bat --theme=base16'
 alias q='trim_history && exit'
 alias install='sudo pacman -S'
 alias remove='sudo pacman -Rs'
