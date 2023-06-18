@@ -31,6 +31,16 @@ mkcdir () {
 	cd -P -- "$1"
 }
 
+shutdown () {
+	read -p "Shutdown? (y/N) " yesOrNoShutdown
+	[[ "$yesOrNoShutdown" == "y" ]] && /usr/bin/shutdown -h 0
+}
+
+reboot () {
+	read -p "Reboot? (y/N) " yesOrNoReboot
+	[[ "$yesOrNoReboot" == "y" ]] && /usr/bin/reboot
+}
+
 pdf () {
 	for arg; do
 		zathura "$arg" & disown
@@ -137,6 +147,7 @@ alias q='trim_history && exit'
 alias install='sudo pacman -S'
 alias remove='sudo pacman -Rs'
 alias update='sudo pacman -Syu'
+alias search='pacman -Ss'
 alias reload='. ~/.bashrc'
 alias ghc='ghc -dynamic'
 alias balance='aacgain -r -m 1 *.m4a'

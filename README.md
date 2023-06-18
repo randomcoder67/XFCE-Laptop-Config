@@ -4,7 +4,7 @@
 
 ### Dependancies
 
-`sudo pacman -S xfce4 xfce4-genmon-plugin mousepad xfce4-screenshooter firefox rofi lightdm lightdm-gtk-greeter meson ninja sassc unzip thunar-archive-plugin python-pip man xfce4-pulseaudio-plugin meson ninja sassc unzip thunar-archive-plugin python-pip man xfce4-pulseaudio-plugin gcc imagemagick rofi xclip bc xdg-utils base-devel trash-cli qalc`
+`sudo pacman -S xfce4 xfce4-genmon-plugin mousepad xfce4-screenshooter firefox rofi lightdm lightdm-gtk-greeter sassc unzip thunar-archive-plugin man xfce4-pulseaudio-plugin meson ninja python-pip gcc imagemagick xclip bc xdg-utils base-devel trash-cli libxtst pkg-config gspell libqalculate btop htop make bat ncdu duf mpv ffmpeg mediainfo yt-dlp hyperfine xdotool aspell-en`
 
 Also needed: 
 
@@ -13,6 +13,7 @@ Also needed:
 * Font Awesome free font 
 * Roboto 
 * Roboto Mono 
+* ksuperkey 
 
 ### Setup 
 
