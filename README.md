@@ -4,7 +4,11 @@
 
 ### Dependancies
 
-`sudo pacman -S xfce4 xfce4-genmon-plugin mousepad xfce4-screenshooter firefox rofi lightdm lightdm-gtk-greeter sassc unzip thunar-archive-plugin man xfce4-pulseaudio-plugin meson ninja python-pip gcc imagemagick xclip bc xdg-utils base-devel trash-cli libxtst pkg-config gspell libqalculate btop htop make bat ncdu duf mpv ffmpeg mediainfo yt-dlp hyperfine xdotool aspell-en`
+Installed when installing Arch: 
+
+`sudo pacman -S base linux linux-firmware nano networkmanager sudo xorg-server xfce4 lightdm lightdm-gtk-greeter intel-ucode/amd-ucode grub efibootmgr`
+
+`sudo pacman -S xfce4-genmon-plugin mousepad xfce4-screenshooter firefox rofi sassc unzip thunar-archive-plugin man xfce4-pulseaudio-plugin meson ninja python-pip gcc imagemagick xclip bc xdg-utils base-devel trash-cli libxtst pkg-config gspell libqalculate btop htop make bat ncdu duf mpv ffmpeg mediainfo yt-dlp hyperfine xdotool aspell-en songrec pavucontrol alsa-firmware sof-firmware pulseaudio-alsa glow jq`
 
 Also needed: 
 
