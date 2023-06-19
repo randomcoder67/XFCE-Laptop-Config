@@ -103,7 +103,7 @@ trim_history () {
 
 # Program openers 
 
-alias ms='~/Programs/terminal/alias/msnew.sh'
+alias ms='~/Programs/terminal/alias/ms.sh'
 alias mpv='mpv_do'
 
 # Unix terminal programs 
@@ -136,6 +136,8 @@ alias wstream='~/Programs/terminal/alias/destinyDownload.sh'
 # cd Shortcuts 
 
 alias steamapps='cd ~/.local/share/Steam/steamapps/common'
+alias papirus='cd /usr/share/icons/Papirus-Dark/32x32/'
+alias cdb='cd /mnt/backupDrive/'
 
 # Shortcuts 
 
@@ -175,9 +177,13 @@ alias groffdoc='python3 ~/Programs/terminal/mdToGroff.py'
 alias programs='~/Programs/terminal/addRemove.sh'
 alias checkfiles='~/Programs/system/rofi/checkFiles.sh'
 alias rm='~/Programs/terminal/alias/rm.sh'
+alias backup='~/Programs/terminal/terminalPrograms/backup.sh'
 
 HISTSIZE=20000
 HISTFILESIZE=20000
 
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$PATH:~/.local/bin
+
+export EDITOR="nano"
+export VISUAL="nano"

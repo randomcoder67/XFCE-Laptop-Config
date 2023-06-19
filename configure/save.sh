@@ -23,7 +23,7 @@ mkdir -p ~/Programs/configure/home/.config/Code\ -\ OSS/User
 cp ~/.config/Code\ -\ OSS/User/settings.json ~/Programs/configure/home/.config/Code\ -\ OSS/User/
 mkdir ~/Programs/configure/home/.config/glow
 cp ~/.config/glow/glow.yml ~/Programs/configure/home/.config/glow/
-cp ~/.config/glow/harris.json ~/Programs/configure/home/.config/glow/
+cp ~/.config/glow/railscasts.json ~/Programs/configure/home/.config/glow/
 mkdir ~/Programs/configure/home/.config/gtk-3.0
 cp ~/.config/gtk-3.0/bookmarks ~/Programs/configure/home/.config/gtk-3.0/
 cp ~/.config/gtk-3.0/gtk.css ~/Programs/configure/home/.config/gtk-3.0/

@@ -52,6 +52,10 @@ elif [[ $selection == "Rumble - Destiny" ]]; then
 	firefox https://rumble.com/c/Destiny
 elif [[ $selection == "Twitter - Destiny" ]]; then
 	firefox https://twitter.com/TheOmniLiberal
+elif [[ $selection == "BBC News" ]]; then
+	firefox https://www.bbc.co.uk/news
+elif [[ $selection == "Chat - Destiny" ]]; then
+	firefox https://www.destiny.gg/embed/chat
 else
 	${programs[$selection]}
 fi
