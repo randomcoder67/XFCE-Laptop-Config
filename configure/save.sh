@@ -31,6 +31,7 @@ mkdir ~/Programs/configure/home/.config/htop
 cp ~/.config/htop/htoprc ~/Programs/configure/home/.config/htop/
 mkdir ~/Programs/configure/home/.config/mpv
 cp ~/.config/mpv/mpv.conf ~/Programs/configure/home/.config/mpv/
+cp ~/.config/mpv/input.conf ~/Programs/configure/home/.config/mpv/
 mkdir ~/Programs/configure/home/.config/neofetch
 cp ~/.config/neofetch/config.conf ~/Programs/configure/home/.config/neofetch/
 mkdir ~/Programs/configure/home/.config/qalculate
