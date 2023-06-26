@@ -4,8 +4,6 @@
 
 textInput=$(xclip -o)
 
-
-
 outputA="${textInput//$'\n'/$'\n'#}"
 
 notify-send "$outputA"

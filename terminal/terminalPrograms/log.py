@@ -99,22 +99,24 @@ def searchMonth(yM, queryA):
 		monthString = currentFile.read()
 		monthJson = json.loads(monthString)
 		currentFile.close()
-	# Extract day data from the dictionary of days
-	for key in monthJson:
-		#print(key)
-		currentDay = monthJson[key]
-		#print(currentDay)
-		keys = ["stuff", "trips", "video", "song", "learn"]
-		# Check for query and if found, add day to array toReturn
-		for keyA in keys:
-			if queryA in currentDay[keyA]:
-				toReturn.append(yM + key)
-			# Only print array if it has values
-		if len(toReturn) > 0:
-			toReturn.sort()
-			print("Present in month " + yM[2:4] + ":")
-			for foundDate in toReturn:
-				print(foundDate[4:6])
+		# Extract day data from the dictionary of days
+		for key in monthJson:
+			#print(key)
+			currentDay = monthJson[key]
+			#print(currentDay)
+			keys = ["stuff", "trips", "video", "song", "learn"]
+			# Check for query and if found, add day to array toReturn
+			for keyA in keys:
+				if queryA.lower() in currentDay[keyA].lower():
+					toReturn.append(yM + key)
+					
+	toReturnNoDupes = list(dict.fromkeys(toReturn))
+	# Only print array if it has values
+	if len(toReturnNoDupes) > 0:
+		toReturnNoDupes.sort()
+		print("Present in month " + yM[2:4] + ":")
+		for foundDate in toReturnNoDupes:
+			print(foundDate[4:6])
 
 
 

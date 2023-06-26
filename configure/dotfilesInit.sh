@@ -52,6 +52,7 @@ cp ~/Programs/configure/gtkGreybird.css ~/.local/share/themes/Greybird-dark/gtk-
 
 cp ~/Programs/configure/home/.bashrc ~/.bashrc
 cp ~/Programs/configure/home/.inputrc ~/.inputrc
+cp ~/Programs/configure/home/.profile ~/.profile
 
 
 cp ~/Programs/configure/home/.config/systemd/user/files.service ~/.config/systemd/user/files.service

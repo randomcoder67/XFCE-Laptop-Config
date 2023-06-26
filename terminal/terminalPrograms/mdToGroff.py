@@ -17,7 +17,7 @@ if not len(sys.argv) == 3:
 
 fileToOpen = sys.argv[1]
 fileToWrite = sys.argv[2]
-fileNameToWrite = fileToWrite.partition(".")[0] # buggeg, what if it's a path with .config/thing.a for example
+fileNameToWrite = fileToWrite.partition(".")[0] # bugged, what if it's a path with .config/thing.a for example
 tempFilePathMS = home + "/Programs/output/.temp/" + fileNameToWrite + ".ms"
 tempFilePathPS = home + "/Programs/output/.temp/" + fileNameToWrite + ".ps"
 
