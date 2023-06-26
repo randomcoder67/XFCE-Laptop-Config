@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to resize windows in Xfce with keyboard shortcuts like a tiling window manager
+
 windowID=$(xdotool getactivewindow)
 windowGeometry=$(xdotool getwindowgeometry "$windowID")
 geoX=$(echo "$windowGeometry" | sed -n "3p" | cut -d " " -f 4 | cut -d "x" -f 1)
