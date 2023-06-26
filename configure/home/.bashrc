@@ -49,7 +49,7 @@ pdf () {
 
 mpv_do () {
 	for arg; do
-		mpv --really-quiet --save-position-on-quit "$arg" & disown
+		/usr/bin/mpv --really-quiet --save-position-on-quit "$arg" & disown
 	done
 }
 
@@ -60,12 +60,6 @@ rs () {
 	done
 	echo $inputA
 	ristretto $inputA & disown
-}
-
-mpv_do () {
-	for arg; do
-		mpv --really-quiet --save-position-on-quit "$arg" & disown
-	done
 }
 
 tmsumv () {
@@ -82,9 +76,19 @@ findr () {
 
 
 chudLogic () {
-	mpv --title="Chud Logic" https://www.youtube.com/@ChudLogic/live 2>&1 & disown
-	streamlink --player "mpv --title='Chud Logic'" https://www.twitch.tv/chudlogic best 2>&1 & disown
+	/usr/bin/mpv --title="Chud Logic" https://www.youtube.com/@ChudLogic/live 2>&1 & disown
+	/usr/bin/mpv --title="Chud Logic" https://www.twitch.tv/chudlogic best 2>&1 & disown
 }
+
+t () {
+	TZ="America/Los_Angeles" date +"Los Angeles: 	%H:%M:%S - %a, %b %d (%Z)"
+	TZ="America/New_York" date +"New York: 	%H:%M:%S - %a, %b %d (%Z)"
+	date -u +"UTC: 		%H:%M:%S - %a, %b %d (%Z)"
+	TZ="Europe/London" date +"London: 	%H:%M:%S - %a, %b %d (%Z)"
+	TZ="Asia/Seoul" date +"Seoul: 		%H:%M:%S - %a, %b %d (%Z)"
+	TZ="Australia/Sydney" date +"Sydney: 	%H:%M:%S - %a, %b %d (%Z)"
+}
+	
 
 trim_history () {
 	sed -i '/^q$/d' ~/.bash_history
@@ -160,7 +164,7 @@ alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args "-
 
 alias fitness='~/Programs/terminal/terminalPrograms/fitness.sh'
 alias schedule='~/Programs/terminal/terminalPrograms/schedule.sh'
-alias log='python3 ~/Programs/terminal/log.py'
+alias log='python3 ~/Programs/terminal/terminalPrograms/log.py'
 alias weather='curl wttr.in'
 
 # File finders 
@@ -172,8 +176,8 @@ alias mpvf='~/Programs/terminal/alias/findOpen.sh mpv'
 
 # My terminal programs 
 
-alias albumart='~/Programs/terminal/albumArt.sh'
-alias groffdoc='python3 ~/Programs/terminal/mdToGroff.py'
+alias albumart='~/Programs/terminal/terminalPrograms/albumArt.sh'
+alias groffdoc='python3 ~/Programs/terminal/terminalPrograms/mdToGroff.py'
 alias programs='~/Programs/terminal/addRemove.sh'
 alias checkfiles='~/Programs/system/rofi/checkFiles.sh'
 alias rm='~/Programs/terminal/alias/rm.sh'

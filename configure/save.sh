@@ -6,6 +6,7 @@ mkdir ~/Programs/configure/home/.local
 
 cp ~/.bashrc ~/Programs/configure/home/
 cp ~/.inputrc ~/Programs/configure/home/
+cp ~/.profile ~/Programs/configure/home/
 cp ~/.gitconfig ~/Programs/configure/home/
 cp -r ~/.ssh ~/Programs/configure/home/
 
