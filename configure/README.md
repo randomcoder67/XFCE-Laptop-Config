@@ -16,8 +16,8 @@
 `c` clear  
 `cl` clear and ls  
 `x` make file executable  
-`grep` grep ignore case  
-`grepa` grep ignore case and print surrounding lines  
+`grep` grep (ignore case)  
+`grepa` grep (ignore case and print surrounding lines)  
 `ls` lists files in directory  
 `lsa` lists files in directory (including hidden files)  
 `mv` moves file (asks for confirmation if overwriting)  
@@ -39,16 +39,20 @@
 ### cd Shortcuts
 
 `steamapps` cd into steamapps folder  
+`papirus` cd into papirus icons folder
+`cdb` cd into backup folder
 
 ### Shortcuts
 
 `nf` neofetch  
 `py` python3  
 `sq` ncdu to check files sizes  
+`bat` view files in terminal
 `q` trims bash history and exits  
 `install` install package with pacman  
 `remove` remove package with pacman  
 `update` update and upgrade system with pacman  
+`search` search pacman for packages
 `reload` reloads bashrc  
 `ghc` ghc with dynamic flag (necessary for Arch Linux)  
 `balance` balance audio with aacgain  
@@ -61,6 +65,7 @@
 `schedule` schedule program  
 `log` log program  
 `weather` weather  
+`t` display time in various timezones
 
 ### File finders 
 
@@ -77,6 +82,7 @@
 `programs` add or remove programs from Rofi Launcher  
 `checkfiles` updates list of files for Rofi Launcher  
 `rm` delete files or directories, moves to recycle bin  
+`backup` backup program
 
 ## Keyboard shortcuts 
 
@@ -85,7 +91,6 @@
 `Super` Launcher  
 `Super+F` Search files (~)  
 `Super+V` Bookmarks (`ctrl+a` to add, `ctrl+w` to remove, `shift+enter` to type selected item)  
-`Super+A` Commands Archive (`ctrl+a` to add, `ctrl+w` to remove)  
 `Super+Return` Alacritty  
 `Super+Shift+Return` Xfce4 Terminal  
 `Super+W` Firefox  
