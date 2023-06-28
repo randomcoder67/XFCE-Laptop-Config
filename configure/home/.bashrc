@@ -182,6 +182,9 @@ alias programs='~/Programs/terminal/addRemove.sh'
 alias checkfiles='~/Programs/system/rofi/checkFiles.sh'
 alias rm='~/Programs/terminal/alias/rm.sh'
 alias backup='~/Programs/terminal/terminalPrograms/backup.sh'
+alias stuff='python3 ~/Programs/terminal/terminalPrograms/stuff.py'
+
+alias shows='~/Programs/terminal/shows.sh'
 
 HISTSIZE=20000
 HISTFILESIZE=20000
