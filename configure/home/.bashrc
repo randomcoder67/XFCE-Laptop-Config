@@ -142,6 +142,14 @@ alias wstream='~/Programs/terminal/alias/destinyDownload.sh'
 alias steamapps='cd ~/.local/share/Steam/steamapps/common'
 alias papirus='cd /usr/share/icons/Papirus-Dark/32x32/'
 alias cdb='cd /mnt/backupDrive/'
+alias con='cd ~/.config'
+alias loc='cd ~/.local/share'
+alias doc='cd ~/Documents'
+alias dow='cd ~/Downloads/'
+alias pic='cd ~/Pictures/'
+alias vid='cd ~/Videos'
+alias mus='cd ~/Music'
+alias pro='cd ~/Programs'
 
 # Shortcuts 
 
@@ -165,7 +173,8 @@ alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args "-
 alias fitness='~/Programs/terminal/terminalPrograms/fitness.sh'
 alias schedule='~/Programs/terminal/terminalPrograms/schedule.sh'
 alias log='python3 ~/Programs/terminal/terminalPrograms/log.py'
-alias weather='curl wttr.in'
+alias weather='python3 ~/Programs/smallPrograms/metOffice/metOffice.py'
+alias shows='~/Programs/terminal/shows.sh'
 
 # File finders 
 
@@ -183,8 +192,9 @@ alias checkfiles='~/Programs/system/rofi/checkFiles.sh'
 alias rm='~/Programs/terminal/alias/rm.sh'
 alias backup='~/Programs/terminal/terminalPrograms/backup.sh'
 alias stuff='python3 ~/Programs/terminal/terminalPrograms/stuff.py'
+alias strava='~/Programs/smallPrograms/strava/strava.sh'
+alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
 
-alias shows='~/Programs/terminal/shows.sh'
 
 HISTSIZE=20000
 HISTFILESIZE=20000

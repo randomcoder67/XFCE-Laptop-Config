@@ -46,6 +46,9 @@ mkdir ~/.config/gtk-3.0
 mkdir -p ~/.config/Code\ -\ OSS/User/
 mkdir ~/.config/alacritty
 
+mkdir ~/.local/share/gnupg
+chmod 700 ~/.local/share/gnupg
+chmod 600 ~/.local/share/gnupg/*
 
 cp ~/Programs/configure/gtkGreybird.css ~/.local/share/themes/Greybird-dark/gtk-3.0/gtk.css
 
