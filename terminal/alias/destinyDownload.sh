@@ -13,7 +13,7 @@ do
 	# Check YouTube for livestream 
 	if grep -q "Pop-out chat" ~/Programs/output/.streams/destinyDownload/destinyyoutube.html
 	then
-		yt-dlp --external-downloader-args "'-m3u8_hold_counters' 10" https://www.youtube.com/@destiny/live -f 300 -P ~/Videos/Destiny/ -o $fileName"YouTube.%(ext)s"
+		yt-dlp https://www.youtube.com/@destiny/live -f 300 -P ~/Videos/Destiny/ -o $fileName"YouTube.%(ext)s"
 	# Check Kick for livestream (this part only sometimes works)
 	elif yt-dlp --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/112.0" --cookies-from-browser firefox -F https://kick.com/destiny 2>/dev/null >> /dev/null
 	then
