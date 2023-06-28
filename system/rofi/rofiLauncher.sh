@@ -35,7 +35,7 @@ elif [[ $selection == "btop" ]]; then
 elif [[ $selection == "htop" ]]; then
 	alacritty -e htop
 elif [[ $selection == "Lossless Cut" ]]; then
-	~/Programs/otherPrograms/LosslessCut-linux-x64/losslesscut
+	"~/Programs/otherPrograms/LosslessCut-linux-x64/losslesscut"
 elif [[ $selection == "Mousepad" ]]; then
 	mousepad -o window
 elif [[ $selection == "mpv" ]]; then
@@ -56,6 +56,28 @@ elif [[ $selection == "BBC News" ]]; then
 	firefox https://www.bbc.co.uk/news
 elif [[ $selection == "Chat - Destiny" ]]; then
 	firefox https://www.destiny.gg/embed/chat
+elif [[ $selection == "NASA Image of the Day" ]]; then
+	firefox https://www.nasa.gov/multimedia/imagegallery/iotd.html
+elif [[ $selection == "Dead Cells" ]]; then
+	steam steam://rungameid/588650
+elif [[ $selection == "Terraria" ]]; then
+	"/home/ethan/.local/share/GOG/Terraria/start.sh"
+elif [[ $selection == "SHENZHEN IO" ]]; then
+	"/home/ethan/.local/share/GOG/SHENZHEN I O/start.sh"
+elif [[ $selection == "Opus Magnum" ]]; then
+	"/home/ethan/.local/share/GOG/Opus Magnum/start.sh"
+elif [[ $selection == "shapez" ]]; then
+	steam steam://rungameid/1318690
+elif [[ $selection == "Kerbal Space Program" ]]; then
+	steam steam://rungameid/220200
+elif [[ $selection == "Noita" ]]; then
+	steam steam://rungameid/881100
+elif [[ $selection == "Slime Rancher" ]]; then
+	"/home/ethan/.local/share/GOG/Slime Rancher/start.sh"
+elif [[ $selection == "PCSX2" ]]; then
+	"/home/ethan/.local/share/games/pcsx2.AppImage"
+elif [[ $selection == "SimCity 4" ]]; then
+	steam steam://rungameid/24780
 else
 	${programs[$selection]}
 fi

@@ -19,5 +19,9 @@ elif [[ $selection == "~" ]]; then
 # Else open the program/run the command (works with multiple arguments)
 else
 	toRun=$(sed -n -e "s/^.*$selection;//p" ~/Programs/output/updated/programs.txt)
-	$toRun
+	if [[ "$toRun" == *"GOG"* ]]; then
+		"$toRun"
+	else
+		$toRun
+	fi
 fi

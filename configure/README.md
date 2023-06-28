@@ -39,8 +39,16 @@
 ### cd Shortcuts
 
 `steamapps` cd into steamapps folder  
-`papirus` cd into papirus icons folder
-`cdb` cd into backup folder
+`papirus` cd into papirus icons folder  
+`cdb` cd into backup folder  
+`con` cd into ~/.config  
+`loc` cd into ~/.local/share  
+`doc` cd into ~/Documents  
+`dow` cd into ~/Downloads  
+`pic` cd into ~/Pictures  
+`vid` cd into ~/Videos  
+`mus` cd into ~/Music  
+`pro` cd into ~/Programs  
 
 ### Shortcuts
 
@@ -65,7 +73,8 @@
 `schedule` schedule program  
 `log` log program  
 `weather` weather  
-`t` display time in various timezones
+`t` display time in various timezones  
+`shows` list show times in the week  
 
 ### File finders 
 
@@ -82,7 +91,8 @@
 `programs` add or remove programs from Rofi Launcher  
 `checkfiles` updates list of files for Rofi Launcher  
 `rm` delete files or directories, moves to recycle bin  
-`backup` backup program
+`backup` backup program  
+`stuff` query and edit list of owned stuff  
 
 ## Keyboard shortcuts 
 
