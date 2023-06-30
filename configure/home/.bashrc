@@ -47,6 +47,12 @@ pdf () {
 	done
 }
 
+ms () {
+	for arg; do
+		mousepad "$arg" & disown
+	done
+}
+
 mpv_do () {
 	for arg; do
 		/usr/bin/mpv --really-quiet --save-position-on-quit "$arg" & disown
@@ -107,7 +113,6 @@ trim_history () {
 
 # Program openers 
 
-alias ms='~/Programs/terminal/alias/ms.sh'
 alias mpv='mpv_do'
 
 # Unix terminal programs 
