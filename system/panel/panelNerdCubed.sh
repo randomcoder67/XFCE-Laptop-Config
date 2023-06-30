@@ -5,9 +5,19 @@
 curl https://www.twitch.tv/nerdcubed > ~/Programs/output/.streams/panel/nerdcubed.html
 if grep -q isLiveBroadcast ~/Programs/output/.streams/panel/nerdcubed.html
 then
-	echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title=NerdCubed https://www.twitch.tv/nerdcubed</txtclick><tool>"
-	echo "<tool>Twitch</tool>"
+	if [[ "$1" == "-t" ]]; then
+		echo "<span foreground='#da4939'>  </span>"
+		echo "twitch" > "$XDG_STATE_HOME/streams/nerdcubed.txt"
+	else
+		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title=NerdCubed https://www.twitch.tv/nerdcubed</txtclick><tool>"
+		echo "<tool>Twitch</tool>"
+	fi
 else
-	echo "<txt>  </txt>"
-	echo "<tool>Not Live</tool>"
+	if [[ "$1" == "-t" ]]; then
+		echo "<span foreground='#e6e1dc'>  </span>"
+		echo "notLive" > "$XDG_STATE_HOME/streams/nerdcubed.txt"
+	else
+		echo "<txt>  </txt>"
+		echo "<tool>Not Live</tool>"
+	fi
 fi
