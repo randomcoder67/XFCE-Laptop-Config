@@ -66,7 +66,7 @@ func main() {
 	//fmt.Println(keys)
 
 	/*
-	byt := []byte(`{ "03": { "stuff": "Went out on bike, to ardrishaig and back, not very fit", "trips": "home, out on bike", "video": "N/A", "song": "N/A", "learn": "nothing" } }`)
+	byt := []byte(`{ "03": { "stuff": "Went out on bike, to shops and back, not very fit", "trips": "home, out on bike", "video": "N/A", "song": "N/A", "learn": "nothing" } }`)
 	var dat map[string]interface{}
 	
 	if err := json.Unmarshal(byt, &dat); err != nil {
