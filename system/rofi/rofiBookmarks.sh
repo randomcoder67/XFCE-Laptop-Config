@@ -26,7 +26,7 @@ elif [ $status -eq 11 ]; then
 	itemA=${item//"\\"/"[\\]"}
 	echo $itemA
 	# Remove item
-	sed -i "\|^$itemA$|d" ~/Programs/output/updated/bookmarks.txt
+	sed -i "\|$itemA$|d" "$HOME/Programs/output/updated/bookmarks.txt"
 # status=12 means the user selected to type a bookmark
 elif [ $status -eq 12 ]; then
 	#sleep 1

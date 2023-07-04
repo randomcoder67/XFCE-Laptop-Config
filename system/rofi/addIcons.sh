@@ -26,6 +26,9 @@ sed -n 's/\(.*[.]py$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dar
 # .lua
 sed -n 's/\(.*[.]lua$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-x-lua.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
+# .go
+sed -n 's/\(.*[.]go$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-x-go.svg\\n\"/p' ~/Programs/output/updated/files.txt
+
 # .md
 sed -n 's/\(.*[.]md$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-markdown.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
@@ -51,7 +54,7 @@ sed -n -E 's/(.*[.]png$|.*[.]jpg$|.*[.]jpeg$|.*[.]gif$|.*[.]svg$|.*[.]webp$)/ech
 sed -n -E 's/(.*[.]mp4$|.*[.]m4v$|.*[.]mkv$|.*[.]webm$)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/video.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
 # Everything Else
-grep -vP "[.]sh$|[.]json$|[.]c$|[.]h$|[.]txt$|[.]xml$|[.]py$|[.]md$|[.]csv$|[.]mp4$|[.]mkv$|[.]m4v$|[.]webm$|[.]png$|[.]jpg$|[.]jpeg$|[.]gif$|[.]svg$|[.]webp$|[.]m4a$|[.]mp3$|[.]html$|[.]lua$" ~/Programs/output/updated/files.txt | sed 's/^/echo -en \"/; s/$/\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-plain.svg\\n\"/'
+grep -vP "[.]sh$|[.]json$|[.]c$|[.]h$|[.]txt$|[.]xml$|[.]py$|[.]md$|[.]csv$|[.]mp4$|[.]mkv$|[.]m4v$|[.]webm$|[.]png$|[.]jpg$|[.]jpeg$|[.]gif$|[.]svg$|[.]webp$|[.]m4a$|[.]mp3$|[.]html$|[.]lua$|[.]go$" ~/Programs/output/updated/files.txt | sed 's/^/echo -en \"/; s/$/\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-plain.svg\\n\"/'
 
 #sed -n 's/\(.*[.]jpg$\)/BEFORE\1AFTER/p'
 
