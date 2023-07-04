@@ -61,11 +61,11 @@ elif [[ $selection == "NASA Image of the Day" ]]; then
 elif [[ $selection == "Dead Cells" ]]; then
 	steam steam://rungameid/588650
 elif [[ $selection == "Terraria" ]]; then
-	"/home/ethan/.local/share/GOG/Terraria/start.sh"
+	"$HOME/.local/share/GOG/Terraria/start.sh"
 elif [[ $selection == "SHENZHEN IO" ]]; then
-	"/home/ethan/.local/share/GOG/SHENZHEN I O/start.sh"
+	"$HOME/.local/share/GOG/SHENZHEN I O/start.sh"
 elif [[ $selection == "Opus Magnum" ]]; then
-	"/home/ethan/.local/share/GOG/Opus Magnum/start.sh"
+	"$HOME/.local/share/GOG/Opus Magnum/start.sh"
 elif [[ $selection == "shapez" ]]; then
 	steam steam://rungameid/1318690
 elif [[ $selection == "Kerbal Space Program" ]]; then
@@ -73,11 +73,13 @@ elif [[ $selection == "Kerbal Space Program" ]]; then
 elif [[ $selection == "Noita" ]]; then
 	steam steam://rungameid/881100
 elif [[ $selection == "Slime Rancher" ]]; then
-	"/home/ethan/.local/share/GOG/Slime Rancher/start.sh"
+	"$HOME/.local/share/GOG/Slime Rancher/start.sh"
 elif [[ $selection == "PCSX2" ]]; then
-	"/home/ethan/.local/share/games/pcsx2.AppImage"
+	"$HOME/.local/share/games/pcsx2.AppImage"
 elif [[ $selection == "SimCity 4" ]]; then
 	steam steam://rungameid/24780
+elif [[ $selection == "RideWithGPS" ]]; then
+	firefox "https://ridewithgps.com"
 else
 	${programs[$selection]}
 fi
