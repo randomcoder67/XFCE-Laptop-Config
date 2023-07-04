@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set directories 
-backupDir="/mnt/backupDrive"
+backupDir="$HOME/Downloads/BackupMount"
 backupCurrent="$HOME/Programs/output/updated/backup.txt"
 backup1="currentBackup"
 backup2="backup2"
