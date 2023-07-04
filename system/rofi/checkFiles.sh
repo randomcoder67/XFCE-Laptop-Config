@@ -44,7 +44,7 @@ sed -i "/~\/\.config\/google-chrome\/Default\/Extensions/d" ~/Programs/output/up
 sed -i "/~\/\.config\/opera\/Extensions/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Downloads\/BackupDec/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Programs\/configure\/home/d" ~/Programs/output/updated/files.txt
-sed -i "/~\/Programs\/organisation/d" ~/Programs/output/updated/files.txt
+#sed -i "/~\/Programs\/organisation/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Music\/curPlaylist/d" ~/Programs/output/updated/files.txt
 
 echo "$HOME/.config/Code - OSS/User/settings.json" >> ~/Programs/output/updated/files.txt

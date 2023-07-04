@@ -80,6 +80,8 @@ elif [[ $selection == "SimCity 4" ]]; then
 	steam steam://rungameid/24780
 elif [[ $selection == "RideWithGPS" ]]; then
 	firefox "https://ridewithgps.com"
+elif [[ $selection == "Minecraft Launcher" ]]; then
+	"$HOME/.local/bin/minecraft-launcher"
 else
 	${programs[$selection]}
 fi
