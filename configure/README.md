@@ -66,7 +66,8 @@
 `balance` balance audio with aacgain  
 `clearlogs` clear journalctl of logs older than 2 days  
 `yt-aria` yt-dlp using aria2c as downloader  
-`dohash` gets checksum hash for all files in given folder (sha256sum)  
+`hashfolder` gets checksum hash for all files in given folder (sha256sum)  
+`cmpfolder` cmp files in two directories  
 `music` play music (defaults to curPlaylist, use `-a artist` to play music by given artist)  
 
 ### Info programs
@@ -109,12 +110,11 @@
 `Super+W` Firefox  
 `Super+E` Thunar File Manager  
 `Super+M` Mousepad  
-`Super+L` dgg Chat  
+`Super+L` Play music from `~/Music/curPlaylist`  
 `Super+C` Calculator  
 `Super+H` htop  
 `Super+B` btop  
 `Super+Backtick` Screenshot Utility  
-`Super+Q` Display system instructions Rofi  
 `Super+S` Settings Manager  
 `Ctrl+Alt+Del` Logout  
 
