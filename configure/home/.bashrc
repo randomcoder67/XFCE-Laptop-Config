@@ -172,6 +172,8 @@ alias ghc='ghc -dynamic'
 alias balance='aacgain -r -m 1 *.m4a'
 alias clearlogs='sudo journalctl --vacuum-time=2d'
 alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args "-x 16 -j 16 -s 16 -k 1M"'
+alias dohash='~/Programs/terminal/alias/hash.sh'
+alias music='~/Programs/terminal/alias/music.sh'
 
 # Info programs 
 
