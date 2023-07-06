@@ -7,3 +7,4 @@ export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export WGETRC="$XDG_CONFIG_HOME"/wgetrc
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export GOPATH="$XDG_DATA_HOME"/go
