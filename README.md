@@ -25,6 +25,9 @@ Also needed:
 * Roboto Mono 
 * ksuperkey 
 
+Wallpapers are mainly from here:  
+[NASA Image of the Day](https://www.nasa.gov/multimedia/imagegallery/iotd.html)
+
 ### Setup 
 
 Clone this repositry into a folder named `~/Programs`  
