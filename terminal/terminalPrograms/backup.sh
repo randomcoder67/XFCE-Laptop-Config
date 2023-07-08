@@ -38,13 +38,13 @@ elif [[ "$1" == "list" || "$1" == "ls" ]]; then
 elif [[ "$1" == "make" ]]; then
 	echo "doing backup"
 	# Copy previous 2nd backup to 3rd position 
-	rsync --recursive "$backupDir""/$backup2/" "$backupDir""/$backup3" --delete
+	rsync --progress --recursive "$backupDir""/$backup2/" "$backupDir""/$backup3" --delete
 	# Copy previous 1st backup to 2nd position 
-	rsync --recursive "$backupDir""/$backup1/" "$backupDir""/$backup2" --delete
+	rsync --progress --recursive "$backupDir""/$backup1/" "$backupDir""/$backup2" --delete
 	# Remove previous first backup to make way for new one (this is t ensure no removed directories/files are included) 
 	rm -rf "$backupDir""/$backup1/"*
 	# Make new 1st backup 
-	rsync --recursive --files-from="$backupCurrent" "$HOME" "$backupDir""/$backup1"
+	rsync --progress --recursive --files-from="$backupCurrent" "$HOME" "$backupDir""/$backup1"
 	oldIFS="$IFS"
 	IFS=$'\n'
 
