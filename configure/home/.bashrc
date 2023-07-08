@@ -17,7 +17,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
 
 #PS1='\[\033[1;36m\]user\[\033[1;31m\]@\[\033[1;32m\]laptop:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
@@ -80,7 +79,6 @@ findr () {
 	find / -iname "$1" 2>&1 | grep -v 'Permission denied'
 }
 
-
 chudLogic () {
 	/usr/bin/mpv --title="Chud Logic" https://www.youtube.com/@ChudLogic/live 2>&1 & disown
 	/usr/bin/mpv --title="Chud Logic" https://www.twitch.tv/chudlogic best 2>&1 & disown
@@ -93,8 +91,7 @@ t () {
 	TZ="Europe/London" date +"London: 	%H:%M:%S - %a, %b %d (%Z)"
 	TZ="Asia/Seoul" date +"Seoul: 		%H:%M:%S - %a, %b %d (%Z)"
 	TZ="Australia/Sydney" date +"Sydney: 	%H:%M:%S - %a, %b %d (%Z)"
-}
-	
+}	
 
 trim_history () {
 	sed -i '/^q$/d' ~/.bash_history
@@ -109,7 +106,6 @@ trim_history () {
 	sed -i '/^x$/d' ~/.bash_history
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
 }
-
 
 # Program openers 
 
@@ -176,12 +172,13 @@ alias hashfolder='~/Programs/terminal/alias/hashfolder.sh'
 alias cmpfolder='~/Programs/terminal/alias/cmpfolder.sh'
 alias music='~/Programs/terminal/alias/music.sh'
 alias yt-music='yt-dlp -f 140 -o "%(title)s - %(channel)s - %(album)s.%(ext)s"'
+alias tagmusic='python3 ~/Programs/smallPrograms/musicTag/tagMusicFile.py'
 
 # Info programs 
 
 alias fitness='~/Programs/terminal/terminalPrograms/fitness.sh'
 alias schedule='~/Programs/terminal/terminalPrograms/schedule.sh'
-alias log='python3 ~/Programs/terminal/terminalPrograms/log.py'
+alias log='~/Programs/terminal/terminalPrograms/log'
 alias weather='python3 ~/Programs/smallPrograms/metOffice/metOffice.py'
 alias shows='~/Programs/terminal/shows.sh'
 
@@ -204,12 +201,10 @@ alias stuff='python3 ~/Programs/terminal/terminalPrograms/stuff.py'
 alias strava='~/Programs/smallPrograms/strava/strava.sh'
 alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
 
-
 HISTSIZE=20000
 HISTFILESIZE=20000
 
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$PATH:~/.local/bin
-
 export EDITOR="nano"
 export VISUAL="nano"

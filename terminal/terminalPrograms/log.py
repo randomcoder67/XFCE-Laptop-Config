@@ -86,7 +86,7 @@ def search(query, rangeA): # Add functionality to search all entries if rangeA i
 				dateAA = rangeA + "0" + str(xy + 1)
 			else:
 				dateAA = rangeA + str(xy + 1)
-		searchMonth(dateAA, query)
+			searchMonth(dateAA, query)
 
 
 def searchMonth(yM, queryA):
