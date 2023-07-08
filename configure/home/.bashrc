@@ -175,6 +175,7 @@ alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args "-
 alias hashfolder='~/Programs/terminal/alias/hashfolder.sh'
 alias cmpfolder='~/Programs/terminal/alias/cmpfolder.sh'
 alias music='~/Programs/terminal/alias/music.sh'
+alias yt-music='yt-dlp -f 140 -o "%(title)s - %(channel)s - %(album)s.%(ext)s"'
 
 # Info programs 
 
