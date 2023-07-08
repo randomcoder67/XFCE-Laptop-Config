@@ -1,5 +1,10 @@
 # XFCE 4 Config
 
+## Screenshots 
+
+![Screenshot 1](configure/screenshots/screenshot1.png)
+![Screenshot 2](configure/screenshots/screenshot2.png)
+
 ## Installation 
 
 ### Dependancies
