@@ -83,6 +83,8 @@ cp ~/Programs/configure/home/.local/share/rofi/themes/harris.rasi ~/.local/share
 cp ~/Programs/configure/home/.config/glow/glow.yml ~/.config/glow/glow.yml
 cp ~/Programs/configure/home/.config/glow/railscasts.json ~/.config/glow/railscasts.json
 
+go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/log.go
+
 systemctl --user enable files.service
 systemctl --user start files.service
 
