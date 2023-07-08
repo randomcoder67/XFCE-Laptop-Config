@@ -47,6 +47,9 @@ sed -n 's/\(.*[.]mp3$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Da
 # .m4a
 sed -n 's/\(.*[.]m4a$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/audio-m4a.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
+# .gpx
+sed -n 's/\(.*[.]gpx$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/application-gpx.svg\\n\"/p' ~/Programs/output/updated/files.txt
+
 # .png, .jpg, .jpeg, .gif, .svg and .webp
 sed -n -E 's/(.*[.]png$|.*[.]jpg$|.*[.]jpeg$|.*[.]gif$|.*[.]svg$|.*[.]webp$)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/image.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
@@ -54,7 +57,7 @@ sed -n -E 's/(.*[.]png$|.*[.]jpg$|.*[.]jpeg$|.*[.]gif$|.*[.]svg$|.*[.]webp$)/ech
 sed -n -E 's/(.*[.]mp4$|.*[.]m4v$|.*[.]mkv$|.*[.]webm$)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/video.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
 # Everything Else
-grep -vP "[.]sh$|[.]json$|[.]c$|[.]h$|[.]txt$|[.]xml$|[.]py$|[.]md$|[.]csv$|[.]mp4$|[.]mkv$|[.]m4v$|[.]webm$|[.]png$|[.]jpg$|[.]jpeg$|[.]gif$|[.]svg$|[.]webp$|[.]m4a$|[.]mp3$|[.]html$|[.]lua$|[.]go$" ~/Programs/output/updated/files.txt | sed 's/^/echo -en \"/; s/$/\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-plain.svg\\n\"/'
+grep -vP "[.]sh$|[.]json$|[.]c$|[.]h$|[.]txt$|[.]xml$|[.]py$|[.]md$|[.]csv$|[.]mp4$|[.]mkv$|[.]m4v$|[.]webm$|[.]png$|[.]jpg$|[.]jpeg$|[.]gif$|[.]svg$|[.]webp$|[.]m4a$|[.]mp3$|[.]html$|[.]lua$|[.]go$|[.]gpx$" ~/Programs/output/updated/files.txt | sed 's/^/echo -en \"/; s/$/\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-plain.svg\\n\"/'
 
 #sed -n 's/\(.*[.]jpg$\)/BEFORE\1AFTER/p'
 
