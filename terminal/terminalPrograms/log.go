@@ -187,17 +187,30 @@ func searchMonth(toSearchA string, month string) {
 		panic(err)
 	}
 	
-	daysFound := make(map[string]struct{}) // Make empty map (essentially a set) for matching days 
+	//daysFound := make(map[string]struct{}) // Make empty map (essentially a set) for matching days 
+	
+	var notYetPrintedMonth bool = true
 	
 	for day, content := range curJSON { // Iterate through days 
-		for _, entry := range content.(map[string]interface{}) { // Iterate through categories 
+		var notYetPrintedDay bool = true
+		for key, entry := range content.(map[string]interface{}) { // Iterate through categories 
 			// Check for match (case insensitive)
 			if strings.Contains(strings.ToLower(entry.(string)), strings.ToLower(toSearchA)) {
-				daysFound[day] = struct{}{}
+				if notYetPrintedMonth { // If in a new month, print the month
+					fmt.Println("Present in month: " + month)
+					notYetPrintedMonth = false
+				}
+				if notYetPrintedDay { // If in a new day, print the day 
+					fmt.Println(day + ":")
+					notYetPrintedDay = false
+				}
+				fmt.Println(key + ": " + entry.(string)) // Print the key and matching value 
+				//daysFound[day] = struct{}{}
 			}
 		}
 	}
 	
+	/*
 	days := make([]string, 0) // Make slice to hold matching days 
 	for day, _ := range daysFound { // Add days to slice 
 		days = append(days, day)
@@ -213,6 +226,7 @@ func searchMonth(toSearchA string, month string) {
 			fmt.Println(day)
 		}
 	}
+	*/
 }
 
 // Search function, calls searchMonth as needed 

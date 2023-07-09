@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# rofi finder script, not mine
+# rofi finder script, not mine (credit: https://github.com/davatorium/rofi-scripts/blob/master/rofi-finder/finder.sh)
 
 #PUT THIS FILE IN ~/.local/share/rofi/finder.sh
 #USE: rofi  -show find -modi find:~/.local/share/rofi/finder.sh
