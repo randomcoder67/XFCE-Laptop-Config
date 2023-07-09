@@ -151,6 +151,7 @@ alias pic='cd ~/Pictures/'
 alias vid='cd ~/Videos'
 alias mus='cd ~/Music'
 alias pro='cd ~/Programs'
+alias cur='cd ~/Music/curPlaylist/'
 
 # Shortcuts 
 
