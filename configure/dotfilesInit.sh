@@ -8,6 +8,7 @@ mkdir ~/Programs/output/schedule
 mkdir ~/Programs/output/.streams
 mkdir ~/Programs/output/.streams/panel
 mkdir ~/Programs/output/.streams/destinyDownload
+mkdir ~/Programs/output/.streams/streamsCheck
 mkdir ~/Programs/output/.timers
 mkdir ~/Programs/output/.pictures
 mkdir ~/Programs/output/.sounds

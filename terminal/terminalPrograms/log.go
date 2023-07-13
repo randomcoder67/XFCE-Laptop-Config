@@ -250,7 +250,7 @@ func getDay(date string) {
 	
 	// Get filename and open
 	fileName := year + month + ".json"
-	fmt.Println(fileName)
+	//fmt.Println(fileName)
 	dat, err := os.ReadFile(homeDir + logDir + fileName)
 	if err != nil {
 		os.Exit(1)
@@ -261,9 +261,12 @@ func getDay(date string) {
 	if err := json.Unmarshal(bytesFile, &curJSON); err != nil {
 		panic(err)
 	}
-	
 	// Print the 5 pieces of information correctly formatted 
 	requestedDay := curJSON[day]
+	if requestedDay == nil { // Check if day doesn't exist
+		fmt.Println("Day not present")
+		os.Exit(0)
+	}
 	fmt.Printf("What Happened:	%s\n", requestedDay.(map[string]interface{})["stuff"].(string))
 	fmt.Printf("Where Were You:   %s\n", requestedDay.(map[string]interface{})["trips"].(string))
 	fmt.Printf("Favourite Video:  %s\n", requestedDay.(map[string]interface{})["video"].(string))
