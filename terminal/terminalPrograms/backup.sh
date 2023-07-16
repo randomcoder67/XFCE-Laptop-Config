@@ -42,7 +42,8 @@ elif [[ "$1" == "make" ]]; then
 	# Copy previous 1st backup to 2nd position 
 	rsync --progress --recursive "$backupDir""/$backup1/" "$backupDir""/$backup2" --delete
 	# Remove previous first backup to make way for new one (this is t ensure no removed directories/files are included) 
-	rm -rf "$backupDir""/$backup1/"*
+	rm -rf "$backupDir""/$backup1"
+	mkdir "$backupDir""/$backup1"
 	# Make new 1st backup 
 	rsync --progress --recursive --files-from="$backupCurrent" "$HOME" "$backupDir""/$backup1"
 	oldIFS="$IFS"
