@@ -11,7 +11,7 @@
 
 Install Arch: 
 
-Guide: [Arch Install Guide](https://github/com/randomcoder67/XFCE-Laptop-Config/tree/main/configure/archInstallGuide.md)
+Guide: [Arch Install Guide](configure/archInstallGuide.md)
 
 Installed when installing programs:
 
@@ -36,4 +36,4 @@ Run `~/Programs/configure/init.sh` file
 
 ## Usage 
 
-[See README in configure folder](https://github.com/randomcoder67/XFCE-Laptop-Config/tree/main/configure#readme)
+[See README in configure folder](configure/README.md)
