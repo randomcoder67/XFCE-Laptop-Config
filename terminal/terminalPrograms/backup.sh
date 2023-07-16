@@ -42,14 +42,16 @@ elif [[ "$1" == "make" ]]; then
 	# Copy previous 1st backup to 2nd position 
 	rsync --progress --recursive "$backupDir""/$backup1/" "$backupDir""/$backup2" --delete
 	# Remove previous first backup to make way for new one (this is t ensure no removed directories/files are included) 
+	# Remove the directory instead of contents to ensure all hidden directories are removed 
 	rm -rf "$backupDir""/$backup1"
+	# Remake the directory 
 	mkdir "$backupDir""/$backup1"
 	# Make new 1st backup 
 	rsync --progress --recursive --files-from="$backupCurrent" "$HOME" "$backupDir""/$backup1"
 	oldIFS="$IFS"
 	IFS=$'\n'
 
-	# Hash the files on the computer and one the backup, compare them to ensure perfect backup and save the hashes to a file for future integrity checking 
+	# Hash the files on the computer and on the backup, compare them to ensure perfect backup and save the hashes to a file for future integrity checking 
 	files=( $(xargs -r -d'\n' -I{} find "$HOME"{} -type f < "$backupCurrent" | sort | uniq) )
 
 	#rm "$backupDir""/$backup1""/hashesOriginal.txt"
