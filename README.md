@@ -11,7 +11,7 @@
 
 Install Arch: 
 
-Guide: [Arch Install Guide](https://github/com/randomcoder67/XFCE-Laptop-Config/tree/main/configure#archInstallGuide)
+Guide: [Arch Install Guide](https://github/com/randomcoder67/XFCE-Laptop-Config/tree/main/configure/archInstallGuide.md)
 
 Installed when installing programs:
 
