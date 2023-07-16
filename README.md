@@ -9,13 +9,13 @@
 
 ### Dependancies
 
-Installed when installing Arch: 
+Install Arch: 
 
-`sudo pacman -S base linux linux-firmware nano networkmanager sudo xorg-server xfce4 lightdm lightdm-gtk-greeter intel-ucode/amd-ucode grub efibootmgr`
+Guide: [Arch Install Guide](https://github/com/randomcoder67/XFCE-Laptop-Config/tree/main/configure#archInstallGuide)
 
 Installed when installing programs:
 
-`sudo pacman -S papirus-icon-theme xfce4-genmon-plugin mousepad xfce4-screenshooter firefox rofi sassc unzip thunar-archive-plugin man xfce4-pulseaudio-plugin meson ninja python-pip gcc imagemagick xclip bc xdg-utils base-devel trash-cli libxtst pkg-config libqalculate btop htop make bat ncdu duf mpv ffmpeg mediainfo yt-dlp hyperfine xdotool aspell-en songrec pavucontrol alsa-firmware sof-firmware pulseaudio-alsa glow jq intel-gpu-tools intel-media-driver progress ristretto neofetch gimp expect pass fuse alacritty gnome-keyring rsync go`
+`sudo pacman -S papirus-icon-theme xfce4-genmon-plugin mousepad xfce4-screenshooter firefox rofi sassc unzip thunar-archive-plugin man xfce4-pulseaudio-plugin meson ninja python-pip gcc imagemagick xclip bc xdg-utils base-devel trash-cli libxtst pkg-config libqalculate btop htop make bat ncdu duf mpv ffmpeg mediainfo yt-dlp hyperfine xdotool aspell-en songrec pavucontrol alsa-firmware sof-firmware pulseaudio-alsa glow jq intel-gpu-tools intel-media-driver progress ristretto neofetch gimp expect pass fuse alacritty gnome-keyring rsync go ttf-droid`
 
 Also needed: 
 
