@@ -31,8 +31,14 @@ Wallpapers are mainly from here:
 ### Setup 
 
 Clone this repositry into a folder named `~/Programs`  
-`sed -i 's/$HOME/\/home\/YOUR_USERNAME/g' ~/Programs/configure/init.sh  
-Run `~/Programs/configure/init.sh` file
+Run `~/Programs/configure/dotfilesInit.sh` file  
+Run `~/Programs/configure/mousepadInit.sh` file  
+There are scripts to automatically set Xfce settings, but xfconf-query is not reliable in my experience, so I tend to just do it manually. All of the Xfce4 keyboard settings and Xfwm keyboard settings can be found in the usage section below.  
+The setup for the panel can be found in [panelSetup.md](configure/panelSetup.md)  
+Add ksuperkey to the startup applications  
+In Appearance, Select Greybird-dark in Style, Papirus-Dark in Icons, `Roboto Regular 12` as Default Font, `Roboto Mono Regular 13` as Default Monospace Font  
+For my laptop, anti-aliasing looks best when set to `Hinting: Slight` and `Sub-pixel order: RGB`  
+In Xfwm Settings, set Style to Default and Title Font to `Roboto Bold 12`
 
 ## Usage 
 
