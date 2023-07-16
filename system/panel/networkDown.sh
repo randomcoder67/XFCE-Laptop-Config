@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Panel netdown down monitor 
+# Panel network down monitor 
 
 # Set filename
 filename="$HOME/Programs/output/.temp/networkDown.txt"

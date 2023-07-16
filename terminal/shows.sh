@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to print times of weekly music shows in various timezones 
+
 black='\033[0;30m'
 red='\033[0;31m'
 green='\033[0;32m'

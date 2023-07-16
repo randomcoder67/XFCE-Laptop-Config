@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to compare two folders to ensure they are byte for byte identical 
+
 IFS=$'\n'
 filesA=( $(find "$1" -type f | sort) )
 filesB=( $(find "$2" -type f | sort) )

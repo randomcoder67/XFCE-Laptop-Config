@@ -10,7 +10,6 @@ notify-send "$outputA"
 
 echo "#$outputA" | xclip -sel clip
 
-
 xdotool keyup Control_L Control_R Shift_L Shift_R Super_R Super_L
 
 xdotool key ctrl+v
