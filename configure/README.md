@@ -70,6 +70,8 @@
 `hashfolder` gets checksum hash for all files in given folder (sha256sum)  
 `cmpfolder` cmp files in two directories  
 `music` play music (defaults to curPlaylist, use `-a artist` to play music by given artist)  
+`yt-music` download music in format required for music-tag program  
+`tagmusic` run music tag program (Usage: `tagmusic filename.m4a AppleMusicAlbumID`)  
 
 ### Info programs
 
@@ -97,6 +99,7 @@
 `rm` delete files or directories, moves to recycle bin  
 `backup` backup program  
 `stuff` query and edit list of owned stuff  
+`strava` run strava program  
 
 ## Keyboard shortcuts 
 
@@ -141,3 +144,42 @@
 `Super+Fn+Right` Snap window to top right  
 `Super+Fn+Up` Snap window to top left  
 `Super+Fn+Down` Snap window to bottom right  
+
+## Programs 
+
+### mpv 
+
+`Right` Skip 5s  
+`Left` Rewind 5s  
+`Up` Skip 30s  
+`Down` Rewind 30s  
+`d` Speed +0.1x  
+`s` Speed -0.1x  
+`r` Speed 1x  
+`g` Speed 2x  
+`Shift+S` Screenshot (`~/Pictures/mpv/`)  
+`Shift+N` Playlist Next  
+`Shift+P` Playlist Previous  
+
+### Rofi Bookmarks 
+
+`Ctrl+A` to add  
+`Ctrl+W` to remove  
+`Return` to copy  
+`Shift+Return` to type  
+
+### Mousepad 
+
+`Ctrl+K` delete line  
+`Ctrl+D` duplicate line  
+`Ctrl+Tab` next tab  
+`Ctrl+Shift+Tab` previous tab  
+`Ctrl+Shift+T` strip trailing spaces  
+`Ctrl+Shift+K` toggle spellcheck  
+`Ctrl+Shift+D` detach tab  
+`Ctrl+N` new tab  
+`Ctrl+W` close tab  
+`Ctrl+Q` exit  
+`Ctrl+M` toggle toolbar  
+`Ctrl+I` indent line  
+`Ctrl+U` unindent line  
