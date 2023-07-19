@@ -186,3 +186,18 @@ Uncomment `%wheel ALL=(ALL) ALL`
 `sudo pacman -S xfce4 xorg-server mousepad lightdm lightdm-gtk-greeter alacritty xfce4-pulseaudio-plugin xfce4-genmon-plugin git` - Install programs  
 `sudo systemctl enable lightdm.service`  
 `reboot`
+
+Enabled multilib by uncommenting:  
+```
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+in `/etc/pacman.conf`  
+`pacman -Syu`
+
+### If on NVidia System 
+
+`sudo pacman -S nvidia lib32-nvidia-utils`
+
+Remove `kmv` from `HOOKS` array in `/etc/mkinitcpio.conf`  
+`Reboot`
