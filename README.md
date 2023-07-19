@@ -37,7 +37,7 @@ There are scripts to automatically set Xfce settings, but xfconf-query is not re
 
 **New Method:** 
 
-These steps need to be performed when not logged into Xfce (press `Alt+F2` at login screen to switch to Arch inbuilt terminal)
+These steps need to be performed when not logged into Xfce (press `Ctrl+Alt+F2` at login screen to switch to Arch inbuilt terminal)
 
 (Where `YOUR_USERNAME` is your actual username, and `USERNAMEA` is just the string `USERNAMEA`)
 
@@ -45,7 +45,8 @@ These steps need to be performed when not logged into Xfce (press `Alt+F2` at lo
 `chmod +x ~/Programs/configure/save2.sh`  
 `sed 's/OUTPUTUSERNAME/YOUR_USERNAME/g' ~/Programs/configure/xfceInit.sh > ~/Programs/configure/xfceInit2.sh`  
 `chmod +x ~/Programs/configure/xfceInit2.sh`  
-`./xfceInit2.sh`
+`./xfceInit2.sh`  
+`reboot`
 
 If config has been changed and you want to save it, run `./save2.sh`
 
