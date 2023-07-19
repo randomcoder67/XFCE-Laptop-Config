@@ -6,3 +6,7 @@ echo "<img>HOME/Programs/output/.pictures/destinyPanel.jpg</img><tool>Destiny</t
 echo "<img>HOME/Programs/output/.pictures/chudlogicPanel.jpg</img><tool>Chud Logic</tool>"
 echo "<img>HOME/Programs/output/.pictures/nerdcubedPanel.jpg</img><tool>NerdCubed</tool>"
 echo "<img>HOME/Programs/output/.pictures/matnPanel.jpg</img><tool>Many A True Nerd</tool>"
+echo "<img>HOME/Programs/output/.pictures/destinyPanelDesktop.jpg</img><tool>Destiny</tool>"
+echo "<img>HOME/Programs/output/.pictures/chudlogicPanelDesktop.jpg</img><tool>Chud Logic</tool>"
+echo "<img>HOME/Programs/output/.pictures/nerdcubedPanelDesktop.jpg</img><tool>NerdCubed</tool>"
+echo "<img>HOME/Programs/output/.pictures/matnPanelDesktop.jpg</img><tool>Many A True Nerd</tool>"

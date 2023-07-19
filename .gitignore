@@ -1,9 +1,11 @@
 mediaUI/
 organisation/
 smallPrograms/
-output/
+/output/
 archive/
 statsProgram/
 toRewriteGo.txt
 terminal/terminalPrograms/log
 forkedRepos/
+configure/save2.sh
+configure/xfceInit2.sh
