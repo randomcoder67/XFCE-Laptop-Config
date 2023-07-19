@@ -54,3 +54,14 @@ mkdir -p ~/Programs/configure/root/usr/share/gtksourceview-4/language-specs
 cp /usr/share/gtksourceview-4/language-specs/csv.lang ~/Programs/configure/root/usr/share/gtksourceview-4/language-specs/
 mkdir -p ~/Programs/configure/root/etc/udev/hwdb.d
 cp /etc/udev/hwdb.d/65-keyboard-custom.hwdb ~/Programs/configure/root/etc/udev/hwdb.d/
+
+# Xfce stuff 
+
+mkdir ~/Programs/configure/xfce4 
+
+sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml > ~/Programs/configure/xfce4/xfce4-panel.xml
+sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml > ~/Programs/configure/xfce4/xfce4-keyboard-shortcuts.xml
+
+cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/Programs/configure/xfce4/
+cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml ~/Programs/configure/xfce4/
+cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml ~/Programs/configure/xfce4/

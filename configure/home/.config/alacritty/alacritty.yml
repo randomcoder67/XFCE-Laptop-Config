@@ -51,6 +51,6 @@ colors:
   cyan:	'0x519f50'
   white:   '0xf9f7f3'
  
-#cursor:
-# style:
-#  shape: Beam
+cursor:
+ style:
+  shape: Beam

@@ -123,7 +123,7 @@ getDateFromDay () {
 }
 
 if [[ "$1" == "-c" ]]; then
-	getDateFromDay $2
+	echo $(getDateFromDay $2)
 elif [[ "$1" == "-a" ]]; then
 	if ! [[ "$#" == 4 ]]; then
 		echo "Wrong number of arguments"
@@ -145,3 +145,5 @@ elif [[ "$1" == "-a" ]]; then
 else
 	printSchedule $(getFileName $1)
 fi
+
+getFileName

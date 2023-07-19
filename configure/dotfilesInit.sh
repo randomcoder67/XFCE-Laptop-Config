@@ -91,3 +91,5 @@ systemctl --user start files.service
 
 systemctl --user enable files.timer
 systemctl --user start files.timer
+
+git config --global core.pager cat
