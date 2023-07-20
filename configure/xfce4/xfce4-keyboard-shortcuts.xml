@@ -36,9 +36,6 @@
 		<property name="startup-notify" type="bool" value="true"/>
 	  </property>
 	  <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
-	  <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder -c">
-		<property name="startup-notify" type="bool" value="true"/>
-	  </property>
 	  <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
 	  <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
 	  <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
@@ -66,6 +63,8 @@
 	  <property name="&lt;Super&gt;c" type="string" value="alacritty -e qalc"/>
 	  <property name="&lt;Super&gt;h" type="string" value="alacritty -e htop"/>
 	  <property name="&lt;Super&gt;b" type="string" value="alacritty -e btop"/>
+	  <property name="&lt;Super&gt;g" type="string" value="alacritty -e pulsemixer"/>
+	  <property name="&lt;Super&gt;r" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/songrec.sh"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">
