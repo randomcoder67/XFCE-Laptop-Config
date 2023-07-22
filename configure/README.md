@@ -72,6 +72,9 @@
 `music` play music (defaults to curPlaylist, use `-a artist` to play music by given artist)  
 `yt-music` download music in format required for music-tag program  
 `tagmusic` run music tag program (Usage: `tagmusic filename.m4a AppleMusicAlbumID`)  
+`gits` git status  
+`gitd` git diff  
+`gitpass` get GitHub key from pass  
 
 ### Info programs
 
@@ -182,4 +185,15 @@
 `Ctrl+Q` exit  
 `Ctrl+M` toggle toolbar  
 `Ctrl+I` indent line  
+`Ctrl+U` unindent line  
+
+### Micro 
+
+`Ctrl+K` delete line  
+`Ctrl+D` duplicate line  
+`Ctrl+S` next tab  
+`Ctrl+N` new tab  
+`Ctrl+W` close tab  
+`Ctrl+Q` exit  
+`Ctrl+O` indent line  
 `Ctrl+U` unindent line  

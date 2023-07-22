@@ -70,6 +70,10 @@ elif [[ $selection == "shapez" ]]; then
 	steam steam://rungameid/1318690
 elif [[ $selection == "Kerbal Space Program" ]]; then
 	steam steam://rungameid/220200
+elif [[ $selection == "Euro Truck Simulator 2" ]]; then
+	steam steam://rungameid/227300
+elif [[ $selection == "American Truck Simulator" ]]; then
+	steam steam://rungameid/270880
 elif [[ $selection == "Noita" ]]; then
 	steam steam://rungameid/881100
 elif [[ $selection == "F1 2014" ]]; then

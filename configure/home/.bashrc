@@ -174,6 +174,8 @@ alias cmpfolder='~/Programs/terminal/alias/cmpfolder.sh'
 alias music='~/Programs/terminal/alias/music.sh'
 alias yt-music='yt-dlp -f 140 -o "%(title)s - %(channel)s - %(album)s.%(ext)s"'
 alias tagmusic='python3 ~/Programs/smallPrograms/musicTag/tagMusicFile.py'
+alias gits='git status'
+alias gitd='git diff'
 alias gitpass='pass -c GitHub/randomcoder67Key'
 
 # Info programs 
