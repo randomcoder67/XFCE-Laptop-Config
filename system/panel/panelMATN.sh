@@ -19,7 +19,7 @@ then
 			echo "<span foreground='#da4939'>  </span>"
 			echo "youtube" > "$XDG_STATE_HOME/streams/matn.txt"
 		else
-			echo  "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv https://www.youtube.com/@ManyATrueNerd/live</txtclick><tool>"
+			echo  "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv https://www.youtube.com/@ManyATrueNerd/live</txtclick>"
 			echo "<tool>YouTube</tool>"
 		fi
 	fi
