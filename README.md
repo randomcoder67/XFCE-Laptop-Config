@@ -61,3 +61,7 @@ In Xfwm Settings, set Style to Default and Title Font to `Roboto Bold 12`
 ## Usage 
 
 [See README in configure folder](configure/README.md)
+
+## Archive 
+
+In the `archive/publicCodeArchive` folder are old scripts, could still be useful for something.  
