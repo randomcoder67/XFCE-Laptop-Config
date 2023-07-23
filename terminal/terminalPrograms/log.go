@@ -13,9 +13,25 @@ import (
 
 const logDir = "/Programs/output/log/" // The directory where the log JSON files are stored 
 
+func getJSON(fileName string) map[string]interface{} {
+	homeDir, _ := os.UserHomeDir()
+	//fmt.Println(fileName)
+	dat, err := os.ReadFile(homeDir + logDir + fileName)
+	if err != nil {
+		os.Exit(1)
+	}
+	// Decode JSON
+	bytesFile := dat
+	var curJSON map[string]interface{}
+	if err := json.Unmarshal(bytesFile, &curJSON); err != nil {
+		panic(err)
+	}
+	return curJSON
+}
+
+
 // Add a new entry for today (or yesterday if before 1700)
 func newEntry() {
-	homeDir, _ := os.UserHomeDir()
 	var dt time.Time
 	if time.Now().Hour() < 17 {
 		dt = time.Now().AddDate(0, 0, -1) // Get yesterdays date if time is before 1700 
@@ -45,15 +61,7 @@ func newEntry() {
 	fileName := strconv.Itoa(year) + monthString + ".json"
 	
 	// Read file 
-	dat, err := os.ReadFile(homeDir + logDir + fileName)
-	if err != nil {
-		os.Exit(1)
-	}
-	bytesFile := dat
-	var curJSON map[string]interface{} // Make map for decoded JSON to go into 
-	if err := json.Unmarshal(bytesFile, &curJSON); err != nil { // Decode JSON
-		panic(err)
-	}
+	curJSON := getJSON(fileName)
 	
 	// Get user input 
 	fmt.Println("What Happened Today: ")
@@ -86,7 +94,7 @@ func newEntry() {
 	// Create new map representing the day and add to the overall map
 	var toAdd = map[string]string{"stuff": stuff, "trips": trips, "video": video, "song": song, "learn": learn}
 	curJSON[dayString] = toAdd
-	
+	homeDir, _ := os.UserHomeDir()
 	// Resave to file with indents 
 	newData, err := json.MarshalIndent(curJSON, "", "  ");
 	if err != nil {
@@ -120,20 +128,11 @@ func filterFiles(month bool, toFilter string) []string {
 
 // Function to find favourite songs 
 func findFavSongs(doTrim bool, year string) {
-	homeDir, _ := os.UserHomeDir()
 	filesToUse := filterFiles(false, year) // Get only files from the desired year 
 	var allSongs = make(map[string]int)
 	
 	for _, file := range filesToUse { // Iterate through files in list 
-		dat, err := os.ReadFile(homeDir + logDir + file) // Read 
-		if err != nil {
-			os.Exit(1)
-		}
-		bytesFile := dat
-		var curJSON map[string]interface{}
-		if err := json.Unmarshal(bytesFile, &curJSON); err != nil { // Decode JSON
-			panic(err)
-		}
+		curJSON := getJSON(file)
 		for _, v := range curJSON { // Iterate through days in file 
 			curSong := (v.(map[string]interface{})["song"]).(string) // Get current song 
 			if curSong != "N/A" { // Check the song is not null 
@@ -173,19 +172,8 @@ func findFavSongs(doTrim bool, year string) {
 
 // Function to perform search on a specific month 
 func searchMonth(toSearchA string, month string) {
-	homeDir, _ := os.UserHomeDir()
 	fileName := month + ".json"
-	// Open file 
-	dat, err := os.ReadFile(homeDir + logDir + fileName)
-	if err != nil {
-		os.Exit(1)
-	}
-	// Decode JSON 
-	bytesFile := dat
-	var curJSON map[string]interface{}
-	if err := json.Unmarshal(bytesFile, &curJSON); err != nil {
-		panic(err)
-	}
+	curJSON := getJSON(fileName)
 	
 	//daysFound := make(map[string]struct{}) // Make empty map (essentially a set) for matching days 
 	
@@ -243,24 +231,12 @@ func search(toSearch string, date string) {
 
 // Function to get data from a given day 
 func getDay(date string) {
-	homeDir, _ := os.UserHomeDir()
 	year := date[0:2]
 	month := date[2:4]
 	day := date[4:6]
 	
-	// Get filename and open
 	fileName := year + month + ".json"
-	//fmt.Println(fileName)
-	dat, err := os.ReadFile(homeDir + logDir + fileName)
-	if err != nil {
-		os.Exit(1)
-	}
-	// Decode JSON 
-	bytesFile := dat
-	var curJSON map[string]interface{}
-	if err := json.Unmarshal(bytesFile, &curJSON); err != nil {
-		panic(err)
-	}
+	curJSON := getJSON(fileName)
 	// Print the 5 pieces of information correctly formatted 
 	requestedDay := curJSON[day]
 	if requestedDay == nil { // Check if day doesn't exist
@@ -272,6 +248,25 @@ func getDay(date string) {
 	fmt.Printf("Favourite Video:  %s\n", requestedDay.(map[string]interface{})["video"].(string))
 	fmt.Printf("Favourite Song:   %s\n", requestedDay.(map[string]interface{})["song"].(string))
 	fmt.Printf("Learned:		  %s\n", requestedDay.(map[string]interface{})["learn"].(string))
+}
+
+func getFilledDays(month string) {
+	fileName := month + ".json"
+	curJSON := getJSON(fileName)
+	// https://stackoverflow.com/questions/21362950/getting-a-slice-of-keys-from-a-map
+	keys := make([]string, len(curJSON))
+	i := 0
+	for k := range curJSON {
+		keys[i] = k
+		i++
+	}
+	
+	sort.SliceStable(keys, func(i, j int) bool{ // Sort keys alphabetically 
+		return keys[i] < keys[j]
+	})
+	for i=0; i<len(keys); i++ {
+		fmt.Println(keys[i])
+	}
 }
 
 func main() {
@@ -292,6 +287,22 @@ func main() {
 			} else {
 				fmt.Println("Usage: log -d yymmdd")
 			}
+		} else if arg == "-ds" { // Get info about a specific day 
+			if len(os.Args) == 3 {
+				var currentMonthString string = os.Args[2]
+				if len(os.Args[2]) == 2 {
+					currentMonthString = strconv.Itoa(currentYear) + currentMonthString
+				}
+				getFilledDays(currentMonthString)
+			} else {
+				currentMonth := time.Now().Month()
+				var currentMonthString string = strconv.Itoa(int(currentMonth))
+				if int(currentMonth) < 10 {
+					currentMonthString = "0" + currentMonthString
+				}
+				currentMonthString = strconv.Itoa(currentYear) + currentMonthString
+				getFilledDays(currentMonthString)
+			}
 		} else if arg == "-f" { // Find favourite songs (only 2 or more entries)
 			if len(os.Args) == 2 {
 				findFavSongs(true, strconv.Itoa(currentYear))
@@ -309,7 +320,7 @@ func main() {
 				fmt.Println("Usage: log -f/fa (year)")
 			}
 		} else if arg == "-h" { // Display help
-			fmt.Println("Options are: \"log\" to add, \"log -d\" to get date, \"log -s\" to search, \"log -f\" to get favourite song")
+			fmt.Println("Options are: \"log\" to add, \"log -d\" to get date, \"log -ds (mm/yymm)\" to get avalible dates, \"log -s\" to search, \"log -f\" to get favourite song")
 		} 
 	} else { // If no arguments, add new entry
 		newEntry()
