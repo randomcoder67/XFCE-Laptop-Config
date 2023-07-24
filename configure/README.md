@@ -103,6 +103,7 @@
 `backup` backup program  
 `stuff` query and edit list of owned stuff  
 `strava` run strava program  
+`setlocation` change current location  
 
 ## Keyboard shortcuts 
 

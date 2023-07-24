@@ -204,6 +204,7 @@ alias backup='~/Programs/terminal/terminalPrograms/backup.sh'
 alias stuff='python3 ~/Programs/terminal/terminalPrograms/stuff.py'
 alias strava='~/Programs/smallPrograms/strava/strava.sh'
 alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
+alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
 
 HISTSIZE=20000
 HISTFILESIZE=20000
