@@ -118,25 +118,6 @@ along with this library; if not, see <http://www.gnu.org/licenses/>.
 <style name="def:preformatted-section"	foreground="skyblue1"/>
 <style name="def:list-marker"			 foreground="white" bold="true"/>
 
-
-<!-- Markdown -->
-<style name="def:header1"			   foreground="#da4939" bold="true"/>
-<style name="def:header2"			   foreground="#dd8853" bold="true"/>
-<style name="def:header3"			   foreground="#ffc66d" bold="true"/>
-<style name="def:header4"			   foreground="#a5c261" bold="true"/>
-<style name="def:header5"			   foreground="#6d9cbe" bold="true"/>
-<style name="def:header6"			   foreground="#b6b3eb" bold="true"/>
-<style name="def:header-hashtags"	   foreground="#928374" bold="true"/>
-
-<!-- CSV -->
-<style name="def:csv1"			   foreground="#da4939" bold="false"/>
-<style name="def:csv2"			   foreground="#a5c261" bold="false"/>
-<style name="def:csv3"			   foreground="#ffc66d" bold="false"/>
-<style name="def:csv4"			   foreground="#6d9cbe" bold="false"/>
-<style name="def:csv5"			   foreground="#b6b3eb" bold="false"/>
-<style name="def:csv6"			   foreground="#519f50" bold="false"/>
-
-
 <!-- Others -->
 <style name="def:preprocessor"			foreground="plum1"/>
 <style name="def:error"				   foreground="aluminium1" background="scarletred2" bold="true"/>
