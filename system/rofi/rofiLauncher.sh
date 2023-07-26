@@ -2,7 +2,8 @@
 
 # Rofi script to launch applications and open files
 
-selection=$(cat ~/Programs/output/updated/files.txt | rofi -dmenu -show-icons -i -p "Launcher")
+selection=$(cat ~/Programs/output/updated/files.txt | rofi -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
+status=$?
 
 [[ "$selection" == "" ]] && exit
 
@@ -22,12 +23,23 @@ for x in "${programsA[@]}"; do
 	programs["$first"]=$second
 done
 
-if [[ $selection == *".m4a" ]]; then
+if [[ $selection == *"/"* ]]; then
 	newSelection=$(echo $selection | sed 's|~|'"${HOME}"'|g')
-	mpv --title='${metadata/title}'\ -\ '${metadata/artist}' "$newSelection"
-elif [[ $selection == *"/"* ]]; then
-	newSelection=$(echo $selection | sed 's|~|'"${HOME}"'|g')
-	xdg-open "$newSelection"
+	if [ $status -eq 10 ]; then
+		selectedProgramName=$(~/Programs/output/updated/launchersIcons.sh | rofi -dmenu -show-icons -i -p "Select Which Program to Use")
+		selectedProgram=${programs[$selectedProgramName]}
+		if [[ "$selectedProgram" == "mpv" ]] && [[ "$selection" == *".m4a" ]]; then
+			mpv --title='${metadata/title}'\ -\ '${metadata/artist}' "$newSelection"
+		else
+			"$selectedProgram" "$newSelection"
+		fi
+	else
+		if [[ "$selection" == *".m4a" ]]; then
+			mpv --title='${metadata/title}'\ -\ '${metadata/artist}' "$newSelection"
+		else
+			xdg-open "$newSelection"
+		fi
+	fi
 elif [[ $selection == "~" ]]; then
 	xdg-open "$selection"
 elif [[ $selection == "btop" ]]; then
