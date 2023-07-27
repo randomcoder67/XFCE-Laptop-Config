@@ -1,0 +1,4 @@
+highlight
+fuzzy 
+printinput 
+centered 

@@ -20,7 +20,7 @@ if [[ "$1" == "add" ]]; then
 	echo "$finalFileName" >> "$backupCurrent"
 	exit
 # Option to remove a file or directory from backup
-elif [[ "$1" == "remove" ]]; then
+elif [[ "$1" == "remove" || "$1" == "rm" ]]; then
 	if [[ "$2" == "$HOME"* ]]; then
 		fullFileName="$2"
 		finalFileName="${fullFileName/$HOME/}"
@@ -36,18 +36,21 @@ elif [[ "$1" == "list" || "$1" == "ls" ]]; then
 	cat "$backupCurrent" | awk '{print "~"$1}'
 # Option to make new backup 
 elif [[ "$1" == "make" ]]; then
-	echo "doing backup"
+	echo "Making New Backup"
 	# Copy previous 2nd backup to 3rd position 
-	rsync --progress --recursive "$backupDir""/$backup2/" "$backupDir""/$backup3" --delete
+	echo "Copying 2nd most recent backup to 3rd position"
+	rsync --info=progress2 --recursive "$backupDir""/$backup2/" "$backupDir""/$backup3" --delete
 	# Copy previous 1st backup to 2nd position 
-	rsync --progress --recursive "$backupDir""/$backup1/" "$backupDir""/$backup2" --delete
+	echo "Copying most recent backup to 2rd position"
+	rsync --info=progress2 --recursive "$backupDir""/$backup1/" "$backupDir""/$backup2" --delete
 	# Remove previous first backup to make way for new one (this is t ensure no removed directories/files are included) 
 	# Remove the directory instead of contents to ensure all hidden directories are removed 
 	rm -rf "$backupDir""/$backup1"
 	# Remake the directory 
 	mkdir "$backupDir""/$backup1"
 	# Make new 1st backup 
-	rsync --progress --recursive --files-from="$backupCurrent" "$HOME" "$backupDir""/$backup1"
+	echo "Backing up current files"
+	rsync --info=progress2 --recursive --files-from="$backupCurrent" "$HOME" "$backupDir""/$backup1"
 	oldIFS="$IFS"
 	IFS=$'\n'
 
@@ -56,7 +59,8 @@ elif [[ "$1" == "make" ]]; then
 
 	#rm "$backupDir""/$backup1""/hashesOriginal.txt"
 	#rm "$backupDir""/$backup1""/hashesBackup.txt"
-
+	
+	echo "Hashing files on computer"
 	for file in "${files[@]}"; do
 		fileA=$(sha512sum "$file")
 		echo "$fileA" >> "$backupDir""/$backup1""/hashesOriginal.txt"
@@ -64,14 +68,17 @@ elif [[ "$1" == "make" ]]; then
 
 	files=( $(find "$backupDir/$backup1/" ! -name "hashesOriginal.txt" -type f | sort | uniq) )
 
+	echo "Hashing files on backup drive"
 	for file in "${files[@]}"; do
 		fileA=$(sha512sum "$file")
 		fileB="${fileA/$backupDir"/"$backup1/$HOME}"
 		echo "$fileB" >> "$backupDir""/$backup1""/hashesBackup.txt"
 	done
 
+	echo "Comparing hashes"
 	diff "$backupDir""/$backup1""/hashesBackup.txt" "$backupDir""/$backup1""/hashesOriginal.txt"
-
+	
+	echo "Done!"
 	#gpg -c "$backupDir""/$backup1""/hashesBackup.txt"
 	#gpg -c "$backupDir""/$backup1""/hashesOriginal.txt"
 fi

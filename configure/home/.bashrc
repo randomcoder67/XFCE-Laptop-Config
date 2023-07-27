@@ -214,3 +214,4 @@ export PATH=$PATH:~/.local/bin:~/.npm/bin
 export EDITOR="nano"
 export VISUAL="nano"
 export MICRO_TRUECOLOR=1
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
