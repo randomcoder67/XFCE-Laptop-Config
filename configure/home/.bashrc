@@ -55,7 +55,15 @@ ms () {
 	done
 }
 
-mpv_do () {
+msn () {
+	mousepad -o window
+	sleep 0.2
+	for arg; do
+		mousepad "$arg" & disown
+	done
+}
+
+mpv () {
 	for arg; do
 		/usr/bin/mpv --really-quiet --save-position-on-quit "$arg" & disown
 	done
@@ -110,10 +118,6 @@ trim_history () {
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
 }
 
-# Program openers 
-
-alias mpv='mpv_do'
-
 # Unix terminal programs 
 
 alias gp='git pull'
@@ -136,6 +140,7 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias destiny='~/Programs/terminal/alias/destiny.sh'
 alias chudlogic='chudLogic'
 alias nerdcubed='streamlink --player "mpv --title=NerdCubed" https://www.twitch.tv/nerdcubed best 2>&1 & disown'
+alias dustineden='streamlink --player "mpv --title=\"Dustin Eden\" https://www.twitch.tv/dustineden best 2>&1 & disown'
 alias matn='mpv --title="Many A True Nerd" https://www.youtube.com/@ManyATrueNerd/live & disown'
 alias dgg='surf https://destiny.gg/embed/chat & disown'
 alias streams='~/Programs/terminal/alias/streamsCheck.sh'

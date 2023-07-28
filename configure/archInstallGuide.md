@@ -200,4 +200,4 @@ in `/etc/pacman.conf`
 `sudo pacman -S nvidia lib32-nvidia-utils`
 
 Remove `kmv` from `HOOKS` array in `/etc/mkinitcpio.conf`  
-`Reboot`
+`reboot`

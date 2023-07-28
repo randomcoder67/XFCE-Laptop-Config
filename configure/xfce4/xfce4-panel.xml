@@ -89,7 +89,7 @@
 	<property name="plugin-10" type="string" value="tasklist"/>
 	<property name="plugin-11" type="string" value="pulseaudio">
 	  <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-	  <property name="known-players" type="string" value="Firefox Web Browser"/>
+	  <property name="known-players" type="string" value="cmus;Firefox Web Browser"/>
 	</property>
 	<property name="plugin-12" type="string" value="power-manager-plugin"/>
 	<property name="plugin-13" type="string" value="notification-plugin"/>
@@ -190,7 +190,7 @@
 	  <property name="font" type="string" value="Roboto 16"/>
 	</property>
 	<property name="plugin-24" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/nerdcubedPanel.jpg&lt;/img&gt;&lt;tool&gt;NerdCubed&lt;/tool&gt;&quot;"/>
+	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/dustinedenPanel.jpg&lt;/img&gt;&lt;tool&gt;Dustin Eden&lt;/tool&gt;&quot;"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
@@ -198,7 +198,7 @@
 	  <property name="font" type="string" value="Roboto 12"/>
 	</property>
 	<property name="plugin-25" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelNerdCubed.sh"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelDustinEden.sh"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>

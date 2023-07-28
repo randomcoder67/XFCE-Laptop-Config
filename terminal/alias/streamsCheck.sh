@@ -9,6 +9,7 @@ timeout 10 curl -s https://www.youtube.com/@ChudLogic/live > ~/Programs/output/.
 timeout 10 curl -s https://www.twitch.tv/chudlogic > ~/Programs/output/.streams/streamsCheck/chudtwitch.html
 timeout 10 curl -s https://www.twitch.tv/nerdcubed > ~/Programs/output/.streams/streamsCheck/nerdcubed.html
 timeout 10 curl -s https://www.youtube.com/@ManyATrueNerd/live > ~/Programs/output/.streams/streamsCheck/matn.html
+timeout 10 curl -s https://www.twitch.tv/dustineden > ~/Programs/output/.streams/streamsCheck/dustineden.html
 
 # Destiny check 
 if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/destinyyoutube.html
@@ -49,4 +50,12 @@ then
 	echo "MATN:		Live (YouTube)"
 else
 	echo "MATN:		Not Live"
+fi
+
+# Dustin Eden Check
+if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/dustineden.html
+then
+	echo "Dustin Eden: Live (Twitch)"
+else
+	echo "Dustin Eden: Not Live"
 fi
