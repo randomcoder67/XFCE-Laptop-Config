@@ -50,6 +50,12 @@ sed -n 's/\(.*[.]m4a$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Da
 # .gpx
 sed -n 's/\(.*[.]gpx$\)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/application-gpx.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
+# .yml, .yaml
+sed -n -E 's/(.*[.]yml$|.*[.]yaml$)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/application-x-yaml.svg\\n\"/p' ~/Programs/output/updated/files.txt
+
+# .po, .Po
+sed -n -E 's/(.*[.]po$|.*[.]Po$)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/application-x-gettext-translation.svg\\n\"/p' ~/Programs/output/updated/files.txt
+
 # .png, .jpg, .jpeg, .gif, .svg and .webp
 sed -n -E 's/(.*[.]png$|.*[.]jpg$|.*[.]jpeg$|.*[.]gif$|.*[.]svg$|.*[.]webp$)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/image.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
@@ -57,7 +63,7 @@ sed -n -E 's/(.*[.]png$|.*[.]jpg$|.*[.]jpeg$|.*[.]gif$|.*[.]svg$|.*[.]webp$)/ech
 sed -n -E 's/(.*[.]mp4$|.*[.]m4v$|.*[.]mkv$|.*[.]webm$)/echo -en \"\1\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/video.svg\\n\"/p' ~/Programs/output/updated/files.txt
 
 # Everything Else
-grep -vP "[.]sh$|[.]json$|[.]c$|[.]h$|[.]txt$|[.]xml$|[.]py$|[.]md$|[.]csv$|[.]mp4$|[.]mkv$|[.]m4v$|[.]webm$|[.]png$|[.]jpg$|[.]jpeg$|[.]gif$|[.]svg$|[.]webp$|[.]m4a$|[.]mp3$|[.]html$|[.]lua$|[.]go$|[.]gpx$|[.]css$" ~/Programs/output/updated/files.txt | sed 's/^/echo -en \"/; s/$/\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-plain.svg\\n\"/'
+grep -vP "[.]sh$|[.]json$|[.]c$|[.]h$|[.]txt$|[.]xml$|[.]py$|[.]md$|[.]csv$|[.]mp4$|[.]mkv$|[.]m4v$|[.]webm$|[.]png$|[.]jpg$|[.]jpeg$|[.]gif$|[.]svg$|[.]webp$|[.]m4a$|[.]mp3$|[.]html$|[.]lua$|[.]go$|[.]gpx$|[.]css$|[.]yml$|[.]yaml$|[.]po$|[.]Po$" ~/Programs/output/updated/files.txt | sed 's/^/echo -en \"/; s/$/\\0icon\\x1f\/usr\/share\/icons\/Papirus-Dark\/32x32\/mimetypes\/text-plain.svg\\n\"/'
 
 #sed -n 's/\(.*[.]jpg$\)/BEFORE\1AFTER/p'
 

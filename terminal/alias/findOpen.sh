@@ -5,6 +5,7 @@
 IFS=$'\n'
 
 program=$1
+[[ "$2" == "" ]] && exit
 
 files=( $(find ~ -iname "$2"* -type f) )
 

@@ -17,11 +17,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Normal prompt
 PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
 
+# Prompt without username 
 #PS1='\[\033[1;36m\]user\[\033[1;31m\]@\[\033[1;32m\]laptop:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
 
-# PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\033[1;33m\][\t]\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
+# Prompt with time 
+#PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\033[1;33m\][\t]\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
 
 # Functions
 
@@ -142,7 +145,7 @@ alias wstream='~/Programs/terminal/alias/destinyDownload.sh'
 
 alias steamapps='cd ~/.local/share/Steam/steamapps/common'
 alias papirus='cd /usr/share/icons/Papirus-Dark/32x32/'
-alias cdb='cd /mnt/backupDrive/'
+alias cdb='cd ~/Downloads/BackupMount/'
 alias con='cd ~/.config'
 alias loc='cd ~/.local/share'
 alias doc='cd ~/Documents'
