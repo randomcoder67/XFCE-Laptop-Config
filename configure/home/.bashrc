@@ -56,7 +56,7 @@ ms () {
 }
 
 msn () {
-	mousepad -o window
+	mousepad -o window & disown
 	sleep 0.2
 	for arg; do
 		mousepad "$arg" & disown
@@ -185,6 +185,7 @@ alias tagmusic='python3 ~/Programs/smallPrograms/musicTag/tagMusicFile.py'
 alias gits='git status'
 alias gitd='git diff'
 alias gitpass='pass -c GitHub/randomcoder67Key'
+alias pacs='pacman -Q | wc -l'
 
 # Info programs 
 
