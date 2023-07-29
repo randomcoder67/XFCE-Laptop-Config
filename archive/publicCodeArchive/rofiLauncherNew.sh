@@ -14,14 +14,9 @@ if [[ $selection == *".m4a" ]]; then
 elif [[ $selection == *"/"* ]]; then
 	newSelection=$(echo $selection | sed 's|~|'"${HOME}"'|g')
 	xdg-open "$newSelection"
-elif [[ $selection == "~" ]]; then
-	xdg-open "$selection"
 # Else open the program/run the command (works with multiple arguments)
 else
 	toRun=$(sed -n -e "s/^.*$selection;//p" ~/Programs/output/updated/programs.txt)
-	if [[ "$toRun" == *"GOG"* ]]; then
-		"$toRun"
-	else
-		$toRun
-	fi
+	echo $toRun
+	$toRun
 fi

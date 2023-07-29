@@ -5,6 +5,7 @@
 ### Program openers
 
 `ms` opens file(s) in mousepad  
+`msn` opens file(s) in new window in mousepad  
 `rs` opens image(s) in Ristretto  
 `mpv` opens video/audio files  
 `pdf` opens pdf in zathura  
@@ -32,6 +33,7 @@
 `chudlogic` plays Chud Logic stream  
 `nerdcubed` plays NerdCubed stream  
 `matn` plays MATN stream  
+`dustineden` plays Dustin Eden stream  
 `dgg` opens dgg chat  
 `streams` checks streams and outputs live status  
 `wstream` downloads Destiny livestreams  
@@ -75,6 +77,7 @@
 `gits` git status  
 `gitd` git diff  
 `gitpass` get GitHub key from pass  
+`pacs` get number of installed packages  
 
 ### Info programs
 
@@ -134,7 +137,7 @@
 `Super+Shift` Maximise/Restore window  
 `Super+Shift+Q` Close window/logout  
 `Super+Shift+R` Resize window  
-`Super+Shift+X` Fill screen  
+`Super+Shift+X` Stick window  
 `Super+Shift+F` Keep window on top  
 `Super+.` Next workspace  
 `Super+,` Previous workspace  

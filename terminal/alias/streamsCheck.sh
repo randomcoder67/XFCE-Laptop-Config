@@ -2,14 +2,15 @@
 
 # Script to check which streamers are live and where
 
-# Get webpages 
-timeout 10 curl -s https://www.youtube.com/@Destiny/live > ~/Programs/output/.streams/streamsCheck/destinyyoutube.html
-timeout 10 curl -s https://rumble.com/c/Destiny > ~/Programs/output/.streams/streamsCheck/destinyrumble.html
-timeout 10 curl -s https://www.youtube.com/@ChudLogic/live > ~/Programs/output/.streams/streamsCheck/chudyoutube.html
-timeout 10 curl -s https://www.twitch.tv/chudlogic > ~/Programs/output/.streams/streamsCheck/chudtwitch.html
-timeout 10 curl -s https://www.twitch.tv/nerdcubed > ~/Programs/output/.streams/streamsCheck/nerdcubed.html
-timeout 10 curl -s https://www.youtube.com/@ManyATrueNerd/live > ~/Programs/output/.streams/streamsCheck/matn.html
-timeout 10 curl -s https://www.twitch.tv/dustineden > ~/Programs/output/.streams/streamsCheck/dustineden.html
+# Get webpages, runs all commands in parralel and waits for them all to finish, twice as fast as having them in series
+timeout 10 curl -s https://www.youtube.com/@Destiny/live > ~/Programs/output/.streams/streamsCheck/destinyyoutube.html &
+timeout 10 curl -s https://rumble.com/c/Destiny > ~/Programs/output/.streams/streamsCheck/destinyrumble.html &
+timeout 10 curl -s https://www.youtube.com/@ChudLogic/live > ~/Programs/output/.streams/streamsCheck/chudyoutube.html &
+timeout 10 curl -s https://www.twitch.tv/chudlogic > ~/Programs/output/.streams/streamsCheck/chudtwitch.html &
+timeout 10 curl -s https://www.twitch.tv/nerdcubed > ~/Programs/output/.streams/streamsCheck/nerdcubed.html &
+timeout 10 curl -s https://www.youtube.com/@ManyATrueNerd/live > ~/Programs/output/.streams/streamsCheck/matn.html &
+timeout 10 curl -s https://www.twitch.tv/dustineden > ~/Programs/output/.streams/streamsCheck/dustineden.html &
+wait
 
 # Destiny check 
 if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/destinyyoutube.html
