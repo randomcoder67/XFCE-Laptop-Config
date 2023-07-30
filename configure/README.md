@@ -121,12 +121,15 @@
 `Super+W` Firefox  
 `Super+E` Thunar File Manager  
 `Super+M` Mousepad  
+`Super+R` Identify Song  
 `Super+L` Play music from `~/Music/curPlaylist`  
 `Super+C` Calculator  
 `Super+H` htop  
 `Super+B` btop  
+`Super+G` pulsemixer  
 `Super+Backtick` Screenshot Utility  
 `Super+S` Settings Manager  
+`Super+P` Plugging/Unplugging from Monitor  
 `Ctrl+Alt+Del` Logout  
 
 ### Xfwm 
