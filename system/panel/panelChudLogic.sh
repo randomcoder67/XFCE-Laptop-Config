@@ -20,20 +20,22 @@ then
 	if grep -q "Live in" ~/Programs/output/.streams/panel/chudyoutube.html
 	then
 		if [[ "$1" == "-t" ]]; then
-			echo "<span foreground='#e6e1dc'>  </span>"
+			echo "<span foreground='#a5c261'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/chud.txt"
 		else
-			echo "<txt>  </txt>"
-			echo "<tool>Stream Schedueled</tool>"
+			echo "<txt><span foreground='#a5c261'>  </span></txt>"
+			liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/panel/chudyoutube.html | cut -d "\"" -f 5)
+			echo "$liveAt"
+			echo "<tool>Stream Schedueled at $liveAt</tool>"
 		fi
 	elif grep -q "Waiting for Chud Logic" ~/Programs/output/.streams/panel/chudyoutube.html
 	then
 		if [[ "$1" == "-t" ]]; then
-			echo "<span foreground='#e6e1dc'>  </span>"
+			echo "<span foreground='#a5c261'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/chud.txt"
 		else
-			echo "<txt>  </txt>"
-			echo "<tool>Not Live</tool>"
+			echo "<txt><span foreground='#a5c261'>  </span></txt>"
+			echo "<tool>Waiting for Chud Logic</tool>"
 		fi 
 	else
 		if [[ "$1" == "-t" ]]; then

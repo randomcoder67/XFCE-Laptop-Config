@@ -21,12 +21,9 @@ if [ $status -eq 10 ]; then
 	fi
 # status=11 means the user selected to remove a bookmark
 elif [ $status -eq 11 ]; then
-	# Replace some characters to allow sed command to work
-	itemA=${item//"|"/"[|]"}
-	itemA=${item//"\\"/"[\\]"}
-	echo $itemA
-	# Remove item
-	sed -i "\|$itemA$|d" "$HOME/Programs/output/updated/bookmarks.txt"
+	# Get line number of match and remove it
+	lineNum=$(grep -Fn "$item" ~/Programs/output/updated/bookmarks.txt | cut -d ":" -f 1)
+	sed -i "${lineNum}d" ~/Programs/output/updated/bookmarks.txt
 # status=12 means the user selected to type a bookmark
 elif [ $status -eq 12 ]; then
 	#sleep 1
