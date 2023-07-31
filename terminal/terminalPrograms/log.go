@@ -287,10 +287,13 @@ func main() {
 			} else {
 				fmt.Println("Usage: log -d yymmdd")
 			}
-		} else if arg == "-ds" { // Get info about a specific day 
+		} else if arg == "-ds" { // Show all filled days in given month
 			if len(os.Args) == 3 {
 				var currentMonthString string = os.Args[2]
-				if len(os.Args[2]) == 2 {
+				if len(os.Args[2]) < 3 {
+					if len(os.Args[2]) == 1 {
+						currentMonthString = "0" + currentMonthString
+					}
 					currentMonthString = strconv.Itoa(currentYear) + currentMonthString
 				}
 				getFilledDays(currentMonthString)
