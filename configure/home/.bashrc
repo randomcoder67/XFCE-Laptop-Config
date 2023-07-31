@@ -172,6 +172,7 @@ alias install='sudo pacman -S'
 alias remove='sudo pacman -Rs'
 alias update='sudo pacman -Syu'
 alias search='pacman -Ss'
+alias list='pacman -Qe'
 alias reload='. ~/.bashrc'
 alias ghc='ghc -dynamic'
 alias balance='aacgain -r -m 1 *.m4a'
@@ -214,6 +215,11 @@ alias stuff='python3 ~/Programs/terminal/terminalPrograms/stuff.py'
 alias strava='~/Programs/smallPrograms/strava/strava.sh'
 alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
 alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
+alias getpass='~/Programs/terminal/alias/passGen.sh'
+
+# Fun 
+
+alias asq='asciiquarium'
 
 HISTSIZE=20000
 HISTFILESIZE=20000
@@ -224,3 +230,14 @@ export EDITOR="nano"
 export VISUAL="nano"
 export MICRO_TRUECOLOR=1
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
+#alias a='fasd -a'		# any
+#alias s='fasd -si'	   # show / search / select
+#alias d='fasd -d'		# directory
+#alias f='fasd -f'		# file
+#alias sd='fasd -sid'	 # interactive directory selection
+#alias sf='fasd -sif'	 # interactive file selection
+#alias z='fasd_cd -d'	 # cd, same functionality as j in autojump
+#alias zz='fasd_cd -d -i'
+
+eval "$(fasd --init auto)"
