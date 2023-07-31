@@ -187,6 +187,7 @@ alias gits='git status'
 alias gitd='git diff'
 alias gitpass='pass -c GitHub/randomcoder67Key'
 alias pacs='pacman -Q | wc -l'
+alias files='wc -l ~/Programs/output/updated/files.txt'
 
 # Info programs 
 

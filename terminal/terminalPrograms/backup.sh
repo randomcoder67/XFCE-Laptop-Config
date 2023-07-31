@@ -3,6 +3,7 @@
 # Set directories 
 backupDir="$HOME/Downloads/BackupMount"
 backupCurrent="$HOME/Programs/output/updated/backup.txt"
+backupCurrentTemp="$HOME/Programs/output/updated/backupTemp.txt"
 backup1="currentBackup"
 backup2="backup2"
 backup3="backup3"
@@ -18,6 +19,8 @@ if [[ "$1" == "add" ]]; then
 	fullFileName="$(pwd)/$2" # Gets full file path if the given one was relative
 	finalFileName="${fullFileName/$HOME/}"
 	echo "$finalFileName" >> "$backupCurrent"
+	sort "$backupCurrent" > "$backupCurrentTemp"
+	mv "$backupCurrentTemp" "$backupCurrent"
 	exit
 # Option to remove a file or directory from backup
 elif [[ "$1" == "remove" || "$1" == "rm" ]]; then
@@ -34,6 +37,18 @@ elif [[ "$1" == "remove" || "$1" == "rm" ]]; then
 # Option to list currently backed up files and directories 
 elif [[ "$1" == "list" || "$1" == "ls" ]]; then
 	cat "$backupCurrent" | awk '{print "~"$1}'
+# Option to sort current backup file (serves no real purpose, just looks nicer when it's listed
+elif [[ "$1" == "sort" ]]; then
+	sort "$backupCurrent" > "$backupCurrentTemp"
+	mv "$backupCurrentTemp" "$backupCurrent"
+# Option to list commands
+elif [[ "$1" == "help" || "$1" == "--help" || "$1" == "-h" ]]; then
+	echo "Backup Program Usage:"
+	echo "  backup help - display this help information"
+	echo "  backup make - make new backup"
+	echo "  backup list/ls - list files to be backed up"
+	echo "  backup add - add file/folder to backup list"
+	echo "  backup remove - remove file/folder from backup list"
 # Option to make new backup 
 elif [[ "$1" == "make" ]]; then
 	echo "Making New Backup"
