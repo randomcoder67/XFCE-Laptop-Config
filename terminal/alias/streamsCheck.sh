@@ -29,7 +29,14 @@ fi
 # Chud Logic Check 
 if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/chudyoutube.html
 then
-	echo "Chud Logic:  Live (YouTube)"
+	if grep -q "Live in" ~/Programs/output/.streams/streamsCheck/chudyoutube.html; then
+		liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/panel/chudyoutube.html | cut -d "\"" -f 5)
+		echo "Chud Logic:  Scheduled (YouTube) at $liveAt"
+	elif grep -q "Waiting for Chud Logic" ~/Programs/output/.streams/streamsCheck/chudyoutube.html; then
+		echo "Chud Logic:  Waiting (YouTube)"
+	else
+		echo "Chud Logic:  Live (YouTube)"
+	fi
 elif grep -q "isLiveBroadcast" ~/Programs/output/.streams/streamsCheck/chudtwitch.html
 then
 	echo "Chud Logic:  Live (Twitch)"
