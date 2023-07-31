@@ -66,6 +66,8 @@
 	  <property name="&lt;Super&gt;g" type="string" value="alacritty -e pulsemixer"/>
 	  <property name="&lt;Super&gt;r" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/songrec.sh"/>
 	  <property name="&lt;Super&gt;f" type="string" value="rofi -show find -modi find:~/Programs/system/rofi/finder.sh"/>
+	  <property name="&lt;Super&gt;k" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/tile.sh"/>
+	  <property name="&lt;Super&gt;j" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/tile.sh -r"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">

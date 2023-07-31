@@ -78,6 +78,7 @@
 `gitd` git diff  
 `gitpass` get GitHub key from pass  
 `pacs` get number of installed packages  
+`files` get number of files and programs in rofiLauncher.sh  
 
 ### Info programs
 
@@ -107,6 +108,11 @@
 `stuff` query and edit list of owned stuff  
 `strava` run strava program  
 `setlocation` change current location  
+`getpass` get randomly generated password  
+
+### Fun
+
+`asq` ascii aquarium  
 
 ## Keyboard shortcuts 
 
@@ -130,6 +136,8 @@
 `Super+Backtick` Screenshot Utility  
 `Super+S` Settings Manager  
 `Super+P` Plugging/Unplugging from Monitor  
+`Super+K` Expand Left Window in Horizontal Split  
+`Super+J` Expand Right Window in Horizontal Split  
 `Ctrl+Alt+Del` Logout  
 
 ### Xfwm 
