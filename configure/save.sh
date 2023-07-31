@@ -39,9 +39,6 @@ mkdir ~/Programs/configure/home/.config/rofi
 cp ~/.config/rofi/config.rasi ~/Programs/configure/home/.config/rofi/
 mkdir ~/Programs/configure/home/.config/songrec
 cp ~/.config/songrec/preferences.toml ~/Programs/configure/home/.config/songrec/
-mkdir ~/Programs/configure/home/.config/youtube-viewer
-cp ~/.config/youtube-viewer/youtube-viewer.conf ~/Programs/configure/home/.config/youtube-viewer/
-cp ~/.config/youtube-viewer/api.json ~/Programs/configure/home/.config/youtube-viewer/
 
 mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles
 mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-4/styles
