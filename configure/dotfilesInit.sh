@@ -40,7 +40,6 @@ mkdir ~/.config/glow
 mkdir ~/.config/mpv
 mkdir ~/.config/btop
 mkdir ~/.config/songrec
-mkdir ~/.config/youtube-viewer
 mkdir ~/.config/neofetch
 mkdir ~/.config/qalculate
 mkdir ~/.config/gtk-3.0
@@ -74,8 +73,6 @@ cp ~/Programs/configure/home/.config/neofetch/config.conf ~/.config/neofetch/con
 cp ~/Programs/configure/home/.config/qalculate/qalc.cfg ~/.config/qalculate/qalc.cfg
 cp ~/Programs/configure/home/.config/rofi/config.rasi ~/.config/rofi/config.rasi
 cp ~/Programs/configure/home/.config/songrec/preferences.toml ~/.config/songrec/preferences.toml
-cp ~/Programs/configure/home/.config/youtube-viewer/youtube-viewer.conf ~/.config/youtube-viewer/youtube-viewer.conf
-cp ~/Programs/configure/home/.config/youtube-viewer/api.json ~/.config/youtube-viewer/api.json
 
 cp ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/railscasts.xml ~/.local/share/gtksourceview-3.0/styles/railscasts.xml
 cp ~/Programs/configure/home/.local/share/gtksourceview-4/styles/railscasts.xml ~/.local/share/gtksourceview-4/styles/railscasts.xml
