@@ -51,12 +51,18 @@ if [[ "$height" == "1330" ]]; then
 	tiledWindowID=${matchingWindow%% *}
 	
 	if [[ "$1" == "" ]]; then
+		# Stop xfwm4 from overwriting the move when changing workspaces
+		wmctrl -r "$tiledWindowID" -i -b add,maximized_vert
+		wmctrl -r "$curWindowID" -i -b add,maximized_vert
 		# If the left window is expanding, make right window smaller then move it back to the edge
 		xdotool windowsize "$tiledWindowID" "$((winWidth-40))" "$winHeight"
 		xdotool windowmove "$tiledWindowID" "$((winPosX-10+40))" $((65-29))
 		# Then make the left window bigger to fill the avalible space
 		xdotool windowsize "$curWindowID" "$((width+40))" "$height"
 	elif [[ "$1" == "-r" ]]; then
+		# Stop xfwm4 from overwriting the move when changing workspaces
+		wmctrl -r "$tiledWindowID" -i -b add,maximized_vert
+		wmctrl -r "$curWindowID" -i -b add,maximized_vert
 		# If the right window is expanding, make left window smaller then move it back to the edge
 		xdotool windowsize "$curWindowID" "$((width-40))" "$height"
 		xdotool windowmove "$curWindowID" "0" $((65-29))
