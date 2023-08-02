@@ -9,7 +9,7 @@ then
 		echo "<span foreground='#da4939'>  </span>"
 		echo "twitch" > "$XDG_STATE_HOME/streams/dustineden.txt"
 	else
-		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title=\"Dustin Eden\" https://www.twitch.tv/dustineden</txtclick>"
+		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title=\"Dustin Eden - Twitch\" https://www.twitch.tv/dustineden</txtclick>"
 		echo "<tool>Twitch</tool>"
 	fi
 else
