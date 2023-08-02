@@ -8,3 +8,4 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export WGETRC="$XDG_CONFIG_HOME"/wgetrc
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export GOPATH="$XDG_DATA_HOME"/go
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
