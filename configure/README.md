@@ -109,6 +109,7 @@
 `strava` run strava program  
 `setlocation` change current location  
 `getpass` get randomly generated password  
+`sky` get position of planets in sky  
 
 ### Fun
 

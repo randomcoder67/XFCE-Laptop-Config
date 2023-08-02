@@ -82,6 +82,9 @@ cp ~/Programs/configure/home/.config/glow/glow.yml ~/.config/glow/glow.yml
 cp ~/Programs/configure/home/.config/glow/railscasts.json ~/.config/glow/railscasts.json
 
 go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/log.go
+go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/schedule.go
+
+gcc ~/Programs/terminal/terminalPrograms/planets.c -o ~/Programs/terminal/terminalPrograms/planets -lm -Wall -Wextra
 
 systemctl --user enable files.service
 systemctl --user start files.service
