@@ -18,7 +18,7 @@ func getJSON(fileName string) map[string]interface{} {
 	//fmt.Println(fileName)
 	dat, err := os.ReadFile(homeDir + logDir + fileName)
 	if err != nil {
-		os.Exit(1)
+		dat = []byte("{}")
 	}
 	// Decode JSON
 	bytesFile := dat

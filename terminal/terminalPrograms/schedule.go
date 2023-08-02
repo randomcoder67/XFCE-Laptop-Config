@@ -12,6 +12,11 @@ import (
 
 const BASE_PATH string = "/Programs/output/schedule/"
 const TEMP_PATH string = "/Programs/output/.temp/"
+const TIME_COLOUR string = "\033[35m\033[48;2;48;48;100m"
+const DAY_COLOUR string = "\033[35m\033[48;2;48;48;100m\033[1m"
+const HEADER_COLOUR string = "\033[35m\033[48;2;48;48;100m\033[1m"
+const RESET_COLOUR string = "\033[0m"
+
 var homeDir string
 var dayToNum = map[string]int {
 	"mon": 0,
@@ -164,6 +169,12 @@ func viewSchedule(nextWeek bool) {
 	if err1 != nil || err2 != nil {
 		os.Exit(0)
 	}
+	printSchedule(markdownString[0], markdownString[1])
+}
+
+
+func printSchedule(columnA string, columnB string) {
+	fmt.Println(strings.Repeat(" ", 10) +
 }
 
 func main() {
