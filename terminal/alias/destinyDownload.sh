@@ -7,11 +7,11 @@ do
 	fileName=$(date +"d%y%m%dt%H%M%S") # File name is set to current date + time in oorder to make sure no files are overwritten
 
 	# Download YouTube and Rumble pages to check for livestream
-	timeout 10 curl -s https://www.youtube.com/@Destiny/live > ~/Programs/output/.streams/destinyDownload/destinyyoutube.html
-	timeout 10 curl -s https://rumble.com/c/Destiny > ~/Programs/output/.streams/destinyDownload/destinyrumble.html
+	timeout 10 curl -s "https://www.youtube.com/@Destiny/live" > ~/Programs/output/.streams/destinyDownload/destinyYouTube.html
+	timeout 10 curl -s "https://rumble.com/c/Destiny" > ~/Programs/output/.streams/destinyDownload/destinyRumble.html
 
 	# Check YouTube for livestream 
-	if grep -q "Pop-out chat" ~/Programs/output/.streams/destinyDownload/destinyyoutube.html
+	if grep -q "Pop-out chat" ~/Programs/output/.streams/destinyDownload/destinyYouTube.html
 	then
 		yt-dlp https://www.youtube.com/@destiny/live -f 300 -P ~/Videos/Destiny/ -o $fileName"YouTube.%(ext)s"
 	# Check Kick for livestream (this part only sometimes works)
@@ -19,7 +19,7 @@ do
 	then
 		yt-dlp --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/112.0" --cookies-from-browser firefox https://kick.com/destiny -f 3 --external-downloader-args "'-m3u8_hold_counters' 10" -P ~/Videos/Destiny/ -o $fileName"Kick.%(ext)s"
 	# Check Rumble for livestream 
-	elif grep -q "class=video-item--live" ~/Programs/output/.streams/destinyDownload/destinyrumble.html
+	elif grep -q "class=video-item--live" ~/Programs/output/.streams/destinyDownload/destinyRumble.html
 	then
 		url=$(python3 ~/Programs/system/urlExtract.py)
 		yt-dlp "$url" --external-downloader-args "'-m3u8_hold_counters' 10" -P ~/Videos/Destiny/ -o $fileName"Rumble.%(ext)s"
