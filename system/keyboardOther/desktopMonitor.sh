@@ -6,6 +6,7 @@
 changeMonospaceFont () {
 	xfce4-appearance-settings & disown
 	sleep 0.5
+	xdotool key Left
 	xdotool key Right Right Down
 	sleep 0.1
 	xdotool key Down
