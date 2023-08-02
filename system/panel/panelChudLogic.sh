@@ -9,7 +9,7 @@ then
 		echo "<span foreground='#da4939'>  </span>"
 		echo "twitch" > "$XDG_STATE_HOME/streams/chud.txt"
 	else
-		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title='Chud Logic' https://www.twitch.tv/chudlogic</txtclick>"
+		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title='Chud Logic - Twitch' https://www.twitch.tv/chudlogic</txtclick>"
 		echo "<tool>Twitch</tool>"
 	fi
 else
@@ -41,7 +41,7 @@ else
 				echo "<span foreground='#da4939'>  </span>"
 				echo "youtube" > "$XDG_STATE_HOME/streams/chud.txt"
 			else
-				echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv https://www.youtube.com/@ChudLogic/live</txtclick>"
+				echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title='Chud Logic - YouTube' https://www.youtube.com/@ChudLogic/live</txtclick>"
 				echo "<tool>YouTube</tool>"
 			fi
 		fi
