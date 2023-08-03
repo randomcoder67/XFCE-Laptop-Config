@@ -17,7 +17,7 @@ else
 		echo "<span foreground='#e6e1dc'>  </span>"
 		echo "notLive" > "$XDG_STATE_HOME/streams/dustineden.txt"
 	else
-		echo "<txt>  </txt>"
+		echo "<txt>  </txt><txtclick>firefox --new-tab 'https://www.twitch.tv/dustineden/videos?filter=archives&sort=time'</txtclick>"
 		echo "<tool>Not Live</tool>"
 	fi
 fi

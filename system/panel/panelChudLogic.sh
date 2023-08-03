@@ -50,7 +50,7 @@ else
 			echo "<span foreground='#e6e1dc'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/chud.txt"
 		else
-			echo "<txt>  </txt>"
+			echo "<txt>  </txt><txtclick>firefox --new-tab 'https://www.twitch.tv/chudlogic/videos?filter=archives&sort=time' 'https://www.youtube.com/playlist?list=PLzkM5r4tBX8vRVgA4hLQAHlTFAE7EPO05'</txtclick>"
 			echo "<tool>Not Live</tool>"
 		fi
 	fi

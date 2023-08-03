@@ -39,7 +39,7 @@ else
 		echo "<span foreground='#e6e1dc'>  </span>"
 		echo "notLive" > "$XDG_STATE_HOME/streams/matn.txt"
 	else
-		echo "<txt>  </txt>"
+		echo "<txt>  </txt><txtclick>firefox --new-tab 'https://www.youtube.com/@ManyATrueNerd/streams'</txtclick>"
 		echo "<tool>Not Live</tool>"
 	fi
 fi

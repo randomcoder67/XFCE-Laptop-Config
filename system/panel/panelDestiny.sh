@@ -50,7 +50,7 @@ else
 			echo "<span foreground='#e6e1dc'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
-			echo "<txt>  </txt>"
+			echo "<txt>  </txt><txtclick>firefox --new-tab 'https://www.youtube.com/playlist?list=PLFs19LVskfNzQLZkGG_zf6yfYTp_3v_e6' 'https://kick.com/destiny'</txtclick>"
 			echo "<tool>Not Live</tool>"
 		fi
 	fi
