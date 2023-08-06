@@ -100,6 +100,8 @@ elif [[ $selection == "RideWithGPS" ]]; then
 	firefox "https://ridewithgps.com"
 elif [[ $selection == "ITVX" ]]; then
 	firefox "https://www.itv.com"
+elif [[ $selection == "FlightRadar24" ]]; then
+	firefox "https://www.flightradar24.com"
 elif [[ $selection == "GOverlay" ]]; then
 	~/.local/bin/goverlay
 elif [[ $selection == "Check All" ]]; then
