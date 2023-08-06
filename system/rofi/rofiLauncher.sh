@@ -2,7 +2,7 @@
 
 # Rofi script to launch applications and open files
 
-selection=$(cat ~/Programs/output/updated/files.txt | rofi -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
+selection=$(cat ~/Programs/output/updated/files.txt | rofi -refilter-timeout-limit 16000 -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
 status=$?
 
 [[ "$selection" == "" ]] && exit
