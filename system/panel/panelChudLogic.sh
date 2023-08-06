@@ -23,7 +23,7 @@ else
 				echo "notLive" > "$XDG_STATE_HOME/streams/chud.txt"
 			else
 				echo "<txt><span foreground='#a5c261'>  </span></txt>"
-				liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/panel/chudyoutube.html | cut -d "\"" -f 5)
+				liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/panel/chudlogicYouTube.html | cut -d "\"" -f 5)
 				echo "$liveAt"
 				echo "<tool>Stream Schedueled at $liveAt</tool>"
 			fi
