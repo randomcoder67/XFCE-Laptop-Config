@@ -69,6 +69,7 @@
 `balance` balance audio with aacgain  
 `clearlogs` clear journalctl of logs older than 2 days  
 `yt-aria` yt-dlp using aria2c as downloader  
+`yt-aria-limit` yt-dlp using aria2c as downloader (limited to 3MB/s)  
 `hashfolder` gets checksum hash for all files in given folder (sha256sum)  
 `cmpfolder` cmp files in two directories  
 `music` play music (defaults to curPlaylist, use `-a artist` to play music by given artist)  
@@ -172,6 +173,9 @@
 `Left` Rewind 5s  
 `Up` Skip 30s  
 `Down` Rewind 30s  
+`Shift+Right` Next Chapter  
+`Shift+Left` Previous Chapter  
+`c` List Chapters  
 `d` Speed +0.1x  
 `s` Speed -0.1x  
 `r` Speed 1x  
