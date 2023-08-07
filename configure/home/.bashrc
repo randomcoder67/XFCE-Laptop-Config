@@ -63,10 +63,8 @@ msn () {
 	done
 }
 
-mpv () {
-	for arg; do
-		/usr/bin/mpv --really-quiet --save-position-on-quit "$arg" & disown
-	done
+mpv_do () {
+	/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
 }
 
 rs () {
@@ -118,6 +116,10 @@ trim_history () {
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
 }
 
+# Program Openers 
+
+alias mpv='mpv_do'
+
 # Unix terminal programs 
 
 alias gp='git pull'
@@ -127,6 +129,7 @@ alias cl='clear && ls'
 alias x='chmod +x'
 alias grep='grep -i --color=auto'
 alias grepa='grep -i -A 5 -B 5 --color=auto'
+alias l='ls --group-directories-first --file-type -N --color=auto'
 alias ls='ls --group-directories-first --file-type -N --color=auto'
 alias lsa='ls --group-directories-first --file-type -NA --color=auto'
 alias mv='mv -i'
@@ -177,8 +180,9 @@ alias reload='. ~/.bashrc'
 alias ghc='ghc -dynamic'
 alias balance='aacgain -r -m 1 *.m4a'
 alias clearlogs='sudo journalctl --vacuum-time=2d'
-alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args "-x 16 -j 16 -s 16 -k 1M"'
-alias yt-aria-limit='yt-dlp --external-downloader aria2c --external-downloader-args "-x 16 -j 16 -s 16 -k 1M --max-overall-download-limit=3M"'
+alias yt-dlp='yt-dlp -o "%(title)s.%(ext)s"'
+alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args "-x 16 -j 16 -s 16 -k 1M" -o "%(title)s.%(ext)s"'
+alias yt-aria-limit='yt-dlp --external-downloader aria2c --external-downloader-args "-x 16 -j 16 -s 16 -k 1M --max-overall-download-limit=3M" -o "%(title)s.%(ext)s"'
 alias hashfolder='~/Programs/terminal/alias/hashfolder.sh'
 alias cmpfolder='~/Programs/terminal/alias/cmpfolder.sh'
 alias music='~/Programs/terminal/alias/music.sh'
@@ -189,6 +193,7 @@ alias gitd='git diff'
 alias gitpass='pass -c GitHub/randomcoder67Key'
 alias pacs='pacman -Q | wc -l'
 alias files='wc -l ~/Programs/output/updated/files.txt'
+alias mtmv='perl-rename'
 
 # Info programs 
 
@@ -230,7 +235,7 @@ HISTFILESIZE=20000
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$PATH:~/.local/bin:~/.npm/bin
 export EDITOR="nano"
-export VISUAL="nano"
+export VISUAL="micro"
 export MICRO_TRUECOLOR=1
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
