@@ -12,5 +12,6 @@
 /terminal/terminalPrograms/log
 /terminal/terminalPrograms/planets
 /terminal/terminalPrograms/schedule
+/terminal/terminalPrograms/sunrise
 toRewriteGo.txt
 /website
