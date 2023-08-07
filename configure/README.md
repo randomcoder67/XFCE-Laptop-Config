@@ -19,6 +19,7 @@
 `x` make file executable  
 `grep` grep (ignore case)  
 `grepa` grep (ignore case and print surrounding lines)  
+`l` lists files in directory  
 `ls` lists files in directory  
 `lsa` lists files in directory (including hidden files)  
 `mv` moves file (asks for confirmation if overwriting)  
