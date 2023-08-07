@@ -68,6 +68,7 @@
 `ghc` ghc with dynamic flag (necessary for Arch Linux)  
 `balance` balance audio with aacgain  
 `clearlogs` clear journalctl of logs older than 2 days  
+`yt-dlp` yt-dlp without the video ID in filename  
 `yt-aria` yt-dlp using aria2c as downloader  
 `yt-aria-limit` yt-dlp using aria2c as downloader (limited to 3MB/s)  
 `hashfolder` gets checksum hash for all files in given folder (sha256sum)  
@@ -80,6 +81,7 @@
 `gitpass` get GitHub key from pass  
 `pacs` get number of installed packages  
 `files` get number of files and programs in rofiLauncher.sh  
+`mtmv` perl-rename  
 
 ### Info programs
 
