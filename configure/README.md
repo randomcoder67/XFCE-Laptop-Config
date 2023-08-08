@@ -150,7 +150,8 @@
 `Alt+Tab` Cycle windows  
 `Alt+Backtick` Cycle windows of the same application  
 `Super+D` Show desktop/Restore programs  
-`Super+Shift` Maximise/Restore window  
+`Super+Shift_R` Maximise/Restore window  
+`Super+Ctrl+Shift_R` Minimise window  
 `Super+Shift+Q` Close window/logout  
 `Super+Shift+R` Resize window  
 `Super+Shift+X` Stick window  
