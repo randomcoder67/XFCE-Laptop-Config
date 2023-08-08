@@ -172,20 +172,32 @@
 
 ### mpv 
 
+#### Skipping 
+
 `Right` Skip 5s  
 `Left` Rewind 5s  
 `Up` Skip 30s  
 `Down` Rewind 30s  
+
+#### Navigation 
+
 `Shift+Right` Next Chapter  
 `Shift+Left` Previous Chapter  
-`c` List Chapters  
+`Shift+N` Playlist Next  
+`Shift+P` Playlist Previous  
+
+#### Speed 
+
 `d` Speed +0.1x  
 `s` Speed -0.1x  
 `r` Speed 1x  
-`g` Speed 2x  
+`g` Speed 2x Toggle  
+
+#### Other 
+
 `Shift+S` Screenshot (`~/Pictures/mpv/`)  
-`Shift+N` Playlist Next  
-`Shift+P` Playlist Previous  
+`c` List Chapters  
+`u` Show Playlist  
 
 ### Rofi Bookmarks 
 
@@ -193,6 +205,11 @@
 `Ctrl+W` to remove  
 `Return` to copy  
 `Shift+Return` to type  
+
+### Rofi Launcher 
+
+`Return` to open  
+`Shift+Return` to choose application to open with (only for files)  
 
 ### Mousepad 
 
