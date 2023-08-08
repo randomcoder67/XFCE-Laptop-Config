@@ -223,7 +223,7 @@ alias strava='~/Programs/smallPrograms/strava/strava.sh'
 alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
 alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
 alias getpass='~/Programs/terminal/alias/passGen.sh'
-alias sky='~/Programs/terminal/terminalPrograms/planets'
+alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
 
 # Fun 
 
