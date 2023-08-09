@@ -39,6 +39,8 @@ mkdir ~/Programs/configure/home/.config/rofi
 cp ~/.config/rofi/config.rasi ~/Programs/configure/home/.config/rofi/
 mkdir ~/Programs/configure/home/.config/songrec
 cp ~/.config/songrec/preferences.toml ~/Programs/configure/home/.config/songrec/
+mkdir ~/Programs/configure/home/.config/npm
+cp ~/.config/npm/npmrc ~/Programs/configure/home/.config/npm/
 
 mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles
 mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-4/styles
