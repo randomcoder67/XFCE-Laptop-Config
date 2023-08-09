@@ -10,6 +10,13 @@
 `mpv` opens video/audio files  
 `pdf` opens pdf in zathura  
 
+### System management 
+
+`shutdown` shutdown now (with confirmation)  
+`reboot` reboot (with confirmation)  
+`hibernate` hibernate (with confirmation)  
+`snooze` sleep (hybrid-sleep, to RAM or to disk if battery dies. With confirmation)  
+
 ### Unix terminal programs
 
 `gp` git pull  
