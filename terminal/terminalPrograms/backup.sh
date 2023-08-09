@@ -7,6 +7,7 @@ backupCurrentTemp="$HOME/Programs/output/updated/backupTemp.txt"
 backup1="currentBackup"
 backup2="backup2"
 backup3="backup3"
+hashHistory="hashHistory"
 
 # Option to add a file or directory to backup
 if [[ "$1" == "add" ]]; then
@@ -92,6 +93,13 @@ elif [[ "$1" == "make" ]]; then
 
 	echo "Comparing hashes"
 	diff "$backupDir""/$backup1""/hashesBackup.txt" "$backupDir""/$backup1""/hashesOriginal.txt"
+	
+	echo "Saving hash files with timestamps"
+	
+	fileNameDate=$(date +"%y%m%d%H%M")
+	
+	cp "$backupDir""/$backup1""/hashesOriginal.txt" "$backupDir""/$hashHistory""/original${fileNameDate}.txt"
+	cp "$backupDir""/$backup1""/hashesBackup.txt" "$backupDir""/$hashHistory""/backup${fileNameDate}.txt"
 	
 	echo "Done!"
 	#gpg -c "$backupDir""/$backup1""/hashesBackup.txt"
