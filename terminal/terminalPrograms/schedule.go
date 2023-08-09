@@ -12,9 +12,9 @@ import (
 
 const BASE_PATH string = "/Programs/output/schedule/"
 const TEMP_PATH string = "/Programs/output/.temp/"
-const TIME_COLOUR string = "\033[35m\033[48;2;48;48;100m"
-const DAY_COLOUR string = "\033[35m\033[48;2;48;48;100m\033[1m"
-const HEADER_COLOUR string = "\033[35m\033[48;2;48;48;100m\033[1m"
+const TIME_COLOUR string = "\033[35m\033[48;2;48;48;48m"
+const DAY_COLOUR string = "\033[38;2;221;136;83m\033[1m"
+const HEADER_COLOUR string = "\033[31m\033[1m"
 const RESET_COLOUR string = "\033[0m"
 
 var homeDir string
@@ -134,15 +134,16 @@ func dateToDay(date string) string {
 
 func viewSchedule(nextWeek bool) {
 	var fileName string
-	var middleOfWeek string
-	if nextWeek {
+	var middleOfWeek string // Middle of week is to allow the output to split over two columns 
+	if nextWeek { // If nextWeek is true, print next weeks schedule, not this weeks
 		fileName = homeDir + BASE_PATH + getYearWeek("nmon") + ".csv"
 		middleOfWeek = convertDayToDate("nthu")
 	} else {
 		fileName = homeDir + BASE_PATH + getYearWeek("t") + ".csv"
 		middleOfWeek = convertDayToDate("thu")
 	}
-		
+	
+	// Read in csv file with delimiter of "|"
 	r := csv.NewReader(strings.NewReader(getFileContents(fileName)))
 	r.Comma = '|'
 	records, _ := r.ReadAll()
@@ -151,7 +152,12 @@ func viewSchedule(nextWeek bool) {
 		return records[i][0]+records[i][1] < records[j][0]+records[j][1] // Combining to yymmddhhmm 
 	})
 	
-	var markdownString = [2]string{"# Schedule\n## " + dateToDay(records[0][0]) + "\n", ""}
+	// Make array of 2 slices of slices of strings 
+	// Each slice contains other slices, either of length 1 if "## Thursday 4th", or length 2 if "  14:00 Online Meeting" 
+	var markdownSlices [2][][]string
+	
+	// Add first day 
+	markdownSlices[0] = append(markdownSlices[0], []string{"## " + dateToDay(records[0][0])})
 	var curIndex int = 0
 	for i:=0; i<len(records); i++ {
 	if records[i][0] >= middleOfWeek {
@@ -159,22 +165,62 @@ func viewSchedule(nextWeek bool) {
 	}
 		if i != 0 {
 			if records[i-1][0] != records[i][0] {
-				markdownString[curIndex] = markdownString[curIndex] + "## " + dateToDay(records[i][0]) + "\n"
+				markdownSlices[curIndex] = append(markdownSlices[curIndex], []string{"## " + dateToDay(records[i][0])})
 			}
 		}
-		markdownString[curIndex] = markdownString[curIndex] + "`" + records[i][1] + "`: " + records[i][2] + "  \n"
+		markdownSlices[curIndex] = append(markdownSlices[curIndex], []string{records[i][1],": " + records[i][2]})
 	}
-	err1 := os.WriteFile(homeDir + TEMP_PATH +  "weekA.md", []byte(markdownString[0]), 0666)
-	err2 := os.WriteFile(homeDir + TEMP_PATH +  "weekB.md", []byte(markdownString[1]), 0666)
-	if err1 != nil || err2 != nil {
-		os.Exit(0)
-	}
-	printSchedule(markdownString[0], markdownString[1])
+	printSchedule(markdownSlices[0], markdownSlices[1])
 }
 
 
-func printSchedule(columnA string, columnB string) {
-	fmt.Println(strings.Repeat(" ", 10) +
+func printSchedule(columnA [][]string, columnB [][]string) {
+	// Get length of largest slice, and make the other one the same length by adding blank lines 
+	columnALen := len(columnA)
+	columnBLen := len(columnB)
+	var lenA int
+	if columnALen > columnBLen {
+		lenA = columnALen
+		for i:=0; i<columnALen - columnBLen; i++ {
+			columnB = append(columnB, []string{strings.Repeat(" ", 36)})
+		}
+	} else {
+		lenA = columnBLen
+		for i:=0; i<columnBLen - columnALen; i++ {
+			columnA = append(columnA, []string{strings.Repeat(" ", 36)})
+		}
+	}
+	
+	// Go through columnA, and if the length of the string will total less than 48, add extra spaces 
+	for i:=0; i<lenA; i++ {
+		if len(columnA[i]) == 2 {
+			shortBy := 40 - len(columnA[i][1])
+			columnA[i][1] = columnA[i][1] + strings.Repeat(" ", shortBy)
+		} else {
+			shortBy := 48 - len(columnA[i][0])
+			columnA[i][0] = columnA[i][0] + strings.Repeat(" ", shortBy)
+		}
+	}
+	
+	// Print the schedule in the correct format
+	fmt.Printf(strings.Repeat(" ", 36) + HEADER_COLOUR + "# Schedule" + RESET_COLOUR + "\n")
+	for i:=0; i<lenA; i++ {
+		var toPrintA string
+		var toPrintB string
+		if len(columnA[i]) == 2 {
+			toPrintA = "  " + TIME_COLOUR + " " + columnA[i][0] + " " + RESET_COLOUR + columnA[i][1]
+		} else {
+			toPrintA = DAY_COLOUR + columnA[i][0] + RESET_COLOUR
+		}
+		
+		if len(columnB[i]) == 2 {
+			toPrintB = "  " + TIME_COLOUR + " " + columnB[i][0] + " " + RESET_COLOUR + columnB[i][1]
+		} else {
+			toPrintB = DAY_COLOUR + columnB[i][0] + RESET_COLOUR
+		}
+		
+		fmt.Printf("%s%s\n", toPrintA, toPrintB)
+	}
 }
 
 func main() {
