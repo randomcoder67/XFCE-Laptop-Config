@@ -43,6 +43,16 @@ reboot () {
 	[[ "$yesOrNoReboot" == "y" ]] && /usr/bin/reboot
 }
 
+hibernate () {
+	read -p "Hibernate? (y/N) " yesOrNoHibernate
+	[[ "$yesOrNoHibernate" == "y" ]] && command systemctl hibernate
+}
+
+snooze () {
+	read -p "Sleep? (y/N) " yesOrNoSnooze
+	[[ "$yesOrNoSnooze" == "y" ]] && command systemctl hybrid-sleep
+}
+
 pdf () {
 	for arg; do
 		zathura "$arg" & disown
