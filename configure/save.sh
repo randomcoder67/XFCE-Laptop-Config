@@ -41,6 +41,9 @@ mkdir ~/Programs/configure/home/.config/songrec
 cp ~/.config/songrec/preferences.toml ~/Programs/configure/home/.config/songrec/
 mkdir ~/Programs/configure/home/.config/npm
 cp ~/.config/npm/npmrc ~/Programs/configure/home/.config/npm/
+mkdir ~/Programs/configure/home/.config/micro
+cp ~/.config/micro/bindings.json ~/Programs/configure/home/.config/micro/
+cp ~/.config/micro/settings.json ~/Programs/configure/home/.config/micro/
 
 mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles
 mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-4/styles
