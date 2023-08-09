@@ -30,10 +30,10 @@ then
 		echo "!!-- Type another search query"
 		while read -r line; do
 		echo "$line" \?\?
-		done <<< $(find ~ -type d -path '*/\.*' -prune -o -not -name '.*' -type f -iname *"${QUERY#\?}"* -print)
+		done <<< $(find ~ -type d -path '*/\.*' -prune -o -type f -iname *"${QUERY#\?}"* -print)
 	else
 		echo "!!-- Type another search query"
-		find ~ -type d -path '' -prune -o -not -name '.*' -type f -iname *"${QUERY#!}"* -print
+		find ~ -type d -path '' -prune -o -type f -iname *"${QUERY#!}"* -print
 	fi
 else
 	echo "!!-- Type your search query to find files"
