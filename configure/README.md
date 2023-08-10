@@ -15,7 +15,7 @@
 `shutdown` shutdown now (with confirmation)  
 `reboot` reboot (with confirmation)  
 `hibernate` hibernate (with confirmation)  
-`snooze` sleep (hybrid-sleep, to RAM or to disk if battery dies. With confirmation)  
+`snooze` sleep (hybrid-sleep, to RAM or to disk if battery dies, with confirmation)  
 
 ### Unix terminal programs
 
@@ -200,6 +200,7 @@
 `s` Speed -0.1x  
 `r` Speed 1x  
 `g` Speed 2x Toggle  
+`x` Show Current Speed  
 
 #### Other 
 
