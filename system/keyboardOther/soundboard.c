@@ -34,64 +34,64 @@ int main(void)
 	while(1) {
 		char a = getch();
 		if (a == 'v') {
-			system("mpv ~/Programs/output/.sounds/vineBoom.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/vineBoom.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'r') {
-			system("mpv ~/Programs/output/.sounds/reveal.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/reveal.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 's') {
-			system("mpv ~/Programs/output/.sounds/sus.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/sus.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 't') {
-			system("mpv ~/Programs/output/.sounds/troll.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/troll.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'p') {
-			system("mpv ~/Programs/output/.sounds/metalPipe.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/metalPipe.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'b') {
-			system("mpv ~/Programs/output/.sounds/bruh.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/bruh.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'k') {
-			system("mpv ~/Programs/output/.sounds/riff.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/riff.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'o') {
-			system("mpv ~/Programs/output/.sounds/op.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/op.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'u') {
-			system("mpv ~/Programs/output/.sounds/augh.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/augh.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'f') {
-			system("mpv ~/Programs/output/.sounds/freeWiFi.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/freeWiFi.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'y') {
-			system("mpv ~/Programs/output/.sounds/pizza.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/pizza.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'w') {
-			system("mpv ~/Programs/output/.sounds/dog.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/dog.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'm') {
-			system("mpv ~/Programs/output/.sounds/minecraftDeath.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/minecraftDeath.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'e') {
-			system("mpv ~/Programs/output/.sounds/error.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/error.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'z') {
-			system("mpv ~/Programs/output/.sounds/violin.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/violin.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'i') {
-			system("mpv ~/Programs/output/.sounds/gnome.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/gnome.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'a') {
-			system("mpv ~/Programs/output/.sounds/alarm.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/alarm.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'd') {
-			system("mpv ~/Programs/output/.sounds/airhorn.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/airhorn.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'q') {
 			break;
 		}
 		if (a == '1') {
-			system("kill $(ps aux | grep -E '[m]pv [a-zA-Z0-9/]*/Programs/output/.sounds/' | awk '{print $2}') 2>/dev/null >> /dev/null");
+			system("kill $(ps aux | grep -E '[m]pv --no-resume-playback [a-zA-Z0-9/]*/Programs/output/.sounds/' | awk '{print $2}') 2>/dev/null >> /dev/null");
 		}
 	}
 	endwin();
