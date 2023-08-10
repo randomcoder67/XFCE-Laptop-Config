@@ -84,11 +84,14 @@ elif [[ "$1" == "make" ]]; then
 
 	files=( $(find "$backupDir/$backup1/" ! -name "hashesOriginal.txt" -type f | sort | uniq) )
 
+	fileNameDate=$(date +"%y%m%d%H%M")
+	
 	echo "Hashing files on backup drive"
 	for file in "${files[@]}"; do
 		fileA=$(sha512sum "$file")
 		fileB="${fileA/$backupDir"/"$backup1/$HOME}"
 		echo "$fileB" >> "$backupDir""/$backup1""/hashesBackup.txt"
+		echo "$fileA" >> "$backupDir""/$hashHistory""/backup${fileNameDate}.txt"
 	done
 
 	echo "Comparing hashes"
@@ -96,10 +99,7 @@ elif [[ "$1" == "make" ]]; then
 	
 	echo "Saving hash files with timestamps"
 	
-	fileNameDate=$(date +"%y%m%d%H%M")
-	
 	cp "$backupDir""/$backup1""/hashesOriginal.txt" "$backupDir""/$hashHistory""/original${fileNameDate}.txt"
-	cp "$backupDir""/$backup1""/hashesBackup.txt" "$backupDir""/$hashHistory""/backup${fileNameDate}.txt"
 	
 	echo "Done!"
 	#gpg -c "$backupDir""/$backup1""/hashesBackup.txt"
