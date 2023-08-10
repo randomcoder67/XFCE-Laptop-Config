@@ -26,7 +26,7 @@ fi
 # Convert files 
 if [[ $1 == "-d" ]]; then
 	for x in "${!filesChecking[@]}"; do
-		convert "${filesChecking[$x]}".jpg -resize 1400x1400 "${tempDirectory}art/$(echo ${filesChecking[$x]} | sed -r 's/art/art2/g')".jpg
+		convert "${filesChecking[$x]}".jpg -resize 1400x1400 "${tempDirectory}art/art2/$(echo ${filesChecking[$x]} | cut -d "/" -f 8)".jpg
 	done
 else
 	convert "${tempDirectory}"art/*.jpg -resize 1400x1400 "${tempDirectory}"art/art2/*.jpg
