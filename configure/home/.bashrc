@@ -205,10 +205,10 @@ alias pacs='pacman -Q | wc -l'
 alias files='wc -l ~/Programs/output/updated/files.txt'
 alias mtmv='perl-rename'
 alias curloc='cat ~/Programs/output/updated/curLocation.csv | sed "s/|/\n/g"'
+alias savedotfiles='~/Programs/configure/save2.sh'
 
 # Info programs 
 
-alias fitness='~/Programs/terminal/terminalPrograms/fitness.sh'
 alias schedule='~/Programs/terminal/terminalPrograms/schedule'
 alias log='~/Programs/terminal/terminalPrograms/log'
 alias weather='python3 ~/Programs/smallPrograms/metOffice/metOffice.py'
