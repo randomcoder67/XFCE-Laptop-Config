@@ -207,6 +207,7 @@
 `Shift+S` Screenshot (`~/Pictures/mpv/`)  
 `c` List Chapters  
 `u` Show Playlist  
+`/` Show OSC  
 
 ### Rofi Bookmarks 
 
