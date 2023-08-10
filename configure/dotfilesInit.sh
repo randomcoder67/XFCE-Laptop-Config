@@ -38,6 +38,7 @@ mkdir ~/.config/htop
 mkdir ~/.config/rofi
 mkdir ~/.config/glow
 mkdir ~/.config/mpv
+mkdir ~/.config/mpv/scripts
 mkdir ~/.config/btop
 mkdir ~/.config/songrec
 mkdir ~/.config/neofetch
@@ -71,6 +72,7 @@ cp ~/Programs/configure/home/.config/gtk-3.0/gtk.css ~/.config/gtk-3.0/gtk.css
 cp ~/Programs/configure/home/.config/htop/htoprc ~/.config/htop/htoprc
 cp ~/Programs/configure/home/.config/mpv/mpv.conf ~/.config/mpv/mpv.conf
 cp ~/Programs/configure/home/.config/mpv/input.conf ~/.config/mpv/input.conf
+cp ~/Programs/configure/home/.config/mpv/scripts/* ~/.config/mpv/scripts/
 cp ~/Programs/configure/home/.config/neofetch/config.conf ~/.config/neofetch/config.conf
 cp ~/Programs/configure/home/.config/qalculate/qalc.cfg ~/.config/qalculate/qalc.cfg
 cp ~/Programs/configure/home/.config/rofi/config.rasi ~/.config/rofi/config.rasi
