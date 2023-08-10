@@ -91,6 +91,8 @@ go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPro
 
 gcc ~/Programs/terminal/terminalPrograms/astro/planets.c -o ~/Programs/terminal/terminalPrograms/astro/planets -lm -Wall -Wextra
 
+gcc ~/Programs/system/keyboardOther/soundboard.c -lncurses -o ~/Programs/system/keyboardOther/soundboard -Wall -Wextra
+
 systemctl --user enable files.service
 systemctl --user start files.service
 
