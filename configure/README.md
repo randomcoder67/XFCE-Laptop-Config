@@ -86,6 +86,7 @@
 `tagmusic` run music tag program (Usage: `tagmusic filename.m4a AppleMusicAlbumID`)  
 `gits` git status  
 `gitd` git diff  
+`gitl` git log  
 `gitpass` get GitHub key from pass  
 `pacs` get number of installed packages  
 `files` get number of files and programs in rofiLauncher.sh  
