@@ -79,10 +79,11 @@
 `yt-dlp` yt-dlp without the video ID in filename  
 `yt-aria` yt-dlp using aria2c as downloader  
 `yt-aria-limit` yt-dlp using aria2c as downloader (limited to 3MB/s)  
+`yt-folder` yt-dlp from an input file (-l to use download limit)  
+`yt-music` download music in format required for music-tag program  
 `hashfolder` gets checksum hash for all files in given folder (sha256sum)  
 `cmpfolder` cmp files in two directories  
 `music` play music (defaults to curPlaylist, use `-a artist` to play music by given artist)  
-`yt-music` download music in format required for music-tag program  
 `tagmusic` run music tag program (Usage: `tagmusic filename.m4a AppleMusicAlbumID`)  
 `gits` git status  
 `gitd` git diff  
@@ -170,6 +171,8 @@
 `Super+,` Previous workspace  
 `Super+Ctrl+.` Move window to next workspace  
 `Super+Ctrl+,` Move window to previous workspace  
+`Super+Alt+.` Add new workspace  
+`Super+Alt+,` Remove last workspace  
 `Super+Left` Snap window to left  
 `Super+Right` Snap window to right  
 `Super+Up` Snap window to top  
