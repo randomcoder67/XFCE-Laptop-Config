@@ -176,34 +176,45 @@ alias cur='cd ~/Music/curPlaylist/'
 
 # Shortcuts 
 
-alias nf='neofetch'
-alias py='python3'
-alias sq='ncdu'
-alias bat='bat --theme=base16'
-alias q='trim_history && exit'
+## PacMan
+ 
 alias install='sudo pacman -S'
 alias remove='sudo pacman -Rs'
 alias update='sudo pacman -Syu'
 alias search='pacman -Ss'
 alias list='pacman -Qe'
-alias reload='. ~/.bashrc'
-alias ghc='ghc -dynamic'
-alias balance='aacgain -r -m 1 *.m4a'
-alias clearlogs='sudo journalctl --vacuum-time=2d'
+alias pacs='pacman -Q | wc -l'
+
+## yt-dlp 
+
 alias yt-dlp='yt-dlp -o "%(title)s.%(ext)s"'
 alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M" -o "%(title)s.%(ext)s"'
 alias yt-aria-limit='yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M --max-overall-download-limit=3M" -o "%(title)s.%(ext)s"'
 alias yt-folder='~/Programs/terminal/alias/ytdlpFolder.sh'
 alias yt-music='yt-dlp -f 140 -o "%(title)s - %(channel)s - %(album)s.%(ext)s"'
-alias hashfolder='~/Programs/terminal/alias/hashfolder.sh'
-alias cmpfolder='~/Programs/terminal/alias/cmpfolder.sh'
-alias music='~/Programs/terminal/alias/music.sh'
-alias tagmusic='python3 ~/Programs/smallPrograms/musicTag/tagMusicFile.py'
+
+## Git 
+
 alias gits='git status'
 alias gitd='git diff'
 alias gitl='git log --reverse'
 alias gitpass='pass -c GitHub/randomcoder67Key'
-alias pacs='pacman -Q | wc -l'
+
+## Other 
+
+alias nf='neofetch'
+alias py='python3'
+alias sq='ncdu'
+alias bat='bat --theme=base16'
+alias q='trim_history && exit'
+alias reload='. ~/.bashrc'
+alias ghc='ghc -dynamic'
+alias balance='aacgain -r -m 1 *.m4a'
+alias clearlogs='sudo journalctl --vacuum-time=2d'
+alias hashfolder='~/Programs/terminal/alias/hashfolder.sh'
+alias cmpfolder='~/Programs/terminal/alias/cmpfolder.sh'
+alias music='~/Programs/terminal/alias/music.sh'
+alias tagmusic='python3 ~/Programs/smallPrograms/musicTag/tagMusicFile.py'
 alias files='wc -l ~/Programs/output/updated/files.txt'
 alias mtmv='perl-rename'
 alias curloc='cat ~/Programs/output/updated/curLocation.csv | sed "s/|/\n/g"'
