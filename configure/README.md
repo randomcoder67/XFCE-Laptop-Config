@@ -68,35 +68,44 @@
 `sq` ncdu to check files sizes  
 `bat` view files in terminal
 `q` trims bash history and exits  
-`install` install package with pacman  
-`remove` remove package with pacman  
-`update` update and upgrade system with pacman  
-`search` search pacman for packages
 `reload` reloads bashrc  
 `ghc` ghc with dynamic flag (necessary for Arch Linux)  
 `balance` balance audio with aacgain  
 `clearlogs` clear journalctl of logs older than 2 days  
+`hashfolder` gets checksum hash for all files in given folder (sha256sum)  
+`cmpfolder` cmp files in two directories  
+`music` play music (defaults to curPlaylist, use `-a artist` to play music by given artist)  
+`tagmusic` run music tag program (Usage: `tagmusic filename.m4a AppleMusicAlbumID`)  
+`files` get number of files and programs in rofiLauncher.sh  
+`mtmv` perl-rename  
+`savedotfiles` copy current dotfiles to ~/Programs/configure  
+
+### PacMan 
+
+`install` install package with pacman  
+`remove` remove package with pacman  
+`update` update and upgrade system with pacman  
+`search` search pacman for packages  
+`list` list manually installed pacman packages  
+`pacs` get number of installed packages  
+
+### yt-dlp 
+
 `yt-dlp` yt-dlp without the video ID in filename  
 `yt-aria` yt-dlp using aria2c as downloader  
 `yt-aria-limit` yt-dlp using aria2c as downloader (limited to 3MB/s)  
 `yt-folder` yt-dlp from an input file (-l to use download limit)  
 `yt-music` download music in format required for music-tag program  
-`hashfolder` gets checksum hash for all files in given folder (sha256sum)  
-`cmpfolder` cmp files in two directories  
-`music` play music (defaults to curPlaylist, use `-a artist` to play music by given artist)  
-`tagmusic` run music tag program (Usage: `tagmusic filename.m4a AppleMusicAlbumID`)  
+
+### Git
+
 `gits` git status  
 `gitd` git diff  
 `gitl` git log  
 `gitpass` get GitHub key from pass  
-`pacs` get number of installed packages  
-`files` get number of files and programs in rofiLauncher.sh  
-`mtmv` perl-rename  
-`savedotfiles` copy current dotfiles to ~/Programs/configure  
 
 ### Info programs
 
-`fitness` fitness program  
 `schedule` schedule program  
 `log` log program  
 `weather` weather  

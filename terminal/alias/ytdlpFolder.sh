@@ -28,9 +28,9 @@ for video in "${videos[@]}"; do
 	
 	# If "-l" argument given, limit yt-dlp aria2c to 3MB/s
 	if [[ "$2" == "-l" ]]; then
-		yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M --max-overall-download-limit=3M" -o "%(title)s.%(ext)s" "$video"
+		yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M --max-overall-download-limit=3M" -o "%(title)s.%(ext)s" --embed-chapters "$video"
 	else
-		yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M" -o "%(title)s.%(ext)s" "$video"
+		yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M" -o "%(title)s.%(ext)s" --embed-chapters "$video"
 	fi
 	
 	indexA=$((index+1))
