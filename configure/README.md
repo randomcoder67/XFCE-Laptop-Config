@@ -93,7 +93,6 @@
 `files` get number of files and programs in rofiLauncher.sh  
 `mtmv` perl-rename  
 `savedotfiles` copy current dotfiles to ~/Programs/configure  
-`cmpbackup` compare last 2 backup hashes  
 
 ### Info programs
 

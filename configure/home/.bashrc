@@ -208,7 +208,6 @@ alias files='wc -l ~/Programs/output/updated/files.txt'
 alias mtmv='perl-rename'
 alias curloc='cat ~/Programs/output/updated/curLocation.csv | sed "s/|/\n/g"'
 alias savedotfiles='~/Programs/configure/save2.sh'
-alias cmpbackup='find ~/Downloads/BackupMount/hashHistory/ | sort | tail -n 2 | xargs diff --color'
 
 # Info programs 
 
