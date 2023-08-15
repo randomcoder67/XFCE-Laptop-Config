@@ -42,6 +42,9 @@ elif [[ "$1" == "list" || "$1" == "ls" ]]; then
 elif [[ "$1" == "sort" ]]; then
 	sort "$backupCurrent" > "$backupCurrentTemp"
 	mv "$backupCurrentTemp" "$backupCurrent"
+# Compare most recent backup to second most recent backup
+elif [[ "$1" == "diff" ]]; then
+	find ~/Downloads/BackupMount/hashHistory/ | sort | tail -n 2 | xargs diff --color
 # Option to list commands
 elif [[ "$1" == "help" || "$1" == "--help" || "$1" == "-h" ]]; then
 	echo "Backup Program Usage:"
@@ -50,6 +53,7 @@ elif [[ "$1" == "help" || "$1" == "--help" || "$1" == "-h" ]]; then
 	echo "  backup list/ls - list files to be backed up"
 	echo "  backup add - add file/folder to backup list"
 	echo "  backup remove - remove file/folder from backup list"
+	echo "  backup diff - compare 2 most recent backups"
 # Option to make new backup 
 elif [[ "$1" == "make" ]]; then
 	echo "Making New Backup"
