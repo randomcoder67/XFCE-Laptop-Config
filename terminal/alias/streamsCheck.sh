@@ -2,14 +2,41 @@
 
 # Script to check which streamers are live and where
 
+function chudlogicTwitch() {
+	if yt-dlp -q -F "https://www.twitch.tv/chudlogic" 2>/dev/null; then
+		echo "live" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.txt
+	else
+		echo "offline" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.txt
+	fi
+}
+
+function nerdcubedTwitch() {
+	if yt-dlp -q -F "https://www.twitch.tv/nerdcubed" 2>/dev/null; then
+		echo "live" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.txt
+	else
+		echo "offline" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.txt
+	fi
+}
+
+dustinedenTwitch() {
+	if yt-dlp -q -F "https://www.twitch.tv/dustineden" 2>/dev/null; then
+		echo "live" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
+	else
+		echo "offline" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
+	fi
+}
+
 # Get webpages, runs all commands in parralel and waits for them all to finish, twice as fast as having them in series
 timeout 10 curl -s "https://www.youtube.com/@Destiny/live" > ~/Programs/output/.streams/streamsCheck/destinyYouTube.html &
 timeout 10 curl -s "https://rumble.com/c/Destiny" > ~/Programs/output/.streams/streamsCheck/destinyRumble.html &
 timeout 10 curl -s "https://www.youtube.com/@ChudLogic/live" > ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html &
-timeout 10 curl -s "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.html &
-timeout 10 curl -s "https://www.twitch.tv/nerdcubed" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.html &
+#timeout 10 curl -s "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.html &
+#timeout 10 curl -s "https://www.twitch.tv/nerdcubed" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.html &
+chudlogicTwitch &
+nerdcubedTwitch &
 timeout 10 curl -s "https://www.youtube.com/@ManyATrueNerd/live" > ~/Programs/output/.streams/streamsCheck/matnYouTube.html &
-timeout 10 curl -s "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.html &
+dustinedenTwitch &
+#timeout 10 curl -s "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.html &
 wait
 
 # Destiny check 
@@ -37,7 +64,7 @@ then
 	else
 		echo "Chud Logic:  Live (YouTube)"
 	fi
-elif grep -q "isLiveBroadcast" ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.html
+elif grep -q "live" ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.txt
 then
 	echo "Chud Logic:  Live (Twitch)"
 else
@@ -45,7 +72,7 @@ else
 fi
 
 # NerdCubed check 
-if grep -q isLiveBroadcast ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.html
+if grep -q "live" ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.txt
 then
 	echo "NerdCubed:   Live (Twitch)"
 else
@@ -61,7 +88,7 @@ else
 fi
 
 # Dustin Eden Check
-if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.html
+if grep -q "live" ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
 then
 	echo "Dustin Eden: Live (Twitch)"
 else

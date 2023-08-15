@@ -2,8 +2,9 @@
 
 # Panel NerdCubed stream monitor
 
-curl "https://www.twitch.tv/nerdcubed" > ~/Programs/output/.streams/panel/nerdcubedTwitch.html
-if grep -q isLiveBroadcast ~/Programs/output/.streams/panel/nerdcubedTwitch.html
+#curl "https://www.twitch.tv/nerdcubed" > ~/Programs/output/.streams/panel/nerdcubedTwitch.html
+#if grep -q isLiveBroadcast ~/Programs/output/.streams/panel/nerdcubedTwitch.html
+if yt-dlp -F "https://www.twitch.tv/nerdcubed"
 then
 	if [[ "$1" == "-t" ]]; then
 		echo "<span foreground='#da4939'>  </span>"

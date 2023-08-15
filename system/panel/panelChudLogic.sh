@@ -2,8 +2,9 @@
 
 # Panel Chud Logic stream monitor
 
-curl "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/panel/chudlogicTwitch.html
-if grep -q "isLiveBroadcast" ~/Programs/output/.streams/panel/chudlogicTwitch.html
+#curl "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/panel/chudlogicTwitch.html
+#if grep -q "isLiveBroadcast" ~/Programs/output/.streams/panel/chudlogicTwitch.html
+if yt-dlp -F "https://www.twitch.tv/chudlogic"
 then
 	if [[ "$1" == "-t" ]]; then
 		echo "<span foreground='#da4939'>  </span>"
