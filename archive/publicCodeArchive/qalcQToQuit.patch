@@ -1,0 +1,22 @@
+diff --git a/src/qalc.cc b/src/qalc.cc
+index 2d9e9ce..25cbf6e 100644
+--- a/src/qalc.cc
++++ b/src/qalc.cc
+@@ -5136,7 +5136,7 @@ int main(int argc, char *argv[]) {
+ 					CHECK_IF_SCREEN_FILLED_PUTS(_("This command can also be typed directly at the end of the mathematical expression (e.g. 5 ft + 2 in to meter)."));
+ 					CHECK_IF_SCREEN_FILLED_PUTS("");
+ 				}
+-			} else if(EQUALS_IGNORECASE_AND_LOCAL(str, "quit", _("quit")) || EQUALS_IGNORECASE_AND_LOCAL(str, "exit", _("exit"))) {
++			} else if(EQUALS_IGNORECASE_AND_LOCAL(str, "quit", _("quit")) || EQUALS_IGNORECASE_AND_LOCAL(str, "exit", _("exit")) || EQUALS_IGNORECASE_AND_LOCAL(str, "q", _("q"))) {
+ 				puts("");
+ 				PUTS_UNICODE(_("Terminates this program."));
+ 				puts("");
+@@ -5186,7 +5186,7 @@ int main(int argc, char *argv[]) {
+ 			printf("\e[1;1H\e[2J");
+ #endif
+ 		//qalc command
+-		} else if(EQUALS_IGNORECASE_AND_LOCAL(str, "quit", _("quit")) || EQUALS_IGNORECASE_AND_LOCAL(str, "exit", _("exit"))) {
++		} else if(EQUALS_IGNORECASE_AND_LOCAL(str, "quit", _("quit")) || EQUALS_IGNORECASE_AND_LOCAL(str, "exit", _("exit")) || EQUALS_IGNORECASE_AND_LOCAL(str, "q", _("q"))) {
+ #ifdef HAVE_LIBREADLINE
+ 			if(!cfile) {
+ 				free(rlbuffer);

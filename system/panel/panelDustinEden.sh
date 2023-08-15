@@ -2,8 +2,9 @@
 
 # Panel Dustin Eden stream monitor
 
-curl "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/panel/dustinedenTwitch.html
-if grep -q isLiveBroadcast ~/Programs/output/.streams/panel/dustinedenTwitch.html
+#curl "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/panel/dustinedenTwitch.html
+#if grep -q isLiveBroadcast ~/Programs/output/.streams/panel/dustinedenTwitch.html
+if yt-dlp -F "https://www.twitch.tv/dustineden"
 then
 	if [[ "$1" == "-t" ]]; then
 		echo "<span foreground='#da4939'>  </span>"
