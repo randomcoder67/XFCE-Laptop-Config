@@ -11,7 +11,9 @@ then
 		echo "twitch" > "$XDG_STATE_HOME/streams/chud.txt"
 	else
 		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title='Chud Logic - Twitch' https://www.twitch.tv/chudlogic</txtclick>"
-		echo "<tool>Twitch</tool>"
+		curl "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/panel/chudlogicTwitch.html
+		streamTitle=$(awk '/og:description/ { match($0, /og:description/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/chudlogicTwitch.html | cut -d "\"" -f 3)
+		echo "<tool>Twitch - $streamTitle</tool>"
 	fi
 else
 	curl "https://www.youtube.com/@ChudLogic/live" > ~/Programs/output/.streams/panel/chudlogicYouTube.html

@@ -107,6 +107,7 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 		shopLength := len(records[i][3])
 		fmt.Printf("  %s│%s│%s│%s\n", " " + DATE_COLOUR + records[i][0] + RESET_COLOUR + strings.Repeat(" ", dateMaxLength-dateLength+1), " " + records[i][1] + strings.Repeat(" ", itemMaxLength-itemLength+1), " " + PRICE_COLOUR + records[i][2] + RESET_COLOUR + strings.Repeat(" ", priceMaxLength-priceLength+2), " " + records[i][3] + strings.Repeat(" ", shopMaxLength-shopLength+1))
 	}
+	fmt.Printf("\n")
 }
 
 func addEntries() {
