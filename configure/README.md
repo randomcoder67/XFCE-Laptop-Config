@@ -111,6 +111,7 @@
 `weather` weather  
 `t` display time in various timezones  
 `shows` list show times in the week  
+`money` money program  
 
 ### File finders 
 
