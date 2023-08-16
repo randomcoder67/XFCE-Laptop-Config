@@ -246,7 +246,7 @@ func main() {
 		} else if arg == "-n" {
 			viewSchedule(true)
 		} else if arg == "-h" {
-			fmt.Printf("Usage: \nschedule -a hhmm yymmdd/day description to add\nWhere day is:\nmon-sun = this week\nnmon-nsun = next week\nt = today\ntm = tomorrow\n")
+			fmt.Printf("Usage: \n  schedule -a hhmm yymmdd/day description to add\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n")
 		}
 	} else {
 		viewSchedule(false)
