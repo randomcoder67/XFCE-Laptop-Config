@@ -13,6 +13,14 @@ import (
 
 const logDir = "/Programs/output/log/" // The directory where the log JSON files are stored 
 
+var keyToFullName = map[string]string {
+	"stuff": "What Happened",
+	"trips": "Where Was I",
+	"video": "Favourite Video",
+	"song": "Favourite Song",
+	"learn": "What Did I Learn",
+}
+
 func getJSON(fileName string) map[string]interface{} {
 	homeDir, _ := os.UserHomeDir()
 	//fmt.Println(fileName)
@@ -192,7 +200,7 @@ func searchMonth(toSearchA string, month string) {
 					fmt.Println(day + ":")
 					notYetPrintedDay = false
 				}
-				fmt.Println(key + ": " + entry.(string)) // Print the key and matching value 
+				fmt.Println(keyToFullName[key] + ": " + entry.(string)) // Print the key and matching value 
 				//daysFound[day] = struct{}{}
 			}
 		}
