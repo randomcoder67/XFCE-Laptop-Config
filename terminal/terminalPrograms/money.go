@@ -167,6 +167,10 @@ func addEntries() {
 	}
 }
 
+func printHelp() {
+	fmt.Printf("Options:\n  -h - Show Help\n  -a - Add New Entries\n  -f string - Only Show Entries Matching String\n  -d yymm - Show Entries From Given Month (defaults to current month)\n  -s string - Sort By String (options are date, item, price, shop. Defaults to date)\n")
+}
+
 func main() {
 	homeDir, _ = os.UserHomeDir()
 	// Set default values for the arguments to viewEntries
@@ -179,14 +183,17 @@ func main() {
 		if os.Args[i+1] == "-a" {
 			addEntries()
 			return
-		} else if os.Args[i+1] == "-s" {
+		} else if os.Args[i+1] == "-h" {
+			printHelp()
+			return
+		} else if os.Args[i+1] == "-f" {
 			doSearch = true
 			searchString = os.Args[i+2]
 			i += 2
 		} else if os.Args[i+1] == "-d" {
 			monthYear = os.Args[i+2]
 			i += 2
-		} else if os.Args[i+1] == "-f" {
+		} else if os.Args[i+1] == "-s" {
 			sortBy = os.Args[i+2]
 			i += 2
 		} else {
