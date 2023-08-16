@@ -31,7 +31,7 @@ else:
 # Add new items to list 
 def add():
 	# Open file in append mode 
-	outputCSV = open("stuff.csv", "a")
+	outputCSV = open(fileName, "a")
 
 	# Ask for location and specific location, this is only done once to prevent typing the same thing multiple times 
 	locationA = input("Location: ")
@@ -122,7 +122,7 @@ def edit():
 		moveWhere = input("New value: ")
 		if moveHow == "l":
 			df.loc[indexToChange, "Location"] = moveWhere
-		elif moveHow ==	 "s":
+		elif moveHow ==  "s":
 			df.loc[indexToChange, "SpecificLocation"] = moveWhere
 		#print(df.to_string())
 		df.to_csv(fileName, sep="|")
@@ -147,5 +147,5 @@ if len(sys.argv) > 1:
 			search(sys.argv[2], True)
 		else:
 			print("Usage: stuff.py -s stringToSearch")
-	else:
-		add()
+else:
+	add()
