@@ -63,6 +63,32 @@
 
 ### Shortcuts
 
+#### PacMan 
+
+`install` install package with pacman  
+`remove` remove package with pacman  
+`update` update and upgrade system with pacman  
+`search` search pacman for packages  
+`list` list manually installed pacman packages  
+`pacs` get number of installed packages  
+
+#### yt-dlp 
+
+`yt-dlp` yt-dlp without the video ID in filename  
+`yt-aria` yt-dlp using aria2c as downloader  
+`yt-aria-limit` yt-dlp using aria2c as downloader (limited to 3MB/s)  
+`yt-folder` yt-dlp from an input file (-l to use download limit)  
+`yt-music` download music in format required for music-tag program  
+
+#### Git
+
+`gits` git status  
+`gitd` git diff  
+`gitl` git log  
+`gitpass` get GitHub key from pass  
+
+#### Other 
+
 `nf` neofetch  
 `py` python3  
 `sq` ncdu to check files sizes  
@@ -79,30 +105,7 @@
 `files` get number of files and programs in rofiLauncher.sh  
 `mtmv` perl-rename  
 `savedotfiles` copy current dotfiles to ~/Programs/configure  
-
-### PacMan 
-
-`install` install package with pacman  
-`remove` remove package with pacman  
-`update` update and upgrade system with pacman  
-`search` search pacman for packages  
-`list` list manually installed pacman packages  
-`pacs` get number of installed packages  
-
-### yt-dlp 
-
-`yt-dlp` yt-dlp without the video ID in filename  
-`yt-aria` yt-dlp using aria2c as downloader  
-`yt-aria-limit` yt-dlp using aria2c as downloader (limited to 3MB/s)  
-`yt-folder` yt-dlp from an input file (-l to use download limit)  
-`yt-music` download music in format required for music-tag program  
-
-### Git
-
-`gits` git status  
-`gitd` git diff  
-`gitl` git log  
-`gitpass` get GitHub key from pass  
+`songs` show file of songs identified with songrec  
 
 ### Info programs
 
