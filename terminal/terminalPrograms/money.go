@@ -8,6 +8,7 @@ import (
 	"time"
 	"encoding/csv"
 	"sort"
+	"strconv"
 )
 
 
@@ -92,6 +93,8 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 			shopMaxLength = len(records[i][3])
 		}
 	}
+	// Make totalSpent variable to add to
+	var totalSpent float64 = 0
 	
 	// Print everything formatted correctly 
 	fmt.Printf("\n")
@@ -101,12 +104,20 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 	fmt.Printf("  %s┼%s┼%s┼%s\n", strings.Repeat("─", dateMaxLength+2), strings.Repeat("─", itemMaxLength+2), strings.Repeat("─", priceMaxLength+3), strings.Repeat("─", shopMaxLength+2))
 	// Print entries with correct amount of padding
 	for i:=0; i<len(records); i++ {
+		priceCurrent, err := strconv.ParseFloat(records[i][2], 64)
+		if err != nil {
+			panic(err)
+		}
+		totalSpent = totalSpent + priceCurrent
 		itemLength := len(records[i][1])
 		dateLength := 6
 		priceLength := len(records[i][2])
 		shopLength := len(records[i][3])
 		fmt.Printf("  %s│%s│%s│%s\n", " " + DATE_COLOUR + records[i][0] + RESET_COLOUR + strings.Repeat(" ", dateMaxLength-dateLength+1), " " + records[i][1] + strings.Repeat(" ", itemMaxLength-itemLength+1), " " + PRICE_COLOUR + records[i][2] + RESET_COLOUR + strings.Repeat(" ", priceMaxLength-priceLength+2), " " + records[i][3] + strings.Repeat(" ", shopMaxLength-shopLength+1))
 	}
+	// Format and print the total money spent in the month
+	fmt.Printf("  %s┼%s┼%s┴%s\n", strings.Repeat("─", dateMaxLength+2), strings.Repeat("─", itemMaxLength+2), strings.Repeat("─", priceMaxLength+3), strings.Repeat("─", shopMaxLength+2))
+	fmt.Printf("  %s│%s│%s\n", strings.Repeat(" ", dateMaxLength+2), " Total" + strings.Repeat(" ", itemMaxLength-4), " " + PRICE_COLOUR + strconv.FormatFloat(totalSpent, 'f', 2, 64) + RESET_COLOUR + strings.Repeat(" ", priceMaxLength-3))
 	fmt.Printf("\n")
 }
 
