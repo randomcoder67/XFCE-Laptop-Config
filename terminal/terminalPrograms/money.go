@@ -96,9 +96,11 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 	for i:=0; i<len(records); i++ {
 		if len(records[i][1]) > itemMaxLength {
 			itemMaxLength = len(records[i][1])
-		} else if len(records[i][2]) > priceMaxLength {
+		} 
+		if len(records[i][2]) > priceMaxLength {
 			priceMaxLength = len(records[i][2])
-		} else if len(records[i][3]) > shopMaxLength {
+		} 
+		if len(records[i][3]) > shopMaxLength {
 			shopMaxLength = len(records[i][3])
 		}
 	}
@@ -198,7 +200,7 @@ func main() {
 	var searchString string = "blank"
 	var doSearch bool = false
 	var monthYear string = time.Now().Format("0601")
-	var sortBy string = "name"
+	var sortBy string = "date"
 	// Iterate through and parse arguments 
 	for i:=0; i<len(os.Args)-1; {
 		if os.Args[i+1] == "-a" {
