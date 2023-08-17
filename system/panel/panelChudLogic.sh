@@ -4,7 +4,7 @@
 
 #curl "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/panel/chudlogicTwitch.html
 #if grep -q "isLiveBroadcast" ~/Programs/output/.streams/panel/chudlogicTwitch.html
-if yt-dlp -F "https://www.twitch.tv/chudlogic"
+if yt-dlp --write-info-json --skip-download https://www.twitch.tv/chudlogic -P ~/Programs/output/.streams/panel -o "chudlogicTwitchMetadata.%(ext)s"
 then
 	if [[ "$1" == "-t" ]]; then
 		echo "<span foreground='#da4939'>  </span>"
@@ -12,7 +12,7 @@ then
 	else
 		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title='Chud Logic - Twitch' https://www.twitch.tv/chudlogic</txtclick>"
 		curl "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/panel/chudlogicTwitch.html
-		streamTitle=$(awk '/og:description/ { match($0, /og:description/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/chudlogicTwitch.html | cut -d "\"" -f 3)
+		streamTitle=$(cat ~/Programs/output/.streams/panel/chudlogicTwitchMetadata.info.json | jq -r .description | tr -d "#" | tr -d "!" | sed 's/&/and/g')
 		echo "<tool>Twitch - $streamTitle</tool>"
 	fi
 else

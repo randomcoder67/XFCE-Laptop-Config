@@ -3,7 +3,7 @@
 # Script to check which streamers are live and where
 
 function chudlogicTwitch() {
-	if yt-dlp -q -F "https://www.twitch.tv/chudlogic" 2>/dev/null; then
+	if yt-dlp -q -F "https://www.twitch.tv/chudlogic" 2>/dev/null > /dev/null; then
 		echo "live" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.txt
 	else
 		echo "offline" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.txt
@@ -11,7 +11,7 @@ function chudlogicTwitch() {
 }
 
 function nerdcubedTwitch() {
-	if yt-dlp -q -F "https://www.twitch.tv/nerdcubed" 2>/dev/null; then
+	if yt-dlp -q -F "https://www.twitch.tv/nerdcubed" 2>/dev/null > /dev/null; then
 		echo "live" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.txt
 	else
 		echo "offline" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.txt
@@ -19,7 +19,7 @@ function nerdcubedTwitch() {
 }
 
 dustinedenTwitch() {
-	if yt-dlp -q -F "https://www.twitch.tv/dustineden" 2>/dev/null; then
+	if yt-dlp -q -F "https://www.twitch.tv/dustineden" 2>/dev/null > /dev/null; then
 		echo "live" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
 	else
 		echo "offline" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
@@ -57,7 +57,7 @@ fi
 if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html
 then
 	if grep -q "Live in" ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html; then
-		liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/panel/chudlogicYouTube.html | cut -d "\"" -f 5)
+		liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html | cut -d "\"" -f 5)
 		echo "Chud Logic:  Scheduled (YouTube) at $liveAt"
 	elif grep -q "Waiting for Chud Logic" ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html; then
 		echo "Chud Logic:  Waiting (YouTube)"
