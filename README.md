@@ -68,7 +68,7 @@ Includes dotfiles to configure some programs, as well as a bunch of my custom sc
 
 A Go script allowing viewing and adding to a schedule in the terminal.  
 Events can be added as such: `schedule -a 1500 thu "Meeting With John"`  
-Running `schedule` will display this weeks schedule: 
+Running `schedule` will display this weeks schedule:  
 ![Schedule Screenshot](configure/screenshots/schedule1.png)
 
 ## Archive 
