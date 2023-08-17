@@ -60,7 +60,16 @@ In Xfwm Settings, set Style to Default and Title Font to `Roboto Bold 12`
 
 ## Usage 
 
-[See README in configure folder](configure/README.md)
+[See README in configure folder for exact usage details](configure/README.md)
+
+Includes dotfiles to configure some programs, as well as a bunch of my custom scripts. 
+
+### Schedule 
+
+A Go script allowing viewing and adding to a schedule in the terminal.  
+Events can be added as such: `schedule -a 1500 thu "Meeting With John"`  
+Running `schedule` will display this weeks schedule: 
+![Schedule Screenshot](configure/screenshots/schedule1.png)
 
 ## Archive 
 
