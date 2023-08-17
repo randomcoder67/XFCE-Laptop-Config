@@ -74,10 +74,19 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 		firstColumn = 3
 		secondColumn = 0
 	}
+	
 	// Do sorting with desired columns 
-	sort.SliceStable(records, func(i, j int) bool{
-		return records[i][firstColumn]+records[i][secondColumn] < records[j][firstColumn]+records[j][secondColumn]
-	})
+	if sortBy == "price" {
+		sort.SliceStable(records, func(i, j int) bool{
+			priceA, _ := strconv.ParseFloat(records[i][2], 64)
+			priceB, _ := strconv.ParseFloat(records[j][2], 64)
+			return priceA < priceB
+		})
+	} else {
+		sort.SliceStable(records, func(i, j int) bool{
+			return records[i][firstColumn]+records[i][secondColumn] < records[j][firstColumn]+records[j][secondColumn]
+		})
+	}
 	
 	// Get maximum length of various columns (date is always the same, 6 digits)
 	var dateMaxLength int = 6
