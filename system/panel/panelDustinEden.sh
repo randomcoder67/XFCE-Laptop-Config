@@ -12,7 +12,7 @@ then
 	else
 		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title=\"Dustin Eden - Twitch\" https://www.twitch.tv/dustineden</txtclick>"
 		curl "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/panel/dustinedenTwitch.html
-		streamTitle=$(awk '/og:description/ { match($0, /og:description/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/dustinedenTwitch.html | cut -d "\"" -f 3)
+		streamTitle=$(awk '/og:description/ { match($0, /og:description/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/dustinedenTwitch.html | cut -d "\"" -f 3 | tr -d "#" | tr -d "!" | sed 's/&/and/g')
 		echo "<tool>Twitch - $streamTitle</tool>"
 	fi
 else

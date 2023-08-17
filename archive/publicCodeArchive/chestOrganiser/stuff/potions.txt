@@ -1,0 +1,41 @@
+Water Bottle
+Awkward Potion
+Mundane Potion
+Thick Potion
+Potion of Regeneration
+Potion of Regeneration +
+Potion of Regeneration II
+Potion of Swiftness
+Potion of Swiftness +
+Potion of Swiftness II
+Potion of Fire Resistance
+Potion of Fire Resistance +
+Potion of Healing
+Potion of Healing II
+Potion of Night Vision
+Potion of Night Vision +
+Potion of Strength
+Potion of Strength +
+Potion of Strength II
+Potion of Leaping
+Potion of Leaping +
+Potion of Leaping II
+Potion of Water Breathing
+Potion of Water Breathing +
+Potion of Invisibility
+Potion of Invisibility +
+Potion of Slow Falling
+Potion of Slow Falling +
+Potion of Poison
+Potion of Poison +
+Potion of Poison II
+Potion of Weakness
+Potion of Weakness +
+Potion of Slowness
+Potion of Slowness +
+Potion of Slowness IV
+Potion of Harming
+Potion of Harming II
+Potion of the Turtle Master
+Potion of the Turtle Master +
+Potion of the Turtle Master II
