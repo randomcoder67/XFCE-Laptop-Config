@@ -178,29 +178,16 @@ func printSchedule(columnA [][]string, columnB [][]string) {
 	// Get length of largest slice, and make the other one the same length by adding blank lines 
 	columnALen := len(columnA)
 	columnBLen := len(columnB)
-	var top bool = false;
 	var lenA int
 	if columnALen > columnBLen {
 		lenA = columnALen
 		for i:=0; i<columnALen - columnBLen; i++ {
-			if top {
-				columnB = append([][]string{[]string{strings.Repeat(" ", 36)}}, columnB...)
-				top = false
-			} else {
-				columnB = append(columnB, []string{strings.Repeat(" ", 36)})
-				top = true
-			}
+			columnB = append(columnB, []string{strings.Repeat(" ", 36)})
 		}
 	} else {
 		lenA = columnBLen
 		for i:=0; i<columnBLen - columnALen; i++ {
-			if top {
-				columnA = append([][]string{[]string{strings.Repeat(" ", 36)}}, columnA...)
-				top = false
-			} else {
-				columnA = append(columnA, []string{strings.Repeat(" ", 36)})
-				top = true
-			}
+			columnA = append(columnA, []string{strings.Repeat(" ", 36)})
 		}
 	}
 	
