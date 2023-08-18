@@ -156,9 +156,13 @@ func viewSchedule(nextWeek bool) {
 	// Each slice contains other slices, either of length 1 if "## Thursday 4th", or length 2 if "  14:00 Online Meeting" 
 	var markdownSlices [2][][]string
 	
-	// Add first day 
-	markdownSlices[0] = append(markdownSlices[0], []string{"## " + dateToDay(records[0][0])})
+	// Check if the first entry is past the middle of the week, and if so, put first entry into second column
 	var curIndex int = 0
+	if records[0][0] >= middleOfWeek {
+		curIndex = 1
+	}
+	// Add first included day into correct column
+	markdownSlices[curIndex] = append(markdownSlices[curIndex], []string{"## " + dateToDay(records[0][0])})
 	for i:=0; i<len(records); i++ {
 	if records[i][0] >= middleOfWeek {
 		curIndex = 1

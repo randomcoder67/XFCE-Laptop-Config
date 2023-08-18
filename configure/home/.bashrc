@@ -9,6 +9,7 @@ if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
 	source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
 
+# Load bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
@@ -102,9 +103,9 @@ findr () {
 	find / -iname "$1" 2>&1 | grep -v 'Permission denied'
 }
 
-chudLogic () {
-	/usr/bin/mpv --title="Chud Logic" https://www.youtube.com/@ChudLogic/live 2>&1 & disown
-	/usr/bin/mpv --title="Chud Logic" https://www.twitch.tv/chudlogic best 2>&1 & disown
+chudlogic_do () {
+	/usr/bin/mpv --really-quiet --ytdl-format=best --title="Chud Logic" https://www.youtube.com/@ChudLogic/live 2>&1 & disown
+	/usr/bin/mpv --really-quiet --title="Chud Logic" https://www.twitch.tv/chudlogic best 2>&1 & disown
 }
 
 t () {
@@ -156,7 +157,7 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 # Stream things  
 
 alias destiny='~/Programs/terminal/alias/destiny.sh'
-alias chudlogic='chudLogic'
+alias chudlogic='chudlogic_do'
 alias nerdcubed='streamlink --player "mpv --title=NerdCubed" https://www.twitch.tv/nerdcubed best 2>&1 & disown'
 alias dustineden='streamlink --player "mpv --title=\"Dustin Eden\" https://www.twitch.tv/dustineden best 2>&1 & disown'
 alias matn='mpv --title="Many A True Nerd" https://www.youtube.com/@ManyATrueNerd/live & disown'
