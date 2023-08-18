@@ -30,7 +30,7 @@ then
 			echo "<span foreground='#da4939'>  </span>"
 			echo "youtube" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
-			echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title='Destiny - YouTube' https://www.youtube.com/@Destiny/live</txtclick>"
+			echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --ytdl-format=best --title='Destiny - YouTube' https://www.youtube.com/@Destiny/live</txtclick>"
 			echo "<tool>YouTube</tool>"
 		fi
 	fi
