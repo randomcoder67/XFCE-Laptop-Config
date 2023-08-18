@@ -220,6 +220,7 @@ alias mtmv='perl-rename'
 alias curloc='cat ~/Programs/output/updated/curLocation.csv | sed "s/|/\n/g"'
 alias savedotfiles='~/Programs/configure/save2.sh'
 alias songs='cat ~/Programs/output/updated/songs.txt'
+alias todo='micro ~/Programs/output/updated/todo.md'
 
 # Info programs 
 

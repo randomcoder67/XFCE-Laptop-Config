@@ -106,6 +106,7 @@
 `mtmv` perl-rename  
 `savedotfiles` copy current dotfiles to ~/Programs/configure  
 `songs` show file of songs identified with songrec  
+`todo` open todo.md file  
 
 ### Info programs
 

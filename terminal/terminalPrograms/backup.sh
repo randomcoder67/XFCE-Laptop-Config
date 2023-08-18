@@ -45,15 +45,6 @@ elif [[ "$1" == "sort" ]]; then
 # Compare most recent backup to second most recent backup
 elif [[ "$1" == "diff" ]]; then
 	find ~/Downloads/BackupMount/hashHistory/ | sort | tail -n 2 | xargs diff --color
-# Option to list commands
-elif [[ "$1" == "help" || "$1" == "--help" || "$1" == "-h" ]]; then
-	echo "Backup Program Usage:"
-	echo "  backup help - display this help information"
-	echo "  backup make - make new backup"
-	echo "  backup list/ls - list files to be backed up"
-	echo "  backup add - add file/folder to backup list"
-	echo "  backup remove - remove file/folder from backup list"
-	echo "  backup diff - compare 2 most recent backups"
 # Option to make new backup 
 elif [[ "$1" == "make" ]]; then
 	echo "Making New Backup"
@@ -61,7 +52,7 @@ elif [[ "$1" == "make" ]]; then
 	echo "Copying 2nd most recent backup to 3rd position"
 	rsync --info=progress2 --recursive "$backupDir""/$backup2/" "$backupDir""/$backup3" --delete
 	# Copy previous 1st backup to 2nd position 
-	echo "Copying most recent backup to 2rd position"
+	echo "Copying most recent backup to 2nd position"
 	rsync --info=progress2 --recursive "$backupDir""/$backup1/" "$backupDir""/$backup2" --delete
 	# Remove previous first backup to make way for new one (this is t ensure no removed directories/files are included) 
 	# Remove the directory instead of contents to ensure all hidden directories are removed 
@@ -108,4 +99,13 @@ elif [[ "$1" == "make" ]]; then
 	echo "Done!"
 	#gpg -c "$backupDir""/$backup1""/hashesBackup.txt"
 	#gpg -c "$backupDir""/$backup1""/hashesOriginal.txt"
+# Option to list commands
+else
+	echo "Backup Program Usage:"
+	echo "  backup - display this help information"
+	echo "  backup make - make new backup"
+	echo "  backup list/ls - list files to be backed up"
+	echo "  backup add - add file/folder to backup list"
+	echo "  backup remove - remove file/folder from backup list"
+	echo "  backup diff - compare 2 most recent backups"
 fi
