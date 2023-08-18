@@ -77,6 +77,10 @@ mpv_do () {
 	/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
 }
 
+mpv-yt_do () {
+	/usr/bin/mpv --really-quiet --title='${media-title}' --ytdl-format=best "$@" & disown
+}
+
 rs () {
 	inputA=""
 	for arg; do
@@ -129,6 +133,7 @@ trim_history () {
 # Program Openers 
 
 alias mpv='mpv_do'
+alias mpv-yt='mpv-yt_do'
 
 # Unix terminal programs 
 

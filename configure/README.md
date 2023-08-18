@@ -8,6 +8,7 @@
 `msn` opens file(s) in new window in mousepad  
 `rs` opens image(s) in Ristretto  
 `mpv` opens video/audio files  
+`mpv-yt` play YouTube videos/playlists in mpv  
 `pdf` opens pdf in zathura  
 
 ### System management 

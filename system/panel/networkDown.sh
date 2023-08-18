@@ -14,4 +14,4 @@ echo "$currentBytes" > $filename
 lastTwoSecs=$(echo "$currentBytes $previousBytes" | awk '{ final=($1-$2)/2/1000000 ; printf"<txt>%0.2f MB/s </txt>", final }')
 
 echo "$lastTwoSecs<txtclick>alacritty -e nethogs</txtclick>"
-echo "<tool>nethogs</tool>"
+echo "<tool>NetHogs</tool>"
