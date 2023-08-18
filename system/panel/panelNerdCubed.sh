@@ -10,7 +10,7 @@ then
 		echo "<span foreground='#da4939'>  </span>"
 		echo "twitch" > "$XDG_STATE_HOME/streams/nerdcubed.txt"
 	else
-		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --title='NerdCubed - Twitch' https://www.twitch.tv/nerdcubed</txtclick>"
+		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --ytdl-format=best --title='NerdCubed - Twitch' https://www.twitch.tv/nerdcubed</txtclick>"
 		curl "https://www.twitch.tv/nerdcubed" > ~/Programs/output/.streams/panel/nerdcubedTwitch.html
 		streamTitle=$(awk '/og:description/ { match($0, /og:description/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/nerdcubedTwitch.html | cut -d "\"" -f 3)
 		echo "<tool>Twitch - $streamTitle</tool>"
