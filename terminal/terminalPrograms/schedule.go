@@ -38,6 +38,17 @@ var dateToSuffix = map[int]string {
 	31: "st",
 }
 
+var validDates = []string{"mon", "tue", "wed", "thu", "fri", "sat", "sun", "nmon", "ntue", "nwed", "nthu", "nfri", "nsat", "nsun", "t", "tm"}
+
+func stringInArray(toMatch string, arrayA []string) bool {
+	for _, b := range arrayA {
+		if b == toMatch {
+			return true
+		}
+	}
+	return false
+}
+
 func getFileContents(fileName string) string {
 	dat, err := os.ReadFile(fileName)
 	if err != nil {
@@ -105,11 +116,16 @@ func convertDayToDate(day string) string {
 }
 
 func addEntry(time string, date string, description string) {
-	fmt.Printf("Adding: %s, %s, %s\n", time, date, description)
 	fileName := homeDir + BASE_PATH + getYearWeek(date) + ".csv"
 	fileContents := getFileContents(fileName)
 	if len(date) != 6 {
-		date = convertDayToDate(date)
+		if stringInArray(date, validDates) {
+			date = convertDayToDate(date)
+		} else {
+			fmt.Println("Error, incorrectly formatted date")
+			fmt.Printf("Usage: \n  schedule -a hhmm yymmdd/day description to add\n")
+			os.Exit(1)
+		}
 	}
 	
 	fileContents = fileContents + date + "|" + time + "|" + description + "\n"
