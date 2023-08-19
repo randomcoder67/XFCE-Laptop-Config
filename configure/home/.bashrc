@@ -34,6 +34,17 @@ mkcdir () {
 	cd -P -- "$1"
 }
 
+hisbloat () {
+	actualHisLen=$(cat ~/.bash_history | wc -l)
+	noDupesHisLen=$(cat ~/.bash_history | sort | uniq | wc -l)
+	differenceHis=$(echo "$actualHisLen" "$noDupesHisLen" | awk '{ difference=$1-$2; printf"%d", difference }')
+	percentBloatHis=$(echo "$differenceHis" "$actualHisLen" | awk '{ percentBloat=($1/$2)*100; printf"%0.2f%%", percentBloat }')
+	echo "History Length:	  ${actualHisLen}"
+	echo "Duplicates Removed:  ${noDupesHisLen}"
+	echo "Difference:		  ${differenceHis}"
+	echo "Percent Difference:  ${percentBloatHis}"
+}
+
 grepc () {
 	grep --color=no -i -o -P ".{0,100}$1.{0,100}" $2
 }
