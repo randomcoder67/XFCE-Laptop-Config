@@ -216,6 +216,8 @@
 `Shift+Left` Previous Chapter  
 `Shift+N` Playlist Next  
 `Shift+P` Playlist Previous  
+`Enter` Playlist Next  
+`Shift+Enter` Playlist Previous  
 
 #### Speed 
 
