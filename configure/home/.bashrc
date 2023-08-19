@@ -34,6 +34,10 @@ mkcdir () {
 	cd -P -- "$1"
 }
 
+grepc () {
+	grep --color=no -i -o -P ".{0,100}$1.{0,100}" $2
+}
+
 shutdown () {
 	read -p "Shutdown? (y/N) " yesOrNoShutdown
 	[[ "$yesOrNoShutdown" == "y" ]] && /usr/bin/shutdown -h 0
