@@ -234,6 +234,7 @@
 `c` List Chapters  
 `u` Show Playlist  
 `/` Show OSC  
+`?` Toggle OSC  
 
 ### Rofi Bookmarks 
 
