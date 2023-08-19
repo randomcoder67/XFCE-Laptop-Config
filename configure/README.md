@@ -240,7 +240,7 @@
 `Ctrl+A` to add  
 `Ctrl+W` to remove  
 `Return` to copy  
-`Shift+Return` to type  
+`Shift+Return` to open in Firefox  
 
 ### Rofi Launcher 
 

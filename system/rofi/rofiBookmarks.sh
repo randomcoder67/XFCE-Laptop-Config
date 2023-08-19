@@ -24,16 +24,18 @@ elif [ $status -eq 11 ]; then
 	# Get line number of match and remove it
 	lineNum=$(grep -Fn "$item" ~/Programs/output/updated/bookmarks.txt | cut -d ":" -f 1)
 	sed -i "${lineNum}d" ~/Programs/output/updated/bookmarks.txt
-# status=12 means the user selected to type a bookmark
+# status=12 means the user selected to open a bookmark in Firefox if possible
 elif [ $status -eq 12 ]; then
-	#sleep 1
 	# keyup Shift as the shortcut is Shift+Return, this prevents the bookmark being typed as capital letters
 	xdotool keyup Shift
 	# Some string substitution to get correct format for grep
 	itemA=$(echo "$item" | sed 's/\[/\\[/g' | sed 's/\]/\\]/g')
-	# Finding bookmark from alias and type
-	toType=$(grep "$itemA" ~/Programs/output/updated/bookmarks.txt | awk -F 'DELIM' '{print $2}' | tr -d '\n')
-	xdotool type "$toType"
+	# Finding bookmark from alias and check if url
+	toOpen=$(grep "$itemA" ~/Programs/output/updated/bookmarks.txt | awk -F 'DELIM' '{print $2}' | tr -d '\n')
+	echo $toOpen
+	if echo "$toOpen" | grep -q -E 'https?://(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)'; then # If so, open it
+		firefox "$toOpen"
+	fi
 # Otherwise the program returns with default status, meaning the user has selected to copy a bookmark
 else
 	# Some string substitution to get correct format for grep
