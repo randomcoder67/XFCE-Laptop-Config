@@ -46,8 +46,9 @@ elif [[ $selection == "Wikipedia" ]]; then
 		firefox "https://en.wikipedia.org/wiki/Main_Page"
 	else
 		finalSearchTerm=${searchTerm// /+}
-		finalWikipediaURL=$(curl "https://en.wikipedia.org/w/api.php?action=opensearch&search=$finalSearchTerm&limit=1&namespace=0&format=json" | jq -r .[3][])
-		firefox "$finalWikipediaURL"
+		finalWikipediaURL=$(curl "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=$finalSearchTerm&format=json&limit=1" | jq .query.search[0].pageid)
+		[[ "$finalWikipediaURL" == "" ]] && exit
+		firefox "https://en.wikipedia.org/w/index.php?curid=$finalWikipediaURL"
 	fi
 elif [[ $selection == "~" ]]; then
 	xdg-open "$selection"
