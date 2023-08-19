@@ -48,6 +48,8 @@ mkdir -p ~/.config/Code\ -\ OSS/User/
 mkdir ~/.config/alacritty
 mkdir ~/.config/npm
 mkdir ~/.config/micro
+mkdir ~/.config/cava
+mkdir ~/.config/vis
 
 mkdir ~/.local/share/gnupg
 chmod 700 ~/.local/share/gnupg
@@ -80,6 +82,8 @@ cp ~/Programs/configure/home/.config/songrec/preferences.toml ~/.config/songrec/
 cp ~/Programs/configure/home/.config/npm/npmrc ~/.config/npm/npmrc
 cp ~/Programs/configure/home/.config/micro/bindings.json ~/.config/micro/bindings.json
 cp ~/Programs/configure/home/.config/micro/settings.json ~/.config/micro/settings.json
+cp ~/Programs/configure/home/.config/cava/config ~/.config/cava/config
+cp ~/Programs/configure/home/.config/vis/config ~/.config/vis/config
 
 cp ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/railscasts.xml ~/.local/share/gtksourceview-3.0/styles/railscasts.xml
 cp ~/Programs/configure/home/.local/share/gtksourceview-4/styles/railscasts.xml ~/.local/share/gtksourceview-4/styles/railscasts.xml
