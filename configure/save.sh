@@ -46,6 +46,10 @@ cp ~/.config/npm/npmrc ~/Programs/configure/home/.config/npm/
 [ -d ~/Programs/configure/home/.config/micro ] || mkdir ~/Programs/configure/home/.config/micro
 cp ~/.config/micro/bindings.json ~/Programs/configure/home/.config/micro/
 cp ~/.config/micro/settings.json ~/Programs/configure/home/.config/micro/
+[ -d ~/Programs/configure/home/.config/cava ] || mkdir ~/Programs/configure/home/.config/cava
+cp ~/.config/cava/config ~/Programs/configure/home/.config/cava/
+[ -d ~/Programs/configure/home/.config/vis ] || mkdir ~/Programs/configure/home/.config/vis
+cp ~/.config/vis/config ~/Programs/configure/home/.config/vis/
 
 [ -d ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles ] || mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles
 [ -d ~/Programs/configure/home/.local/share/gtksourceview-4/styles ] || mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-4/styles
