@@ -40,6 +40,15 @@ if [[ $selection == *"/"* ]]; then
 			xdg-open "$newSelection"
 		fi
 	fi
+elif [[ $selection == "Wikipedia" ]]; then
+	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)")
+	if [[ "$searchTerm" == "" ]]; then
+		firefox "https://en.wikipedia.org/wiki/Main_Page"
+	else
+		finalSearchTerm=${searchTerm// /+}
+		finalWikipediaURL=$(curl "https://en.wikipedia.org/w/api.php?action=opensearch&search=$finalSearchTerm&limit=1&namespace=0&format=json" | jq -r .[3][])
+		firefox "$finalWikipediaURL"
+	fi
 elif [[ $selection == "~" ]]; then
 	xdg-open "$selection"
 elif [[ $selection == "btop" ]]; then
