@@ -29,7 +29,7 @@ then
 			echo "<span foreground='#da4939'>  </span>"
 			echo "youtube" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
-			echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --ytdl-format=best --title='Destiny - YouTube' https://www.youtube.com/@Destiny/live</txtclick>"
+			echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh destinyYouTube</txtclick>"
 			streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/destinyYouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
 			echo "<tool>YouTube - $streamTitle</tool>"
 		fi
@@ -42,7 +42,7 @@ else
 			echo "<span foreground='#da4939'>  </span>"
 			echo "rumble" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
-			echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>$HOME/Programs/system/panel/destinyRumble.sh</txtclick>"
+			echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh destinyRumble</txtclick>"
 			echo "<tool>Rumble</tool>"
 		fi
 	else

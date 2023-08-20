@@ -243,6 +243,10 @@ func printSchedule(columnA [][]string, columnB [][]string) {
 	}
 }
 
+func printHelp() {
+	fmt.Printf("Usage: \n  schedule -a hhmm yymmdd/day description to add\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n")
+}
+
 func main() {
 	homeDir, _ = os.UserHomeDir()
 	
@@ -253,7 +257,10 @@ func main() {
 		} else if arg == "-n" {
 			viewSchedule(true)
 		} else if arg == "-h" {
-			fmt.Printf("Usage: \n  schedule -a hhmm yymmdd/day description to add\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n")
+			printHelp()
+		} else {
+			fmt.Printf("Error, wrongly formatted arguments\n")
+			printHelp()
 		}
 	} else {
 		viewSchedule(false)
