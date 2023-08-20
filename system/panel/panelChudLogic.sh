@@ -27,8 +27,8 @@ else
 			else
 				echo "<txt><span foreground='#a5c261'>  </span></txt>"
 				liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/panel/chudlogicYouTube.html | cut -d "\"" -f 5)
-				echo "$liveAt"
-				echo "<tool>Stream Schedueled at $liveAt</tool>"
+				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/chudlogicYouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
+				echo "<tool>Stream Schedueled at $liveAt - $streamTitle</tool>"
 			fi
 		elif grep -q "Waiting for Chud Logic" ~/Programs/output/.streams/panel/chudlogicYouTube.html
 		then
@@ -45,7 +45,8 @@ else
 				echo "youtube" > "$XDG_STATE_HOME/streams/chud.txt"
 			else
 				echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --ytdl-format=best --title='Chud Logic - YouTube' https://www.youtube.com/@ChudLogic/live</txtclick>"
-				echo "<tool>YouTube</tool>"
+				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/chudlogicYouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
+				echo "<tool>YouTube - $streamTitle</tool>"
 			fi
 		fi
 	else
