@@ -8,7 +8,7 @@ int main(void)
 {
 	initscr();
 
-	addstr("-------------------\n|   Sound Board   |\n|  Random Sounds  |\n-------------------\n\n");
+	addstr("-----------------------\n|	 Sound Board	 |\n|	Random Sounds	|\n-----------------------\n\n");
 	refresh();
 
 	noecho();
@@ -30,6 +30,7 @@ int main(void)
 	addstr("Gnome - i\n");
 	addstr("Alarm - a\n");
 	addstr("Airhorn - d\n");
+	addstr("Stop Sound - 1\n");
 	refresh();
 	while(1) {
 		char a = getch();
