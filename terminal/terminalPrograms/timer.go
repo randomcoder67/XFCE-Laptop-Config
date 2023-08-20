@@ -20,13 +20,14 @@ func setTimer(secs int, silent bool) {
 	fmt.Printf("Setting timer for %s\n", encodeTime(secs))
 	// Remaining seconds needs to be a new variable so secs can be used in for loop
 	var remainingSecs int = secs
+	fmt.Printf("\n")
 	for i:=0; i<secs; i++ {
 		// Print time remaining, reduce time remaining and sleep for a second
-		fmt.Printf("Time Remaining: %s			 \n%s", encodeTime(remainingSecs), LINE_RESET)
+		fmt.Printf("%sTime Remaining: %s			 \n", LINE_RESET, encodeTime(remainingSecs))
 		remainingSecs--
 		time.Sleep(time.Second)
 	}
-	fmt.Printf("\nTimer Completed\n")
+	fmt.Printf("Timer Completed\n")
 	// If not silent, play the sound effect
 	if !silent {
 		soundEffectCommand := exec.Command("mpv", "--no-resume-playback", homeDir + SOUND_EFFECT_PATH)
@@ -49,6 +50,11 @@ func decodeTime(timeString string) int {
 	secondsLoc := reSeconds.FindStringIndex(timeString)
 	// Initialise variables and, if not nil, set them to present value
 	var hoursTotal, minutesTotal, secondsTotal int = 0, 0, 0
+	if hoursLoc == nil && minutesLoc == nil && secondsLoc == nil {
+		fmt.Println("Error, incorrectly formatted arguments")
+		printHelp()
+		os.Exit(1)
+	}
 	if hoursLoc != nil {
 		hoursTotal, _ = strconv.Atoi(timeString[hoursLoc[0]:hoursLoc[1]-1])
 	}
@@ -89,6 +95,7 @@ func printHelp() {
 func main() {
 	// Need at least one argument
 	if len(os.Args) < 2 {
+		fmt.Println("Error, incorrectly formatted arguments")
 		printHelp()
 		os.Exit(1)
 	}
