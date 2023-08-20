@@ -47,7 +47,7 @@ elif [[ $selection == "Wikipedia" ]]; then
 	else
 		finalSearchTerm=${searchTerm// /+}
 		finalWikipediaURL=$(curl "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=$finalSearchTerm&format=json&limit=1" | jq .query.search[0].pageid)
-		[[ "$finalWikipediaURL" == "" ]] && exit
+		[[ "$finalWikipediaURL" == "" ]] || [[ "$finalWikipediaURL" == "null" ]] && exit
 		firefox "https://en.wikipedia.org/w/index.php?curid=$finalWikipediaURL"
 	fi
 elif [[ $selection == "~" ]]; then

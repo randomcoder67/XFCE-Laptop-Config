@@ -220,7 +220,9 @@ func main() {
 			sortBy = os.Args[i+2]
 			i += 2
 		} else {
-			i += 1
+			fmt.Printf("Error, wrongly formatted arguments\n")
+			printHelp()
+			os.Exit(1)
 		}
 	}
 	viewEntries(doSearch, searchString, monthYear, sortBy)
