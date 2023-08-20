@@ -56,7 +56,7 @@ def doThing():
 	usage = 1-fraction
 	percentage = usage*100
 	percentageR = 0
-	if percentage < 10:
+	if percentage < 9.995:
 		percentageR = round(percentage, 2)
 		percentageR = '{0:.2f}'.format(percentageR)
 	else:
