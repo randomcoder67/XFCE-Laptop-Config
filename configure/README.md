@@ -164,7 +164,9 @@
 `Super+C` Calculator  
 `Super+H` htop  
 `Super+B` btop  
+`Super+N` NetHogs  
 `Super+G` pulsemixer  
+`Super+U` cava visualiser  
 `Super+Backtick` Screenshot Utility  
 `Super+S` Settings Manager  
 `Super+P` Plugging/Unplugging from Monitor  
