@@ -13,7 +13,6 @@ then
 		else
 			echo "<txt><span foreground='#a5c261'>  </span></txt>"
 			liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/panel/destinyYouTube.html | cut -d "\"" -f 5)
-			echo "$liveAt"
 			echo "<tool>Stream Schedueled at $liveAt</tool>"
 		fi
 	elif grep -q "Waiting for Destiny" ~/Programs/output/.streams/panel/destinyYouTube.html
@@ -31,7 +30,8 @@ then
 			echo "youtube" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
 			echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>mpv --ytdl-format=best --title='Destiny - YouTube' https://www.youtube.com/@Destiny/live</txtclick>"
-			echo "<tool>YouTube</tool>"
+			streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/destinyYouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
+			echo "<tool>YouTube - $streamTitle</tool>"
 		fi
 	fi
 else
