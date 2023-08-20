@@ -28,10 +28,14 @@ if [[ $selection == *"/"* ]]; then
 	if [ $status -eq 10 ]; then
 		selectedProgramName=$(~/Programs/output/updated/launchersIcons.sh | rofi -dmenu -show-icons -i -p "Select Which Program to Use")
 		selectedProgram=${programs[$selectedProgramName]}
-		if [[ "$selectedProgram" == "mpv" ]] && [[ "$selection" == *".m4a" ]]; then
-			mpv --title='${metadata/title}'\ -\ '${metadata/artist}' "$newSelection"
+		if [[ "$selectedProgramName" == "mpv" ]]; then
+			if [[ "$selection" == *".m4a" ]]; then
+			mpv --title='${metadata/title}'\ -\ '${metadata/artist}' "$newSelection" || notify-send "Error, file format not supported"
+			else
+				mpv "$newSelection" || notify-send "Error, file format not supported"
+			fi
 		else
-			"$selectedProgram" "$newSelection"
+			"$selectedProgram" "$newSelection" || notify-send "Error, file format not supported"
 		fi
 	else
 		if [[ "$selection" == *".m4a" ]]; then
@@ -47,7 +51,7 @@ elif [[ $selection == "Wikipedia" ]]; then
 	else
 		finalSearchTerm=${searchTerm// /+}
 		finalWikipediaURL=$(curl "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=$finalSearchTerm&format=json&limit=1" | jq .query.search[0].pageid)
-		[[ "$finalWikipediaURL" == "" ]] || [[ "$finalWikipediaURL" == "null" ]] && exit
+		[[ "$finalWikipediaURL" == "" ]] || [[ "$finalWikipediaURL" == "null" ]] && notify-send "No Results Found" && exit
 		firefox "https://en.wikipedia.org/w/index.php?curid=$finalWikipediaURL"
 	fi
 elif [[ $selection == "~" ]]; then

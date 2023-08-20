@@ -274,6 +274,7 @@ alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
 alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
 alias getpass='~/Programs/terminal/alias/passGen.sh'
 alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
+alias timer='~/Programs/terminal/terminalPrograms/timer.sh'
 
 # Fun 
 
