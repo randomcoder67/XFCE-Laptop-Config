@@ -89,11 +89,11 @@ msn () {
 	done
 }
 
-mpv_do () {
+do_mpv () {
 	/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
 }
 
-mpv-yt_do () {
+do_mpv-yt () {
 	/usr/bin/mpv --really-quiet --title='${media-title}' --ytdl-format=best "$@" & disown
 }
 
@@ -118,7 +118,7 @@ findr () {
 	find / -iname "$1" 2>&1 | grep -v 'Permission denied'
 }
 
-chudlogic_do () {
+do_chudlogic () {
 	/usr/bin/mpv --really-quiet --ytdl-format=best --title="Chud Logic" https://www.youtube.com/@ChudLogic/live 2>&1 & disown
 	/usr/bin/mpv --really-quiet --title="Chud Logic" https://www.twitch.tv/chudlogic best 2>&1 & disown
 }
@@ -132,24 +132,26 @@ t () {
 	TZ="Australia/Sydney" date +"Sydney: 	%H:%M:%S - %a, %b %d (%Z)"
 }	
 
+# Function to remove things which aen't useful from bash history
 trim_history () {
-	sed -i '/^q$/d' ~/.bash_history
-	sed -i '/^ls$/d' ~/.bash_history
-	sed -i '/^l$/d' ~/.bash_history
-	sed -i '/^lsa$/d' ~/.bash_history
-	sed -i '/^exit$/d' ~/.bash_history
-	sed -i '/^c$/d' ~/.bash_history
-	sed -i '/^cl$/d' ~/.bash_history
-	sed -i '/^cd$/d' ~/.bash_history
-	sed -i '/^rm$/d' ~/.bash_history
-	sed -i '/^x$/d' ~/.bash_history
+	# Remove literal "q", "ls", "l", "lsa", "exit", "c", "cl", "cd", "rm", "x", "gits", "gitd", "gitl", "htop", "btop", "nethogs", "cava", "vis" and "qalc" from bash history
+	sed -i -r '/^(qalc|vis|cava|nethogs|btop|htop|gitl|gitd|gits|x|rm|cd|c|exit|lsa|ls|l|q)$/d' ~/.bash_history
+	# Remove any usage of fasd z autojump command
+	sed -i '/^z .*/d' ~/.bash_history
+	sed -i '/^zz .*/d' ~/.bash_history
+	# Remove any usage of rm command
+	sed -i '/^rm .*/d' ~/.bash_history
+	# Remove any usage of cd, ls and mpv when only going one folder deeper in file structure
+	sed -i -r '/^(cd|ls|mpv|mpv) [^\/\>\<|:&]*\/? ?$/d' ~/.bash_history
+	# Remove any usage of ms, msn, rs and pdf when not going into a different folder
+	sed -i -r '/^(ms[n]?|rs|pdf) [^\/\>\<|:&]* ?$/d' ~/.bash_history
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
 }
 
 # Program Openers 
 
-alias mpv='mpv_do'
-alias mpv-yt='mpv-yt_do'
+alias mpv='do_mpv'
+alias mpv-yt='do_mpv-yt'
 
 # Unix terminal programs 
 
@@ -172,7 +174,7 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 # Stream things  
 
 alias destiny='~/Programs/terminal/alias/destiny.sh'
-alias chudlogic='chudlogic_do'
+alias chudlogic='do_chudlogic'
 alias nerdcubed='streamlink --player "mpv --title=NerdCubed" https://www.twitch.tv/nerdcubed best 2>&1 & disown'
 alias dustineden='streamlink --player "mpv --title=\"Dustin Eden\" https://www.twitch.tv/dustineden best 2>&1 & disown'
 alias matn='mpv --title="Many A True Nerd" https://www.youtube.com/@ManyATrueNerd/live & disown'
