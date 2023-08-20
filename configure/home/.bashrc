@@ -119,8 +119,8 @@ findr () {
 }
 
 do_chudlogic () {
-	/usr/bin/mpv --really-quiet --ytdl-format=best --title="Chud Logic" https://www.youtube.com/@ChudLogic/live 2>&1 & disown
-	/usr/bin/mpv --really-quiet --title="Chud Logic" https://www.twitch.tv/chudlogic best 2>&1 & disown
+	/usr/bin/mpv --really-quiet --ytdl-format=best --title="Chud Logic" https://www.youtube.com/@ChudLogic/live || notify-send "Error, YouTube stream failed to open" 2>&1 & disown
+	/usr/bin/mpv --really-quiet --title="Chud Logic" https://www.twitch.tv/chudlogic best || notify-send "Error, Twitch stream failed to open" 2>&1 & disown
 }
 
 t () {
