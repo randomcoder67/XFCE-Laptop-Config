@@ -95,6 +95,7 @@ cp ~/Programs/configure/home/.config/glow/railscasts.json ~/.config/glow/railsca
 go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/log.go
 go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/schedule.go
 go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/money.go
+go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/timer.go
 
 gcc ~/Programs/terminal/terminalPrograms/astro/planets.c -o ~/Programs/terminal/terminalPrograms/astro/planets -lm -Wall -Wextra
 
