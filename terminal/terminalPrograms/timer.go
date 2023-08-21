@@ -76,13 +76,13 @@ func encodeTime(secs int) string {
 	// Create string to return and format it
 	var toReturn string = ""
 	if hoursTotal != 0 {
-		toReturn = toReturn + strconv.Itoa(hoursTotal) + " Hours "
+		toReturn = toReturn + strconv.Itoa(hoursTotal) + " Hour(s) "
 	}
 	if minutesTotal != 0 {
-		toReturn = toReturn + strconv.Itoa(minutesTotal) + " Minutes "
+		toReturn = toReturn + strconv.Itoa(minutesTotal) + " Minute(s) "
 	}
 	if secondsTotal != 0 {
-		toReturn = toReturn + strconv.Itoa(secondsTotal) + " Seconds "
+		toReturn = toReturn + strconv.Itoa(secondsTotal) + " Second(s) "
 	}
 	return toReturn
 }

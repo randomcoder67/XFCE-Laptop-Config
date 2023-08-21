@@ -28,22 +28,29 @@ func getFileContents(fileName string) string {
 	return string(dat)
 }
 
-func filterEntries(mainString string, filterString string) string {
+func filterEntries(mainString string, filterStrings []string) string {
 	// Split into lines
 	toFilter := strings.Split(mainString, "\n")
 	// Create final empty string 
 	var finalString string = ""
 	// Iterate through slice of all lines and only add the matching ones to finalString
 	for i:=0; i<len(toFilter); i++ {
-		if strings.Contains(strings.ToLower(toFilter[i]), strings.ToLower(filterString)) {
-			finalString = finalString + toFilter[i] + "\n"
+		for _, stringA := range filterStrings {
+			if strings.Contains(strings.ToLower(toFilter[i]), strings.ToLower(stringA)) {
+				finalString = finalString + toFilter[i] + "\n"
+				break
+			}
 		}
+	}
+	if len(finalString) == 0 {
+		fmt.Println("No matches found")
+		os.Exit(0)
 	}
 	return finalString
 }
 
 func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sortBy string) {
-	// Open file and get data 
+	// Open file and get data
 	fileName := homeDir + BASE_PATH + dateFileCode + ".csv"
 	fileContents := getFileContents(fileName)
 	if fileContents == "" {
@@ -51,8 +58,9 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 		os.Exit(1)
 	}
 	// Filter data if necessary
+	queryStringSplit := strings.Split(queryString, ",")
 	if shouldSearch {
-		fileContents = filterEntries(fileContents, queryString)
+		fileContents = filterEntries(fileContents, queryStringSplit)
 	}
 	// Read in csv
 	r := csv.NewReader(strings.NewReader(fileContents))
@@ -191,7 +199,7 @@ func addEntries() {
 }
 
 func printHelp() {
-	fmt.Printf("Options:\n  -h - Show Help\n  -a - Add New Entries\n  -f string - Only Show Entries Matching String\n  -d yymm - Show Entries From Given Month (defaults to current month)\n  -s string - Sort By String (options are date, item, price, shop. Defaults to date)\n")
+	fmt.Printf("Options:\n  -h - Show Help\n  -a - Add New Entries\n  -f string[,string] - Only Show Entries Matching String(s)\n  -d yymm - Show Entries From Given Month (defaults to current month)\n  -s string - Sort By String (options are date, item, price, shop. Defaults to date)\n")
 }
 
 func main() {
