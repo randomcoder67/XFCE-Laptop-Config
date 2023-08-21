@@ -134,8 +134,8 @@ t () {
 
 # Function to remove things which aen't useful from bash history
 trim_history () {
-	# Remove literal "q", "ls", "l", "lsa", "exit", "c", "cl", "cd", "rm", "x", "gits", "gitd", "gitl", "htop", "btop", "nethogs", "cava", "vis" and "qalc" from bash history
-	sed -i -r '/^(qalc|vis|cava|nethogs|btop|htop|gitl|gitd|gits|x|rm|cd|c|exit|lsa|ls|l|q)$/d' ~/.bash_history
+	# Remove literal "q", "ls", "l", "lsa", "exit", "c", "cl", "cd", "rm", "x", "gits", "gitd", "gitl", "htop", "btop", "nethogs", "cava", "vis", "qalc" and "history" from bash history
+	sed -i -r '/^(history|qalc|vis|cava|nethogs|btop|htop|gitl|gitd|gits|x|rm|cd|c|exit|lsa|ls|l|q)$/d' ~/.bash_history
 	# Remove any usage of fasd z autojump command
 	sed -i '/^z .*/d' ~/.bash_history
 	sed -i '/^zz .*/d' ~/.bash_history
@@ -145,6 +145,8 @@ trim_history () {
 	sed -i -r '/^(cd|ls|mpv|mpv) [^\/\>\<|:&]*\/? ?$/d' ~/.bash_history
 	# Remove any usage of ms, msn, rs and pdf when not going into a different folder
 	sed -i -r '/^(ms[n]?|rs|pdf) [^\/\>\<|:&]* ?$/d' ~/.bash_history
+	# Remove anything in all caps, as it will basically always be a mistype
+	sed -i '/^[A-Z ]*$/d' ~/.bash_history
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
 }
 
@@ -244,6 +246,8 @@ alias curloc='cat ~/Programs/output/updated/curLocation.csv | sed "s/|/\n/g"'
 alias savedotfiles='~/Programs/configure/save2.sh'
 alias songs='cat ~/Programs/output/updated/songs.txt'
 alias todo='micro ~/Programs/output/updated/todo.md'
+alias lc='ls | wc -l'
+alias lca='ls -A | wc -l'
 
 # Info programs 
 

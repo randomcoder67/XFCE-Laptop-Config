@@ -38,6 +38,8 @@ elif [ $status -eq 12 ]; then
 	fi
 # Otherwise the program returns with default status, meaning the user has selected to copy a bookmark
 else
+	# Check if no output (i.e. no entry was selected)
+	[[ "$item" == "" ]] && exit
 	# Some string substitution to get correct format for grep
 	itemA=$(echo "$item" | sed 's/\[/\\[/g' | sed 's/\]/\\]/g')
 	# Finding bookmark from alias and copy to clipboard
