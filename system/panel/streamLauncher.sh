@@ -23,4 +23,8 @@ elif [[ "$1" == "dustinedenTwitch" ]]; then
 elif [[ "$1" == "destinyRumble" ]]; then
 	notify-send "Opening Destiny Rumble Stream"
 	"$HOME/Programs/system/panel/destinyRumble.sh" || notify-send "Error, stream failed to open"
+elif [[ "$1" == "noahsundayYouTube" ]]; then
+	notify-send "Opening Noah Sunday YouTube Stream"
+	mpv --ytdl-format=best --title='Noah Sunday - YouTube' https://www.youtube.com/@NoahSundayCompletionist/live || notify-send "Error, stream failed to open"
 fi
+

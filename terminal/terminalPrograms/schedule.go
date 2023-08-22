@@ -128,6 +128,8 @@ func addEntry(time string, date string, description string) {
 		}
 	}
 	
+	description = strings.ReplaceAll(description, "\"", "'")
+	description = strings.ReplaceAll(description, "|", " ")
 	fileContents = fileContents + date + "|" + time + "|" + description + "\n"
 	
 	err := os.WriteFile(fileName, []byte(fileContents), 0666)
@@ -167,7 +169,6 @@ func viewSchedule(nextWeek bool) {
 	sort.SliceStable(records, func(i, j int) bool{ // Sort records by date and time 
 		return records[i][0]+records[i][1] < records[j][0]+records[j][1] // Combining to yymmddhhmm 
 	})
-	
 	// Make array of 2 slices of slices of strings 
 	// Each slice contains other slices, either of length 1 if "## Thursday 4th", or length 2 if "  14:00 Online Meeting" 
 	var markdownSlices [2][][]string
