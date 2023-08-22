@@ -147,6 +147,8 @@ trim_history () {
 	sed -i -r '/^(ms[n]?|rs|pdf) [^\/\>\<|:&]* ?$/d' ~/.bash_history
 	# Remove anything in all caps, as it will basically always be a mistype
 	sed -i '/^[A-Z ]*$/d' ~/.bash_history
+	# Remove all duplicates, keeping most recent
+	tac ~/.bash_history | awk '!x[$0]++' | tac > ~/.bash_history_no_dupes && command mv ~/.bash_history_no_dupes ~/.bash_history
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
 }
 

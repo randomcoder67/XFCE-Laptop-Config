@@ -81,6 +81,10 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 	} else if sortBy == "shop" || sortBy == "store" {
 		firstColumn = 3
 		secondColumn = 0
+	} else {
+		fmt.Println("Error, incorrectly formatted arguments")
+		printHelp()
+		os.Exit(1)
 	}
 	
 	// Do sorting with desired columns 
