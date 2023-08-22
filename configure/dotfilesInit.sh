@@ -108,3 +108,20 @@ systemctl --user enable files.timer
 systemctl --user start files.timer
 
 git config --global core.pager cat
+
+git clone "https://github.com/randomcoder67/Media-UI" $HOME/Programs/myRepos
+mv "$HOME/Programs/myRepos/Media-UI" "$HOME/Programs/myRepos/mediaUI"
+cd "$HOME/Programs/myRepos/mediaUI"
+make
+git clone "https://github.com/randomcoder67/Consistent-Syntax-Highlighting" $HOME/Programs/myRepos
+mv "$HOME/Programs/myRepos/Consistent-Syntax-Highlighting" "$HOME/Programs/myRepos/syntaxHighlighting"
+cd "$HOME/Programs/myRepos/syntaxHighlighting"
+make
+git clone "https://github.com/randomcoder67/Go-Terminal-Weather" $HOME/Programs/myRepos
+mv "$HOME/Programs/myRepos/Go-Terminal-Weather" "$HOME/Programs/myRepos/goWeather"
+cd "$HOME/Programs/myRepos/goWeather"
+make
+git clone "https://github.com/randomcoder67/Go-Terminal-Strava" $HOME/Programs/myRepos
+mv "$HOME/Programs/myRepos/Go-Terminal-Strava" "$HOME/Programs/myRepos/goStrava"
+cd "$HOME/Programs/myRepos/goStrava"
+make
