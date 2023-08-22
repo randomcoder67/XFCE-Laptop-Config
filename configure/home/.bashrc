@@ -242,12 +242,12 @@ alias lca='ls -A | wc -l'
 
 # Info programs 
 
-alias schedule='~/Programs/terminal/terminalPrograms/schedule'
-alias log='~/Programs/terminal/terminalPrograms/log'
+alias schedule='~/Programs/terminal/terminalPrograms/goBins/schedule'
+alias log='~/Programs/terminal/terminalPrograms/goBins/log'
 alias weather='python3 ~/Programs/smallPrograms/metOffice/metOffice.py'
 alias shows='~/Programs/terminal/shows.sh'
-alias money='~/Programs/terminal/terminalPrograms/money'
-alias days='~/Programs/terminal/terminalPrograms/until'
+alias money='~/Programs/terminal/terminalPrograms/goBins/money'
+alias days='~/Programs/terminal/terminalPrograms/goBins/until'
 
 # File finders 
 
@@ -270,7 +270,7 @@ alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
 alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
 alias getpass='~/Programs/terminal/alias/passGen.sh'
 alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
-alias timer='~/Programs/terminal/terminalPrograms/timer'
+alias timer='~/Programs/terminal/terminalPrograms/goBins/timer'
 
 # Fun 
 

@@ -92,10 +92,11 @@ cp ~/Programs/configure/home/.local/share/rofi/themes/harris.rasi ~/.local/share
 cp ~/Programs/configure/home/.config/glow/glow.yml ~/.config/glow/glow.yml
 cp ~/Programs/configure/home/.config/glow/railscasts.json ~/.config/glow/railscasts.json
 
-go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/log.go
-go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/schedule.go
-go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/money.go
-go build -o ~/Programs/terminal/terminalPrograms ~/Programs/terminal/terminalPrograms/timer.go
+go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/log.go
+go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/schedule.go
+go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/money.go
+go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/timer.go
+go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/until.go
 
 gcc ~/Programs/terminal/terminalPrograms/astro/planets.c -o ~/Programs/terminal/terminalPrograms/astro/planets -lm -Wall -Wextra
 
