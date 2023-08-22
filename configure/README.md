@@ -120,6 +120,7 @@
 `t` display time in various timezones  
 `shows` list show times in the week  
 `money` money program  
+`days` shows time until specific days  
 
 ### File finders 
 

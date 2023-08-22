@@ -247,6 +247,7 @@ alias log='~/Programs/terminal/terminalPrograms/log'
 alias weather='python3 ~/Programs/smallPrograms/metOffice/metOffice.py'
 alias shows='~/Programs/terminal/shows.sh'
 alias money='~/Programs/terminal/terminalPrograms/money'
+alias days='~/Programs/terminal/terminalPrograms/until'
 
 # File finders 
 
