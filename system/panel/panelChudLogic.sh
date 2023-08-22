@@ -11,7 +11,6 @@ then
 		echo "twitch" > "$XDG_STATE_HOME/streams/chud.txt"
 	else
 		echo "<txt><span foreground='#da4939'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh chudlogicTwitch</txtclick>"
-		curl "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/panel/chudlogicTwitch.html
 		streamTitle=$(cat ~/Programs/output/.streams/panel/chudlogicTwitchMetadata.info.json | jq -r .description | sed 's/&/and/g')
 		echo "<tool>Twitch - $streamTitle</tool>"
 	fi

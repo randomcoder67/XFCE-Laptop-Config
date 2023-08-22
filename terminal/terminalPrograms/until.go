@@ -87,8 +87,12 @@ func viewDays() {
 	for _, entry := range daysSlice {
 		t, _ := time.Parse("060102", entry[0])
 		var daysLeft float64 = math.Abs(math.Ceil(t.Sub(timeNow).Hours()/24))
-		var daysLeftString string = strconv.FormatFloat(daysLeft,'f', 0, 64)		
-		fmt.Printf("%s - %s%s days from now%s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - len(entry[1]) + 2), daysLeftString, strings.Repeat(" ", 6-len(daysLeftString)), t.Format("2006-01-02"))
+		var daysLeftString string = strconv.FormatFloat(daysLeft,'f', 0, 64)
+		var theWordDayString string = "days"
+		if daysLeftString == "1" {
+			theWordDayString = "day"
+		}
+		fmt.Printf("%s - %s%s %s from now%s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - len(entry[1]) + 2), daysLeftString, theWordDayString, strings.Repeat(" ", 10-len(theWordDayString)-len(daysLeftString)), t.Format("2006-01-02"))
 	}
 	// Write final daysSlice to file
 	updateFile(daysSlice)

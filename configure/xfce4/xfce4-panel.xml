@@ -206,7 +206,7 @@
 	  <property name="font" type="string" value="Roboto 16"/>
 	</property>
 	<property name="plugin-26" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/matnPanel.jpg&lt;/img&gt;&lt;tool&gt;Many A True Nerd&lt;/tool&gt;&quot;"/>
+	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/noahsundayPanel.jpg&lt;/img&gt;&lt;tool&gt;Noah Sunday - Completionist&lt;/tool&gt;&quot;"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
@@ -214,7 +214,7 @@
 	  <property name="font" type="string" value="Roboto 12"/>
 	</property>
 	<property name="plugin-27" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelMATN.sh"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelNoahSunday.sh"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
