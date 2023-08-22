@@ -109,7 +109,6 @@
 `savedotfiles` copy current dotfiles to ~/Programs/configure  
 `songs` show file of songs identified with songrec  
 `todo` open todo.md file  
-`hisbloat` displays how bloated the bash history file is  
 `lc` count items in folder  
 `lca` count items in folder (include hidden)  
 
