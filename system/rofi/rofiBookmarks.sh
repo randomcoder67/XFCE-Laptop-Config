@@ -35,6 +35,8 @@ elif [ $status -eq 12 ]; then
 	echo $toOpen
 	if echo "$toOpen" | grep -q -E 'https?://(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)'; then # If so, open it
 		firefox "$toOpen"
+	else
+		notify-send "Not a URL"
 	fi
 # Otherwise the program returns with default status, meaning the user has selected to copy a bookmark
 else
