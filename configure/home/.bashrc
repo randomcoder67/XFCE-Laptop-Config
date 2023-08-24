@@ -171,7 +171,7 @@ alias chudlogic='do_chudlogic'
 alias nerdcubed='streamlink --player "mpv --title=NerdCubed" https://www.twitch.tv/nerdcubed best 2>&1 & disown'
 alias dustineden='streamlink --player "mpv --title=\"Dustin Eden\" https://www.twitch.tv/dustineden best 2>&1 & disown'
 alias matn='mpv --title="Many A True Nerd" https://www.youtube.com/@ManyATrueNerd/live & disown'
-alias dgg='surf https://destiny.gg/embed/chat & disown'
+alias dgg='firefox https://destiny.gg/embed/chat & disown'
 alias streams='~/Programs/terminal/alias/streamsCheck.sh'
 alias wstream='~/Programs/terminal/alias/destinyDownload.sh'
 
@@ -285,6 +285,8 @@ export EDITOR="nano"
 export VISUAL="micro"
 export MICRO_TRUECOLOR=1
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
+source ~/Programs/output/updated/openAIKey.sh
 
 #alias a='fasd -a'		# any
 #alias s='fasd -si'	   # show / search / select
