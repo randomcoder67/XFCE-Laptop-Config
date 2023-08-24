@@ -33,6 +33,7 @@ sed -i "/~\/\.config\/google-chrome\/Default\/Extensions/d" ~/Programs/output/up
 sed -i "/~\/\.config\/opera\/Extensions/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Downloads\/BackupDec/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Programs\/configure\/home/d" ~/Programs/output/updated/files.txt
+sed -i "/~\/Programs\/output\/updated\/filesFinal.txt/d" ~/Programs/output/updated/files.txt
 #sed -i "/~\/Programs\/organisation/d" ~/Programs/output/updated/files.txt
 # Remove curPlaylist so there aren't duplicate songs. Super+L can be used to play music from curPlaylist 
 sed -i "/~\/Music\/curPlaylist/d" ~/Programs/output/updated/files.txt
