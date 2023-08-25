@@ -6,6 +6,13 @@ import sys
 import os
 import pandas as pd
 from os.path import expanduser
+import signal
+
+def signal_handler(sig, frame):
+	print('q')
+	sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 home = expanduser("~")
 fileName = home + "/Programs/output/updated/stuff.csv"
@@ -29,7 +36,7 @@ else:
 	f.close()
 
 # Add new items to list 
-def add():
+def add(indexA):
 	# Open file in append mode 
 	outputCSV = open(fileName, "a")
 
@@ -45,7 +52,7 @@ def add():
 		detailedNameA = input("Detailed Name: ")
 		typeA = input("Type: ")
 		quantityA = input("Quantity: ")
-		hasChildren = input("Has Children (y/n): ")
+		hasChildren = input("Has Children (y/N): ")
 		if quantityA == "":
 			quantityA = "1"
 		outputCSV.write(str(indexA) + "|" + locationA + "|" + specificLocationA + "|" + nameA + "|" + detailedNameA + "|" + typeA + "|" + quantityA + "|NONE\n") 
@@ -90,46 +97,95 @@ def audit():
 	for index, loc in enumerate(locations):
 		print(str(index+1) + ": " + loc)
 	chosenLocNum = input("Which location: ")
-	chosenLoc = locations[int(chosenLocNum)-1]
-	
+	try:
+		chosenLoc = locations[int(chosenLocNum)-1]
+	except:
+		print("Error, NaN")
+		sys.exit(1)
 	# Narrow down dataframe by choice
 	dfLoc = df[(df["Location"] == chosenLoc)]
 	# Get list of specific locations, print and get user choice
 	specificLocations = list(dfLoc["SpecificLocation"].drop_duplicates())
 	for indexA, locA in enumerate(specificLocations):
 		print(str(indexA+1) + ": " + locA)
+	print(str(len(specificLocations)+1) + ": All")
 	chosenSpeLocNum = input("Which specific location: ")
-	chosenSpeLoc = specificLocations[int(chosenSpeLocNum)-1]
+	# Check if all was chosen
+	if int(chosenSpeLocNum) == len(specificLocations) + 1:
+		print(dfLoc.to_string())
+		return
+	# Otherwise check if valid location and print chosen entries
+	try:
+		chosenSpeLoc = specificLocations[int(chosenSpeLocNum)-1]
+	except:
+		print("Error, NaN")
+		sys.exit(1)
 	
-	# Narrow down dataframe by choice again
+	# Narrow down dataframe by choice again and print
 	dfFinal = dfLoc[(dfLoc["SpecificLocation"] == chosenSpeLoc)]
-	# Print
 	print(dfFinal.to_string())
 	
 
-def edit():
+def edit(indexA):
 	df = loadDF()
 	# Find what you want to edit
 	toSearch = input("What do you want to edit: ")
 	dfSearch = search(toSearch, False)
+	if len(dfSearch) == 0:
+		print("No matches")
+		sys.exit(0)
 	print(dfSearch.to_string())
 	# Choose specific item
 	indexToChange = int(input("Enter index of item to edit: "))
+	# Get the quantity
+	quantityToMove = 0
+	moreThanOne = False
+	# If the quantity is more than one, set necessary variables
+	if df.loc[indexToChange, "Quantity"] != "1":
+		moreThanOne = True
+		quantityToMove = int(input("Enter quantity to edit: "))
+		# Check you aren't trying to edit more than exist
+		if quantityToMove > int(df.loc[indexToChange, "Quantity"]):
+			print("Error, quantity too high")
+			sys.exit(1)
 	# Choose what to do
 	whatToDo = input("Delete or Move? (d/m): ")
 	if whatToDo == "m":
+		# If quantity is more than one, manage that first
+		if moreThanOne:
+			# Set the quantity of the original to it's quantity - the number to move
+			df.loc[indexToChange, "Quantity"] = int(df.loc[indexToChange, "Quantity"]) - quantityToMove
+			# Copy the original
+			df.loc[indexA] = df.loc[indexToChange]
+			# And set the copy quantity to the number to move
+			df.loc[indexA, "Quantity"] = quantityToMove
+			# Then set the index being moved to the index of the copy
+			indexToChange = indexA
 		moveHow = input("Move to new Location or Specific Location? (l/s): ")
-		moveWhere = input("New value: ")
 		if moveHow == "l":
-			df.loc[indexToChange, "Location"] = moveWhere
-		elif moveHow ==  "s":
-			df.loc[indexToChange, "SpecificLocation"] = moveWhere
-		#print(df.to_string())
+			newLocation = input("Enter new Location: ")
+			df.loc[indexToChange, "Location"] = newLocation
+			newSpecificLocation = input("Enter new Specific Location: ")
+			df.loc[indexToChange, "SpecificLocation"] = newSpecificLocation
+		elif moveHow == "s":
+			newSpecificLocation = input("New value: ")
+			df.loc[indexToChange, "SpecificLocation"] = newSpecificLocation
 		df.to_csv(fileName, sep="|")
-		
+	
+	# If you want to delete
 	elif whatToDo == "d":
-		dfNew = df.drop([indexToChange])
-		#print(dfNew.to_string())
+		# If the quantity is more than one
+		if moreThanOne:
+			# If the quantity to delete is all of the items, just delete
+			if quantityToMove == int(df.loc[indexToChange, "Quantity"]):
+				dfNew = df.drop([indexToChange])
+			# Otherwise reduce the quantity and save
+			else:
+				df.loc[indexToChange, "Quantity"] = int(df.loc[indexToChange, "Quantity"]) - quantityToMove
+				df.to_csv(fileName, sep="|")
+				return
+		else:
+			dfNew = df.drop([indexToChange])
 		dfNew.to_csv(fileName, sep="|")
 		
 		
@@ -139,7 +195,7 @@ if len(sys.argv) > 1:
 	if sys.argv[1] == "-h":
 		print("Usage:\n  Default - add\n  -e - Edit\n  -s stringToSearch - Search\n  -a - Audit")
 	elif sys.argv[1] == "-e":
-		edit()
+		edit(indexA)
 	elif sys.argv[1] == "-a":
 		audit()
 	elif sys.argv[1] == "-s":
@@ -148,4 +204,4 @@ if len(sys.argv) > 1:
 		else:
 			print("Usage: stuff.py -s stringToSearch")
 else:
-	add()
+	add(indexA)
