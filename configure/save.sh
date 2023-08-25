@@ -50,6 +50,8 @@ cp ~/.config/micro/settings.json ~/Programs/configure/home/.config/micro/
 cp ~/.config/cava/config ~/Programs/configure/home/.config/cava/
 [ -d ~/Programs/configure/home/.config/vis ] || mkdir ~/Programs/configure/home/.config/vis
 cp ~/.config/vis/config ~/Programs/configure/home/.config/vis/
+[ -d ~/Programs/configure/home/.config/cool-retro-term ] || mkdir ~/Programs/configure/home/.config/cool-retro-term
+cp ~/.config/cool-retro-term/cool-retro-term.conf ~/Programs/configure/home/.config/cool-retro-term/
 
 [ -d ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles ] || mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles
 [ -d ~/Programs/configure/home/.local/share/gtksourceview-4/styles ] || mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-4/styles

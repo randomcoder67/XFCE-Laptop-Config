@@ -50,6 +50,7 @@ mkdir ~/.config/npm
 mkdir ~/.config/micro
 mkdir ~/.config/cava
 mkdir ~/.config/vis
+mkdir ~/.config/cool-retro-term
 
 mkdir ~/.local/share/gnupg
 chmod 700 ~/.local/share/gnupg
@@ -84,6 +85,7 @@ cp ~/Programs/configure/home/.config/micro/bindings.json ~/.config/micro/binding
 cp ~/Programs/configure/home/.config/micro/settings.json ~/.config/micro/settings.json
 cp ~/Programs/configure/home/.config/cava/config ~/.config/cava/config
 cp ~/Programs/configure/home/.config/vis/config ~/.config/vis/config
+cp ~/Programs/configure/home/.config/cool-retro-term/cool-retro-term.conf ~/.config/cool-retro-term/cool-retro-term.conf
 
 cp ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/railscasts.xml ~/.local/share/gtksourceview-3.0/styles/railscasts.xml
 cp ~/Programs/configure/home/.local/share/gtksourceview-4/styles/railscasts.xml ~/.local/share/gtksourceview-4/styles/railscasts.xml
