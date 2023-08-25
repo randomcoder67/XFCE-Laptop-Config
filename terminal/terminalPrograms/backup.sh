@@ -8,6 +8,7 @@ backup1="currentBackup"
 backup2="backup2"
 backup3="backup3"
 hashHistory="hashHistory"
+backupHistory="$HOME/Programs/output/updated/backupHistory.txt"
 
 # Option to add a file or directory to backup
 if [[ "$1" == "add" ]]; then
@@ -47,6 +48,7 @@ elif [[ "$1" == "diff" ]]; then
 	find ~/Downloads/BackupMount/hashHistory/ | sort | tail -n 2 | xargs diff --color
 # Option to make new backup 
 elif [[ "$1" == "make" ]]; then
+	echo $(date +"%y%m%d %H:%M") > "$backupHistory"
 	echo "Making New Backup"
 	# Copy previous 2nd backup to 3rd position 
 	echo "Copying 2nd most recent backup to 3rd position"
@@ -99,6 +101,21 @@ elif [[ "$1" == "make" ]]; then
 	echo "Done!"
 	#gpg -c "$backupDir""/$backup1""/hashesBackup.txt"
 	#gpg -c "$backupDir""/$backup1""/hashesOriginal.txt"
+elif [[ "$1" == "time" ]]; then
+	if ! [ -f "$backupHistory" ]; then
+		echo "No History File"
+		exit
+	fi
+	curDate=$(date +"%y%m%d")
+	oldIFS="$IFS"
+	IFS=$'\n'
+	times=( $(cat "$backupHistory") )
+	for time in "${times[@]}"; do
+		echo -n "${time/ / at }: "
+		dateA=${time%% *}
+		diffA=$(( ($(date --date="$curDate" +%s) - $(date --date="$dateA" +%s) )/(60*60*24) ))
+		echo "${diffA} days ago"
+	done
 # Option to list commands
 else
 	echo "Backup Program Usage:"
@@ -108,4 +125,5 @@ else
 	echo "  backup add - add file/folder to backup list"
 	echo "  backup remove - remove file/folder from backup list"
 	echo "  backup diff - compare 2 most recent backups"
+	echo "  backup time - list times of backups"
 fi
