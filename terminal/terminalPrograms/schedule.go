@@ -8,6 +8,7 @@ import (
 	"time"
 	"strconv"
 	"sort"
+	"io/fs"
 )
 
 const BASE_PATH string = "/Programs/output/schedule/"
@@ -52,7 +53,9 @@ func stringInArray(toMatch string, arrayA []string) bool {
 func getFileContents(fileName string) string {
 	dat, err := os.ReadFile(fileName)
 	if err != nil {
-		fmt.Println(err)
+		if _, ok := err.(*fs.PathError); !ok {
+			panic(err)
+		}
 	}
 	if dat == nil {
 		return ""
@@ -166,6 +169,15 @@ func viewSchedule(nextWeek bool) {
 	r.Comma = '|'
 	records, _ := r.ReadAll()
 	
+	if records == nil {
+		var whichWeekString string = "this"
+		if nextWeek {
+			whichWeekString = "next"
+		}
+		fmt.Printf("No entries in schedule for %s week\n", whichWeekString)
+		os.Exit(0)
+	}
+	
 	sort.SliceStable(records, func(i, j int) bool{ // Sort records by date and time 
 		return records[i][0]+records[i][1] < records[j][0]+records[j][1] // Combining to yymmddhhmm 
 	})
@@ -245,7 +257,7 @@ func printSchedule(columnA [][]string, columnB [][]string) {
 }
 
 func printHelp() {
-	fmt.Printf("Usage: \n  schedule -a hhmm yymmdd/day description to add\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n")
+	fmt.Printf("Usage: \nTo View:\n  schedule [-n] (-n for next week)\nTo Add:\n  schedule -a hhmm yymmdd/day description to add\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n")
 }
 
 func main() {

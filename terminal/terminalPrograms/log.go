@@ -46,6 +46,7 @@ func newEntry() {
 	} else {
 		dt = time.Now()
 	}
+	fmt.Printf("Adding entry for: %s\n", dt.Format("Monday, 02 Jan 2006"))
 	
 	// Get day 
 	day := int(dt.Day())
