@@ -280,7 +280,7 @@ HISTSIZE=20000
 HISTFILESIZE=20000
 
 export HISTCONTROL=ignoreboth:erasedups
-export PATH=$PATH:~/.local/bin:~/.npm/bin
+export PATH=$PATH:~/.local/bin:~/.npm/bin:~/.local/share/npm/bin
 export EDITOR="nano"
 export VISUAL="micro"
 export MICRO_TRUECOLOR=1
