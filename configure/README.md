@@ -170,6 +170,7 @@
 `Super+N` NetHogs  
 `Super+G` pulsemixer  
 `Super+U` cava visualiser  
+`Super+Y` colour pick, copies to clipboard  
 `Super+Backtick` Screenshot Utility  
 `Super+S` Settings Manager  
 `Super+P` Plugging/Unplugging from Monitor  
