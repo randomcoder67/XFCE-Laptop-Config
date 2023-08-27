@@ -137,6 +137,10 @@ def edit(indexA):
 	print(dfSearch.to_string())
 	# Choose specific item
 	indexToChange = int(input("Enter index of item to edit: "))
+	# Check if the index was in search results, this it to stop accidentally editing another item because of a typo
+	if not indexToChange in dfSearch.index:
+		print("Error, index not in search results")
+		sys.exit(1)
 	# Get the quantity
 	quantityToMove = 0
 	moreThanOne = False
