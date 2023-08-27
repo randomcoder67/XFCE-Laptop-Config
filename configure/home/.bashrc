@@ -239,6 +239,7 @@ alias songs='cat ~/Programs/output/updated/songs.txt'
 alias todo='micro ~/Programs/output/updated/todo.md'
 alias lc='ls | wc -l'
 alias lca='ls -A | wc -l'
+alias rmedir='find . -type d -empty -delete'
 
 # Info programs 
 

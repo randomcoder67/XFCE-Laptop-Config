@@ -111,6 +111,7 @@
 `todo` open todo.md file  
 `lc` count items in folder  
 `lca` count items in folder (include hidden)  
+`rmedir` remove empty dirs  
 
 ### Info programs
 
