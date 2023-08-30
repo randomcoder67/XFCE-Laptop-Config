@@ -36,6 +36,7 @@
 `diff` checks for differences in files  
 `wget` wget with history file set to XDG cache directory  
 `mkcdir` make directory and cd into it  
+`cal` shows next 3 months (inclusive)  
 
 ### Stream things
 

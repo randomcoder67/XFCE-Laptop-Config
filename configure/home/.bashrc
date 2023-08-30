@@ -163,6 +163,7 @@ alias cp='cp -i -r'
 alias diff='diff --color'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 #alias gpg2='gpg2 --homedir "$XDG_DATA_HOME"/gnupg'
+alias cal="unbuffer cal -n 3 | sed '/^ *$/d'"
 
 # Stream things  
 
