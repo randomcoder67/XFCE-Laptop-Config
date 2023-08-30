@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+currentTheme=""
+
+if [[ "$1" == "railscasts" ]]; then
+	echo "Saving current as Railscasts"
+	currentTheme="railscasts"
+elif [[ "$1" == "dracula" ]]; then
+	echo "Saving current as Dracula"
+	currentTheme="dracula"
+else
+	exit
+fi
+
 mkdir ~/Programs
 mkdir ~/Programs/output
 mkdir ~/Programs/output/log
@@ -64,14 +76,13 @@ cp ~/Programs/configure/home/.bashrc ~/.bashrc
 cp ~/Programs/configure/home/.inputrc ~/.inputrc
 cp ~/Programs/configure/home/.profile ~/.profile
 
-
 cp ~/Programs/configure/home/.config/systemd/user/files.service ~/.config/systemd/user/files.service
 cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/user/files.timer
-cp ~/Programs/configure/home/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+cp ~/Programs/configure/home/.config/alacritty/$currentTheme.yml ~/.config/alacritty/alacritty.yml
 cp ~/Programs/configure/home/.config/btop/btop.conf ~/.config/btop/btop.conf
-cp ~/Programs/configure/home/.config/Code\ -\ OSS/User/settings.json ~/.config/Code\ -\ OSS/User/settings.json
+cp ~/Programs/configure/home/.config/Code\ -\ OSS/User/$currentTheme.json ~/.config/Code\ -\ OSS/User/settings.json
 #cp ~/Programs/configure/home/.config/gtk-3.0/bookmarks ~/.config/gtk-3.0/bookmarks
-cp ~/Programs/configure/home/.config/gtk-3.0/gtk.css ~/.config/gtk-3.0/gtk.css
+cp ~/Programs/configure/home/.config/gtk-3.0/$currentTheme.css ~/.config/gtk-3.0/gtk.css
 cp ~/Programs/configure/home/.config/htop/htoprc ~/.config/htop/htoprc
 cp ~/Programs/configure/home/.config/mpv/mpv.conf ~/.config/mpv/mpv.conf
 cp ~/Programs/configure/home/.config/mpv/input.conf ~/.config/mpv/input.conf
@@ -89,10 +100,12 @@ cp ~/Programs/configure/home/.config/cool-retro-term/cool-retro-term.conf ~/.con
 
 cp ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/railscasts.xml ~/.local/share/gtksourceview-3.0/styles/railscasts.xml
 cp ~/Programs/configure/home/.local/share/gtksourceview-4/styles/railscasts.xml ~/.local/share/gtksourceview-4/styles/railscasts.xml
-cp ~/Programs/configure/home/.local/share/rofi/themes/harris.rasi ~/.local/share/rofi/themes/harris.rasi
+cp ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/dracula.xml ~/.local/share/gtksourceview-3.0/styles/dracula.xml
+cp ~/Programs/configure/home/.local/share/gtksourceview-4/styles/dracula.xml ~/.local/share/gtksourceview-4/styles/dracula.xml
+cp ~/Programs/configure/home/.local/share/rofi/themes/$currentTheme.rasi ~/.local/share/rofi/themes/harris.rasi
 
 cp ~/Programs/configure/home/.config/glow/glow.yml ~/.config/glow/glow.yml
-cp ~/Programs/configure/home/.config/glow/railscasts.json ~/.config/glow/railscasts.json
+cp ~/Programs/configure/home/.config/glow/$currentTheme.json ~/.config/glow/theme.json
 
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/log.go
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/schedule.go

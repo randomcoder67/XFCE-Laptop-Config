@@ -1,3 +1,15 @@
+currentTheme=""
+
+if [[ "$1" == "railscasts" ]]; then
+	echo "Saving current as Railscasts"
+	currentTheme="railscasts"
+elif [[ "$1" == "dracula" ]]; then
+	echo "Saving current as Dracula"
+	currentTheme="dracula"
+else
+	exit
+fi
+
 [ -d ~/Programs/configure/home ] || mkdir ~/Programs/configure/home
 [ -d ~/Programs/configure/root ] || mkdir ~/Programs/configure/root
 
@@ -16,16 +28,16 @@ cp ~/.config/systemd/user/files.service ~/Programs/configure/home/.config/system
 cp ~/.config/systemd/user/files.timer ~/Programs/configure/home/.config/systemd/user/
 
 [ -d ~/Programs/configure/home/.config/alacritty ] || mkdir ~/Programs/configure/home/.config/alacritty
-cp ~/.config/alacritty/alacritty.yml ~/Programs/configure/home/.config/alacritty/
+cp ~/.config/alacritty/alacritty.yml "$HOME/Programs/configure/home/.config/alacritty/$currentTheme.yml"
 [ -d ~/Programs/configure/home/.config/btop ] || mkdir ~/Programs/configure/home/.config/btop
 cp ~/.config/btop/btop.conf ~/Programs/configure/home/.config/btop/
 [ -d ~/Programs/configure/home/.config/Code\ -\ OSS/User ] || mkdir -p ~/Programs/configure/home/.config/Code\ -\ OSS/User
-cp ~/.config/Code\ -\ OSS/User/settings.json ~/Programs/configure/home/.config/Code\ -\ OSS/User/
+cp ~/.config/Code\ -\ OSS/User/settings.json "$HOME/Programs/configure/home/.config/Code - OSS/User/$currentTheme.json"
 [ -d ~/Programs/configure/home/.config/glow ] || mkdir ~/Programs/configure/home/.config/glow
 cp ~/.config/glow/glow.yml ~/Programs/configure/home/.config/glow/
-cp ~/.config/glow/railscasts.json ~/Programs/configure/home/.config/glow/
+cp ~/.config/glow/theme.json "$HOME/Programs/configure/home/.config/glow/$currentTheme.json"
 [ -d ~/Programs/configure/home/.config/gtk-3.0 ] || mkdir ~/Programs/configure/home/.config/gtk-3.0
-cp ~/.config/gtk-3.0/gtk.css ~/Programs/configure/home/.config/gtk-3.0/
+cp ~/.config/gtk-3.0/gtk.css "$HOME/Programs/configure/home/.config/gtk-3.0/$currentTheme.css"
 [ -d ~/Programs/configure/home/.config/htop ] || mkdir ~/Programs/configure/home/.config/htop
 cp ~/.config/htop/htoprc ~/Programs/configure/home/.config/htop/
 [ -d ~/Programs/configure/home/.config/mpv ] || mkdir ~/Programs/configure/home/.config/mpv
@@ -56,11 +68,13 @@ cp ~/.config/cool-retro-term/cool-retro-term.conf ~/Programs/configure/home/.con
 [ -d ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles ] || mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles
 [ -d ~/Programs/configure/home/.local/share/gtksourceview-4/styles ] || mkdir -p ~/Programs/configure/home/.local/share/gtksourceview-4/styles
 cp ~/.local/share/gtksourceview-3.0/styles/railscasts.xml ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/
+cp ~/.local/share/gtksourceview-3.0/styles/dracula.xml ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/
 cp ~/.local/share/gtksourceview-4/styles/railscasts.xml ~/Programs/configure/home/.local/share/gtksourceview-4/styles/
+cp ~/.local/share/gtksourceview-4/styles/dracula.xml ~/Programs/configure/home/.local/share/gtksourceview-4/styles/
 [ -d ~/Programs/configure/home/.local/share/rofi/themes ] || mkdir -p ~/Programs/configure/home/.local/share/rofi/themes
-cp ~/.local/share/rofi/themes/harris.rasi ~/Programs/configure/home/.local/share/rofi/themes/
-[ -d ~/Programs/configure/root/usr/share/gtksourceview-4/language-specs ] || mkdir -p ~/Programs/configure/root/usr/share/gtksourceview-4/language-specs
-cp /usr/share/gtksourceview-4/language-specs/csv.lang ~/Programs/configure/root/usr/share/gtksourceview-4/language-specs/
+cp ~/.local/share/rofi/themes/harris.rasi "$HOME/Programs/configure/home/.local/share/rofi/themes/$currentTheme.rasi"
+#[ -d ~/Programs/configure/root/usr/share/gtksourceview-4/language-specs ] || mkdir -p ~/Programs/configure/root/usr/share/gtksourceview-4/language-specs
+#cp /usr/share/gtksourceview-4/language-specs/csv.lang ~/Programs/configure/root/usr/share/gtksourceview-4/language-specs/
 [ -d ~/Programs/configure/root/etc/udev/hwdb.d ] || mkdir -p ~/Programs/configure/root/etc/udev/hwdb.d
 cp /etc/udev/hwdb.d/65-keyboard-custom.hwdb ~/Programs/configure/root/etc/udev/hwdb.d/
 
@@ -68,9 +82,9 @@ cp /etc/udev/hwdb.d/65-keyboard-custom.hwdb ~/Programs/configure/root/etc/udev/h
 
 [ -d ~/Programs/configure/xfce4  ] || mkdir ~/Programs/configure/xfce4 
 
-sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml > ~/Programs/configure/xfce4/xfce4-panel.xml
+sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml > ~/Programs/configure/xfce4/xfce4-panel-$currentTheme.xml
 sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml > ~/Programs/configure/xfce4/xfce4-keyboard-shortcuts.xml
 
 cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/Programs/configure/xfce4/
 cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml ~/Programs/configure/xfce4/
-cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml ~/Programs/configure/xfce4/
+cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml ~/Programs/configure/xfce4/xfwm4-$currentTheme.xml
