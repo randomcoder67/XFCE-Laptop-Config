@@ -6,10 +6,13 @@
 /organisation/
 /output/
 /smallPrograms/
+/system/keyboardOther/helpUI/go.sum
+/system/keyboardOther/helpUI/helpUI
 /system/keyboardOther/soundboard
 /terminal/alias/passGen.sh
 /terminal/terminalPrograms/astro
 /terminal/terminalPrograms/goBins
+/terminal/terminalPrograms/mdToGroff/go.sum
 /terminal/terminalPrograms/musicTag/music_tag/
 /terminal/terminalPrograms/strava/strava.txt.gpg
 /website
