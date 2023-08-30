@@ -30,7 +30,7 @@ cp ~/.config/systemd/user/files.timer ~/Programs/configure/home/.config/systemd/
 [ -d ~/Programs/configure/home/.config/alacritty ] || mkdir ~/Programs/configure/home/.config/alacritty
 cp ~/.config/alacritty/alacritty.yml "$HOME/Programs/configure/home/.config/alacritty/$currentTheme.yml"
 [ -d ~/Programs/configure/home/.config/btop ] || mkdir ~/Programs/configure/home/.config/btop
-cp ~/.config/btop/btop.conf ~/Programs/configure/home/.config/btop/
+cp ~/.config/btop/btop.conf ~/Programs/configure/home/.config/btop/$currentTheme.conf
 [ -d ~/Programs/configure/home/.config/Code\ -\ OSS/User ] || mkdir -p ~/Programs/configure/home/.config/Code\ -\ OSS/User
 cp ~/.config/Code\ -\ OSS/User/settings.json "$HOME/Programs/configure/home/.config/Code - OSS/User/$currentTheme.json"
 [ -d ~/Programs/configure/home/.config/glow ] || mkdir ~/Programs/configure/home/.config/glow
@@ -57,7 +57,7 @@ cp ~/.config/songrec/preferences.toml ~/Programs/configure/home/.config/songrec/
 cp ~/.config/npm/npmrc ~/Programs/configure/home/.config/npm/
 [ -d ~/Programs/configure/home/.config/micro ] || mkdir ~/Programs/configure/home/.config/micro
 cp ~/.config/micro/bindings.json ~/Programs/configure/home/.config/micro/
-cp ~/.config/micro/settings.json ~/Programs/configure/home/.config/micro/
+cp ~/.config/micro/settings.json ~/Programs/configure/home/.config/micro/settings-$currentTheme.json
 [ -d ~/Programs/configure/home/.config/cava ] || mkdir ~/Programs/configure/home/.config/cava
 cp ~/.config/cava/config ~/Programs/configure/home/.config/cava/
 [ -d ~/Programs/configure/home/.config/vis ] || mkdir ~/Programs/configure/home/.config/vis
@@ -86,5 +86,5 @@ sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/x
 sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml > ~/Programs/configure/xfce4/xfce4-keyboard-shortcuts.xml
 
 cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/Programs/configure/xfce4/
-cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml ~/Programs/configure/xfce4/
+cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml ~/Programs/configure/xfce4/xsettings-$currentTheme.xml
 cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml ~/Programs/configure/xfce4/xfwm4-$currentTheme.xml
