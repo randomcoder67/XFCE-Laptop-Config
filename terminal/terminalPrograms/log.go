@@ -39,12 +39,15 @@ func getJSON(fileName string) map[string]interface{} {
 
 
 // Add a new entry for today (or yesterday if before 1700)
-func newEntry() {
+func newEntry(previousDay bool) {
 	var dt time.Time
 	if time.Now().Hour() < 17 {
 		dt = time.Now().AddDate(0, 0, -1) // Get yesterdays date if time is before 1700 
 	} else {
 		dt = time.Now()
+	}
+	if previousDay {
+		dt = dt.AddDate(0, 0, -1)
 	}
 	fmt.Printf("Adding entry for: %s\n", dt.Format("Monday, 02 Jan 2006"))
 	
@@ -332,9 +335,11 @@ func main() {
 				fmt.Println("Usage: log -f/fa (year)")
 			}
 		} else if arg == "-h" { // Display help
-			fmt.Println("Options:\n  log - Add New Entry\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s string yy/yymm - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
-		} 
+			fmt.Println("Options:\n  log - Add New Entry\n  -p Add New Entry (Previous Day)\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s string yy/yymm - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
+		} else if arg == "-p" {
+			newEntry(true)
+		}
 	} else { // If no arguments, add new entry
-		newEntry()
+		newEntry(false)
 	}
 }
