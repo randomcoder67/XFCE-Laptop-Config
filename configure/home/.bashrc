@@ -290,6 +290,7 @@ export MICRO_TRUECOLOR=1
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 source ~/Programs/output/updated/openAIKey.sh
+source ~/Programs/terminal/autocompletion.bash
 
 #alias a='fasd -a'		# any
 #alias s='fasd -si'	   # show / search / select
