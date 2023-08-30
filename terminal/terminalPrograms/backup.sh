@@ -114,7 +114,7 @@ elif [[ "$1" == "time" ]]; then
 		echo -n "${time/ / at }: "
 		dateA=${time%% *}
 		diffA=$(( ($(date --date="$curDate" +%s) - $(date --date="$dateA" +%s) )/(60*60*24) ))
-		echo "${diffA} days ago"
+		echo "${diffA} day(s) ago"
 	done
 # Option to list commands
 else
