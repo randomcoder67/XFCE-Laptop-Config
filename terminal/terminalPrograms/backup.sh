@@ -48,7 +48,7 @@ elif [[ "$1" == "diff" ]]; then
 	find ~/Downloads/BackupMount/hashHistory/ | sort | tail -n 2 | xargs diff --color
 # Option to make new backup 
 elif [[ "$1" == "make" ]]; then
-	echo $(date +"%y%m%d %H:%M") > "$backupHistory"
+	echo $(date +"%y%m%d %H:%M") >> "$backupHistory"
 	echo "Making New Backup"
 	# Copy previous 2nd backup to 3rd position 
 	echo "Copying 2nd most recent backup to 3rd position"

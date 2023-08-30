@@ -36,6 +36,7 @@ chudlogicTwitch &
 nerdcubedTwitch &
 timeout 10 curl -s "https://www.youtube.com/@ManyATrueNerd/live" > ~/Programs/output/.streams/streamsCheck/matnYouTube.html &
 dustinedenTwitch &
+timeout 10 curl -s "https://www.youtube.com/@NoahSundayCompletionist" > ~/Programs/output/.streams/streamsCheck/noahsundayYouTube.html
 #timeout 10 curl -s "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.html &
 wait
 
@@ -93,4 +94,12 @@ then
 	echo "Dustin Eden: Live (Twitch)"
 else
 	echo "Dustin Eden: Not Live"
+fi
+
+# Noah Sunday Check
+if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/noahsundayYouTube.html
+then
+	echo "Noah Sunday: Live (YouTube)"
+else
+	echo "Noah Sunday: Not Live"
 fi
