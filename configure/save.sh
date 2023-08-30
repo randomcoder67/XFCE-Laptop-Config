@@ -7,6 +7,10 @@ elif [[ "$1" == "dracula" ]]; then
 	echo "Saving current as Dracula"
 	currentTheme="dracula"
 else
+	echo "Error, no colour scheme specified, please specify current colourscheme"
+	echo "Options are:"
+	echo "  railscasts"
+	echo "  dracula"
 	exit
 fi
 
