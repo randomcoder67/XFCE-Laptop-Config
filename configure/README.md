@@ -113,6 +113,7 @@
 `lc` count items in folder  
 `lca` count items in folder (include hidden)  
 `rmedir` remove empty dirs  
+`wl` select video from YouTube Watch Later to play with mpv  
 
 ### Info programs
 
