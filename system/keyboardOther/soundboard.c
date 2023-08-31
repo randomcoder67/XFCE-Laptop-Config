@@ -30,6 +30,7 @@ int main(void)
 	addstr("Gnome - i\n");
 	addstr("Alarm - a\n");
 	addstr("Airhorn - d\n");
+	addstr("Rewind - g\n");
 	addstr("Stop Sound - 1\n");
 	refresh();
 	while(1) {
@@ -87,6 +88,9 @@ int main(void)
 		}
 		if (a == 'd') {
 			system("mpv --no-resume-playback ~/Programs/output/.sounds/airhorn.m4a 2>/dev/null >> /dev/null & disown");
+		}
+		if (a == 'g') {
+			system("mpv --no-resume-playback ~/Programs/output/.sounds/tape.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'q') {
 			break;

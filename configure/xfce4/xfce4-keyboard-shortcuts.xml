@@ -70,8 +70,8 @@
 	  <property name="&lt;Super&gt;j" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/tile.sh -r"/>
 	  <property name="&lt;Super&gt;n" type="string" value="alacritty -e nethogs"/>
 	  <property name="&lt;Super&gt;u" type="string" value="alacritty -e /home/GENERICUSERNAME/.local/bin/cava"/>
-	  <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=24&quot; -o &quot;window.dimensions.columns=24&quot; -o &quot;window.title=Soundboard&quot; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
 	  <property name="&lt;Super&gt;y" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/xcolor.sh"/>
+	  <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=25&quot; -o &quot;window.dimensions.columns=24&quot; -o &quot;window.title=Soundboard&quot; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">
