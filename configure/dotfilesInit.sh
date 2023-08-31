@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to initalise dotfiles in given theme
+
 currentTheme=""
 
 if [[ "$1" == "railscasts" ]]; then

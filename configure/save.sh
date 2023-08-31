@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+# Script to save current dotfiles as a given theme in git repo
+
 currentTheme=""
 
 if [[ "$1" == "railscasts" ]]; then

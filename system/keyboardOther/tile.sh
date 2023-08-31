@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to tile windows in Xfwm4
+
 # Get ID of current window 
 curWindowID=$(printf 0x%x $(xdotool getactivewindow) | sed 's/0x/0x0/g')
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to allow interacting with Strava API from terminal
+
 dirName="$HOME/Programs/terminal/terminalPrograms/strava"
 dirTemp="$HOME/Programs/output/.temp"
 

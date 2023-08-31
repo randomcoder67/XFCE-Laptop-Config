@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Autocompletion for my programs/scripts
+
 backupCurrent="$HOME/Programs/output/updated/backup.txt"
 
 # Gets output of file and matches the lines within, but case insensitive

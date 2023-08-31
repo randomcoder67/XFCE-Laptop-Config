@@ -167,7 +167,7 @@ alias cal="unbuffer cal -n 3 | sed '/^ *$/d'"
 
 # Stream things  
 
-alias destiny='~/Programs/terminal/alias/destiny.sh'
+alias destiny='mpv --title=Destiny --ytdl-format=best https://www.youtube.com/@Destiny/live & disown'
 alias chudlogic='do_chudlogic'
 alias nerdcubed='mpv --title=NerdCubed https://www.twitch.tv/nerdcubed best 2>&1 & disown'
 alias dustineden='mpv --title="Dustin Eden" https://www.twitch.tv/dustineden best 2>&1 & disown'
@@ -249,7 +249,7 @@ alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
 alias schedule='~/Programs/terminal/terminalPrograms/goBins/schedule'
 alias log='~/Programs/terminal/terminalPrograms/goBins/log'
 alias weather='python3 ~/Programs/smallPrograms/metOffice/metOffice.py'
-alias shows='~/Programs/terminal/shows.sh'
+alias shows='~/Programs/terminal/alias/shows.sh'
 alias money='~/Programs/terminal/terminalPrograms/goBins/money'
 alias days='~/Programs/terminal/terminalPrograms/goBins/until'
 
@@ -264,7 +264,7 @@ alias mpvf='~/Programs/terminal/alias/findOpen.sh mpv'
 
 alias albumart='~/Programs/terminal/terminalPrograms/albumArt.sh'
 alias groffdoc='python3 ~/Programs/terminal/terminalPrograms/mdToGroff.py'
-alias programs='~/Programs/terminal/addRemove.sh'
+alias programs='~/Programs/terminal/alias/addRemove.sh'
 alias checkfiles='~/Programs/system/rofi/checkFiles.sh'
 alias rm='~/Programs/terminal/alias/rm.sh'
 alias backup='~/Programs/terminal/terminalPrograms/backup.sh'

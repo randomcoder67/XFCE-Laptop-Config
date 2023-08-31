@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to download YouTube videos/playlists into defined folders
+
 # Get dir from which this script was called
 rootDir=$(pwd)
 
