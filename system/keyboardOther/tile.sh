@@ -2,6 +2,15 @@
 
 # Script to tile windows in Xfwm4
 
+# Check if theme is dracula
+if [ "$1" == "-d" ]; then
+	draculaOffset=12
+	draculaOffset2=6
+else
+	draculaOffset=0
+	draculaOffset2=0
+fi
+
 # Get ID of current window 
 curWindowID=$(printf 0x%x $(xdotool getactivewindow) | sed 's/0x/0x0/g')
 
@@ -33,8 +42,9 @@ done
 
 # If height is 1330, asjust horizontally, otherwise adjust vertically
 if [[ "$height" == "1330" ]]; then
-	expectedPosX=$((width+10+10)) # The expected position of the window to the side is current + borders
+	expectedPosX=$((width+10+10-draculaOffset)) # The expected position of the window to the side is current + borders
 	# Iterate through the filtered stack and find the first window in the expected position
+	echo $expectedPosX
 	for id in "${stackFiltered[@]}"; do
 		curWindowInStack=$(echo "$windows" | grep "$id" | tr -s ' ')
 		winWidth=${curWindowInStack#* * * * }
@@ -43,6 +53,7 @@ if [[ "$height" == "1330" ]]; then
 		winHeight=${winHeight%% *}
 		winPosX=${curWindowInStack#* * }
 		winPosX=${winPosX%% *}
+		echo $id, $winPosX
 		if [[ "$winHeight" == "1330" && "$winPosX" == "$expectedPosX" ]]; then
 			matchingWindow="$curWindowInStack"
 			break
@@ -52,16 +63,16 @@ if [[ "$height" == "1330" ]]; then
 	# Get ID of matching window
 	tiledWindowID=${matchingWindow%% *}
 	
-	if [[ "$1" == "" ]]; then
+	if [[ "$2" == "" ]]; then
 		# Stop xfwm4 from overwriting the move when changing workspaces
 		wmctrl -r "$tiledWindowID" -i -b add,maximized_vert
 		wmctrl -r "$curWindowID" -i -b add,maximized_vert
 		# If the left window is expanding, make right window smaller then move it back to the edge
 		xdotool windowsize "$tiledWindowID" "$((winWidth-40))" "$winHeight"
-		xdotool windowmove "$tiledWindowID" "$((winPosX-10+40))" $((65-29))
+		xdotool windowmove "$tiledWindowID" "$((winPosX-10+40+draculaOffset2))" $((65-29))
 		# Then make the left window bigger to fill the avalible space
 		xdotool windowsize "$curWindowID" "$((width+40))" "$height"
-	elif [[ "$1" == "-r" ]]; then
+	elif [[ "$2" == "-r" ]]; then
 		# Stop xfwm4 from overwriting the move when changing workspaces
 		wmctrl -r "$tiledWindowID" -i -b add,maximized_vert
 		wmctrl -r "$curWindowID" -i -b add,maximized_vert
