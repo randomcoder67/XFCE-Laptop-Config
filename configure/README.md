@@ -147,6 +147,7 @@
 `getpass` get randomly generated password  
 `sky` get position of planets in sky  
 `timer` timer program  
+`domount` disk mounting script  
 
 ### Fun
 
