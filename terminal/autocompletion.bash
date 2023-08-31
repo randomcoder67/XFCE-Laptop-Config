@@ -82,9 +82,23 @@ _daysCompletion() {
 
 _logCompletion() {
 	if [ "${#COMP_WORDS[@]}" != "2" ]; then
+		if [ "${COMP_WORDS[1]}" == "-d" ] && [ "${#COMP_WORDS[@]}" == "3" ]; then # If -d was chosen, then display the avalible days
+			if [ ${#COMP_WORDS[2]} -ge 4 ]; then # If month already filled, start showing avalible days
+				curLogMonth=${COMP_WORDS[2]:0:4} # Get month in yymm format
+				[ -f ~/Programs/output/log/${curLogMonth}.json ] || return 0 # Check that month exists, if not, don't continue
+				curMonthSuggestions=$(cat ~/Programs/output/log/$curLogMonth.json | jq -r 'keys[]' | sed "s/\(.*\)/$curLogMonth\1/g") # Get the days avalible in given month
+				COMPREPLY=( $(compgen -W "$curMonthSuggestions" -- "${COMP_WORDS[2]}") )
+				return 0
+			else # Otherwise just show avalible months
+				COMPREPLY=( $(compgen -W "$(ls ~/Programs/output/log/ | grep -oE [0-9]*)" -- "${COMP_WORDS[2]}") )
+				return 0
+			fi
+		elif [ "${COMP_WORDS[1]}" == "-ds" ] && [ "${#COMP_WORDS[@]}" == "3" ]; then # If -ds was chosen, show avalible months
+			COMPREPLY=( $(compgen -W "$(ls ~/Programs/output/log/ | grep -oE [0-9]*)" -- "${COMP_WORDS[2]}") )
+		fi
 		return 0
 	fi
-	COMPREPLY=( $(compgen -W "-h -p -ds -s -f -fa" -- "${COMP_WORDS[1]}") )
+	COMPREPLY=( $(compgen -W "-h -p -d -ds -s -f -fa" -- "${COMP_WORDS[1]}") )
 }
 
 _scheduleCompletion() {
@@ -111,6 +125,13 @@ _moneyCompletion() {
 	COMPREPLY=( $(compgen -W "-h -a -f -d -s" -- "${COMP_WORDS[1]}") )
 }
 
+_savedotfilesCompletion() {
+	if [ "${#COMP_WORDS[@]}" != "2" ]; then
+		return 0
+	fi
+	COMPREPLY=( $(compgen -W "$(grep -A 2 'Options are' ~/Programs/configure/save.sh | tail -n 2 | sed 's/	echo \"  //g' | tr -d \"\"\")" -- "${COMP_WORDS[1]}") )
+}
+
 complete -F _backupCompletion backup
 complete -F _getpassCompletion getpass
 complete -F _programsCompletion programs
@@ -122,3 +143,4 @@ complete -F _daysCompletion days
 complete -F _logCompletion log
 complete -F _scheduleCompletion schedule
 complete -F _moneyCompletion money
+complete -F _savedotfilesCompletion savedotfiles

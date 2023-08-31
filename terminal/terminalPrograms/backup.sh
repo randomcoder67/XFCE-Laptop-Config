@@ -94,7 +94,7 @@ elif [[ "$1" == "make" ]]; then
 	done
 
 	echo "Comparing hashes"
-	diff "$backupDir""/$backup1""/hashesBackup.txt" "$backupDir""/$backup1""/hashesOriginal.txt"
+	diff --color "$backupDir""/$backup1""/hashesBackup.txt" "$backupDir""/$backup1""/hashesOriginal.txt"
 	
 	echo "Saving hash files with timestamps"
 	
