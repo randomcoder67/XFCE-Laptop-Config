@@ -242,6 +242,7 @@ alias todo='micro ~/Programs/output/updated/todo.md'
 alias lc='ls | wc -l'
 alias lca='ls -A | wc -l'
 alias rmedir='find . -type d -empty -delete'
+alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
 
 # Info programs 
 

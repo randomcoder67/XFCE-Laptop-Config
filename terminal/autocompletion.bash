@@ -24,8 +24,8 @@ _backupCompletion () {
 			return 0
 		fi
 	fi
-	suggestions=( $(compgen -W "make list ls add remove diff time" -- "${COMP_WORDS[1]}") )
-	COMPREPLY=$suggestions
+	COMPREPLY=( $(compgen -W "make list ls add remove diff time" -- "${COMP_WORDS[1]}") )
+	#COMPREPLY=$suggestions this causes it to just paste first one. Why?
 }
 
 _getpassCompletion() {
