@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Script to extract Strava segment leaderboard info from webpage
+
 from bs4 import BeautifulSoup
 import requests
 import sys

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to backup important files
+
 # Set directories 
 backupDir="$HOME/Downloads/BackupMount"
 backupCurrent="$HOME/Programs/output/updated/backup.txt"

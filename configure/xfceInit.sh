@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to initialise Xfce config files, need to be run when Xfce4 not loaded (e.g. from Arch terminal)
+
 sed 's/GENERICUSERNAME/OUTPUTUSERNAME/g' ~/Programs/configure/xfce4/xfce4-panel.xml > ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 sed 's/GENERICUSERNAME/OUTPUTUSERNAME/g' ~/Programs/configure/xfce4/xfce4-keyboard-shortcuts.xml > ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 

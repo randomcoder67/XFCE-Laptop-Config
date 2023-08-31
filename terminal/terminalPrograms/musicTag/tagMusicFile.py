@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Script to tag music in correct format and with album art from given Apple Music album
+
 import music_tag
 import pandas as pd
 import os

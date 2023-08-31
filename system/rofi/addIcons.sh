@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+# Adds icons to files in rofiLauncher.sh
+
 #sed -n -e '/[.]sh$/s/^/#/' ~/Programs/output/updated/files.txt > files2.txt
 
 #sed -n 's/\(.*[.]sh\)/echo -en \"\1thing/p' ~/Programs/output/updated/files.txt

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-tempDirectory="$HOME/Programs/output/.temp/" # Set directory to store the files while you view them
-
 # Makes collage of all album art in directory
+
+tempDirectory="$HOME/Programs/output/.temp/" # Set directory to store the files while you view them
 
 IFS=$'\n'
 files=( $(find "$HOME/Music/curPlaylist" -mindepth 1 | grep -vP "^.$") ) # Get files excluding useless stuff

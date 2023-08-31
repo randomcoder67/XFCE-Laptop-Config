@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Original script to initalise dotfiles, not used anymore
+
 mkdir ~/Programs
 mkdir ~/Programs/output
 mkdir ~/Programs/output/log

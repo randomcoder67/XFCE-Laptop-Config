@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Script to index files for rofiLauncher.sh
+
 #SAVEIFS=$IFS # Save current IFS (Internal Field Separator)
 #IFS=$'\n'
 
