@@ -22,7 +22,7 @@ for title in "${titles[@]}"; do
 done
 
 read -p "Enter video to watch (q to quit): " videoSelection
-[[ "$videoSelection" == "q" ]] && exit
+[[ "$videoSelection" == "q" ]] || [[ "$videoSelection" == "" ]] || ((videoSelection>index-1)) && exit
 
 realIndex=$((videoSelection-1))
 mpv --title="${titles[$realIndex]}" --ytdl-format="best" "${urls[$realIndex]}"

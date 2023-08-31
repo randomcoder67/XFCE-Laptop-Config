@@ -132,6 +132,20 @@ _savedotfilesCompletion() {
 	COMPREPLY=( $(compgen -W "$(grep -A 2 'Options are' ~/Programs/configure/save.sh | tail -n 2 | sed 's/	echo \"  //g' | tr -d \"\"\")" -- "${COMP_WORDS[1]}") )
 }
 
+_removeCompletion() {
+	if [ "${#COMP_WORDS[@]}" != "2" ]; then
+		return 0
+	fi
+	COMPREPLY=( $(compgen -W "$(pacman -Qe | cut -d ' ' -f 1)" -- "${COMP_WORDS[1]}") )
+}
+
+_musicCompletion() {
+	if [ "${#COMP_WORDS[@]}" != "2" ]; then
+		return 0
+	fi
+	COMPREPLY=( $(compgen -W "-a" -- "${COMP_WORDS[1]}") )
+}
+
 complete -F _backupCompletion backup
 complete -F _getpassCompletion getpass
 complete -F _programsCompletion programs
@@ -144,3 +158,5 @@ complete -F _logCompletion log
 complete -F _scheduleCompletion schedule
 complete -F _moneyCompletion money
 complete -F _savedotfilesCompletion savedotfiles
+complete -F _removeCompletion remove
+complete -F _musicCompletion music
