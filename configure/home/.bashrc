@@ -292,6 +292,7 @@ alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
 alias getpass='~/Programs/terminal/alias/passGen.sh'
 alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
 alias timer='~/Programs/terminal/terminalPrograms/goBins/timer'
+alias domount='~/Programs/terminal/terminalPrograms/mount.sh'
 
 # Fun 
 
