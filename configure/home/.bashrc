@@ -181,6 +181,7 @@ alias diff='diff --color'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 #alias gpg2='gpg2 --homedir "$XDG_DATA_HOME"/gnupg'
 alias cal="unbuffer cal -n 3 | sed '/^ *$/d'"
+alias as='echo "Use \as to run as command, disabled as too easy to type accidentally, creating unnecessary a.out file in home directory"'
 
 # Stream things  
 
