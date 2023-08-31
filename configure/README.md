@@ -37,6 +37,7 @@
 `wget` wget with history file set to XDG cache directory  
 `mkcdir` make directory and cd into it  
 `cal` shows next 3 months (inclusive)  
+`as` made as an alias to stop accidental creation of a.out file  
 
 ### Stream things
 
