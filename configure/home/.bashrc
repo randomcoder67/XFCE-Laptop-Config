@@ -29,47 +29,56 @@ PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31
 
 # Functions
 
+# Make directory and cd into it
 mkcdir () {
 	mkdir -p -- "$1" &&
 	cd -P -- "$1"
 }
 
+# Grep but only show surrounding character, useful for files with very long lines, like a lot of HTML files
 grepc () {
 	grep --color=no -i -o -P ".{0,100}$1.{0,100}" $2
 }
 
+# Shutdown with confirmation
 shutdown () {
 	read -p "Shutdown? (y/N) " yesOrNoShutdown
 	[[ "$yesOrNoShutdown" == "y" ]] && /usr/bin/shutdown -h 0
 }
 
+# Reboot with confirmation
 reboot () {
 	read -p "Reboot? (y/N) " yesOrNoReboot
 	[[ "$yesOrNoReboot" == "y" ]] && /usr/bin/reboot
 }
 
+# Hibernate to disk with confirmation
 hibernate () {
 	read -p "Hibernate? (y/N) " yesOrNoHibernate
 	[[ "$yesOrNoHibernate" == "y" ]] && command systemctl hibernate
 }
 
+# Hybrid-Sleep with confirmation, i.e. sleep to RAM and disk in case battery dies
 snooze () {
 	read -p "Sleep? (y/N) " yesOrNoSnooze
 	[[ "$yesOrNoSnooze" == "y" ]] && command systemctl hybrid-sleep
 }
 
+# Open pdf files in Zathura
 pdf () {
 	for arg; do
 		zathura "$arg" & disown
 	done
 }
 
+# Open files with Mousepad
 ms () {
 	for arg; do
 		mousepad "$arg" & disown
 	done
 }
 
+# Open files with Mousepad in a new window
 msn () {
 	mousepad -o window & disown
 	sleep 0.2
@@ -78,14 +87,17 @@ msn () {
 	done
 }
 
+# Open video with mpv
 do_mpv () {
 	/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
 }
 
+# Open YouTube video with mpv
 do_mpv-yt () {
 	/usr/bin/mpv --really-quiet --title='${media-title}' --ytdl-format=best "$@" & disown
 }
 
+# Open images in Ristretto
 rs () {
 	inputA=""
 	for arg; do
@@ -95,23 +107,28 @@ rs () {
 	ristretto $inputA & disown
 }
 
+# Move image and tags with tmsu
 tmsumv () {
 	mv "$1" "$2" && tmsu repair --manual "$1" "$2"
 }
 
+# Open images with given tmsu tag in Ristretto
 view () {
 	tmsu files "$1" | grep -P ".jpg|.jpeg|.png|.webp" | xargs ristretto & disown
 }
 
+# Search root directory
 findr () {
 	find / -iname "$1" 2>&1 | grep -v 'Permission denied'
 }
 
+# Launch ChudLogic stream
 do_chudlogic () {
 	/usr/bin/mpv --really-quiet --ytdl-format=best --title="Chud Logic" https://www.youtube.com/@ChudLogic/live || notify-send "Error, YouTube stream failed to open" 2>&1 & disown
 	/usr/bin/mpv --really-quiet --title="Chud Logic" https://www.twitch.tv/chudlogic best || notify-send "Error, Twitch stream failed to open" 2>&1 & disown
 }
 
+# Function to show time in various locations
 t () {
 	TZ="America/Los_Angeles" date +"Los Angeles: 	%H:%M:%S - %a, %b %d (%Z)"
 	TZ="America/New_York" date +"New York: 	%H:%M:%S - %a, %b %d (%Z)"
