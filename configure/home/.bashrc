@@ -261,6 +261,7 @@ alias lc='ls | wc -l'
 alias lca='ls -A | wc -l'
 alias rmedir='find . -type d -empty -delete'
 alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
+alias gtop='sudo intel_gpu_top'
 
 # Info programs 
 
