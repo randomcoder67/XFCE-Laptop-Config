@@ -115,6 +115,7 @@
 `lca` count items in folder (include hidden)  
 `rmedir` remove empty dirs  
 `wl` select video from YouTube Watch Later to play with mpv  
+`gtop` Intel GPU Top (needs sudo)  
 
 ### Info programs
 
