@@ -109,7 +109,7 @@ func convertDayToDate(day string) string {
 		dt := time.Now()
 		var curDay int = int(dt.Weekday()) - 1 // Gets 0 indexed day of week 
 		if curDay == -1 {
-			curDay = 7
+			curDay = 6
 		}
 		dtFinal = time.Now().AddDate(0, 0, (dayToNum[day]-curDay+toAdd))
 	}
