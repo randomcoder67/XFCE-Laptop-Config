@@ -126,6 +126,10 @@ elif [[ $selection == "cava" ]]; then
 	alacritty -e "$HOME/.local/bin/cava"
 elif [[ $selection == "Check All" ]]; then
 	firefox --new-tab "https://mail.google.com/mail/u/1" --new-tab "https://mail.google.com/mail/u/2" --new-tab "https://outlook.office.com/mail/" --new-tab "https://github.com" --new-tab "https://old.reddit.com" --new-tab "https://stackoverflow.com/" --new-tab "https://www.bbc.co.uk/news" --new-tab "https://www.nasa.gov/multimedia/imagegallery/iotd.html"
+elif [[ -d ~/Videos/Media/$selection ]]; then # If a season of TV selected, get season and episode then play
+	season=$(ls "$HOME/Videos/Media/$selection" | tr -d '/' | sed -n 's/Season\([0-9]*\)/\1\0/p' | sort -n | grep -Eo "Season[0-9]+" | rofi -dmenu -p "Select Season")
+	episode=$(ls "$HOME/Videos/Media/$selection/$season" | tr -d '/' | sed -n 's/Episode\([0-9]*\).*/\1\0/p' | sort -n | grep -Eo "Episode[0-9]+[.].*" | rofi -dmenu -p "Select Episode")
+	mpv '--title=${filename}' "$HOME/Videos/Media/$selection/$season/$episode"
 else
 	${programs[$selection]}
 fi
