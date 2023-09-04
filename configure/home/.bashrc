@@ -43,25 +43,31 @@ grepc () {
 # Shutdown with confirmation
 shutdown () {
 	read -p "Shutdown? (y/N) " yesOrNoShutdown
-	[[ "$yesOrNoShutdown" == "y" ]] && /usr/bin/shutdown -h 0
+	[[ "$yesOrNoShutdown" == "y" ]] && xfce4-session-logout -h
 }
 
 # Reboot with confirmation
 reboot () {
 	read -p "Reboot? (y/N) " yesOrNoReboot
-	[[ "$yesOrNoReboot" == "y" ]] && /usr/bin/reboot
+	[[ "$yesOrNoReboot" == "y" ]] && xfce4-session-logout -r
 }
 
 # Hibernate to disk with confirmation
 hibernate () {
 	read -p "Hibernate? (y/N) " yesOrNoHibernate
-	[[ "$yesOrNoHibernate" == "y" ]] && command systemctl hibernate
+	[[ "$yesOrNoHibernate" == "y" ]] && xfce4-session-logout -i
 }
 
 # Hybrid-Sleep with confirmation, i.e. sleep to RAM and disk in case battery dies
 snooze () {
 	read -p "Sleep? (y/N) " yesOrNoSnooze
-	[[ "$yesOrNoSnooze" == "y" ]] && command systemctl hybrid-sleep
+	[[ "$yesOrNoSnooze" == "y" ]] && xfce4-session-logout -b
+}
+
+# Log Out with confirmation
+log-out () {
+	read -p "Log Out? (y/N) " yesOrNoLogOut
+	[[ "$yesOrNoLogOut" == "y" ]] && xfce4-session-logout -l
 }
 
 # Open pdf files in Zathura

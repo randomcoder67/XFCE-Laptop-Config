@@ -33,6 +33,7 @@
 		<value type="int" value="19"/>
 		<value type="int" value="1"/>
 		<value type="int" value="12"/>
+		<value type="int" value="29"/>
 		<value type="int" value="11"/>
 		<value type="int" value="13"/>
 		<value type="int" value="2"/>
@@ -223,6 +224,12 @@
 	</property>
 	<property name="plugin-28" type="string" value="separator">
 	  <property name="style" type="uint" value="0"/>
+	</property>
+	<property name="plugin-29" type="string" value="systray">
+	  <property name="known-legacy-items" type="array">
+		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (56%)"/>
+		<value type="string" value="configuring wi-fi network connection “unieduroam”…"/>
+	  </property>
 	</property>
   </property>
 </channel>
