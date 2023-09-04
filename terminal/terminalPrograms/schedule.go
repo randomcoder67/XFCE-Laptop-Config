@@ -141,6 +141,41 @@ func addEntry(time string, date string, description string) {
 	}
 }
 
+func addMultipleEntry(givenTime string, date string, description string, repeat string) {
+	// Create slice to add required weeks to
+	var weeksToAdd = []int{}
+	// Split repeat at commas to get weeks
+	splitRepeat := strings.Split(repeat, ",")
+	for _, x := range splitRepeat {
+		if strings.Contains(x, "-") { // If of the form x-y, add number x to y inclusive
+			xSplit := strings.Split(x, "-")
+			start, _ := strconv.Atoi(xSplit[0])
+			end, _ := strconv.Atoi(xSplit[1])
+			for i:=start; i<end+1; i++ {
+				weeksToAdd = append(weeksToAdd, i)
+			}
+		} else { // Otherwise just add number
+			xInt, _ := strconv.Atoi(x)
+			weeksToAdd = append(weeksToAdd, xInt)
+		}
+	}
+	
+	// Get the given date as a time object
+	var givenDate string
+	if len(date) == 6 {
+		givenDate = date
+	} else {
+		givenDate = convertDayToDate(date)
+	}
+	givenDateObject, _ := time.Parse("060102", givenDate)
+	
+	// Iterate through weeksToAdd
+	for _, toAdd := range weeksToAdd {
+		dateToAdd := givenDateObject.AddDate(0, 0, 7*toAdd) // Get the date by week offset (0 is this week)
+		addEntry(givenTime, dateToAdd.Format("060102"), description) // Add the entry
+	}
+}
+
 func dateToDay(date string) string {
 	givenDate, _ := time.Parse("060102", date)
 	day := givenDate.Day()
@@ -257,7 +292,7 @@ func printSchedule(columnA [][]string, columnB [][]string) {
 }
 
 func printHelp() {
-	fmt.Printf("Usage: \nTo View:\n  schedule [-n] (-n for next week)\nTo Add:\n  schedule -a hhmm yymmdd/day description to add\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n")
+	fmt.Printf("Usage: \nTo View:\n  schedule [-n] (-n for next week)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n")
 }
 
 func main() {
@@ -266,7 +301,11 @@ func main() {
 	if len(os.Args) > 1 {
 		arg := os.Args[1]
 		if arg == "-a" {
-			addEntry(os.Args[2], os.Args[3], os.Args[4])
+			if len(os.Args) == 5 {
+				addEntry(os.Args[2], os.Args[3], os.Args[4])
+			} else if len(os.Args) == 6 {
+				addMultipleEntry(os.Args[2], os.Args[3], os.Args[4], os.Args[5])
+			}
 		} else if arg == "-n" {
 			viewSchedule(true)
 		} else if arg == "-h" {
