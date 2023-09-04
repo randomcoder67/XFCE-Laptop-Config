@@ -44,6 +44,7 @@ mkdir ~/Downloads
 mkdir ~/Pictures
 mkdir ~/Videos
 mkdir ~/Music
+mkdir ~/Work
 mkdir ~/Pictures/mpv
 
 mkdir -p ~/.local/share/rofi/themes
