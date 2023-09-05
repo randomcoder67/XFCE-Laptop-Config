@@ -134,10 +134,15 @@ func addEntry(time string, date string, description string) {
 		}
 	}
 	
+	// Format description properly
 	description = strings.ReplaceAll(description, "\"", "'")
 	description = strings.ReplaceAll(description, "|", " ")
-	fileContents = fileContents + date + "|" + time + "|" + description + "\n"
+	if len(description) > 37 {
+		description = description[:34] + "..."
+	}
 	
+	// Add new entry and write to file
+	fileContents = fileContents + date + "|" + time + "|" + description + "\n"
 	err := os.WriteFile(fileName, []byte(fileContents), 0666)
 	if err != nil {
 		panic(err)
