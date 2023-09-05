@@ -59,9 +59,15 @@ hibernate () {
 }
 
 # Hybrid-Sleep with confirmation, i.e. sleep to RAM and disk in case battery dies
-snooze () {
-	read -p "Sleep? (y/N) " yesOrNoSnooze
-	[[ "$yesOrNoSnooze" == "y" ]] && xfce4-session-logout -b
+hybrid-sleep () {
+	read -p "Hybrid-Sleep? (y/N) " yesOrNoHybridSleep
+	[[ "$yesOrNoHybridSleep" == "y" ]] && xfce4-session-logout -b
+}
+
+# Sleep with confirmation (i.e. RAM only)
+qsleep () {
+	read -p "Sleep? (y/N) " yesOrNoQSleep
+	[[ "$yesOrNoQSleep" == "y" ]] && xfce4-session-logout -s
 }
 
 # Log Out with confirmation
@@ -306,6 +312,11 @@ alias domount='~/Programs/terminal/terminalPrograms/mount.sh'
 # Fun 
 
 alias asq='asciiquarium'
+
+# fasd
+
+alias m='fasd -sif -e mousepad'
+alias mn='fasd -sif -e "mousepad -o window"'
 
 HISTSIZE=20000
 HISTFILESIZE=20000

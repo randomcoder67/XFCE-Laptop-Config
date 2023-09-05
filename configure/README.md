@@ -16,8 +16,9 @@
 `shutdown` shutdown now (with confirmation)  
 `reboot` reboot (with confirmation)  
 `hibernate` hibernate (with confirmation)  
-`snooze` sleep (hybrid-sleep, to RAM or to disk if battery dies, with confirmation)  
+`hybrid-sleep` sleep (hybrid-sleep, to RAM or to disk if battery dies, with confirmation)  
 `log-out` log out (with confirmation)  
+`qsleep` sleep (normal sleep, to RAM only, faster)  
 
 ### Unix terminal programs
 
@@ -156,6 +157,11 @@
 ### Fun
 
 `asq` ascii aquarium  
+
+### fasd (autojump)
+
+`m` open with mousepad  
+`mn` open with mousepad (new window)  
 
 ## Keyboard shortcuts 
 

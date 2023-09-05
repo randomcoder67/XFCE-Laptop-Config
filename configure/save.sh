@@ -99,3 +99,4 @@ sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/x
 cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/Programs/configure/xfce4/
 cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml ~/Programs/configure/xfce4/xsettings-$currentTheme.xml
 cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml ~/Programs/configure/xfce4/xfwm4-$currentTheme.xml
+cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-screensaver.xml ~/Programs/configure/xfce4/xfce4-screensaver-$currentTheme.xml
