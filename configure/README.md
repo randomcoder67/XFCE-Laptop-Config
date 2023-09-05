@@ -254,6 +254,7 @@
 `u` Show Playlist  
 `/` Show OSC  
 `?` Toggle OSC  
+`m` Show Metadata  
 
 ### Rofi Bookmarks 
 
