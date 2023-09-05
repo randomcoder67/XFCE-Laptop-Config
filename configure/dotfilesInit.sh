@@ -88,6 +88,8 @@ cp ~/Programs/configure/home/.profile ~/.profile
 
 cp ~/Programs/configure/home/.config/systemd/user/files.service ~/.config/systemd/user/files.service
 cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/user/files.timer
+cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.service ~/.config/systemd/user/panelRefresh.service
+cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.timer ~/.config/systemd/user/panelRefresh.timer
 cp ~/Programs/configure/home/.config/alacritty/$currentTheme.yml ~/.config/alacritty/alacritty.yml
 cp ~/Programs/configure/home/.config/btop/btop.conf ~/.config/btop/btop.conf
 cp ~/Programs/configure/home/.config/Code\ -\ OSS/User/$currentTheme.json ~/.config/Code\ -\ OSS/User/settings.json
@@ -134,6 +136,12 @@ systemctl --user start files.service
 
 systemctl --user enable files.timer
 systemctl --user start files.timer
+
+systemctl --user enable panelRefresh.service
+systemctl --user start panelRefresh.service
+
+systemctl --user enable panelRefresh.timer
+systemctl --user start panelRefresh.timer
 
 git config --global core.pager cat
 
