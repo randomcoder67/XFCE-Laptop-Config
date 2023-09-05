@@ -111,7 +111,7 @@ elif [[ "$1" == "time" ]]; then
 	curDate=$(date +"%y%m%d")
 	oldIFS="$IFS"
 	IFS=$'\n'
-	times=( $(cat "$backupHistory") )
+	times=( $(tac "$backupHistory") )
 	for time in "${times[@]}"; do
 		echo -n "${time/ / at }: "
 		dateA=${time%% *}

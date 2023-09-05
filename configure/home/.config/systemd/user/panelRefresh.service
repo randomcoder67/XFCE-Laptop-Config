@@ -1,0 +1,9 @@
+[Unit]
+Description=Refresh Panel Stream Scripts 30s After Bootup
+
+[Service]
+Type=simple
+ExecStart=%h/Programs/system/panel/manualPanelRefresh.sh
+
+[Install]
+WantedBy=default.target

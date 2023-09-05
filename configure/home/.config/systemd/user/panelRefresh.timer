@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh Panel Stream Scripts 30s After Bootup
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnBootSec=30
+Unit=panelRefresh.service
+
+[Install]
+WantedBy=timers.target

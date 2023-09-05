@@ -34,6 +34,8 @@ cp -r ~/.ssh ~/Programs/configure/home/
 [ -d ~/Programs/configure/home/.config/systemd/user ] || mkdir -p ~/Programs/configure/home/.config/systemd/user
 cp ~/.config/systemd/user/files.service ~/Programs/configure/home/.config/systemd/user/
 cp ~/.config/systemd/user/files.timer ~/Programs/configure/home/.config/systemd/user/
+cp ~/.config/systemd/user/panelRefresh.service ~/Programs/configure/home/.config/systemd/user/
+cp ~/.config/systemd/user/panelRefresh.timer ~/Programs/configure/home/.config/systemd/user/
 
 [ -d ~/Programs/configure/home/.config/alacritty ] || mkdir ~/Programs/configure/home/.config/alacritty
 cp ~/.config/alacritty/alacritty.yml "$HOME/Programs/configure/home/.config/alacritty/$currentTheme.yml"
