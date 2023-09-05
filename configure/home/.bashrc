@@ -83,25 +83,63 @@ pdf () {
 	done
 }
 
-# Open files with Mousepad
+# Open file with Mousepad (first match)
+_m () {
+	result=$(fasd -f $@)
+	[ "$result" == "" ] && return
+	mousepad "$result" & disown
+}
+
+# Open files with Mousepad (list all matches or full path(s))
 ms () {
-	for arg; do
-		mousepad "$arg" & disown
-	done
+	if [ -f ./"$1" ]; then # Check if full path, if so open all given files
+		for arg; do
+			mousepad "$arg" & disown
+		done
+	else # Otherwise list matches with fasd
+		result=$(fasd -fi $@)
+		[ "$result" == "" ] && return
+		mousepad "$result" & disown
+	fi
 }
 
-# Open files with Mousepad in a new window
+# Open file with Mousepad in a new window (first match)
+mn () {
+	result=$(fasd -f $@)
+	[ "$result" == "" ] && return
+	mousepad -o window "$result" & disown
+}
+
+# Open files with Mousepad in a new window (list all matches or full path(s))
 msn () {
-	mousepad -o window & disown
-	sleep 0.2
-	for arg; do
-		mousepad "$arg" & disown
-	done
+	if [ -f ./"$1" ]; then
+		mousepad -o window & disown
+		sleep 0.2
+		for arg; do
+			mousepad "$arg" & disown
+		done
+	else
+		result=$(fasd -fi $@)
+		[ "$result" == "" ] && return
+		mousepad -o window "$result" & disown
+	fi
 }
 
-# Open video with mpv
-do_mpv () {
-	/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
+# Open video with mpv (first match)
+_p () {
+	result=$(fasd -s $@ | grep -E 'mp3|m4a|ogg|wav|webm|mp4|m4v|mkv|avi|mov' | tr -s ' ' | cut -d " " -f 2- | tail -n 1)
+	/usr/bin/mpv --really-quiet --save-position-on-quit "$result" & disown
+}
+
+# Open video(s) with mpv (list all matches or full path(s))
+mpv () {
+	if [ -f ./"$1" ]; then
+		/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
+	else
+		result=$(fasd -fi $@)
+		[ "$result" == "" ] && return
+		/usr/bin/mpv --really-quiet --save-position-on-quit "$result" & disown
+	fi
 }
 
 # Open YouTube video with mpv
@@ -109,14 +147,26 @@ do_mpv-yt () {
 	/usr/bin/mpv --really-quiet --title='${media-title}' --ytdl-format=best "$@" & disown
 }
 
-# Open images in Ristretto
+# Open images in Ristretto (first match)
+_r () {
+	result=$(fasd -s $@ | grep -E 'png|svg|jpg|jpeg|gif|bmp' | tr -s ' ' | cut -d " " -f 2- | tail -n 1)
+	[ "$result" == "" ] && return
+	ristretto "$result" & disown
+}
+
+# Open images in Ristretto (list all matches or full path(s))
 rs () {
-	inputA=""
-	for arg; do
-		inputA="$inputA $arg"
-	done
-	echo $inputA
-	ristretto $inputA & disown
+	if [ -f ./"$1" ]; then
+		inputA=""
+		for arg; do
+			inputA="$inputA $arg"
+		done
+		ristretto $inputA & disown
+	else
+		result=$(fasd -fi $@)
+		[ "$result" == "" ] && return
+		ristretto "$result" & disown
+	fi
 }
 
 # Move image and tags with tmsu
@@ -172,8 +222,10 @@ trim_history () {
 
 # Program Openers 
 
-alias mpv='do_mpv'
+alias p='_p'
 alias mpv-yt='do_mpv-yt'
+alias m='_m'
+alias r='_r'
 
 # Unix terminal programs 
 
@@ -312,11 +364,6 @@ alias domount='~/Programs/terminal/terminalPrograms/mount.sh'
 # Fun 
 
 alias asq='asciiquarium'
-
-# fasd
-
-alias m='fasd -sif -e mousepad'
-alias mn='fasd -sif -e "mousepad -o window"'
 
 HISTSIZE=20000
 HISTFILESIZE=20000
