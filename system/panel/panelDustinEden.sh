@@ -5,18 +5,30 @@
 notLiveColour="e6e1dc"
 liveColour="da4939"
 upcomingColour="a5c261"
+noInternetColour="ffc66d"
+
+argA=$1
 
 if [[ "$1" == "-d" ]]; then
 	notLiveColour="fefef8"
 	liveColour="e64747"
 	upcomingColour="8CFF82"
+	noInternetColour="fd7fbe"
+	argA=$2
 fi
 
-#curl "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/panel/dustinedenTwitch.html
+if ! curl "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/panel/dustinedenTwitch.html; then
+	if [[ "$argA" == "-t" ]]; then
+		echo "<span foreground='#$noInternetColour'>  </span>"
+		echo "noInternet" > "$XDG_STATE_HOME/streams/dustineden.txt"
+	else
+		echo "<txt><span foreground='#$noInternetColour'>  </span></txt>"
+		echo "<tool>No Internet Connection</tool>"
+	fi
 #if grep -q isLiveBroadcast ~/Programs/output/.streams/panel/dustinedenTwitch.html
-if yt-dlp --write-info-json --skip-download https://www.twitch.tv/dustineden -P ~/Programs/output/.streams/panel -o "dustinedenTwitchMetadata.%(ext)s"
+elif yt-dlp --write-info-json --skip-download https://www.twitch.tv/dustineden -P ~/Programs/output/.streams/panel -o "dustinedenTwitchMetadata.%(ext)s"
 then
-	if [[ "$1" == "-t" ]]; then
+	if [[ "$argA" == "-t" ]]; then
 		echo "<span foreground='#$liveColour'>  </span>"
 		echo "twitch" > "$XDG_STATE_HOME/streams/dustineden.txt"
 	else
@@ -25,7 +37,7 @@ then
 		echo "<tool>Twitch - $streamTitle</tool>"
 	fi
 else
-	if [[ "$1" == "-t" ]]; then
+	if [[ "$argA" == "-t" ]]; then
 		echo "<span foreground='#$notLiveColour'>  </span>"
 		echo "notLive" > "$XDG_STATE_HOME/streams/dustineden.txt"
 	else

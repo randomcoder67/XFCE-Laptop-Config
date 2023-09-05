@@ -5,19 +5,31 @@
 notLiveColour="e6e1dc"
 liveColour="da4939"
 upcomingColour="a5c261"
+noInternetColour="ffc66d"
+
+argA=$1
 
 if [[ "$1" == "-d" ]]; then
 	notLiveColour="fefef8"
 	liveColour="e64747"
 	upcomingColour="8CFF82"
+	noInternetColour="fd7fbe"
+	argA=$2
 fi
 
-curl "https://www.youtube.com/@ManyATrueNerd/live" > ~/Programs/output/.streams/panel/matnYouTube.html
-if grep -q "Pop-out chat" ~/Programs/output/.streams/panel/matnYouTube.html
+if ! curl "https://www.youtube.com/@ManyATrueNerd/live" > ~/Programs/output/.streams/panel/matnYouTube.html; then
+	if [[ "$argA" == "-t" ]]; then
+		echo "<span foreground='#$noInternetColour'>  </span>"
+		echo "noInternet" > "$XDG_STATE_HOME/streams/matn.txt"
+	else
+		echo "<txt><span foreground='#$noInternetColour'>  </span></txt>"
+		echo "<tool>No Internet Connection</tool>"
+	fi
+elif grep -q "Pop-out chat" ~/Programs/output/.streams/panel/matnYouTube.html
 then
 	if grep -q "Live in" ~/Programs/output/.streams/panel/matnYouTube.html
 	then
-		if [[ "$1" == "-t" ]]; then
+		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$upcomingColour'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/matn.txt"
 		else
@@ -28,7 +40,7 @@ then
 		fi
 	elif grep -q "Waiting for MATN" ~/Programs/output/.streams/panel/matnYouTube.html
 	then
-		if [[ "$1" == "-t" ]]; then
+		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$upcomingColour'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/matn.txt"
 		else
@@ -36,7 +48,7 @@ then
 			echo "<tool>Waiting for MATN</tool>"
 		fi 
 	else
-		if [[ "$1" == "-t" ]]; then
+		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$liveColour'>  </span>"
 			echo "youtube" > "$XDG_STATE_HOME/streams/matn.txt"
 		else
@@ -46,7 +58,7 @@ then
 		fi
 	fi
 else
-	if [[ "$1" == "-t" ]]; then
+	if [[ "$argA" == "-t" ]]; then
 		echo "<span foreground='#$notLiveColour'>  </span>"
 		echo "notLive" > "$XDG_STATE_HOME/streams/matn.txt"
 	else

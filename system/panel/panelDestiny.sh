@@ -5,19 +5,31 @@
 notLiveColour="e6e1dc"
 liveColour="da4939"
 upcomingColour="a5c261"
+noInternetColour="ffc66d"
+
+argA=$1
 
 if [[ "$1" == "-d" ]]; then
 	notLiveColour="fefef8"
 	liveColour="e64747"
 	upcomingColour="8CFF82"
+	noInternetColour="fd7fbe"
+	argA=$2
 fi
 
-curl "https://www.youtube.com/@Destiny/live" > ~/Programs/output/.streams/panel/destinyYouTube.html
-if grep -q "Pop-out chat" ~/Programs/output/.streams/panel/destinyYouTube.html
+if ! curl -s "https://www.youtube.com/@Destiny/live" > ~/Programs/output/.streams/panel/destinyYouTube.html; then
+	if [[ "$argA" == "-t" ]]; then
+		echo "<span foreground='#$noInternetColour'>  </span>"
+		echo "noInternet" > "$XDG_STATE_HOME/streams/destiny.txt"
+	else
+		echo "<txt><span foreground='#$noInternetColour'>  </span></txt>"
+		echo "<tool>No Internet Connection</tool>"
+	fi
+elif grep -q "Pop-out chat" ~/Programs/output/.streams/panel/destinyYouTube.html
 then
 	if grep -q "Live in" ~/Programs/output/.streams/panel/destinyYouTube.html
 	then
-		if [[ "$1" == "-t" ]]; then
+		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$upcomingColour'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
@@ -27,7 +39,7 @@ then
 		fi
 	elif grep -q "Waiting for Destiny" ~/Programs/output/.streams/panel/destinyYouTube.html
 	then
-		if [[ "$1" == "-t" ]]; then
+		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$upcomingColour'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
@@ -35,7 +47,7 @@ then
 			echo "<tool>Waiting for Destiny</tool>"
 		fi 
 	else
-		if [[ "$1" == "-t" ]]; then
+		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$liveColour'>  </span>"
 			echo "youtube" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
@@ -48,7 +60,7 @@ else
 	curl -s "https://rumble.com/c/Destiny" > ~/Programs/output/.streams/panel/destinyRumble.html
 	if grep -q "class=video-item--live" ~/Programs/output/.streams/panel/destinyRumble.html
 	then
-		if [[ "$1" == "-t" ]]; then
+		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$liveColour'>  </span>"
 			echo "rumble" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
@@ -56,7 +68,7 @@ else
 			echo "<tool>Rumble</tool>"
 		fi
 	else
-		if [[ "$1" == "-t" ]]; then
+		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$notLiveColour'>  </span>"
 			echo "notLive" > "$XDG_STATE_HOME/streams/destiny.txt"
 		else
