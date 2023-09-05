@@ -171,11 +171,11 @@ along with this library; if not, see <http://www.gnu.org/licenses/>.
 
 <!-- Markdown -->
 
-<style name="markdown:header-one"		 foreground="#da4939" bold="true"/>
-<style name="markdown:header-two"		 foreground="#DD8853" bold="true"/>
-<style name="markdown:header-three"	   foreground="#ffc66d" bold="true"/>
-<style name="markdown:header-four"		foreground="#a5c261" bold="true"/>
-<style name="markdown:header-five"		foreground="#6d9cbe" bold="true"/>
-<style name="markdown:header-six"		 foreground="#b6b3eb" bold="true"/>
+<style name="markdown:header-one"		 foreground="#e64747" bold="true"/>
+<style name="markdown:header-two"		 foreground="#fcc87f" bold="true"/>
+<style name="markdown:header-three"	   foreground="#FEFE7F" bold="true"/>
+<style name="markdown:header-four"		foreground="#8CFF82" bold="true"/>
+<style name="markdown:header-five"		foreground="#80fdea" bold="true"/>
+<style name="markdown:header-six"		 foreground="#ff76c1" bold="true"/>
 
 </style-scheme>
