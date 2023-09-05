@@ -111,7 +111,11 @@ elif [[ "$1" == "time" ]]; then
 	curDate=$(date +"%y%m%d")
 	oldIFS="$IFS"
 	IFS=$'\n'
-	times=( $(tac "$backupHistory") )
+	if [[ "$2" == "-a" ]]; then
+		times=( $(tac "$backupHistory") )
+	else
+		times=( $(tac "$backupHistory" | head -n 10) )
+	fi
 	for time in "${times[@]}"; do
 		echo -n "${time/ / at }: "
 		dateA=${time%% *}
@@ -127,5 +131,5 @@ else
 	echo "  backup add - add file/folder to backup list"
 	echo "  backup remove - remove file/folder from backup list"
 	echo "  backup diff - compare 2 most recent backups"
-	echo "  backup time - list times of backups"
+	echo "  backup time [-a] - list times of backups (defaults to showing last 10, -a to view all)"
 fi

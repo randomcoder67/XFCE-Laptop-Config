@@ -22,6 +22,9 @@ _backupCompletion () {
 		elif [ "${COMP_WORDS[1]}" == "remove" ]; then # "remove" suggests files in backup.txt
 			_caseInsensitive $backupCurrent
 			return 0
+		elif [ "${COMP_WORDS[1]}" == "time" ] && [ "${#COMP_WORDS[@]}" == "3" ]; then # "remove" suggests files in backup.txt
+			COMPREPLY=( $(compgen -W "-a" -- "${COMP_WORDS[2]}") )
+			return 0
 		else
 			return 0
 		fi
