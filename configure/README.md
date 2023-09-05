@@ -4,10 +4,14 @@
 
 ### Program openers
 
-`ms` opens file(s) in mousepad  
-`msn` opens file(s) in new window in mousepad  
-`rs` opens image(s) in Ristretto  
-`mpv` opens video/audio files  
+`m` open file in mousepad (fasd normal)  
+`ms` opens file(s) in mousepad (fasd interactive)  
+`mn` open file in new window in mousepad (fasd normal)  
+`msn` opens file(s) in new window in mousepad (fasd interactive)  
+`r` opens image in Ristretto (fasd normal)  
+`rs` opens image(s) in Ristretto (fasd interactive)  
+`p` opens video/audio file (fasd normal)  
+`mpv` opens video/audio files (fasd interactive)  
 `mpv-yt` play YouTube videos/playlists in mpv  
 `pdf` opens pdf in zathura  
 
@@ -157,11 +161,6 @@
 ### Fun
 
 `asq` ascii aquarium  
-
-### fasd (autojump)
-
-`m` open with mousepad  
-`mn` open with mousepad (new window)  
 
 ## Keyboard shortcuts 
 
