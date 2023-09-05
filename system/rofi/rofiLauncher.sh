@@ -129,7 +129,9 @@ elif [[ $selection == "Check All" ]]; then
 elif [[ -d ~/Videos/Media/$selection ]]; then # If a season of TV selected, get season and episode then play
 	season=$(ls "$HOME/Videos/Media/$selection" | tr -d '/' | sed -n 's/Season\([0-9]*\)/\1\0/p' | sort -n | grep -Eo "Season[0-9]+" | rofi -dmenu -p "Select Season")
 	episode=$(ls "$HOME/Videos/Media/$selection/$season" | tr -d '/' | sed -n 's/Episode\([0-9]*\).*/\1\0/p' | sort -n | grep -Eo "Episode[0-9]+[.].*" | rofi -dmenu -p "Select Episode")
-	mpv "--title=$selection - S${season/Season}E${episode/Episode}" "$HOME/Videos/Media/$selection/$season/$episode"
+	episodeNumA=${episode/Episode}
+	episodeNum=${episodeNumA/.mp4}
+	mpv --resume-playback "--title=$selection - S${season/Season}E${episodeNum}" --playlist="$HOME/Videos/Media/$selection/$season" --playlist-start=$((episodeNum-1))
 else
 	${programs[$selection]}
 fi
