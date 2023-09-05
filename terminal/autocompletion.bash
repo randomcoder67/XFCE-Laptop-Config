@@ -6,7 +6,7 @@ backupCurrent="$HOME/Programs/output/updated/backup.txt"
 
 # Gets output of file and matches the lines within, but case insensitive
 _caseInsensitive() {
-  local sonames=( $(cat $backupCurrent) )
+  local sonames=( $(cat $backupCurrent | sed 's/\(.*\)/~\1/g') )
   local prefix="${COMP_WORDS[COMP_CWORD]}"
   COMPREPLY=($(printf %s\\n "${sonames[@]}" |
 			   awk -v IGNORECASE=1 -v p="$prefix" \
