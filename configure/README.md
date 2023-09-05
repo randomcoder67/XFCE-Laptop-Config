@@ -11,7 +11,7 @@
 `r` opens image in Ristretto (fasd normal)  
 `rs` opens image(s) in Ristretto (fasd interactive)  
 `p` opens video/audio file (fasd normal)  
-`mpv` opens video/audio files (fasd interactive)  
+`mp` opens video/audio files (fasd interactive)  
 `mpv-yt` play YouTube videos/playlists in mpv  
 `pdf` opens pdf in zathura  
 

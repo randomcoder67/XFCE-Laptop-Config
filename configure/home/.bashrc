@@ -132,7 +132,7 @@ _p () {
 }
 
 # Open video(s) with mpv (list all matches or full path(s))
-mpv () {
+do_mpv () {
 	if [ -f ./"$1" ]; then
 		/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
 	else
@@ -226,6 +226,7 @@ alias p='_p'
 alias mpv-yt='do_mpv-yt'
 alias m='_m'
 alias r='_r'
+alias mp='do_mpv'
 
 # Unix terminal programs 
 
