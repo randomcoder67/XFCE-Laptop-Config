@@ -64,8 +64,11 @@ cp ~/.config/songrec/preferences.toml ~/Programs/configure/home/.config/songrec/
 [ -d ~/Programs/configure/home/.config/npm ] || mkdir ~/Programs/configure/home/.config/npm
 cp ~/.config/npm/npmrc ~/Programs/configure/home/.config/npm/
 [ -d ~/Programs/configure/home/.config/micro ] || mkdir ~/Programs/configure/home/.config/micro
+[ -d ~/Programs/configure/home/.config/micro/colorschemes ] || mkdir ~/Programs/configure/home/.config/micro/colorschemes
 cp ~/.config/micro/bindings.json ~/Programs/configure/home/.config/micro/
 cp ~/.config/micro/settings.json ~/Programs/configure/home/.config/micro/settings-$currentTheme.json
+cp ~/.config/micro/colorschemes/railscastscustom.micro ~/Programs/configure/home/.config/micro/colorschemes/
+cp ~/.config/micro/colorschemes/draculacustom.micro ~/Programs/configure/home/.config/micro/colorschemes/
 [ -d ~/Programs/configure/home/.config/cava ] || mkdir ~/Programs/configure/home/.config/cava
 cp ~/.config/cava/config ~/Programs/configure/home/.config/cava/
 [ -d ~/Programs/configure/home/.config/vis ] || mkdir ~/Programs/configure/home/.config/vis

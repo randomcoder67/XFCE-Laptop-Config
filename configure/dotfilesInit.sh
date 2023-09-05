@@ -69,6 +69,7 @@ mkdir -p ~/.config/Code\ -\ OSS/User/
 mkdir ~/.config/alacritty
 mkdir ~/.config/npm
 mkdir ~/.config/micro
+mkdir ~/.config/micro/colorschemes
 mkdir ~/.config/cava
 mkdir ~/.config/vis
 mkdir ~/.config/cool-retro-term
@@ -103,6 +104,8 @@ cp ~/Programs/configure/home/.config/songrec/preferences.toml ~/.config/songrec/
 cp ~/Programs/configure/home/.config/npm/npmrc ~/.config/npm/npmrc
 cp ~/Programs/configure/home/.config/micro/bindings.json ~/.config/micro/bindings.json
 cp ~/Programs/configure/home/.config/micro/settings.json ~/.config/micro/settings.json
+cp ~/Programs/configure/home/.config/micro/colorschemes/railscasts.micro ~/.config/micro/colorschemes/railscasts.micro
+cp ~/Programs/configure/home/.config/micro/draculacustom.micro ~/.config/micro/colorschemes/draculacustom.micro
 cp ~/Programs/configure/home/.config/cava/config ~/.config/cava/config
 cp ~/Programs/configure/home/.config/vis/config ~/.config/vis/config
 cp ~/Programs/configure/home/.config/cool-retro-term/cool-retro-term.conf ~/.config/cool-retro-term/cool-retro-term.conf

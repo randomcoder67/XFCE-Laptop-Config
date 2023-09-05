@@ -61,7 +61,7 @@ along with this library; if not, see <http://www.gnu.org/licenses/>.
 <color name="aluminium6-5-blend"		  value="#34393A"/>
 
 <!-- Global Settings -->
-<style name="text"						foreground="#f8f8f1" background="#282a36"/>
+<style name="text"						foreground="#f8f8f1" background="#22212d"/>
 <style name="selection"				   foreground="aluminium1" background="#44475a"/>
 <style name="cursor"					  foreground="aluminium2"/>
 <style name="secondary-cursor"			foreground="aluminium4-3-blend"/>

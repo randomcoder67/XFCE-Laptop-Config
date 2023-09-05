@@ -18,7 +18,7 @@ function nerdcubedTwitch() {
 	fi
 }
 
-dustinedenTwitch() {
+function dustinedenTwitch() {
 	if yt-dlp -q -F "https://www.twitch.tv/dustineden" 2>/dev/null > /dev/null; then
 		echo "live" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
 	else
