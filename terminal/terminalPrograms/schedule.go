@@ -11,13 +11,16 @@ import (
 	"io/fs"
 )
 
+const THEME_PATH string = "/Programs/output/updated/currentTheme.txt"
 const BASE_PATH string = "/Programs/output/schedule/"
 const TEMP_PATH string = "/Programs/output/.temp/"
 const TIME_COLOUR string = "\033[35m\033[48;2;48;48;48m"
-const DAY_COLOUR string = "\033[38;2;221;136;83m\033[1m"
+const DAY_COLOUR_RAILSCASTS string = "\033[38;2;221;136;83m\033[1m"
+const DAY_COLOUR_DRACULA string = "\033[38;2;252;200;127m\033[1m"
 const HEADER_COLOUR string = "\033[31m\033[1m"
 const RESET_COLOUR string = "\033[0m"
 
+var DAY_COLOUR string
 var homeDir string
 var dayToNum = map[string]int {
 	"mon": 0,
@@ -297,6 +300,15 @@ func printHelp() {
 
 func main() {
 	homeDir, _ = os.UserHomeDir()
+	// Read in theme and set colours accordingly
+	dat, _ := os.ReadFile(homeDir + THEME_PATH)
+	var themeName string = string(dat)
+	themeName = strings.TrimSuffix(themeName, "\n")
+	if themeName == "railscasts" {
+		DAY_COLOUR = DAY_COLOUR_RAILSCASTS
+	} else if themeName == "dracula" {
+		DAY_COLOUR = DAY_COLOUR_DRACULA
+	}
 	
 	if len(os.Args) > 1 {
 		arg := os.Args[1]

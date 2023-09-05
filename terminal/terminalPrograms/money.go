@@ -11,13 +11,15 @@ import (
 	"strconv"
 )
 
-
+const THEME_PATH string = "/Programs/output/updated/currentTheme.txt"
 const BASE_PATH string = "/Programs/output/money/"
 const PRICE_COLOUR string = "\033[34m\033[1m"
-const DATE_COLOUR string = "\033[38;2;221;136;83m"
+const DATE_COLOUR_RAILSCASTS string = "\033[38;2;221;136;83m"
+const DATE_COLOUR_DRACULA string = "\033[38;2;252;200;127m"
 const HEADER_COLOUR string = "\033[36m\033[1m"
 const RESET_COLOUR string = "\033[0m"
 
+var DATE_COLOUR string
 var homeDir string
 
 func getFileContents(fileName string) string {
@@ -208,6 +210,15 @@ func printHelp() {
 
 func main() {
 	homeDir, _ = os.UserHomeDir()
+	// Read in theme and set colours accordingly
+	dat, _ := os.ReadFile(homeDir + THEME_PATH)
+	var themeName string = string(dat)
+	themeName = strings.TrimSuffix(themeName, "\n")
+	if themeName == "railscasts" {
+		DATE_COLOUR = DATE_COLOUR_RAILSCASTS
+	} else if themeName == "dracula" {
+		DATE_COLOUR = DATE_COLOUR_DRACULA
+	}
 	// Set default values for the arguments to viewEntries
 	var searchString string = "blank"
 	var doSearch bool = false

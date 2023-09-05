@@ -33,6 +33,8 @@ mkdir ~/Programs/output/.sounds
 mkdir ~/Programs/output/.temp
 mkdir ~/Programs/output/updated
 
+echo "$currentTheme" > ~/Programs/output/updated/currentTheme.txt
+
 mkdir -p ~/.config/systemd/user
 
 cp ~/Programs/configure/output/* ~/Programs/output/.pictures/
