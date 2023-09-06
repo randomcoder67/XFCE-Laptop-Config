@@ -53,6 +53,8 @@ then
 		else
 			echo "<txt><span foreground='#$liveColour'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh destinyYouTube</txtclick>"
 			streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ~/Programs/output/.streams/panel/destinyYouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
+			#time=$(echo "$streamTitle" | grep -o -P ".{0,4} EST")
+			#timeBST=$(date --date="$time" +"%H%M %Z")
 			echo "<tool>YouTube - $streamTitle</tool>"
 		fi
 	fi

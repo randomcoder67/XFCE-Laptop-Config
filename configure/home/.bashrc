@@ -333,7 +333,7 @@ alias gtop='sudo intel_gpu_top'
 
 alias schedule='~/Programs/terminal/terminalPrograms/goBins/schedule'
 alias log='~/Programs/terminal/terminalPrograms/goBins/log'
-alias weather='python3 ~/Programs/smallPrograms/metOffice/metOffice.py'
+alias weather='~/Programs/myRepos/goWeather/goWeather'
 alias shows='~/Programs/terminal/alias/shows.sh'
 alias money='~/Programs/terminal/terminalPrograms/goBins/money'
 alias days='~/Programs/terminal/terminalPrograms/goBins/until'

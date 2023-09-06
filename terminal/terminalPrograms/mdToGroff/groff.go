@@ -34,6 +34,8 @@ func modifyAst(doc ast.Node) ast.Node {
 const tempMSFileName string = "/Programs/output/.temp/tempGoMS.ms"
 const tempPSFileName string = "/Programs/output/.temp/tempGoPS.ps"
 
+const IMAGE_PATH string = "/Programs/output/.temp/groffImages/"
+
 var inBlockQuote bool = false
 var tableAlignmentLengths []int
 var currentTableLength int = 0
@@ -42,6 +44,19 @@ var inStrong bool = false
 var orderedList bool = false
 var atFirstListEntry bool = false
 var inList bool = false
+var inImage bool = false
+
+var homeDir string
+
+var imageLocs = []string{}
+var imageDests = []string{}
+
+func sliceContains(sliceA []string, stringA string) bool {
+	for _, entry := range sliceA {
+		if stringA == entry { return true }
+	}
+	return false
+}
 
 func renderList(w io.Writer, p *ast.List, entering bool) {
 	if entering {
@@ -85,7 +100,7 @@ func renderText(w io.Writer, p *ast.Text) {
 	var textString string = string(p.Literal)
 	if inStrong {
 		io.WriteString(w, "\n.B \"" + textString + "\"\\c\n")
-	} else {
+	} else if !inImage {
 		io.WriteString(w, textString)
 	}
 }
@@ -248,6 +263,31 @@ func myRenderHook(w io.Writer, node ast.Node, entering bool) (ast.WalkStatus, bo
 		renderListItem(w, listItem, entering)
 		return ast.GoToNext, true
 	}
+	if image, ok := node.(*ast.Image); ok{
+		if entering {
+			inImage = true
+			//fmt.Printf("IMAGE ALT TEXT: %s\n", image.Children[0].AsLeaf().Literal)
+			//fmt.Printf("IMAGE PATH: %s\n", image.Destination)
+			// Split image path to get only filename
+			imagePathSplit := strings.Split(string(image.Destination), "/")
+			// Create full final filename
+			var startOfExtIndex int = strings.LastIndex(imagePathSplit[len(imagePathSplit)-1], ".")
+			var finalPath string = homeDir + IMAGE_PATH + imagePathSplit[len(imagePathSplit)-1][:startOfExtIndex]
+			// Add original path to imageLocs
+			imageLocs = append(imageLocs, string(image.Destination))
+			
+			// Check if finalPath is already in imageDests, if it is, modify it until it's not
+			for sliceContains(imageDests, finalPath) {
+				finalPath = finalPath + "A"
+			}
+			// Once done, add to imageDests
+			imageDests = append(imageDests, finalPath)
+			
+			// Write image (left align) and alt text to ms text
+			io.WriteString(w, ".PDFPIC -L " + finalPath + ".pdf" + "\n.br\n" + string(image.Children[0].AsLeaf().Literal) + "\n")
+		} else { inImage = false }
+		return ast.GoToNext, true
+	}
 	return ast.GoToNext, false
 }
 
@@ -272,6 +312,7 @@ func mdToHTML(md []byte) []byte {
 }
 
 func main() {
+	homeDir, _ = os.UserHomeDir()
 	// Get arguments 
 	var inputFileName string
 	//var outputFileName string
@@ -311,16 +352,28 @@ func main() {
 		htmlFinal = strings.ReplaceAll(htmlFinal, stringToReplace, toReplaceWith)
 	}
 	
+	fmt.Println(imageLocs)
+	fmt.Println(imageDests)
+	
+	for i, originalPath := range imageLocs {
+		cmd := exec.Command("convert", "-density", "200", "-units", "PixelsPerInch", originalPath, imageDests[i] + ".pdf")
+		err = cmd.Start(); if err != nil {
+			panic(err)
+		}
+		cmd.Wait()
+	}
+	
 	// Get temp .ms file location and save .ms text to file
 	//homeDir, _ := os.UserHomeDir()
 	//msFileName := homeDir + tempMSFileName
 	htmlFinal = ".nr HM 2c\n" + htmlFinal // Adding header to stop text from starting halfway down page 
 	
+	//fmt.Println(htmlFinal)
 	
 	// Setup and run command to convert to PS file with groff 
-	cmd := exec.Command("groff", "-ms", "-tb" ,"-T", "ps")
+	cmd := exec.Command("groff", "-ms", "-tb" ,"-UT", "pdf")
 	cmd.Stdin = strings.NewReader(htmlFinal)
-	outfile, err := os.Create("output.ps")
+	outfile, err := os.Create("output.pdf")
 	if err != nil {
 		panic(err)
 	}
