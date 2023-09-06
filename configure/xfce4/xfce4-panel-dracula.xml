@@ -234,6 +234,9 @@
 		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (56%)"/>
 		<value type="string" value="configuring wi-fi network connection “unieduroam”…"/>
 	  </property>
+	  <property name="known-items" type="array">
+		<value type="string" value="steam"/>
+	  </property>
 	</property>
   </property>
 </channel>
