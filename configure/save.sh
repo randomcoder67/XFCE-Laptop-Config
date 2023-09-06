@@ -27,9 +27,6 @@ fi
 cp ~/.bashrc ~/Programs/configure/home/
 cp ~/.inputrc ~/Programs/configure/home/
 cp ~/.profile ~/Programs/configure/home/
-cp -r ~/.ssh ~/Programs/configure/home/
-
-
 
 [ -d ~/Programs/configure/home/.config/systemd/user ] || mkdir -p ~/Programs/configure/home/.config/systemd/user
 cp ~/.config/systemd/user/files.service ~/Programs/configure/home/.config/systemd/user/
