@@ -335,7 +335,7 @@ func main() {
 				fmt.Println("Usage: log -f/fa (year)")
 			}
 		} else if arg == "-h" { // Display help
-			fmt.Println("Options:\n  log - Add New Entry\n  -p Add New Entry (Previous Day)\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s string yy/yymm - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
+			fmt.Println("Usage:\n  log - Add New Entry\n  -p Add New Entry (Previous Day)\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s string yy/yymm - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
 		} else if arg == "-p" {
 			newEntry(true)
 		}
