@@ -209,6 +209,14 @@ trim_history () {
 	sed -i '/^zz .*/d' ~/.bash_history
 	# Remove any usage of rm command
 	sed -i '/^rm .*/d' ~/.bash_history
+	#sed -i '/^git add .*/d' ~/.bash_history
+	#sed -i '/^git mv .*/d' ~/.bash_history
+	#sed -i '/^stuff .*/d' ~/.bash_history
+	#sed -i '/^schedule .*/d' ~/.bash_history
+	#sed -i '/^log .*/d' ~/.bash_history
+	#sed -i '/^money .*/d' ~/.bash_history
+	#sed -i '/^[.]/.*/d' ~/.bash_history
+	
 	# Remove any usage of cd, ls and mpv when only going one folder deeper in file structure
 	sed -i -r '/^(cd|ls|mpv|mpv) [^\/\>\<|:&]*\/? ?$/d' ~/.bash_history
 	# Remove any usage of ms, msn, rs and pdf when not going into a different folder
@@ -275,6 +283,7 @@ alias mus='cd ~/Music'
 alias pro='cd ~/Programs'
 alias cur='cd ~/Music/curPlaylist/'
 alias wor='cd ~/Work'
+alias bin='cd ~/.local/bin'
 
 # Shortcuts 
 

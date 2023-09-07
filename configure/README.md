@@ -70,7 +70,8 @@
 `mus` cd into ~/Music  
 `pro` cd into ~/Programs  
 `cur` cd into ~/Music/curPlaylist  
-`wor` cd into ~/Work
+`wor` cd into ~/Work  
+`bin` cd into ~/.local/bin  
 
 ### Shortcuts
 
