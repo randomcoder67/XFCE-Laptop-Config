@@ -28,11 +28,9 @@ previousIdle = int(savedValues[1])
 #print(previousIdle)
 
 def doThing():
-	ps = subprocess.run(['grep', '^cpu.', '/proc/stat'], check=True, capture_output=True)
-	processNames = subprocess.run(['head', '-n', '1'], input=ps.stdout, capture_output=True)
-	result = processNames.stdout.decode('utf-8').strip()
+	f = open("/proc/stat", "r")
+	result = f.readline().strip('\n').strip()
 	#print(result)
-
 	name, notNeeded, user, nice, system, idle, iowait, irq, softirq, steal, _, _ = result.split(" ")
 
 	#commandString = "grep ^cpu. /proc/stat | head -n 1"
