@@ -60,7 +60,7 @@
 
 `steamapps` cd into steamapps folder  
 `papirus` cd into papirus icons folder  
-`cdb` cd into backup folder  
+`bac` cd into backup folder  
 `con` cd into ~/.config  
 `loc` cd into ~/.local/share  
 `doc` cd into ~/Documents  
