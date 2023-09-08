@@ -57,7 +57,7 @@ func updateFile(finalDaysSlice [][]string) {
 }
 
 // View number of days until saved dates
-func viewDays() {
+func viewDays(toShow int) {
 	// Populate timeNow variable with current time
 	timeNow = time.Now()
 	// Get data from file
@@ -84,7 +84,7 @@ func viewDays() {
 		}
 	}
 	// Print nicely formatted
-	for _, entry := range daysSlice {
+	for i, entry := range daysSlice {
 		t, _ := time.Parse("060102", entry[0])
 		var daysLeft float64 = math.Abs(math.Ceil(t.Sub(timeNow).Hours()/24))
 		var daysLeftString string = strconv.FormatFloat(daysLeft,'f', 0, 64)
@@ -93,6 +93,10 @@ func viewDays() {
 			theWordDayString = "day"
 		}
 		fmt.Printf("%s - %s%s %s from now%s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - len(entry[1]) + 2), daysLeftString, theWordDayString, strings.Repeat(" ", 10-len(theWordDayString)-len(daysLeftString)), t.Format("2006-01-02"))
+		// Break if reached toShow (if toShow is 0, then this condition will never be met so 0 = all)
+		if i+1 == toShow {
+			break
+		}
 	}
 	// Write final daysSlice to file
 	updateFile(daysSlice)
@@ -118,7 +122,7 @@ func addDay(dateToAdd string, thingToAdd string) {
 }
 
 func printHelp() {
-	fmt.Printf("Usage:\n  until - To view days\n  until -a yymmdd string - Add string day at yymmdd day\n")
+	fmt.Printf("Usage:\n  days - To view days\n  days -s [n] - To view n days (default 10)\n  days -a yymmdd string - Add string day at yymmdd day\n")
 }
 
 func main() {
@@ -135,12 +139,18 @@ func main() {
 		} else if os.Args[1] == "-h" || os.Args[1] == "--help" || os.Args[1] == "help" {
 			printHelp()
 			os.Exit(0)
+		} else if os.Args[1] == "-s" {
+			var toShow int = 10
+			if len(os.Args) == 3 {
+				toShow, _ = strconv.Atoi(os.Args[2])
+			}
+			viewDays(toShow)
 		} else {
 			fmt.Println("Error, invalid option")
 			printHelp()
 			os.Exit(1)
 		}
 	} else {
-		viewDays()
+		viewDays(0) // 0 = all
 	}
 }
