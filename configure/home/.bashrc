@@ -215,6 +215,7 @@ trim_history () {
 	#sed -i '/^schedule .*/d' ~/.bash_history
 	#sed -i '/^log .*/d' ~/.bash_history
 	#sed -i '/^money .*/d' ~/.bash_history
+	#sed -i '/^git commit .*/d' ~/.bash_history
 	#sed -i '/^[.]/.*/d' ~/.bash_history
 	
 	# Remove any usage of cd, ls and mpv when only going one folder deeper in file structure
@@ -337,6 +338,7 @@ alias lca='ls -A | wc -l'
 alias rmedir='find . -type d -empty -delete'
 alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
 alias gtop='sudo intel_gpu_top'
+alias remake='~/Programs/configure/remake.sh'
 
 # Info programs 
 
