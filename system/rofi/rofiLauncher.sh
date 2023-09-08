@@ -2,6 +2,9 @@
 
 # Rofi script to launch applications and open files
 
+## Add ~/.local/bin to $PATH
+PATH=$PATH:$HOME/.local/bin
+
 selection=$(cat ~/Programs/output/updated/files.txt | rofi -refilter-timeout-limit 16000 -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
 status=$?
 
