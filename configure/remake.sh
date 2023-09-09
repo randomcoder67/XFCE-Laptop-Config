@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Script to rebuild all of my compiled programs
+
 # Make Games UI
 echo "Rebuilding Games UI (c)"
 cd ~/Programs/myRepos/mediaUI
@@ -29,3 +31,6 @@ gcc ~/Programs/system/keyboardOther/soundboard.c -lncurses -o ~/Programs/system/
 echo "Rebuilding Weather Program (Go)"
 cd ~/Programs/myRepos/goWeather
 go build -o goWeather main.go bbcWeather.go metoffice.go definitions.go web.go display.go
+
+# Rebuild Other Programs
+~/Programs/output/otherScripts/otherRemake.sh
