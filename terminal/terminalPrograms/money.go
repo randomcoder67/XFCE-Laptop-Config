@@ -205,7 +205,7 @@ func addEntries() {
 }
 
 func printHelp() {
-	fmt.Printf("Usage:\n  -h - Show Help\n  -a - Add New Entries\n  -f string[,string] - Only Show Entries Matching String(s)\n  -d yymm - Show Entries From Given Month (defaults to current month)\n  -s string - Sort By String (options are date, item, price, shop. Defaults to date)\n")
+	fmt.Printf("Usage:\n  -h - Show Help\n  -a - Add New Entries\n  -f string[,string] - Only Show Entries Matching String(s)\n  -d [yy]mm - Show Entries From Given Month (defaults to current month)\n  -s string - Sort By String (options are date, item, price, shop. Defaults to date)\n")
 }
 
 func main() {
@@ -237,7 +237,13 @@ func main() {
 			searchString = os.Args[i+2]
 			i += 2
 		} else if os.Args[i+1] == "-d" {
-			monthYear = os.Args[i+2]
+			if len(os.Args[i+2]) == 2 {
+				monthYear = time.Now().Format("06") + os.Args[i+2]
+			} else if len(os.Args[i+2]) == 1 {
+				monthYear = time.Now().Format("06") + "0" + os.Args[i+2]
+			} else {
+				monthYear = os.Args[i+2]
+			}
 			i += 2
 		} else if os.Args[i+1] == "-s" {
 			sortBy = os.Args[i+2]
