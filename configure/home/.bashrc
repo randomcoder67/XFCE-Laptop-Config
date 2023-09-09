@@ -368,7 +368,6 @@ alias stuff='python3 ~/Programs/terminal/terminalPrograms/stuff.py'
 alias strava='~/Programs/terminal/terminalPrograms/strava/strava.sh'
 alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
 alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
-alias getpass='~/Programs/terminal/alias/passGen.sh'
 alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
 alias timer='~/Programs/terminal/terminalPrograms/goBins/timer'
 alias domount='~/Programs/terminal/terminalPrograms/mount.sh'
@@ -387,7 +386,7 @@ export VISUAL="micro"
 export MICRO_TRUECOLOR=1
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
-source ~/Programs/output/updated/openAIKey.sh
+source ~/Programs/output/otherScripts/aliases.sh
 source ~/Programs/terminal/autocompletion.bash
 
 #alias a='fasd -a'		# any

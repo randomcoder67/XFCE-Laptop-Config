@@ -155,7 +155,6 @@
 `stuff` query and edit list of owned stuff  
 `strava` run strava program  
 `setlocation` change current location  
-`getpass` get randomly generated password  
 `sky` get position of planets in sky  
 `timer` timer program  
 `domount` disk mounting script  
