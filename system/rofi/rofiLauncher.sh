@@ -131,6 +131,12 @@ elif [[ $selection == "Intel GPU Top" ]]; then
 	alacritty -e sudo intel_gpu_top
 elif [[ $selection == "Go Weather" ]]; then
 	alacritty -e goWeather
+elif [[ $selection == "pulsemixer" ]]; then
+	alacritty -e pulsemixer
+elif [[ $selection == "XColor Colour Picker" ]]; then
+	xcolor | tr -d '\n' | tee >(xargs notify-send) | tr -d '#' | xclip -selection c
+elif [[ "$selection" == "ZBar QR Code Scanner" ]]; then
+	zbarcam -1 | sed 's/QR-Code://g' | tee >(xargs notify-send) | xclip -selection c
 elif [[ $selection == "Check All" ]]; then
 	firefox "https://mail.google.com/mail/u/1" "https://mail.google.com/mail/u/2" "https://outlook.office.com/mail/" "https://github.com" "https://old.reddit.com" "https://stackoverflow.com/" "https://www.bbc.co.uk/news" "https://www.nasa.gov/multimedia/imagegallery/iotd.html"
 elif [[ -d ~/Videos/Media/$selection ]]; then # If a season of TV selected, get season and episode then play
