@@ -76,15 +76,22 @@ func viewDays(toShow int) {
 	sort.SliceStable(daysSlice, func(i, j int) bool{ // Sort records by date and time 
 		return daysSlice[i][0]+daysSlice[i][1] < daysSlice[j][0]+daysSlice[j][1] // Combining to yymmddhhmm 
 	})
+	// Copy daysSlice into new slice, so that if any limiting occurs, the full slice is still saved to file
+	daysSliceToUse := make([][]string, len(daysSlice))
+	copy(daysSliceToUse, daysSlice)
+	// If toShow != 0, limit number of entries to toShow
+	if toShow != 0 {
+		daysSliceToUse = daysSliceToUse[:toShow]
+	}
 	// Find longest string
 	var maxStringLength int = 0
-	for _, entryA := range daysSlice {
+	for _, entryA := range daysSliceToUse {
 		if len(entryA[1]) > maxStringLength {
 			maxStringLength = len(entryA[1])
 		}
 	}
 	// Print nicely formatted
-	for i, entry := range daysSlice {
+	for _, entry := range daysSliceToUse {
 		t, _ := time.Parse("060102", entry[0])
 		var daysLeft float64 = math.Abs(math.Ceil(t.Sub(timeNow).Hours()/24))
 		var daysLeftString string = strconv.FormatFloat(daysLeft,'f', 0, 64)
@@ -92,10 +99,10 @@ func viewDays(toShow int) {
 		if daysLeftString == "1" {
 			theWordDayString = "day"
 		}
-		fmt.Printf("%s - %s%s %s from now%s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - len(entry[1]) + 2), daysLeftString, theWordDayString, strings.Repeat(" ", 10-len(theWordDayString)-len(daysLeftString)), t.Format("2006-01-02"))
-		// Break if reached toShow (if toShow is 0, then this condition will never be met so 0 = all)
-		if i+1 == toShow {
-			break
+		if daysLeftString == "0"  {
+			fmt.Printf("%s - %sToday %s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - len(entry[1]) + 2), strings.Repeat(" ", 14), t.Format("2006-01-02"))
+		} else {
+			fmt.Printf("%s - %s%s %s from now%s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - len(entry[1]) + 2), daysLeftString, theWordDayString, strings.Repeat(" ", 10-len(theWordDayString)-len(daysLeftString)), t.Format("2006-01-02"))
 		}
 	}
 	// Write final daysSlice to file
