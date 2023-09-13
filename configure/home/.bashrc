@@ -350,7 +350,7 @@ alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
 alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
 alias timer='~/Programs/terminal/terminalPrograms/goBins/timer'
 alias domount='~/Programs/terminal/terminalPrograms/mount.sh'
-alias render='~/Programs/terminal/terminalPrograms/notesRenderer/render'
+alias render='~/Programs/terminal/terminalPrograms/goBins/render'
 
 # Fun 
 
