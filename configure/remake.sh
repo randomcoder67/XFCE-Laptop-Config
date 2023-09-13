@@ -22,6 +22,12 @@ go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/term
 # Make Timer Program
 echo "Rebuilding Timer Program (Go)"
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/timer.go
+# Make Notes Renderer Program
+echo "Rebuilding Notes Renderer Program (Go)"
+cd ~/Programs/terminal/terminalPrograms/notesRenderer
+go mod tidy
+go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/notesRenderer/render.go
+
 
 # Make Soundboard
 echo "Rebuilding Soundboard Program (c)"
