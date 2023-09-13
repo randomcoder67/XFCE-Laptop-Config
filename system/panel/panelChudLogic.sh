@@ -70,6 +70,14 @@ else
 				echo "<tool>YouTube - $streamTitle</tool>"
 			fi
 		fi
+	#elif yt-dlp --legacy-server-connect -F "https://www.kick.com/ChudLogic"; then
+	#	if [[ "$argA" == "-t" ]]; then
+	#		echo "<span foreground='#$liveColour'>  </span>"
+	#		echo "kick" > "$XDG_STATE_HOME/streams/chud.txt"
+	#	else
+	#		echo "<txt><span foreground='#$liveColour'>  </span></txt>"
+	#		echo "<tool>Kick</tool>"
+	#	fi
 	else
 		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$notLiveColour'>  </span>"
