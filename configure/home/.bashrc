@@ -83,63 +83,46 @@ pdf () {
 	done
 }
 
-# Open file with Mousepad (first match)
+# Open file with Mousepad (fasd)
 _m () {
-	result=$(fasd -f $@)
+	result=$(fasd -fi $@)
 	[ "$result" == "" ] && return
 	mousepad "$result" & disown
 }
 
-# Open files with Mousepad (list all matches or full path(s))
+# Open files with Mousepad (normal)
 ms () {
-	if [ -f ./"$1" ]; then # Check if full path, if so open all given files
-		for arg; do
-			mousepad "$arg" & disown
-		done
-	else # Otherwise list matches with fasd
-		result=$(fasd -fi $@)
-		[ "$result" == "" ] && return
-		mousepad "$result" & disown
-	fi
+	for arg; do
+		mousepad "$arg" & disown
+	done
 }
 
-# Open file with Mousepad in a new window (first match)
+# Open file with Mousepad in a new window (fasd)
 mn () {
-	result=$(fasd -f $@)
+	result=$(fasd -fi $@)
 	[ "$result" == "" ] && return
 	mousepad -o window "$result" & disown
 }
 
-# Open files with Mousepad in a new window (list all matches or full path(s))
+# Open files with Mousepad in a new window (normal)
 msn () {
-	if [ -f ./"$1" ]; then
-		mousepad -o window & disown
-		sleep 0.2
-		for arg; do
-			mousepad "$arg" & disown
-		done
-	else
-		result=$(fasd -fi $@)
-		[ "$result" == "" ] && return
-		mousepad -o window "$result" & disown
-	fi
+	mousepad -o window & disown
+	sleep 0.2
+	for arg; do
+		mousepad "$arg" & disown
+	done
 }
 
-# Open video with mpv (first match)
+# Open video with mpv (fasd)
 _p () {
-	result=$(fasd -s $@ | grep -E 'mp3|m4a|ogg|wav|webm|mp4|m4v|mkv|avi|mov' | tr -s ' ' | cut -d " " -f 2- | tail -n 1)
+	#result=$(fasd -s $@ | grep -E 'mp3|m4a|ogg|wav|webm|mp4|m4v|mkv|avi|mov' | tr -s ' ' | cut -d " " -f 2- | tail -n 1)
+	result=$(fasd -fi $@)
 	/usr/bin/mpv --really-quiet --save-position-on-quit "$result" & disown
 }
 
-# Open video(s) with mpv (list all matches or full path(s))
+# Open video(s) with mpv (normal)
 do_mpv () {
-	if [ -f ./"$1" ]; then
-		/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
-	else
-		result=$(fasd -fi $@)
-		[ "$result" == "" ] && return
-		/usr/bin/mpv --really-quiet --save-position-on-quit "$result" & disown
-	fi
+	/usr/bin/mpv --really-quiet --save-position-on-quit "$@" & disown
 }
 
 # Open YouTube video with mpv
@@ -147,26 +130,21 @@ do_mpv-yt () {
 	/usr/bin/mpv --really-quiet --title='${media-title}' --ytdl-format=best "$@" & disown
 }
 
-# Open images in Ristretto (first match)
+# Open images in Ristretto (fasd)
 _r () {
-	result=$(fasd -s $@ | grep -E 'png|svg|jpg|jpeg|gif|bmp' | tr -s ' ' | cut -d " " -f 2- | tail -n 1)
+	#result=$(fasd -s $@ | grep -E 'png|svg|jpg|jpeg|gif|bmp' | tr -s ' ' | cut -d " " -f 2- | tail -n 1)
+	result=$(fasd -fi $@)
 	[ "$result" == "" ] && return
 	ristretto "$result" & disown
 }
 
-# Open images in Ristretto (list all matches or full path(s))
+# Open images in Ristretto (normal)
 rs () {
-	if [ -f ./"$1" ]; then
-		inputA=""
-		for arg; do
-			inputA="$inputA $arg"
-		done
-		ristretto $inputA & disown
-	else
-		result=$(fasd -fi $@)
-		[ "$result" == "" ] && return
-		ristretto "$result" & disown
-	fi
+	inputA=""
+	for arg; do
+		inputA="$inputA $arg"
+	done
+	ristretto $inputA & disown
 }
 
 # Move image and tags with tmsu
@@ -235,7 +213,7 @@ alias p='_p'
 alias mpv-yt='do_mpv-yt'
 alias m='_m'
 alias r='_r'
-alias mp='do_mpv'
+alias mpv='do_mpv'
 
 # Unix terminal programs 
 
@@ -339,6 +317,7 @@ alias rmedir='find . -type d -empty -delete'
 alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
 alias gtop='sudo intel_gpu_top'
 alias remake='~/Programs/configure/remake.sh'
+alias gripdo='grip --theme=dark -b'
 
 # Info programs 
 
@@ -371,6 +350,7 @@ alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
 alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
 alias timer='~/Programs/terminal/terminalPrograms/goBins/timer'
 alias domount='~/Programs/terminal/terminalPrograms/mount.sh'
+alias render='~/Programs/terminal/terminalPrograms/notesRenderer/render'
 
 # Fun 
 
