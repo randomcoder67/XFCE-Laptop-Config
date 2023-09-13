@@ -151,6 +151,13 @@ _musicCompletion() {
 	COMPREPLY=( $(compgen -W "-a" -- "${COMP_WORDS[1]}") )
 }
 
+_remakeCompletion() {
+	if [ "${#COMP_WORDS[@]}" != "2" ]; then
+		return 0
+	fi
+	COMPREPLY=( $(compgen -W "$(cat ~/Programs/configure/remake.sh | grep '$1' | cut -d \" -f 4)" -- "${COMP_WORDS[1]}") )
+} 
+
 complete -F _backupCompletion backup
 complete -F _getpassCompletion getpass
 complete -F _programsCompletion programs
@@ -165,3 +172,4 @@ complete -F _moneyCompletion money
 complete -F _savedotfilesCompletion savedotfiles
 complete -F _removeCompletion remove
 complete -F _musicCompletion music
+complete -F _remakeCompletion remake
