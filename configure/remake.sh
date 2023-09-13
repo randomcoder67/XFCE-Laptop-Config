@@ -2,41 +2,89 @@
 
 # Script to rebuild all of my compiled programs
 
-# Make Games UI
-echo "Rebuilding Games UI (c)"
-cd ~/Programs/myRepos/mediaUI
-make
+makeGamesUI() {
+	# Make Games UI
+	echo "Rebuilding Games UI (c)"
+	cd ~/Programs/myRepos/mediaUI
+	make
+}
 
-# Make Days Program
-echo "Rebuilding Days Program (Go)"
-go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/until.go
-# Make Schedule Program
-echo "Rebuilding Schedule Program (Go)"
-go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/schedule.go
-# Make Log Program
-echo "Rebuilding Log Program (Go)"
-go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/log.go
-# Make Money Program
-echo "Rebuilding Money Program (Go)"
-go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/money.go
-# Make Timer Program
-echo "Rebuilding Timer Program (Go)"
-go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/timer.go
-# Make Notes Renderer Program
-echo "Rebuilding Notes Renderer Program (Go)"
-cd ~/Programs/terminal/terminalPrograms/notesRenderer
-go mod tidy
-go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/notesRenderer/render.go
+makeDaysProgram() {
+	# Make Days Program
+	echo "Rebuilding Days Program (Go)"
+	go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/until.go
+}
 
+makeScheduleProgram() {
+	# Make Schedule Program
+	echo "Rebuilding Schedule Program (Go)"
+	go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/schedule.go
+}
 
-# Make Soundboard
-echo "Rebuilding Soundboard Program (c)"
-gcc ~/Programs/system/keyboardOther/soundboard.c -lncurses -o ~/Programs/system/keyboardOther/soundboard -Wall -Wextra
+makeLogProgram() {
+	# Make Log Program
+	echo "Rebuilding Log Program (Go)"
+	go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/log.go
+}
 
-# Make Go Weather Program
-echo "Rebuilding Weather Program (Go)"
-cd ~/Programs/myRepos/goWeather
-go build -o goWeather main.go bbcWeather.go metoffice.go definitions.go web.go display.go
+makeMoneyProgram() {
+	# Make Money Program
+	echo "Rebuilding Money Program (Go)"
+	go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/money.go
+}
 
-# Rebuild Other Programs
-~/Programs/output/otherScripts/otherRemake.sh
+makeTimerProgram() {
+	# Make Timer Program
+	echo "Rebuilding Timer Program (Go)"
+	go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/timer.go
+}
+
+makeNotesRendererProgram() {
+	# Make Notes Renderer Program
+	echo "Rebuilding Notes Renderer Program (Go)"
+	cd ~/Programs/terminal/terminalPrograms/notesRenderer
+	go mod tidy
+	go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/notesRenderer/render.go
+}
+
+makeSoundboard() {
+	# Make Soundboard
+	echo "Rebuilding Soundboard Program (c)"
+	gcc ~/Programs/system/keyboardOther/soundboard.c -lncurses -o ~/Programs/system/keyboardOther/soundboard -Wall -Wextra
+}
+
+makeGoWeatherProgram() {
+	# Make Go Weather Program
+	echo "Rebuilding Weather Program (Go)"
+	cd ~/Programs/myRepos/goWeather
+	go build -o goWeather main.go bbcWeather.go metoffice.go definitions.go web.go display.go
+}
+
+makeOtherPrograms() {
+	# Rebuild Other Programs
+	~/Programs/output/otherScripts/otherRemake.sh
+}
+
+if [ "$1" == "all" ]; then
+	makeGamesUI
+	makeDaysProgram
+	makeScheduleProgram
+	makeLogProgram
+	makeMoneyProgram
+	makeTimerProgram
+	makeNotesRendererProgram
+	makeSoundboard
+	makeGoWeatherProgram
+	makeOtherPrograms
+fi
+[ "$1" == "gamesUI" ] && makeGamesUI
+[ "$1" == "days" ] && makeDaysProgram
+[ "$1" == "schedule" ] && makeScheduleProgram
+[ "$1" == "log" ] && makeLogProgram
+[ "$1" == "money" ] && makeMoneyProgram
+[ "$1" == "timer" ] && makeTimerProgram
+[ "$1" == "render" ] && makeNotesRendererProgram
+[ "$1" == "soundboard" ] && makeSoundboard
+[ "$1" == "weather" ] && makeGoWeatherProgram
+[ "$1" == "other" ] && makeOtherPrograms
+
