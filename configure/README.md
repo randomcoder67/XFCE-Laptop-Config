@@ -4,14 +4,14 @@
 
 ### Program openers
 
-`m` open file in mousepad (fasd normal)  
-`ms` opens file(s) in mousepad (fasd interactive)  
-`mn` open file in new window in mousepad (fasd normal)  
-`msn` opens file(s) in new window in mousepad (fasd interactive)  
-`r` opens image in Ristretto (fasd normal)  
-`rs` opens image(s) in Ristretto (fasd interactive)  
-`p` opens video/audio file (fasd normal)  
-`mp` opens video/audio files (fasd interactive)  
+`m` open file in mousepad (fasd)  
+`ms` opens file(s) in mousepad (normal)  
+`mn` open file in new window in mousepad (fasd)  
+`msn` opens file(s) in new window in mousepad (normal)  
+`r` opens image in Ristretto (fasd)  
+`rs` opens image(s) in Ristretto (normal)  
+`p` opens video/audio file (fasd)  
+`mpv` opens video/audio files (normal)  
 `mpv-yt` play YouTube videos/playlists in mpv  
 `pdf` opens pdf in zathura  
 
@@ -125,6 +125,7 @@
 `wl` select video from YouTube Watch Later to play with mpv  
 `gtop` Intel GPU Top (needs sudo)  
 `remake` Recompile all of my programs/scripts  
+`gripdo` launch grip in dark mode and open in browser  
 
 ### Info programs
 
@@ -158,6 +159,7 @@
 `sky` get position of planets in sky  
 `timer` timer program  
 `domount` disk mounting script  
+`render` markdown to html  
 
 ### Fun
 
