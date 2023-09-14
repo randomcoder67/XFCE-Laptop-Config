@@ -257,7 +257,8 @@
 `u` Show Playlist  
 `/` Show OSC  
 `?` Toggle OSC  
-`m` Show Metadata  
+`m` Toggle Mute  
+`Shift+m` Show Metadata  
 
 ### Rofi Bookmarks 
 
