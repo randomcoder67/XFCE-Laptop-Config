@@ -11,6 +11,8 @@
 /system/keyboardOther/helpUI/helpUI
 /system/keyboardOther/soundboard
 /terminal/alias/passGen.sh
+/terminal/webAlternatives/go.sum
+/terminal/webAlternatives/youtubeSearch
 /terminal/terminalPrograms/astro
 /terminal/terminalPrograms/goBins
 /terminal/terminalPrograms/mdToGroff/go.sum

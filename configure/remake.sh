@@ -60,6 +60,14 @@ makeGoWeatherProgram() {
 	go build -o goWeather main.go bbcWeather.go metoffice.go definitions.go web.go display.go
 }
 
+makeYouTubeProgram() {
+	# Make Go Weather Program
+	echo "Rebuilding YouTube Program (Go)"
+	cd ~/Programs/terminal/webAlternatives
+	go mod tidy
+	go build -o ~/Programs/terminal/webAlternatives/youtubeSearch ~/Programs/terminal/webAlternatives/youtubeSearch.go
+}
+
 makeOtherPrograms() {
 	# Rebuild Other Programs
 	~/Programs/output/otherScripts/otherRemake.sh
@@ -75,6 +83,7 @@ if [ "$1" == "all" ]; then
 	makeNotesRendererProgram
 	makeSoundboard
 	makeGoWeatherProgram
+	makeYouTubeProgram
 	makeOtherPrograms
 fi
 [ "$1" == "gamesUI" ] && makeGamesUI
@@ -86,5 +95,6 @@ fi
 [ "$1" == "render" ] && makeNotesRendererProgram
 [ "$1" == "soundboard" ] && makeSoundboard
 [ "$1" == "weather" ] && makeGoWeatherProgram
+[ "$1" == "youtube" ] && makeYouTubeProgram
 [ "$1" == "other" ] && makeOtherPrograms
 

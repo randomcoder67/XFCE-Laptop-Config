@@ -208,6 +208,7 @@ func addEntries() {
 	}
 }
 
+// Print help info
 func printHelp() {
 	fmt.Printf("Usage:\n  -h - Show Help\n  -a - Add New Entries\n  -f string[,string] - Only Show Entries Matching String(s)\n  -d [yy]mm - Show Entries From Given Month (defaults to current month)\n  -s string - Sort By String (options are date, item, price, shop. Defaults to date)\n")
 }
