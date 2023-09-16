@@ -101,6 +101,7 @@ func displayVideos(inputJSON map[string]interface{}) {
 				var videoID string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["videoId"].(string)
 				var videoTitle string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["title"].(map[string]interface{})["runs"].([]interface{})[0].(map[string]interface{})["text"].(string)
 				var videoChannel string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["longBylineText"].(map[string]interface{})["runs"].([]interface{})[0].(map[string]interface{})["text"].(string)
+				
 				// Sometimes videos don't have a published date, idk why, but this should handle that
 				videoPublishedTimeMap, okay := data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["publishedTimeText"].(map[string]interface{})
 				var videoPublishedTime string
@@ -109,8 +110,22 @@ func displayVideos(inputJSON map[string]interface{}) {
 				} else {
 					videoPublishedTime = videoPublishedTimeMap["simpleText"].(string)
 				}
-				var videoLength string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["lengthText"].(map[string]interface{})["simpleText"].(string)
-				var videoViews string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})["simpleText"].(string)
+				
+				// Livestreams don't have a length, so have to check that the key exists
+				videoLengthMap, okay := data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["lengthText"].(map[string]interface{})
+				var videoLength string
+				if !okay {
+					videoLength = "Livestream"
+				} else {
+					videoLength = videoLengthMap["simpleText"].(string)
+				}
+				
+				// Livestreams don't have views either
+				var videoViews string
+				videoViews, okay = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})["simpleText"].(string)
+				if !okay {
+					videoViews = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})["runs"].([]interface{})[0].(map[string]interface{})["text"].(string)
+				}
 				
 				// Add video ID, title and channel to videoData, only data needed for mpv
 				singleVideoData := []string{videoID, videoTitle, videoChannel}
