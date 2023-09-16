@@ -187,6 +187,7 @@ trim_history () {
 	sed -i '/^zz .*/d' ~/.bash_history
 	# Remove any usage of rm command
 	sed -i '/^rm .*/d' ~/.bash_history
+	sed -i '/^youtube .*/d' ~/.bash_history
 	#sed -i '/^git add .*/d' ~/.bash_history
 	#sed -i '/^git mv .*/d' ~/.bash_history
 	#sed -i '/^stuff .*/d' ~/.bash_history
@@ -320,6 +321,7 @@ alias remake='~/Programs/configure/remake.sh'
 alias gripdo='grip --theme=dark -b'
 alias bookmarks='wc -l ~/Programs/output/updated/bookmarks.txt'
 alias youtube='~/Programs/terminal/webAlternatives/youtubeSearch'
+alias ytlen='~/Programs/terminal/webAlternatives/youtubeLength.sh'
 
 # Info programs 
 
@@ -347,7 +349,6 @@ alias rm='~/Programs/terminal/alias/rm.sh'
 alias backup='~/Programs/terminal/terminalPrograms/backup.sh'
 alias stuff='python3 ~/Programs/terminal/terminalPrograms/stuff.py'
 alias strava='~/Programs/terminal/terminalPrograms/strava/strava.sh'
-alias cycling='python3 ~/Programs/smallPrograms/proCyclingStats/getInfo.py'
 alias setlocation='~/Programs/terminal/terminalPrograms/setLocation.sh'
 alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
 alias timer='~/Programs/terminal/terminalPrograms/goBins/timer'
