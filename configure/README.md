@@ -126,6 +126,8 @@
 `gtop` Intel GPU Top (needs sudo)  
 `remake` Recompile all of my programs/scripts  
 `gripdo` launch grip in dark mode and open in browser  
+`bookmarks` get number of bookmarks  
+`youtube` search YouTube  
 
 ### Info programs
 
