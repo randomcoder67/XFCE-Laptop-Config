@@ -32,4 +32,4 @@ read -p "Enter video to watch (q to quit): " videoSelection
 
 # Get real index and open video in mpv with correct title
 realIndex=$((videoSelection-1))
-mpv --title="${titles[$realIndex]}" --ytdl-format="best" "${urls[$realIndex]}"
+mpv --title="${titles[$realIndex]}" --ytdl-format="best" "${urls[$realIndex]}" --really-quiet & disown

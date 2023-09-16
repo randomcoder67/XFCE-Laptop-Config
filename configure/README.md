@@ -128,6 +128,7 @@
 `gripdo` launch grip in dark mode and open in browser  
 `bookmarks` get number of bookmarks  
 `youtube` search YouTube  
+`ytlen` get length of YouTube playlist  
 
 ### Info programs
 
