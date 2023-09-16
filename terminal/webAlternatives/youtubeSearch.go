@@ -10,6 +10,7 @@ import (
 	"os"
 	"bufio"
 	"strconv"
+	//"bytes"
 	"os/exec"
 )
 
@@ -70,6 +71,7 @@ func extractJSON(inputHTML string) map[string]interface{} {
 		panic(err)
 	}
 	// Return unmarshalled JSON
+	fmt.Println(finalJSONString)
 	return finalJSON
 }
 
@@ -100,7 +102,14 @@ func displayVideos(inputJSON map[string]interface{}) {
 				var videoID string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["videoId"].(string)
 				var videoTitle string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["title"].(map[string]interface{})["runs"].([]interface{})[0].(map[string]interface{})["text"].(string)
 				var videoChannel string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["longBylineText"].(map[string]interface{})["runs"].([]interface{})[0].(map[string]interface{})["text"].(string)
-				var videoPublishedTime string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["publishedTimeText"].(map[string]interface{})["simpleText"].(string)
+				// Sometimes videos don't have a published date, idk why, but this should handle that
+				videoPublishedTimeMap, okay := data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["publishedTimeText"].(map[string]interface{})
+				var videoPublishedTime string
+				if !okay {
+					videoPublishedTime = "No Publish Time"
+				} else {
+					videoPublishedTime = videoPublishedTimeMap["simpleText"].(string)
+				}
 				var videoLength string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["lengthText"].(map[string]interface{})["simpleText"].(string)
 				var videoViews string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})["simpleText"].(string)
 				
@@ -135,8 +144,22 @@ func displayVideos(inputJSON map[string]interface{}) {
 	videoSelectionNumber--
 	
 	// Play video with mpv (ytdl-format=best used as the 720p YouTube video works the best with mpv)
-	mpvVideoCommand := exec.Command("mpv", "--ytdl-format=\"best\"", "--title=" + videoData[videoSelectionNumber][1] + " - " + videoData[videoSelectionNumber][2], "https://www.youtube.com/watch?v=" + videoData[videoSelectionNumber][0])
+	mpvVideoCommand := exec.Command("mpv", "--ytdl-format=best", "--title=" + videoData[videoSelectionNumber][1] + " - " + videoData[videoSelectionNumber][2], "https://www.youtube.com/watch?v=" + videoData[videoSelectionNumber][0])
 	mpvVideoCommand.Start()
+	
+	/*
+	// Outputing command debug info, leaving here in case something breaks in the future
+	var outb, errb bytes.Buffer
+	mpvVideoCommand.Stdout = &outb
+	mpvVideoCommand.Stderr = &errb
+	fmt.Println("https://www.youtube.com/watch?v=" + videoData[videoSelectionNumber][0])
+	err = mpvVideoCommand.Start()
+	mpvVideoCommand.Wait()
+	fmt.Println("Err:", err)
+	fmt.Println("stdout:", outb.String())
+	fmt.Println("stderr:", errb.String())
+	fmt.Println(mpvVideoCommand.String())
+	*/
 }
 	
 // Print help info
