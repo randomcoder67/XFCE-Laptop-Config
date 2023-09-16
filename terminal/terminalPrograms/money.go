@@ -110,6 +110,7 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 	for i:=0; i<len(records); i++ {
 		if len(records[i][1]) > itemMaxLength {
 			itemMaxLength = len(records[i][1])
+			if strings.Contains(records[i][1], "£") { itemMaxLength-- } // Some symbols have len 2
 		} 
 		if len(records[i][2]) > priceMaxLength {
 			priceMaxLength = len(records[i][2])
@@ -135,6 +136,9 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 		}
 		totalSpent = totalSpent + priceCurrent
 		itemLength := len(records[i][1])
+		if strings.Contains(records[i][1], "£") { // Some symbols have len 2 (€ has 3, better fix needed)
+			itemLength--
+		}
 		dateLength := 6
 		priceLength := len(records[i][2])
 		shopLength := len(records[i][3])
