@@ -284,6 +284,12 @@ alias yt-aria-limit='yt-dlp --external-downloader aria2c --external-downloader-a
 alias yt-folder='~/Programs/terminal/alias/ytdlpFolder.sh'
 alias yt-music='yt-dlp -f 140 -o "%(title)s - %(channel)s - %(album)s.%(ext)s"'
 
+## Web Alternatives
+
+alias youtube='~/Programs/terminal/webAlternatives/youtubeSearch'
+alias ytlen='~/Programs/terminal/webAlternatives/youtubeLength.sh'
+alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
+
 ## Git 
 
 alias gits='git status'
@@ -315,13 +321,10 @@ alias todo='micro ~/Programs/output/updated/todo.md'
 alias lc='ls | wc -l'
 alias lca='ls -A | wc -l'
 alias rmedir='find . -type d -empty -delete'
-alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
 alias gtop='sudo intel_gpu_top'
 alias remake='~/Programs/configure/remake.sh'
 alias gripdo='grip --theme=dark -b'
 alias bookmarks='wc -l ~/Programs/output/updated/bookmarks.txt'
-alias youtube='~/Programs/terminal/webAlternatives/youtubeSearch'
-alias ytlen='~/Programs/terminal/webAlternatives/youtubeLength.sh'
 
 # Info programs 
 

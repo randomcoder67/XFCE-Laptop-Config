@@ -92,6 +92,12 @@
 `yt-folder` yt-dlp from an input file (-l to use download limit)  
 `yt-music` download music in format required for music-tag program  
 
+#### Web Alternatives
+
+`wl` select video from YouTube Watch Later to play with mpv  
+`youtube` search YouTube  
+`ytlen` get length of YouTube playlist  
+
 #### Git
 
 `gits` git status  
@@ -122,13 +128,10 @@
 `lc` count items in folder  
 `lca` count items in folder (include hidden)  
 `rmedir` remove empty dirs  
-`wl` select video from YouTube Watch Later to play with mpv  
 `gtop` Intel GPU Top (needs sudo)  
 `remake` Recompile all of my programs/scripts  
 `gripdo` launch grip in dark mode and open in browser  
 `bookmarks` get number of bookmarks  
-`youtube` search YouTube  
-`ytlen` get length of YouTube playlist  
 
 ### Info programs
 
