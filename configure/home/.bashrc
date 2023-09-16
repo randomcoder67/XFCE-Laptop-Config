@@ -318,6 +318,8 @@ alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
 alias gtop='sudo intel_gpu_top'
 alias remake='~/Programs/configure/remake.sh'
 alias gripdo='grip --theme=dark -b'
+alias bookmarks='wc -l ~/Programs/output/updated/bookmarks.txt'
+alias youtube='~/Programs/terminal/webAlternatives/youtubeSearch.sh'
 
 # Info programs 
 
