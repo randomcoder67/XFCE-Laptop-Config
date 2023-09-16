@@ -71,7 +71,6 @@ func extractJSON(inputHTML string) map[string]interface{} {
 		panic(err)
 	}
 	// Return unmarshalled JSON
-	fmt.Println(finalJSONString)
 	return finalJSON
 }
 
