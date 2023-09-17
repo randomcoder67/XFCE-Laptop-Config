@@ -66,7 +66,7 @@ func getFileContents(fileName string) string {
 	return string(dat)
 }
 
-func getYearWeek(date string) string { // Get year and week in format yyww
+func getYearWeek(date string, ahead int) string { // Get year and week in format yyww
 	var givenYear int
 	var givenWeek int
 	
@@ -82,6 +82,9 @@ func getYearWeek(date string) string { // Get year and week in format yyww
 		} else if string(date[0]) == "n" { // nmon-nsun is always next week 
 			daysToAdd = 7
 		}
+		if ahead > 0 {
+			daysToAdd = 7 * ahead
+		}
 		givenYear, givenWeek = time.Now().AddDate(0, 0, daysToAdd).ISOWeek()
 	}
 	// Correctly format string and return 
@@ -93,7 +96,7 @@ func getYearWeek(date string) string { // Get year and week in format yyww
 }
 
 // Function to convert day as a string (e.g. mon, fri, t (today), tm (tomorrow)) to a usable date
-func convertDayToDate(day string) string {
+func convertDayToDate(day string, ahead int) string {
 	var dtFinal time.Time
 	// As well as mon-sun, t and tm, nmon is also valid, meaning next monday 
 	// If the first letter of day is n, add on 7 to get next week
@@ -101,6 +104,9 @@ func convertDayToDate(day string) string {
 	if string(day[0]) == "n" {
 		toAdd = 7
 		day = day[1:4] // Remove leading n from day variable 
+	}
+	if ahead > 0 {
+		toAdd = 7 * ahead
 	}
 	
 	// "t" = today, "tm" = tomorrow 
@@ -122,11 +128,11 @@ func convertDayToDate(day string) string {
 }
 
 func addEntry(time string, date string, description string) {
-	fileName := homeDir + BASE_PATH + getYearWeek(date) + ".csv"
+	fileName := homeDir + BASE_PATH + getYearWeek(date, 0) + ".csv"
 	fileContents := getFileContents(fileName)
 	if len(date) != 6 {
 		if stringInArray(date, validDates) {
-			date = convertDayToDate(date)
+			date = convertDayToDate(date, 0)
 		} else {
 			fmt.Println("Error, incorrectly formatted date")
 			fmt.Printf("Usage: \n  schedule -a hhmm yymmdd/day description to add\n")
@@ -173,7 +179,7 @@ func addMultipleEntry(givenTime string, date string, description string, repeat 
 	if len(date) == 6 {
 		givenDate = date
 	} else {
-		givenDate = convertDayToDate(date)
+		givenDate = convertDayToDate(date, 0)
 	}
 	givenDateObject, _ := time.Parse("060102", givenDate)
 	
@@ -196,15 +202,15 @@ func dateToDay(date string) string {
 	return weekday.String() + " " + strconv.Itoa(day) + suffix
 }
 
-func viewSchedule(nextWeek bool) {
+func viewSchedule(toAdd int) {
 	var fileName string
 	var middleOfWeek string // Middle of week is to allow the output to split over two columns 
-	if nextWeek { // If nextWeek is true, print next weeks schedule, not this weeks
-		fileName = homeDir + BASE_PATH + getYearWeek("nmon") + ".csv"
-		middleOfWeek = convertDayToDate("nthu")
+	if toAdd > 0 { // If nextWeek is true, print next weeks schedule, not this weeks
+		fileName = homeDir + BASE_PATH + getYearWeek("nmon", toAdd) + ".csv"
+		middleOfWeek = convertDayToDate("nthu", toAdd)
 	} else {
-		fileName = homeDir + BASE_PATH + getYearWeek("t") + ".csv"
-		middleOfWeek = convertDayToDate("thu")
+		fileName = homeDir + BASE_PATH + getYearWeek("t", 0) + ".csv"
+		middleOfWeek = convertDayToDate("thu", 0)
 	}
 	
 	// Read in csv file with delimiter of "|"
@@ -214,8 +220,10 @@ func viewSchedule(nextWeek bool) {
 	
 	if records == nil {
 		var whichWeekString string = "this"
-		if nextWeek {
+		if toAdd == 1 {
 			whichWeekString = "next"
+		} else if toAdd > 1 {
+			whichWeekString = "that"
 		}
 		fmt.Printf("No entries in schedule for %s week\n", whichWeekString)
 		os.Exit(0)
@@ -300,7 +308,7 @@ func printSchedule(columnA [][]string, columnB [][]string) {
 }
 
 func printHelp() {
-	fmt.Printf("Usage: \nTo View:\n  schedule [-n] (-n for next week)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n")
+	fmt.Printf("Usage: \nTo View:\n  schedule [-n] [x](-n for next week, x for x weeks ahead)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n")
 }
 
 func main() {
@@ -324,7 +332,17 @@ func main() {
 				addMultipleEntry(os.Args[2], os.Args[3], os.Args[4], os.Args[5])
 			}
 		} else if arg == "-n" {
-			viewSchedule(true)
+			var toAdd int = 1
+			var err error
+			if len(os.Args) == 3 {
+				toAdd, err = strconv.Atoi(os.Args[2])
+				if err != nil {
+					fmt.Printf("Error, wrongly formatted arguments\n")
+					printHelp()
+					os.Exit(1)
+				}
+			}
+			viewSchedule(toAdd)
 		} else if arg == "-h" {
 			printHelp()
 		} else {
@@ -332,6 +350,6 @@ func main() {
 			printHelp()
 		}
 	} else {
-		viewSchedule(false)
+		viewSchedule(0)
 	}
 }

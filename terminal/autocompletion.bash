@@ -173,3 +173,5 @@ complete -F _savedotfilesCompletion savedotfiles
 complete -F _removeCompletion remove
 complete -F _musicCompletion music
 complete -F _remakeCompletion remake
+complete -o default glow
+complete -o default pkgfile
