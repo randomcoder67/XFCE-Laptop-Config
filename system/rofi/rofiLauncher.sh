@@ -140,7 +140,7 @@ elif [[ $selection == "XColor Colour Picker" ]]; then
 elif [[ "$selection" == "ZBar QR Code Scanner" ]]; then
 	zbarcam -1 | sed 's/QR-Code://g' | tee >(xargs notify-send) | xclip -selection c
 elif [[ $selection == "Check All" ]]; then
-	firefox "https://mail.google.com/mail/u/1" "https://mail.google.com/mail/u/2" "https://outlook.office.com/mail/" "https://github.com" "https://old.reddit.com" "https://stackoverflow.com/" "https://www.bbc.co.uk/news" "https://www.nasa.gov/multimedia/imagegallery/iotd.html"
+	firefox "https://mail.google.com/mail/u/1" "https://mail.google.com/mail/u/2" "https://outlook.office.com/mail/" "https://github.com" "https://old.reddit.com" "https://stackoverflow.com/" "https://www.bbc.co.uk/news" "https://www.nasa.gov/multimedia/imagegallery/iotd.html" "https://twitter.com/destidarko?lang=en" "https://calendar.google.com/calendar/u/0/embed?src=i54j4cu9pl4270asok3mqgdrhk@group.calendar.google.com&pli=1" "https://www.dekudeals.com/" "https://twitter.com/home"
 elif [[ -d ~/Videos/Media/$selection ]]; then # If a season of TV selected, get season and episode then play
 	season=$(ls "$HOME/Videos/Media/$selection" | tr -d '/' | sed -n 's/Season\([0-9]*\)/\1\0/p' | sort -n | grep -Eo "Season[0-9]+" | rofi -dmenu -i -p "Select Season")
 	episode=$(ls "$HOME/Videos/Media/$selection/$season" | tr -d '/' | sed -n 's/Episode\([0-9]*\).*/\1\0/p' | sort -n | grep -Eo "Episode[0-9]+" | rofi -dmenu -i -p "Select Episode")

@@ -208,6 +208,21 @@ trim_history () {
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
 }
 
+# Get number of files in directory recursively (including hidden files)
+lcr () {
+	if [[ "$@" == "." ]]; then
+		find "$PWD" -name ".*" -prune -o -type f -print | wc -l
+	else
+		args="${@//./$PWD}"
+		find $args -name ".*" -prune -o -type f -print | wc -l
+	fi
+}
+
+# Get number of files in directory recursively (only non hidden files)
+lcra () {
+	find "$@" -type f | wc -l
+}
+
 # Program Openers 
 
 alias p='_p'
