@@ -120,11 +120,18 @@ func displayVideos(inputJSON map[string]interface{}) {
 					videoLength = videoLengthMap["simpleText"].(string)
 				}
 				
-				// Livestreams don't have views either
+				// Livestreams don't have views in the same format, and some have none at all
 				var videoViews string
-				videoViews, okay = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})["simpleText"].(string)
+				// Check if the views part exists at all
+				videoViewsMap, okay := data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})
 				if !okay {
-					videoViews = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})["runs"].([]interface{})[0].(map[string]interface{})["text"].(string)
+					videoViews = "no viewers"
+				} else { // If it does, check if it's video format or livestream format
+					videoViews, okay = videoViewsMap["simpleText"].(string)
+					if !okay {
+						videoViewsArray := data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})["runs"].([]interface{})
+						videoViews = videoViewsArray[0].(map[string]interface{})["text"].(string) + videoViewsArray[1].(map[string]interface{})["text"].(string)
+					}
 				}
 				
 				// Add video ID, title and channel to videoData, only data needed for mpv
