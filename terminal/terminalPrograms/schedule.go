@@ -308,7 +308,7 @@ func printSchedule(columnA [][]string, columnB [][]string) {
 }
 
 func printHelp() {
-	fmt.Printf("Usage: \nTo View:\n  schedule [-n] [x](-n for next week, x for x weeks ahead)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n")
+	fmt.Printf("Usage: \nTo View:\n  schedule [-n] [x] (-n for next week, x for x weeks ahead)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n")
 }
 
 func main() {
