@@ -17,11 +17,11 @@ Installed when installing programs:
 
 `sudo pacman -S papirus-icon-theme xfce4-genmon-plugin mousepad xfce4-screenshooter firefox rofi sassc unzip thunar-archive-plugin man xfce4-pulseaudio-plugin meson ninja python-pip gcc imagemagick xclip bc xdg-utils base-devel trash-cli libxtst pkg-config libqalculate btop htop make bat ncdu duf mpv ffmpeg mediainfo yt-dlp hyperfine xdotool aspell-en songrec pavucontrol alsa-firmware sof-firmware pulseaudio-alsa glow jq intel-gpu-tools intel-media-driver progress ristretto neofetch gimp expect pass fuse alacritty gnome-keyring rsync go ttf-droid exiftool cmus man-pages moreutils perl-rename bash-completion tokei dust cool-retro-term xfce4-screensaver network-manager-applet zbar speedtest-cli ttf-roboto ttf-roboto-mono`
 
-Also needed: 
-
-* Greybird Dark theme 
-* Font Awesome free font 
-* ksuperkey 
+Also needed:  
+* [Greybird Dark Theme](https://github.com/shimmerproject/Greybird)
+* [Font Awesome Free For Desktop](https://fontawesome.com/download)
+* [ksuperkey](https://github.com/hanschen/ksuperkey)
+* [Dragon Terminal Drag and Drop](https://github.com/mwh/dragon) 
 
 Wallpapers are mainly from here:  
 [NASA Image of the Day](https://www.nasa.gov/multimedia/imagegallery/iotd.html)
