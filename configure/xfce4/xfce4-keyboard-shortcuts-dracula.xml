@@ -72,6 +72,16 @@
 	  <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=25&quot; -o &quot;window.dimensions.columns=24&quot; -o &quot;window.title=Soundboard&quot; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
 	  <property name="&lt;Super&gt;k" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/tile.sh -d"/>
 	  <property name="&lt;Super&gt;j" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/tile.sh -d -r"/>
+	  <property name="&lt;Super&gt;1" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 1"/>
+	  <property name="&lt;Super&gt;2" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 2"/>
+	  <property name="&lt;Super&gt;3" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 3"/>
+	  <property name="&lt;Super&gt;4" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 4"/>
+	  <property name="&lt;Super&gt;5" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 5"/>
+	  <property name="&lt;Super&gt;6" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 6"/>
+	  <property name="&lt;Super&gt;7" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 7"/>
+	  <property name="&lt;Super&gt;8" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 8"/>
+	  <property name="&lt;Super&gt;9" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 9"/>
+	  <property name="&lt;Super&gt;0" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 0"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">

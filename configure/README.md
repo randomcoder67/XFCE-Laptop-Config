@@ -230,6 +230,19 @@
 `Super+Fn+Up` Snap window to top left  
 `Super+Fn+Down` Snap window to bottom right  
 
+### Special Characters
+
+`Super+1` Special character 1  
+`Super+2` Special character 2  
+`Super+3` Special character 3  
+`Super+4` Special character 4  
+`Super+5` Special character 5  
+`Super+6` Special character 6  
+`Super+7` Special character 7  
+`Super+8` Special character 8  
+`Super+9` Special character 9  
+`Super+0` Special character 0  
+
 ## Programs 
 
 ### mpv 
