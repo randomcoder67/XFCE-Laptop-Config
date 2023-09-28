@@ -48,14 +48,30 @@ if [[ $selection == *"/"* ]]; then
 		fi
 	fi
 elif [[ $selection == "Wikipedia" ]]; then
-	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)")
-	if [[ "$searchTerm" == "" ]]; then
+	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
+	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
 		firefox "https://en.wikipedia.org/wiki/Main_Page"
-	else
-		finalSearchTerm=${searchTerm// /+}
-		finalWikipediaURL=$(curl "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=$finalSearchTerm&format=json&limit=1" | jq .query.search[0].pageid)
-		[[ "$finalWikipediaURL" == "" ]] || [[ "$finalWikipediaURL" == "null" ]] && notify-send "No Results Found" && exit
+	else # Otherwise, use API to search
+		finalSearchTerm=${searchTerm// /+} # Replace spaces with "+" for url
+		# Get URL
+		finalWikipediaURL=$(curl "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=$finalSearchTerm&format=json&srlimit=1" | jq .query.search[0].pageid)
+		[[ "$finalWikipediaURL" == "" ]] || [[ "$finalWikipediaURL" == "null" ]] && notify-send "No Results Found" && exit # Check for errors
+		# Open url with firefox
 		firefox "https://en.wikipedia.org/w/index.php?curid=$finalWikipediaURL"
+	fi
+elif [[ $selection == "Terraria Wiki" ]]; then
+	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
+	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
+		firefox "https://terraria.wiki.gg/wiki/Terraria_Wiki"
+	else # Otherwise, use API to search
+		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
+		# Get search results
+		searchResults=$(curl "https://terraria.wiki.gg/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=eye+of")
+		# Present results to user and allow them to pick desired page
+		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
+		urlString=${result// /_} # Replace spaces with "_" for url
+		# Open url with firefox
+		firefox "https://terraria.wiki.gg/wiki/$urlString"
 	fi
 elif [[ $selection == "~" ]]; then
 	xdg-open "$selection"
