@@ -76,6 +76,12 @@ log-out () {
 	[[ "$yesOrNoLogOut" == "y" ]] && xfce4-session-logout -l
 }
 
+# Lock screen with confirmation
+lock () {
+	read -p "Lock Screen? (y/N) " yesOrNoLock
+	[[ "$yesOrNoLock" == "y" ]] && xfce4-screensaver-command -l
+}
+
 # Open pdf files in Zathura
 pdf () {
 	for arg; do
@@ -376,6 +382,7 @@ alias render='~/Programs/terminal/terminalPrograms/goBins/render'
 # Fun 
 
 alias asq='asciiquarium'
+alias stonehenge='cat ~/Programs/terminal/alias/stonehenge.txt'
 
 HISTSIZE=20000
 HISTFILESIZE=20000

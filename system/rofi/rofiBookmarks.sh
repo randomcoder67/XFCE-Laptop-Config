@@ -45,5 +45,5 @@ else
 	# Some string substitution to get correct format for grep
 	itemA=$(echo "$item" | sed 's/\[/\\[/g' | sed 's/\]/\\]/g')
 	# Finding bookmark from alias and copy to clipboard
-	grep "$itemA" ~/Programs/output/updated/bookmarks.txt | awk -F 'DELIM' '{print $2}' | tr -d '\n' | xclip -selection c
+	grep -E "^${itemA}DELIM" ~/Programs/output/updated/bookmarks.txt | awk -F 'DELIM' '{print $2}' | tr -d '\n' | xclip -selection c
 fi

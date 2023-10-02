@@ -63,7 +63,12 @@ for index, entry in enumerate(albumCovers):
 
 correctArt = input("Which art to use: ")
 
-correctArtLink = albumCovers[int(correctArt)][1]
+correctArtLink = ""
+
+if correctArt == "file":
+	correctArtLink = "file.jpg"
+else:
+	correctArtLink = albumCovers[int(correctArt)][1]
 
 # Get other tags from filename 
 
@@ -119,7 +124,8 @@ f.close()
 
 def doTagging(fileA, titleA, artistA, albumA, artLinkA, genreA):
 	try:
-		r = requests.get(artLinkA)
+		if not artLinkA == "file.jpg":
+			r = requests.get(artLinkA)
 		if artLinkA == "BLANKENTRY":
 			raise Exception("Blank Entry")
 
@@ -128,11 +134,15 @@ def doTagging(fileA, titleA, artistA, albumA, artLinkA, genreA):
 		currentFile["artist"] = artistA
 		currentFile["album"] = albumA
 		currentFile["genre"] = genreA
+		
+		if artLinkA == "file.jpg":
+			with open("file.jpg", "rb") as img_in:
+				currentFile["artwork"] = img_in.read()
+		else:
+			open(tempFileName, "wb").write(r.content)
 
-		open(tempFileName, "wb").write(r.content)
-
-		with open(tempFileName, "rb") as img_in:
-			currentFile["artwork"] = img_in.read()
+			with open(tempFileName, "rb") as img_in:
+				currentFile["artwork"] = img_in.read()
 
 		currentFile.save()
 

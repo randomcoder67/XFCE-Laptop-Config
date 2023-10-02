@@ -172,6 +172,7 @@
 ### Fun
 
 `asq` ascii aquarium  
+`stonehenge` ascii stonehenge  
 
 ## Keyboard shortcuts 
 

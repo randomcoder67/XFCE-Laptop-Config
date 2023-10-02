@@ -56,7 +56,7 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 	fileName := homeDir + BASE_PATH + dateFileCode + ".csv"
 	fileContents := getFileContents(fileName)
 	if fileContents == "" {
-		fmt.Println("Error, month not present in records")
+		fmt.Println("Month not present in records")
 		os.Exit(1)
 	}
 	// Filter data if necessary
