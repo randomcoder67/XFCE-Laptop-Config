@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"sort"
 	"io/fs"
+	"bytes"
 )
 
 const THEME_PATH string = "/Programs/output/updated/currentTheme.txt"
@@ -127,7 +128,7 @@ func convertDayToDate(day string, ahead int) string {
 	return dtFinal.Format("060102")
 }
 
-func addEntry(time string, date string, description string) {
+func addEntry(time string, date string, description string, internal bool) {
 	fileName := homeDir + BASE_PATH + getYearWeek(date, 0) + ".csv"
 	fileContents := getFileContents(fileName)
 	if len(date) != 6 {
@@ -147,15 +148,19 @@ func addEntry(time string, date string, description string) {
 		description = description[:34] + "..."
 	}
 	
+	var internalString string = "e"
+	if internal {
+		internalString = "i"
+	}
 	// Add new entry and write to file
-	fileContents = fileContents + date + "|" + time + "|" + description + "\n"
+	fileContents = fileContents + date + "|" + time + "|" + description + "|" + internalString + "\n"
 	err := os.WriteFile(fileName, []byte(fileContents), 0666)
 	if err != nil {
 		panic(err)
 	}
 }
 
-func addMultipleEntry(givenTime string, date string, description string, repeat string) {
+func addMultipleEntry(givenTime string, date string, description string, repeat string, internal bool) {
 	// Create slice to add required weeks to
 	var weeksToAdd = []int{}
 	// Split repeat at commas to get weeks
@@ -186,7 +191,7 @@ func addMultipleEntry(givenTime string, date string, description string, repeat 
 	// Iterate through weeksToAdd
 	for _, toAdd := range weeksToAdd {
 		dateToAdd := givenDateObject.AddDate(0, 0, 7*toAdd) // Get the date by week offset (0 is this week)
-		addEntry(givenTime, dateToAdd.Format("060102"), description) // Add the entry
+		addEntry(givenTime, dateToAdd.Format("060102"), description, internal) // Add the entry
 	}
 }
 
@@ -202,7 +207,7 @@ func dateToDay(date string) string {
 	return weekday.String() + " " + strconv.Itoa(day) + suffix
 }
 
-func viewSchedule(toAdd int) {
+func viewSchedule(toAdd int, internal bool) {
 	var fileName string
 	var middleOfWeek string // Middle of week is to allow the output to split over two columns 
 	if toAdd > 0 { // If nextWeek is true, print next weeks schedule, not this weeks
@@ -218,7 +223,23 @@ func viewSchedule(toAdd int) {
 	r.Comma = '|'
 	records, _ := r.ReadAll()
 	
-	if records == nil {
+	// If internal entries not requested, filter them out
+	if !internal {
+		tempRecords := [][]string{}
+		for _, entry := range records {
+			if entry[3] == "e" {
+				tempRecords = append(tempRecords, entry)
+			}
+		}
+		// Remake records to be the len of tempRecords
+		records = make([][]string, len(tempRecords))
+		// Copy tempRecords to records
+		copy(records, tempRecords)
+	}
+	
+	// Check if records are nil
+	if records == nil || len(records) == 0 {
+		// Format error message properly
 		var whichWeekString string = "this"
 		if toAdd == 1 {
 			whichWeekString = "next"
@@ -307,8 +328,124 @@ func printSchedule(columnA [][]string, columnB [][]string) {
 	}
 }
 
+// Delete an entry from the schedule
+func deleteEntry(time string, date string) {
+	fileName := homeDir + BASE_PATH + getYearWeek(date, 0) + ".csv"
+	if len(date) != 6 {
+		if stringInArray(date, validDates) {
+			date = convertDayToDate(date, 0)
+		} else {
+			fmt.Println("Error, incorrectly formatted date")
+			fmt.Printf("Usage: \n  schedule -d hhmm yymmdd/day\n")
+			os.Exit(1)
+		}
+	}
+	
+	// Read in csv file with delimiter of "|"
+	r := csv.NewReader(strings.NewReader(getFileContents(fileName)))
+	r.Comma = '|'
+	records, _ := r.ReadAll()
+	
+	// Make new slice to hold updated records
+	newRecords := [][]string{}
+	
+	// Iterate through records and only add non-matching items to newRecords
+	for _, entry := range records {
+		if entry[0] != date || entry[1] != time {
+			newRecords = append(newRecords, entry)
+		}
+	}
+	
+	// Save back to file
+	toWrite := new(bytes.Buffer)
+	w := csv.NewWriter(toWrite)
+	// "|" as delimiter
+	w.Comma = '|'
+	if err := w.WriteAll(newRecords); err != nil {
+			panic(err)
+	}
+	w.Flush()
+	// Write to file
+	err := os.WriteFile(fileName, []byte(toWrite.String()), 0666)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func printHelp() {
-	fmt.Printf("Usage: \nTo View:\n  schedule [-n] [x] (-n for next week, x for x weeks ahead)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n")
+	fmt.Printf("Usage: \nTo View:\n  schedule [-n] [x] [-i] (-n for next week, x for x weeks ahead) (-i to show interal entries)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5] [-i]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n  -i for internal\nTo Remove:\n  schedule -d hhmm yymmdd/day\n")
+}
+
+// Error out if wrong arguments given
+func errorOut() {
+	fmt.Printf("Error, wrongly formatted arguments\n")
+	printHelp()
+	os.Exit(1)
+}
+
+// Function to parse args
+func parseArgs(args []string) {
+	var internal bool = false
+	// If only one arg, then just show schedule normally
+	if len(args) == 1 {
+		viewSchedule(0, false)
+		return
+	}
+	// If first arg is -i or -n, parse viewing options
+	if args[1] == "-i" || args[1] == "-n" {
+		var toAdd int = 0
+		for i:=1; i<len(args); {
+			if args[i] == "-i" { // -i means the user wants to see internal records
+				internal = true
+				i++
+			} else if args[i] == "-n" { // -n means next week, or x week if "-n x"
+				toAdd = 1
+				i++
+				if len(args) > i && args[i] != "-i" { // Check for x, making sure it's not -i
+					var err error
+					toAdd, err = strconv.Atoi(args[i])
+					if err != nil {
+						errorOut()
+					}
+					i++
+				}
+			} else {
+				errorOut()
+			}
+		}
+		// View schedule with given options
+		viewSchedule(toAdd, internal)
+	} else if args[1] == "-d" { // If first arg is -d, deleteEntry
+		if len(args) != 4 {
+			errorOut()
+		}
+		deleteEntry(os.Args[2], os.Args[3])
+	} else if args[1] == "-h" { // If first arg is -h, show help
+		printHelp()
+	} else if args[1] == "-a" { // If first arg is -a, parse adding options
+		if len(args) < 5 {
+			errorOut()
+		}
+		var inputTime string = args[2] // time, date and description mandatory
+		var inputDate string = args[3]
+		var inputDescription string = args[4]
+		var weekSpan string = "" // Week span optional, initialise here
+		for i:=5; i<len(args); { // Parse optional arguments
+			if args[i] == "-i" { // -i means add as internal
+				internal = true
+				i++
+			} else { // Otherwise, assume the argument is week span
+				weekSpan = args[i]
+				i++
+			}
+		}
+		// Check if week span is entry and either add multiple or add one entry with given arguments
+		if weekSpan != "" {
+			addMultipleEntry(inputTime, inputDate, inputDescription, weekSpan, internal)
+		} else {
+			addEntry(inputTime, inputDate, inputDescription, internal)
+		}
+	}
 }
 
 func main() {
@@ -323,33 +460,5 @@ func main() {
 		DAY_COLOUR = DAY_COLOUR_DRACULA
 	}
 	
-	if len(os.Args) > 1 {
-		arg := os.Args[1]
-		if arg == "-a" {
-			if len(os.Args) == 5 {
-				addEntry(os.Args[2], os.Args[3], os.Args[4])
-			} else if len(os.Args) == 6 {
-				addMultipleEntry(os.Args[2], os.Args[3], os.Args[4], os.Args[5])
-			}
-		} else if arg == "-n" {
-			var toAdd int = 1
-			var err error
-			if len(os.Args) == 3 {
-				toAdd, err = strconv.Atoi(os.Args[2])
-				if err != nil {
-					fmt.Printf("Error, wrongly formatted arguments\n")
-					printHelp()
-					os.Exit(1)
-				}
-			}
-			viewSchedule(toAdd)
-		} else if arg == "-h" {
-			printHelp()
-		} else {
-			fmt.Printf("Error, wrongly formatted arguments\n")
-			printHelp()
-		}
-	} else {
-		viewSchedule(0)
-	}
+	parseArgs(os.Args)
 }
