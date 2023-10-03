@@ -115,7 +115,7 @@ _scheduleCompletion() {
 			return 0
 		fi
 	fi
-	COMPREPLY=( $(compgen -W "-h -n -a" -- "${COMP_WORDS[1]}") )
+	COMPREPLY=( $(compgen -W "-h -n -i -a -d" -- "${COMP_WORDS[1]}") )
 }
 
 _moneyCompletion() {
