@@ -4,18 +4,35 @@
 
 # Get JSON of your Watch Later playlist or Subscriptions (assumes you use firefox)
 if [[ "$1" == "-s" ]]; then
-	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox --playlist-end 20 "https://www.youtube.com/feed/subscriptions")
+	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox --playlist-end 20 "https://www.youtube.com/feed/subscriptions 2> /dev/null")
+elif [[ "$1" == "-p" ]]; then
+	playlistsJSON=$(yt-dlp --flat-playlist -J --cookies-from-browser firefox "https://www.youtube.com/feed/library" 2> /dev/null)
+	oldIFS="$IFS"
+	IFS=$'\n'
+	ids=( $(echo "$playlistsJSON" | jq -r '.entries[] | select(.ie_key=="YoutubeTab") | .id') )
+	titles=( $(echo "$playlistsJSON" | jq -r '.entries[] | select(.ie_key=="YoutubeTab") | .title') )
+	IFS="$oldIFS"
+	index=1
+	for title in "${titles[@]}"; do
+		echo "${index}: ${title}"
+		indexA=$((index+1))
+		index=$indexA
+	done
+	read -p "Enter playlist to show (q to quit): " playlistSelection
+	[[ "$playlistSelection" == "q" ]] || [[ "$playlistSelection" == "" ]] || ((playlistSelection>index-1)) && exit
+	id="${ids[$((playlistSelection-1))]}"
+	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox "https://www.youtube.com/playlist?list=$id" 2> /dev/null)
 else
-	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox "https://www.youtube.com/playlist?list=WL")
+	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox "https://www.youtube.com/playlist?list=WL" 2> /dev/null)
 fi
 
 # Find number of entires, read urls into array and titles into array
-numEntries=$(echo "$wcJSON" | jq '.entries | length')
-urls=( $(echo "$wcJSON" | jq -r '.entries[].url') )
+urls=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube") | .url') )
 oldIFS="$IFS"
 IFS=$'\n'
-titles=( $(echo "$wcJSON" | jq -r '.entries[].title') )
-channels=( $(echo "$wcJSON" | jq -r '.entries[].channel') )
+titles=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube") | .title') )
+channels=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube") | .channel') )
+numEntries="${#titles[@]}"
 IFS="$oldIFS"
 # Create index and iterate through titles
 index=1
