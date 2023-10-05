@@ -4,7 +4,7 @@
 
 # Get JSON of your Watch Later playlist or Subscriptions (assumes you use firefox)
 if [[ "$1" == "-s" ]]; then
-	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox --playlist-end 20 "https://www.youtube.com/feed/subscriptions 2> /dev/null")
+	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox --playlist-end 20 "https://www.youtube.com/feed/subscriptions" 2> /dev/null)
 elif [[ "$1" == "-p" ]]; then
 	playlistsJSON=$(yt-dlp --flat-playlist -J --cookies-from-browser firefox "https://www.youtube.com/feed/library" 2> /dev/null)
 	oldIFS="$IFS"
