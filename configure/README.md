@@ -37,6 +37,8 @@
 `l` lists files in directory  
 `ls` lists files in directory  
 `lsa` lists files in directory (including hidden files)  
+`lsl` list files in directory (detail)  
+`lsal` list files in directory (including hidden files, detail)  
 `mv` moves file (asks for confirmation if overwriting)  
 `cp` copies file (asks for confirmation if overwriting)  
 `diff` checks for differences in files  
@@ -202,6 +204,8 @@
 `Super+K` Expand Left Window in Horizontal Split  
 `Super+J` Expand Right Window in Horizontal Split  
 `Ctrl+Alt+Del` Logout  
+`Super+]` Increase Volume 5%  
+`Super+[` Decrease Volume 5%  
 
 ### Xfwm 
 
