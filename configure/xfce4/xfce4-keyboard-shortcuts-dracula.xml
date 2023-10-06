@@ -82,6 +82,8 @@
 	  <property name="&lt;Super&gt;8" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 8"/>
 	  <property name="&lt;Super&gt;9" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 9"/>
 	  <property name="&lt;Super&gt;0" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 0"/>
+	  <property name="&lt;Super&gt;bracketleft" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ -5%"/>
+	  <property name="&lt;Super&gt;bracketright" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ +5%"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">
