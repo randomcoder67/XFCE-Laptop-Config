@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-# Script to display YouTube Watch Later playlist and allow playing of videos from it with mpv
+# Script play videos from your YouTube history, subscriptions, Watch Later or other playlists with mpv
 
 # Get JSON of your Watch Later playlist or Subscriptions (assumes you use firefox)
 if [[ "$1" == "-s" ]]; then
 	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox --playlist-end 20 "https://www.youtube.com/feed/subscriptions" 2> /dev/null)
+elif [[ "$1" == "-h" ]]; then
+	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox --playlist-end 100 "https://www.youtube.com/feed/history" 2> /dev/null)
 elif [[ "$1" == "-p" ]]; then
 	playlistsJSON=$(yt-dlp --flat-playlist -J --cookies-from-browser firefox "https://www.youtube.com/feed/library" 2> /dev/null)
 	oldIFS="$IFS"
@@ -27,11 +29,12 @@ else
 fi
 
 # Find number of entires, read urls into array and titles into array
-urls=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube") | .url') )
+urls=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube" and .channel!=null) | .url') )
+# select(.url | contains("shorts") | not) would be the proper way, if they fix shorts having channel=null
 oldIFS="$IFS"
 IFS=$'\n'
-titles=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube") | .title') )
-channels=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube") | .channel') )
+titles=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube" and .channel!=null) | .title') )
+channels=( $(echo "$wcJSON" | jq -r '.entries[] | select(.ie_key=="Youtube" and .channel!=null) | .channel') )
 numEntries="${#titles[@]}"
 IFS="$oldIFS"
 # Create index and iterate through titles

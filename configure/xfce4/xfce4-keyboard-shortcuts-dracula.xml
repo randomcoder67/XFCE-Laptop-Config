@@ -84,6 +84,7 @@
 	  <property name="&lt;Super&gt;0" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/specialChars.sh 0"/>
 	  <property name="&lt;Super&gt;bracketleft" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ -5%"/>
 	  <property name="&lt;Super&gt;bracketright" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ +5%"/>
+	  <property name="&lt;Super&gt;x" type="string" value="alacritty -o &quot;window.dimensions.lines=25&quot; -o &quot;window.dimensions.columns=24&quot; -o &quot;window.title=System Functions&quot; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/systemMenu.sh"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">

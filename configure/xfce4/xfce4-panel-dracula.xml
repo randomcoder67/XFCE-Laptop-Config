@@ -21,8 +21,6 @@
 		<value type="int" value="23"/>
 		<value type="int" value="24"/>
 		<value type="int" value="25"/>
-		<value type="int" value="26"/>
-		<value type="int" value="27"/>
 		<value type="int" value="6"/>
 		<value type="int" value="8"/>
 		<value type="int" value="14"/>
@@ -207,22 +205,6 @@
 	  <property name="enable-single-row" type="bool" value="true"/>
 	  <property name="font" type="string" value="Roboto 16"/>
 	</property>
-	<property name="plugin-26" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/noahsundayPanel.jpg&lt;/img&gt;&lt;tool&gt;Noah Sunday - Completionist&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 12"/>
-	</property>
-	<property name="plugin-27" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelNoahSunday.sh -d"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
 	<property name="plugin-28" type="string" value="separator">
 	  <property name="style" type="uint" value="0"/>
 	</property>
@@ -249,6 +231,7 @@
 		<value type="string" value="configuring wi-fi network connection “unieduroam”…"/>
 	  </property>
 	  <property name="known-items" type="array">
+		<value type="string" value="chrome_status_icon_1"/>
 		<value type="string" value="ulauncher"/>
 		<value type="string" value="obs"/>
 		<value type="string" value="steam"/>
