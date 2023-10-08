@@ -146,11 +146,7 @@ _r () {
 
 # Open images in Ristretto (normal)
 rs () {
-	inputA=""
-	for arg; do
-		inputA="$inputA $arg"
-	done
-	ristretto $inputA & disown
+	ristretto "$@" & disown
 }
 
 # Move image and tags with tmsu

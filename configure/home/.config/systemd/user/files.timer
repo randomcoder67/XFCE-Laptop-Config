@@ -5,7 +5,7 @@ RefuseManualStop=no
 
 [Timer]
 OnBootSec=120
-OnUnitActiveSec=900
+OnUnitActiveSec=600
 Unit=files.service
 
 [Install]
