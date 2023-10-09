@@ -210,6 +210,8 @@
 	</property>
 	<property name="plugin-29" type="string" value="systray">
 	  <property name="known-legacy-items" type="array">
+		<value type="string" value="gigolo"/>
+		<value type="string" value="xfmpc"/>
 		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (62%)"/>
 		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (59%)"/>
 		<value type="string" value="networking disabled"/>
