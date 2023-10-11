@@ -78,7 +78,7 @@ mkdir ~/.local/share/gnupg
 chmod 700 ~/.local/share/gnupg
 chmod 600 ~/.local/share/gnupg/*
 
-cp ~/Programs/configure/gtkGreybird.css ~/.local/share/themes/Greybird-dark/gtk-3.0/gtk.css
+cp ~/Programs/configure/$currentTheme.css ~/.local/share/themes/Greybird-dark/gtk-3.0/gtk.css
 
 #	cp -r Programs ~/
 

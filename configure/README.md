@@ -74,6 +74,7 @@
 `cur` cd into ~/Music/curPlaylist  
 `wor` cd into ~/Work  
 `bin` cd into ~/.local/bin  
+`web` cd into ~/Programs/website  
 
 ### Shortcuts
 
