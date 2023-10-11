@@ -137,6 +137,7 @@
 `bookmarks` get number of bookmarks  
 `lcr` count items in folder (recursive)  
 `lcra` count items in folder (recursive and include hidden)  
+`anonprompt` swap prompt for one without username or hostname  
 
 ### Info programs
 

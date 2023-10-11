@@ -94,7 +94,7 @@ _logCompletion() {
 				[[ ${#COMPREPLY} == 4 ]] && compopt -o nospace
 				return 0
 			else # Otherwise just show avalible months
-				COMPREPLY=( $(compgen -W "$(ls ~/Programs/output/log/ | grep -oE [0-9]*)" -- "${COMP_WORDS[2]}") )
+				COMPREPLY=( $(compgen -W "$(ls ~/Programs/output/log/ | grep -oE '[0-9]*')" -- "${COMP_WORDS[2]}") )
 				[[ ${#COMPREPLY} == 4 ]] && compopt -o nospace
 				return 0
 			fi
