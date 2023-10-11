@@ -13,14 +13,27 @@ h1 {
 	text-align: center;
 }
 
+h2 {
+	font-size: 24;
+}
 
-code {
+h3 {
+	font-size: 19;
+}
+
+h4 {
+	font-size: 16;
+}
+
+pre, code {
 	background: #343942;
 	page-break-inside: avoid;
 	font-family: monospace;
 	font-size: 105%;
 	margin: 0;
 	max-width: 100%;
+	/* width: fit-content; */
+	/* display: table; */
 	overflow: auto;
 	padding: 0.2em 0.4em;
 	word-wrap: break-word;
