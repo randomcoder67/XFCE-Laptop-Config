@@ -183,7 +183,7 @@ func findFavSongs(doTrim bool, year string) {
 }
 
 // Function to perform search on a specific month 
-func searchMonth(toSearchA string, month string) {
+func searchMonth(toSearchA string, month string) bool {
 	fileName := month + ".json"
 	curJSON := getJSON(fileName)
 	
@@ -209,6 +209,7 @@ func searchMonth(toSearchA string, month string) {
 			}
 		}
 	}
+	return !notYetPrintedMonth
 	
 	/*
 	days := make([]string, 0) // Make slice to hold matching days 
@@ -236,7 +237,11 @@ func search(toSearch string, date string) {
 	} else if len(date) == 2 { // Else get all files in specified year and run searchMonth for each of them 
 		filesToUse := filterFiles(false, date)
 		for i := range filesToUse {
-			searchMonth(toSearch, filesToUse[i][0:4])
+			// Search months
+			if searchMonth(toSearch, filesToUse[i][0:4]) && i < len(filesToUse)-1 {
+				fmt.Printf("\n") // Print newline only if a match was found and not the last month
+				// BUG: If last match is in second last month, will still print newline
+			}
 		}
 	}
 }

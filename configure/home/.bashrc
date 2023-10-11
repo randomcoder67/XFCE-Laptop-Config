@@ -283,6 +283,7 @@ alias pro='cd ~/Programs'
 alias cur='cd ~/Music/curPlaylist/'
 alias wor='cd ~/Work'
 alias bin='cd ~/.local/bin'
+alias web='cd ~/Programs/website'
 
 # Shortcuts 
 
