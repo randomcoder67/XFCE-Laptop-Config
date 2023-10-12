@@ -30,7 +30,7 @@ func renderLink(w io.Writer, p *ast.Link, entering bool) {
 	// Format: <a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html" target="_blank">NASA Image of the Day</a>
 	if entering {
 		var link string = string(p.Destination)
-		if link[len(link)-3:] == ".md" {
+		if len(link) > 0 && link[len(link)-3:] == ".md" {
 			link = link[:len(link)-3] + ".html"
 		}
 		io.WriteString(w, "<a href=\"" + link + "\" target=\"_self\">")
