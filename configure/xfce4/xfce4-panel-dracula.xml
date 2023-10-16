@@ -212,24 +212,12 @@
 	  <property name="known-legacy-items" type="array">
 		<value type="string" value="gigolo"/>
 		<value type="string" value="xfmpc"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (62%)"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (59%)"/>
 		<value type="string" value="networking disabled"/>
 		<value type="string" value="requesting a wi-fi network address for “eduroam 2”…"/>
-		<value type="string" value="wi-fi network connection “eduroam 2” active: eduroam (62%)"/>
-		<value type="string" value="wi-fi network connection “eduroam” active: eduroam (57%)"/>
 		<value type="string" value="requesting a wi-fi network address for “eduroam”…"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (60%)"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (54%)"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (61%)"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (52%)"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (51%)"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (53%)"/>
 		<value type="string" value="preparing wi-fi network connection “unieduroam”…"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (55%)"/>
 		<value type="string" value="requesting a wi-fi network address for “unieduroam”…"/>
 		<value type="string" value="no network connection"/>
-		<value type="string" value="wi-fi network connection “unieduroam” active: eduroam (56%)"/>
 		<value type="string" value="configuring wi-fi network connection “unieduroam”…"/>
 	  </property>
 	  <property name="known-items" type="array">

@@ -31,6 +31,7 @@ int main(void)
 	addstr("Alarm - a\n");
 	addstr("Airhorn - d\n");
 	addstr("Rewind - g\n");
+	addstr("Megalovania - h\n");
 	addstr("Stop Sound - 1\n");
 	refresh();
 	while(1) {
@@ -92,11 +93,14 @@ int main(void)
 		if (a == 'g') {
 			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/tape.m4a 2>/dev/null >> /dev/null & disown");
 		}
+		if (a == 'h') {
+			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/megalovania.m4a 2>/dev/null >> /dev/null & disown");
+		}
 		if (a == 'q') {
 			break;
 		}
 		if (a == '1') {
-			system("kill $(ps aux | grep -E '[m]pv --no-resume-playback [a-zA-Z0-9/]*/Programs/output/.sounds/' | awk '{print $2}') 2>/dev/null >> /dev/null");
+			system("kill $(ps aux | grep -E '[m]pv --no-resume-playback --force-window=no [a-zA-Z0-9/]*/Programs/output/.sounds/' | awk '{print $2}') 2>/dev/null >> /dev/null");
 		}
 	}
 	endwin();
