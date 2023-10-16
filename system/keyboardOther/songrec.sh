@@ -4,7 +4,7 @@
 
 notify-send -t 9000 "Listening to audio"
 # Listen for song with songrec, timeout of 10s incase the song can't be recognised
-song=$(timeout 10s songrec recognize -d pulse)
+song=$(timeout 10s songrec recognize -d pipewire)
 if ! [[ "$song" == "" ]]; then
 	notify-send -t 9000 "$song"
 	time=$(date +"%y%m%d %H:%M")

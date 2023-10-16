@@ -10,9 +10,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strings"
+	"strconv"
 )
 
 const CSS_FILE_LOCATION = "/Programs/terminal/terminalPrograms/notesRenderer/style.css"
+var headings = []string{}
+var inHeading bool = false
 
 // Check if a given path points to a file, a directory, or nothing
 func isFileOrDir(filename string) int { // 0 = file, 1 = directory, 2 = nothing
@@ -39,9 +42,36 @@ func renderLink(w io.Writer, p *ast.Link, entering bool) {
 	}
 }
 
+func renderHeading(w io.Writer, p *ast.Heading, entering bool) {
+	level := strconv.Itoa(p.Level)
+	if entering {
+		io.WriteString(w, "<h" + level + " id=" + p.HeadingID + ">")
+		inHeading = true
+	} else {
+		io.WriteString(w, "</h" + level + ">")
+		inHeading = false
+	}
+}
+
+func renderText(w io.Writer, p *ast.Text) {
+	var textString string = string(p.Literal)
+	io.WriteString(w, textString)
+	if inHeading {
+		headings = append(headings, textString)
+	}
+}
+
 func myRenderHook(w io.Writer, node ast.Node, entering bool) (ast.WalkStatus, bool) {
 	if text, ok := node.(*ast.Link); ok{
 		renderLink(w, text, entering)
+		return ast.GoToNext, true
+	}
+	if heading, ok := node.(*ast.Heading); ok{
+		renderHeading(w, heading, entering)
+		return ast.GoToNext, true
+	}
+	if text, ok := node.(*ast.Text); ok{
+		renderText(w, text)
 		return ast.GoToNext, true
 	}
 	return ast.GoToNext, false
@@ -187,4 +217,5 @@ func main() {
 		printHelp()
 		os.Exit(1)
 	}
+	fmt.Println(headings)
 }
