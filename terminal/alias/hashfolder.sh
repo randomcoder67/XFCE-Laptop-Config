@@ -2,6 +2,8 @@
 
 # Script to get sha256/sha512 hashes of all files in a directory 
 
+[ "$1" == "" ] && echo "Usage: ./hashfolder.sh folder" && exit
+
 IFS=$'\n'
 
 if [[ "$1" == "-h" ]]; then
