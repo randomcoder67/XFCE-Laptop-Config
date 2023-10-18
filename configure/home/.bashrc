@@ -362,7 +362,7 @@ alias log='~/Programs/terminal/terminalPrograms/goBins/log'
 alias weather='goWeather'
 alias shows='~/Programs/terminal/alias/shows.sh'
 alias money='~/Programs/terminal/terminalPrograms/goBins/money'
-alias days='~/Programs/terminal/terminalPrograms/goBins/until'
+alias days='~/Programs/terminal/terminalPrograms/goBins/days'
 
 # File finders 
 
