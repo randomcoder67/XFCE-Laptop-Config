@@ -12,7 +12,7 @@ makeGamesUI() {
 makeDaysProgram() {
 	# Make Days Program
 	echo "Rebuilding Days Program (Go)"
-	go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/until.go
+	go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/days.go
 }
 
 makeScheduleProgram() {
