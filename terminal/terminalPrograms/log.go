@@ -183,7 +183,7 @@ func findFavSongs(doTrim bool, year string) {
 }
 
 // Function to perform search on a specific month 
-func searchMonth(toSearchA string, month string) bool {
+func searchMonth(month string, toSearchA string) bool {
 	fileName := month + ".json"
 	curJSON := getJSON(fileName)
 	
@@ -231,14 +231,14 @@ func searchMonth(toSearchA string, month string) bool {
 }
 
 // Search function, calls searchMonth as needed 
-func search(toSearch string, date string) {
+func search(date string, toSearch string) {
 	if len(date) == 4 { // If a year and month specified, call searchMonth once 
 		searchMonth(toSearch, date)
 	} else if len(date) == 2 { // Else get all files in specified year and run searchMonth for each of them 
 		filesToUse := filterFiles(false, date)
 		for i := range filesToUse {
 			// Search months
-			if searchMonth(toSearch, filesToUse[i][0:4]) && i < len(filesToUse)-1 {
+			if searchMonth(filesToUse[i][0:4], toSearch) && i < len(filesToUse)-1 {
 				fmt.Printf("\n") // Print newline only if a match was found and not the last month
 				// BUG: If last match is in second last month, will still print newline
 			}
@@ -296,7 +296,7 @@ func main() {
 			if len(os.Args) == 4 {
 				search(os.Args[2], os.Args[3])
 			} else {
-				fmt.Println("Usage: log -s string yy/yymm")
+				fmt.Println("Usage: log -s yy/yymm string")
 			}
 		} else if arg == "-d" { // Get info about a specific day 
 			if len(os.Args) == 3 {
@@ -340,7 +340,7 @@ func main() {
 				fmt.Println("Usage: log -f/fa (year)")
 			}
 		} else if arg == "-h" { // Display help
-			fmt.Println("Usage:\n  log - Add New Entry\n  -p Add New Entry (Previous Day)\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s string yy/yymm - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
+			fmt.Println("Usage:\n  log - Add New Entry\n  -p Add New Entry (Previous Day)\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s yy/yymm string - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
 		} else if arg == "-p" {
 			newEntry(true)
 		}
