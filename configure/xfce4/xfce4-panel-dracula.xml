@@ -212,6 +212,7 @@
 	</property>
 	<property name="plugin-29" type="string" value="systray">
 	  <property name="known-legacy-items" type="array">
+		<value type="string" value="requesting a wi-fi network address for “bthub5-nqhr”…"/>
 		<value type="string" value="gigolo"/>
 		<value type="string" value="xfmpc"/>
 		<value type="string" value="networking disabled"/>
@@ -238,7 +239,7 @@
 	  <property name="font" type="string" value="Roboto 12"/>
 	</property>
 	<property name="plugin-27" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelNMIXX.sh"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelNMIXX.sh -d"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
