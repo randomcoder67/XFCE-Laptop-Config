@@ -35,6 +35,7 @@ timeout 10 curl -s "https://www.youtube.com/@ChudLogic/live" > ~/Programs/output
 chudlogicTwitch &
 nerdcubedTwitch &
 timeout 10 curl -s "https://www.youtube.com/@ManyATrueNerd/live" > ~/Programs/output/.streams/streamsCheck/matnYouTube.html &
+timeout 10 curl -s "https://www.youtube.com/@NMIXX/live" > ~/Programs/output/.streams/streamsCheck/nmixxYouTube.html &
 dustinedenTwitch &
 timeout 10 curl -s "https://www.youtube.com/@NoahSundayCompletionist" > ~/Programs/output/.streams/streamsCheck/noahsundayYouTube.html
 #timeout 10 curl -s "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.html &
@@ -102,4 +103,12 @@ then
 	echo "Noah Sunday: Live (YouTube)"
 else
 	echo "Noah Sunday: Not Live"
+fi
+
+# NMIXX Check
+if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/nmixxYouTube.html
+then
+	echo "NMIXX:	   Live (YouTube)"
+else
+	echo "NMIXX:	   Not Live"
 fi
