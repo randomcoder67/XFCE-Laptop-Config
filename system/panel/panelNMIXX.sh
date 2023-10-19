@@ -17,7 +17,7 @@ if [[ "$1" == "-d" ]]; then
 	argA=$2
 fi
 
-if ! curl "https://www.youtube.com/@ManyATrueNerd/live" > ~/Programs/output/.streams/panel/nmixxYouTube.html; then
+if ! curl "https://www.youtube.com/@NMIXXOfficial/live" > ~/Programs/output/.streams/panel/nmixxYouTube.html; then
 	if [[ "$argA" == "-t" ]]; then
 		echo "<span foreground='#$noInternetColour'>  </span>"
 		echo "noInternet" > "$XDG_STATE_HOME/streams/nmixx.txt"
@@ -62,7 +62,7 @@ else
 		echo "<span foreground='#$notLiveColour'>  </span>"
 		echo "notLive" > "$XDG_STATE_HOME/streams/nmixx.txt"
 	else
-		echo "<txt>  </txt><txtclick>firefox --new-tab 'https://www.youtube.com/@NMIXX/streams'</txtclick>"
+		echo "<txt>  </txt><txtclick>firefox --new-tab 'https://www.youtube.com/@NMIXXOfficial/streams'</txtclick>"
 		echo "<tool>Not Live</tool>"
 	fi
 fi

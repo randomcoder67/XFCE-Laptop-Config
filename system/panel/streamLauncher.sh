@@ -7,7 +7,7 @@ if [[ "$1" == "matnYouTube" ]]; then
 	mpv --ytdl-format=best --title='Many A True Nerd - YouTube' https://www.youtube.com/@ManyATrueNerd/live || notify-send "Error, stream failed to open"
 elif [[ "$1" == "nmixxYouTube" ]]; then
 	notify-send "Opening NMIXX YouTube Stream"
-	mpv --ytdl-format=best --title='NMIXX - YouTube' https://www.youtube.com/@NMIXX/live || notify-send "Error, stream failed to open"
+	mpv --ytdl-format=best --title='NMIXX - YouTube' https://www.youtube.com/@NMIXXOfficial/live || notify-send "Error, stream failed to open"
 elif [[ "$1" == "chudlogicYouTube" ]]; then
 	notify-send "Opening Chud Logic YouTube Stream"
 	mpv --ytdl-format=best --title='Chud Logic - YouTube' https://www.youtube.com/@ChudLogic/live || notify-send "Error, stream failed to open"
