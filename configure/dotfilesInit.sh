@@ -5,10 +5,10 @@
 currentTheme=""
 
 if [[ "$1" == "railscasts" ]]; then
-	echo "Saving current as Railscasts"
+	echo "Loading Railscasts"
 	currentTheme="railscasts"
 elif [[ "$1" == "dracula" ]]; then
-	echo "Saving current as Dracula"
+	echo "Loading Dracula"
 	currentTheme="dracula"
 else
 	echo "Error, no colour scheme specified, please specify desired colourscheme"
@@ -91,7 +91,7 @@ cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.service ~/.config/systemd/user/panelRefresh.service
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.timer ~/.config/systemd/user/panelRefresh.timer
 cp ~/Programs/configure/home/.config/alacritty/$currentTheme.yml ~/.config/alacritty/alacritty.yml
-cp ~/Programs/configure/home/.config/btop/btop.conf ~/.config/btop/btop.conf
+cp ~/Programs/configure/home/.config/btop/$currentTheme.conf ~/.config/btop/btop.conf
 cp ~/Programs/configure/home/.config/Code\ -\ OSS/User/$currentTheme.json ~/.config/Code\ -\ OSS/User/settings.json
 #cp ~/Programs/configure/home/.config/gtk-3.0/bookmarks ~/.config/gtk-3.0/bookmarks
 cp ~/Programs/configure/home/.config/gtk-3.0/$currentTheme.css ~/.config/gtk-3.0/gtk.css
@@ -105,7 +105,7 @@ cp ~/Programs/configure/home/.config/rofi/config.rasi ~/.config/rofi/config.rasi
 cp ~/Programs/configure/home/.config/songrec/preferences.toml ~/.config/songrec/preferences.toml
 cp ~/Programs/configure/home/.config/npm/npmrc ~/.config/npm/npmrc
 cp ~/Programs/configure/home/.config/micro/bindings.json ~/.config/micro/bindings.json
-cp ~/Programs/configure/home/.config/micro/settings.json ~/.config/micro/settings.json
+cp ~/Programs/configure/home/.config/micro/settings-$currentTheme.json ~/.config/micro/settings.json
 cp ~/Programs/configure/home/.config/micro/colorschemes/railscasts.micro ~/.config/micro/colorschemes/railscasts.micro
 cp ~/Programs/configure/home/.config/micro/draculacustom.micro ~/.config/micro/colorschemes/draculacustom.micro
 cp ~/Programs/configure/home/.config/cava/config ~/.config/cava/config
