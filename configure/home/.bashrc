@@ -272,6 +272,7 @@ alias nerdcubed='mpv --title=NerdCubed https://www.twitch.tv/nerdcubed best 2>&1
 alias dustineden='mpv --title="Dustin Eden" https://www.twitch.tv/dustineden best 2>&1 & disown'
 alias matn='mpv --title="Many A True Nerd" https://www.youtube.com/@ManyATrueNerd/live & disown'
 alias noahsunday='mpv --title="Noah Sunday - Completionist" https://www.youtube.com/@NoahSundayCompletionist/live & disown'
+alias nmixx='mpv --title="NMIXX" https://www.youtube.com/@NMIXXOfficial/live & disown'
 alias dgg='firefox https://destiny.gg/embed/chat & disown'
 alias streams='~/Programs/terminal/alias/streamsCheck.sh'
 alias wstream='~/Programs/terminal/alias/destinyDownload.sh'

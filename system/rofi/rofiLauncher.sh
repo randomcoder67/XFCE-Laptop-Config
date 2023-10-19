@@ -136,7 +136,9 @@ elif [[ $selection == "RideWithGPS" ]]; then
 elif [[ $selection == "ITVX" ]]; then
 	firefox "https://www.itv.com"
 elif [[ $selection == "FlightRadar24" ]]; then
-	firefox "https://www.flightradar24.com"
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	firefox "https://www.flightradar24.com/${lat:0:5},${lon:0:5}/9"
 elif [[ $selection == "GOverlay" ]]; then
 	~/.local/bin/goverlay
 elif [[ $selection == "NetHogs" ]]; then
