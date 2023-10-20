@@ -12,7 +12,7 @@ import (
 	"strconv"
 )
 
-const SAVE_LOC = "/Programs/output/updated/until.csv"
+const SAVE_LOC = "/Programs/output/updated/days.csv"
 var homeDir string
 var timeNow time.Time
 
