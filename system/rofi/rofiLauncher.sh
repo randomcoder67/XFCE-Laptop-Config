@@ -66,12 +66,26 @@ elif [[ $selection == "Terraria Wiki" ]]; then
 	else # Otherwise, use API to search
 		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
 		# Get search results
-		searchResults=$(curl "https://terraria.wiki.gg/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=eye+of")
+		searchResults=$(curl "https://terraria.wiki.gg/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
 		# Present results to user and allow them to pick desired page
 		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
 		urlString=${result// /_} # Replace spaces with "_" for url
 		# Open url with firefox
 		firefox "https://terraria.wiki.gg/wiki/$urlString"
+	fi
+elif [[ $selection == "Minecraft Wiki" ]]; then
+	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
+	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
+		firefox "https://minecraft.wiki/"
+	else # Otherwise, use API to search
+		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
+		# Get search results
+		searchResults=$(curl "https://minecraft.wiki/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
+		# Present results to user and allow them to pick desired page
+		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
+		urlString=${result// /_} # Replace spaces with "_" for url
+		# Open url with firefox
+		firefox "https://minecraft.wiki/wiki/$urlString"
 	fi
 elif [[ $selection == "~" ]]; then
 	xdg-open "$selection"

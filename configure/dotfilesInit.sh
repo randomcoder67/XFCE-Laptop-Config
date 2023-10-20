@@ -33,13 +33,15 @@ mkdir ~/Programs/output/.sounds
 mkdir ~/Programs/output/.temp
 mkdir ~/Programs/output/updated
 
+mkdir ~/Downloads/BackupMount
+mkdir ~/Downloads/USBDrive
+
 echo "$currentTheme" > ~/Programs/output/updated/currentTheme.txt
 
 mkdir -p ~/.config/systemd/user
 
 cp ~/Programs/configure/output/* ~/Programs/output/.pictures/
 
-mkdir -m 700 .local/share/gnupg
 localectl set-x11-keymap gb
 mkdir ~/Documents
 mkdir ~/Downloads
@@ -106,8 +108,8 @@ cp ~/Programs/configure/home/.config/songrec/preferences.toml ~/.config/songrec/
 cp ~/Programs/configure/home/.config/npm/npmrc ~/.config/npm/npmrc
 cp ~/Programs/configure/home/.config/micro/bindings.json ~/.config/micro/bindings.json
 cp ~/Programs/configure/home/.config/micro/settings-$currentTheme.json ~/.config/micro/settings.json
-cp ~/Programs/configure/home/.config/micro/colorschemes/railscasts.micro ~/.config/micro/colorschemes/railscasts.micro
-cp ~/Programs/configure/home/.config/micro/draculacustom.micro ~/.config/micro/colorschemes/draculacustom.micro
+cp ~/Programs/configure/home/.config/micro/colorschemes/railscastscustom.micro ~/.config/micro/colorschemes/railscasts.micro
+cp ~/Programs/configure/home/.config/micro/colorschemes/draculacustom.micro ~/.config/micro/colorschemes/draculacustom.micro
 cp ~/Programs/configure/home/.config/cava/config ~/.config/cava/config
 cp ~/Programs/configure/home/.config/vis/config ~/.config/vis/config
 cp ~/Programs/configure/home/.config/cool-retro-term/cool-retro-term.conf ~/.config/cool-retro-term/cool-retro-term.conf
@@ -121,6 +123,7 @@ cp ~/Programs/configure/home/.local/share/rofi/themes/$currentTheme.rasi ~/.loca
 cp ~/Programs/configure/home/.config/glow/glow.yml ~/.config/glow/glow.yml
 cp ~/Programs/configure/home/.config/glow/$currentTheme.json ~/.config/glow/theme.json
 
+mkdir ~/Programs/terminal/terminalPrograms/goBins
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/log.go
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/schedule.go
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/money.go
@@ -148,19 +151,22 @@ systemctl --user start panelRefresh.timer
 
 git config --global core.pager cat
 
-git clone "https://github.com/randomcoder67/Media-UI" $HOME/Programs/myRepos
+git clone "https://github.com/randomcoder67/Media-UI" $HOME/Programs/myRepos/Media-UI
 mv "$HOME/Programs/myRepos/Media-UI" "$HOME/Programs/myRepos/mediaUI"
 cd "$HOME/Programs/myRepos/mediaUI"
 make
-git clone "https://github.com/randomcoder67/Consistent-Syntax-Highlighting" $HOME/Programs/myRepos
+mkdir ~/.config/micro/syntax
+mkdir ~/.local/share/gtksourceview-3.0/language-specs/
+mkdir ~/.local/share/gtksourceview-4/language-specs/
+git clone "https://github.com/randomcoder67/Consistent-Syntax-Highlighting" $HOME/Programs/myRepos/Consistent-Syntax-Highlighting
 mv "$HOME/Programs/myRepos/Consistent-Syntax-Highlighting" "$HOME/Programs/myRepos/syntaxHighlighting"
 cd "$HOME/Programs/myRepos/syntaxHighlighting"
 make
-git clone "https://github.com/randomcoder67/Go-Terminal-Weather" $HOME/Programs/myRepos
+git clone "https://github.com/randomcoder67/Go-Terminal-Weather" $HOME/Programs/myRepos/Go-Terminal-Weather
 mv "$HOME/Programs/myRepos/Go-Terminal-Weather" "$HOME/Programs/myRepos/goWeather"
 cd "$HOME/Programs/myRepos/goWeather"
 make
-git clone "https://github.com/randomcoder67/Go-Terminal-Strava" $HOME/Programs/myRepos
+git clone "https://github.com/randomcoder67/Go-Terminal-Strava" $HOME/Programs/myRepos/Go-Terminal-Strava
 mv "$HOME/Programs/myRepos/Go-Terminal-Strava" "$HOME/Programs/myRepos/goStrava"
 cd "$HOME/Programs/myRepos/goStrava"
 make
