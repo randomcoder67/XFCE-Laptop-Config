@@ -133,6 +133,11 @@ cd ~/Programs/terminal/terminalPrograms/notesRenderer
 go mod tidy
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/notesRenderer/render.go
 
+cd ~/Programs/terminal/webAlternatives/
+go mod tidy
+go build -o ~/Programs/terminal/webAlternatives/ ~/Programs/terminal/webAlternatives/youtubeSearch.go
+cd ~/Programs/configure
+
 gcc ~/Programs/terminal/terminalPrograms/astro/planets.c -o ~/Programs/terminal/terminalPrograms/astro/planets -lm -Wall -Wextra
 
 gcc ~/Programs/system/keyboardOther/soundboard.c -lncurses -o ~/Programs/system/keyboardOther/soundboard -Wall -Wextra
