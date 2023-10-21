@@ -2,6 +2,9 @@
 
 # Script play videos from your YouTube history, subscriptions, Watch Later or other playlists with mpv
 
+LINE_RESET='\033[1A'
+chars=("-" "\\" "|" "/")
+
 # Get JSON of your Watch Later playlist or Subscriptions (assumes you use firefox)
 if [[ "$1" == "-s" ]]; then
 	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox --playlist-end 20 "https://www.youtube.com/feed/subscriptions" 2> /dev/null)
@@ -69,5 +72,16 @@ for video in "${videos[@]}"; do
 	allVids="$allVids${urls[$realIndex]} "
 done
 
+# Remove previous output file
+rm /tmp/mpv.out
 # Launch mpv with allVids as the list of videos
-mpv --title='${media-title}' --ytdl-format="best" $allVids --really-quiet & disown
+mpv --title='${media-title}' --ytdl-format="best" $allVids 2> /dev/null | sed -u '/Resuming playback/d' >> /tmp/mpv.out & disown
+
+# Check every 0.2 seconds if the command if the video is open yet, if it's not, print loading text
+i=0
+echo ""
+while [[ "$(cat /tmp/mpv.out)" == "" ]]; do
+	echo -ne "${LINE_RESET}Loading ${chars[$((i%4))]}			 \n"
+	i=$((i+1))
+	sleep 0.2
+done

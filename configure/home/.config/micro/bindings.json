@@ -9,5 +9,6 @@
 	"Ctrl-W": "Quit",
 	"Ctrl-Q": "QuitAll",
 	"Ctrl-S": "Save",
-	"OldBackspace": "DeleteWordLeft"
+	"OldBackspace": "DeleteWordLeft",
+	"Ctrl-Delete": "DeleteWordRight"
 }

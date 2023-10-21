@@ -11,6 +11,7 @@ resultsArray=( $results )
 
 # Get selection, only presenting titles and returning index
 selection=$(echo "$results" | awk -F ':# ' '{print $2}' | rofi -dmenu -i -p "Select File To Link" -format i)
+[[ "$selection" == "" ]] && exit
 
 # Type the selected file name only
 xdotool type --delay 5 $(echo "${resultsArray[$selection]}" | awk -F ':# ' '{print $1}')
