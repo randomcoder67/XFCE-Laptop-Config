@@ -75,6 +75,7 @@ mkdir ~/.config/micro/colorschemes
 mkdir ~/.config/cava
 mkdir ~/.config/vis
 mkdir ~/.config/cool-retro-term
+mkdir ~/.config/zathura
 
 mkdir ~/.local/share/gnupg
 chmod 700 ~/.local/share/gnupg
@@ -113,6 +114,7 @@ cp ~/Programs/configure/home/.config/micro/colorschemes/draculacustom.micro ~/.c
 cp ~/Programs/configure/home/.config/cava/config ~/.config/cava/config
 cp ~/Programs/configure/home/.config/vis/config ~/.config/vis/config
 cp ~/Programs/configure/home/.config/cool-retro-term/cool-retro-term.conf ~/.config/cool-retro-term/cool-retro-term.conf
+cp ~/Programs/configure/home/.config/zathura/zathurarc ~/.config/zathura/zathurarc
 
 cp ~/Programs/configure/home/.local/share/gtksourceview-3.0/styles/railscasts.xml ~/.local/share/gtksourceview-3.0/styles/railscasts.xml
 cp ~/Programs/configure/home/.local/share/gtksourceview-4/styles/railscasts.xml ~/.local/share/gtksourceview-4/styles/railscasts.xml
