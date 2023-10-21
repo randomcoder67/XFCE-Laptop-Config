@@ -212,16 +212,10 @@
 	</property>
 	<property name="plugin-29" type="string" value="systray">
 	  <property name="known-legacy-items" type="array">
-		<value type="string" value="requesting a wi-fi network address for “bthub5-nqhr”…"/>
 		<value type="string" value="gigolo"/>
 		<value type="string" value="xfmpc"/>
 		<value type="string" value="networking disabled"/>
-		<value type="string" value="requesting a wi-fi network address for “eduroam 2”…"/>
-		<value type="string" value="requesting a wi-fi network address for “eduroam”…"/>
-		<value type="string" value="preparing wi-fi network connection “unieduroam”…"/>
-		<value type="string" value="requesting a wi-fi network address for “unieduroam”…"/>
 		<value type="string" value="no network connection"/>
-		<value type="string" value="configuring wi-fi network connection “unieduroam”…"/>
 	  </property>
 	  <property name="known-items" type="array">
 		<value type="string" value="chrome_status_icon_1"/>

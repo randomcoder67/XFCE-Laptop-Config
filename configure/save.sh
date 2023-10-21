@@ -92,7 +92,7 @@ cp /etc/udev/hwdb.d/65-keyboard-custom.hwdb ~/Programs/configure/root/etc/udev/h
 
 [ -d ~/Programs/configure/xfce4  ] || mkdir ~/Programs/configure/xfce4 
 
-sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml | sed '/		<value type="string" value="wi-fi network connection/d' > ~/Programs/configure/xfce4/xfce4-panel-$currentTheme.xml
+sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml | sed '/		<value type="string" value="wi-fi network connection/d' | sed '/		<value type="string" value="configuring wi-fi network connection/d' | sed '/		<value type="string" value="requesting a wi-fi network address for/d' | sed '/		<value type="string" value="preparing wi-fi network connection/d' > ~/Programs/configure/xfce4/xfce4-panel-$currentTheme.xml
 sed 's/USERNAMEA/GENERICUSERNAME/g' ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml > ~/Programs/configure/xfce4/xfce4-keyboard-shortcuts-$currentTheme.xml
 
 cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/Programs/configure/xfce4/
