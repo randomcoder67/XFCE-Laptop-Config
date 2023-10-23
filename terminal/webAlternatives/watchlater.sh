@@ -75,7 +75,7 @@ done
 # Remove previous output file
 rm /tmp/mpv.out
 # Launch mpv with allVids as the list of videos
-mpv --title='${media-title}' --ytdl-format="best" $allVids 2> /dev/null | sed -u '/Resuming playback/d' >> /tmp/mpv.out & disown
+mpv --title='${media-title}' --ytdl-format="best" $allVids 2> /dev/null | sed -u '/Resuming playback/d' | sed -u '/Playing/d' >> /tmp/mpv.out & disown
 
 # Check every 0.2 seconds if the command if the video is open yet, if it's not, print loading text
 i=0
