@@ -27,6 +27,14 @@ elif [[ "$1" == "-p" ]]; then
 	[[ "$playlistSelection" == "q" ]] || [[ "$playlistSelection" == "" ]] || ((playlistSelection>index-1)) && exit
 	id="${ids[$((playlistSelection-1))]}"
 	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox "https://www.youtube.com/playlist?list=$id" 2> /dev/null)
+elif [[ "$1" != "" ]]; then
+	echo "Error, incorrectly formatted arguments"
+	echo "Usage:"
+	echo "  wl - View watch later playlist"
+	echo "  wl -h - View watch history"
+	echo "  wl -s - View subscription feed"
+	echo "  wl -p - View all saved/created playlists"
+	exit
 else
 	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox "https://www.youtube.com/playlist?list=WL" 2> /dev/null)
 fi
