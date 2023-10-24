@@ -47,7 +47,7 @@ elif [[ "$1" == "sort" ]]; then
 	mv "$backupCurrentTemp" "$backupCurrent"
 # Compare most recent backup to second most recent backup
 elif [[ "$1" == "diff" ]]; then
-	find ~/Downloads/BackupMount/hashHistory/ | sort | tail -n 2 | xargs diff --color
+	find ~/Downloads/BackupMount/hashHistory/ | sort | tail -n 2 | xargs diff --color=always
 # Option to make new backup 
 elif [[ "$1" == "make" ]]; then
 	echo $(date +"%y%m%d %H:%M") >> "$backupHistory"
