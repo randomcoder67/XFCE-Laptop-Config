@@ -49,7 +49,7 @@ func extractJSON(inputHTML string) map[string]interface{} {
 	f = func(n *html.Node) {
 		if n.Data == "script" {
 			if len(n.Attr) > 1 {
-				if strings.Contains(n.Attr[1].Val, "desktop_polymer_enable_wil_icons.js") {
+				if strings.Contains(n.Attr[1].Val, "desktop_polymer") {
 					b := n
 					// The required JSON is contained in script tag 7 after the matched one
 					for i:=0; i<7; i++ {
