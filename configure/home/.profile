@@ -10,3 +10,4 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export GOPATH="$XDG_DATA_HOME"/go
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export GRIPHOME="$XDG_CONFIG_HOME/grip"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"

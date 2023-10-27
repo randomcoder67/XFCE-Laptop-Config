@@ -234,6 +234,27 @@ anonprompt () {
 	fi
 }
 
+# Quick preview files with bat and fasd
+batf () {
+	result=$(fasd -fi $@)
+	[ "$result" == "" ] && return
+	bat --theme=base16 "$result"
+}
+
+# Quick preview files with glow and fasd
+glowf () {
+	result=$(fasd -fi $@)
+	[ "$result" == "" ] && return
+	glow "$result"
+}
+
+# Quick open files with mpv and fasd
+mpvf () {
+	result=$(fasd -fi $@)
+	[ "$result" == "" ] && return
+	/usr/bin/mpv --really-quiet --save-position-on-quit "$result" & disown
+}
+
 # Program Openers 
 
 alias p='_p'
@@ -368,9 +389,9 @@ alias days='~/Programs/terminal/terminalPrograms/goBins/days'
 # File finders 
 
 alias findh='find ~ -iname'
-alias glowf='~/Programs/terminal/alias/findOpen.sh glow'
-alias batf='~/Programs/terminal/alias/findOpen.sh bat'
-alias mpvf='~/Programs/terminal/alias/findOpen.sh mpv'
+#alias glowf='~/Programs/terminal/alias/findOpen.sh glow'
+#alias batf='~/Programs/terminal/alias/findOpen.sh bat'
+#alias mpvf='~/Programs/terminal/alias/findOpen.sh mpv'
 
 # My terminal programs 
 
