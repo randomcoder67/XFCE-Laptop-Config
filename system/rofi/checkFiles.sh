@@ -57,6 +57,9 @@ chmod +x ~/Programs/output/updated/filesIcons.sh
 
 # Run script 
 ~/Programs/output/updated/filesIcons.sh >> ~/Programs/output/updated/filesFinal.txt
+# NEW WAY WITH GO SCRIPT
+#~/Programs/system/rofi/addIcons >> ~/Programs/output/updated/filesFinal.txt
+
 
 #cp ~/Programs/output/updated/files.txt ~/Programs/output/updated/filesTest.txt
 
