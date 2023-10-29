@@ -2,6 +2,12 @@
 
 # Rofi script to launch applications and open files
 
+# Run checkfiles
+#one="$(date +%s%N | cut -b1-13)"
+#~/Programs/system/rofi/checkFiles.sh
+#two="$(date +%s%N | cut -b1-13)"
+#echo $(($two-$one))
+
 ## Add ~/.local/bin to $PATH
 PATH=$PATH:$HOME/.local/bin
 
