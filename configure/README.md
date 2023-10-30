@@ -26,7 +26,6 @@
 
 ### Unix terminal programs
 
-`gp` git pull  
 `his` searches history  
 `c` clear  
 `cl` clear and ls  
@@ -103,10 +102,12 @@
 
 #### Git
 
+`gp` git pull  
 `gits` git status  
 `gitd` git diff  
 `gitl` git log  
 `gitpass` get GitHub key from pass  
+`giturl` get url of current Git repository  
 
 #### Other 
 
@@ -128,6 +129,7 @@
 `savedotfiles` copy current dotfiles to ~/Programs/configure  
 `songs` show file of songs identified with songrec  
 `todo` open todo.md file  
+`emails` open emails.md file  
 `lc` count items in folder  
 `lca` count items in folder (include hidden)  
 `rmedir` remove empty dirs  
