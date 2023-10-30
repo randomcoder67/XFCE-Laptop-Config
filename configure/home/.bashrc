@@ -265,7 +265,6 @@ alias mpv='do_mpv'
 
 # Unix terminal programs 
 
-alias gp='git pull'
 alias his='history | grep'
 alias c='clear'
 alias cl='clear && ls'
@@ -343,10 +342,12 @@ alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
 
 ## Git 
 
+alias gp='git pull'
 alias gits='git status'
 alias gitd='git diff'
 alias gitl='git log --reverse'
 alias gitpass='pass -c GitHub/randomcoder67Key'
+alias giturl='git config --get remote.origin.url'
 
 ## Other 
 
@@ -369,6 +370,7 @@ alias curloc='cat ~/Programs/output/updated/curLocation.csv | sed "s/|/\n/g"'
 alias savedotfiles='~/Programs/configure/save2.sh'
 alias songs='cat ~/Programs/output/updated/songs.txt'
 alias todo='micro ~/Programs/output/updated/todo.md'
+alias emails='mousepad ~/Programs/output/updated/emails.md'
 alias lc='ls | wc -l'
 alias lca='ls -A | wc -l'
 alias rmedir='find . -type d -empty -delete'
