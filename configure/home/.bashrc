@@ -172,12 +172,21 @@ do_chudlogic () {
 
 # Function to show time in various locations
 t () {
-	TZ="America/Los_Angeles" date +"Los Angeles: 	%H:%M:%S - %a, %b %d (%Z)"
-	TZ="America/New_York" date +"New York: 	%H:%M:%S - %a, %b %d (%Z)"
-	date -u +"UTC: 		%H:%M:%S - %a, %b %d (%Z)"
-	TZ="Europe/London" date +"London: 	%H:%M:%S - %a, %b %d (%Z)"
-	TZ="Asia/Seoul" date +"Seoul: 		%H:%M:%S - %a, %b %d (%Z)"
-	TZ="Australia/Sydney" date +"Sydney: 	%H:%M:%S - %a, %b %d (%Z)"
+	metricTimeDays=$(~/Programs/terminal/terminalPrograms/goBins/metricTime -d -s)
+	metricTimeMinutes=$(~/Programs/terminal/terminalPrograms/goBins/metricTime -m -s)
+	metricTimeSeconds=$(~/Programs/terminal/terminalPrograms/goBins/metricTime -s -s)
+	curDateZone=$(date +"%a, %b %d (%Z)")
+	echo -e "\033[0;35m\033[1mMetric Time\033[0m:"
+	echo "  Days:		   $metricTimeDays - $curDateZone"
+	echo "  Seconds:		$metricTimeSeconds - $curDateZone"
+	echo "  Minutes:		$metricTimeMinutes - $curDateZone"
+	echo -e "\033[0;35m\033[1mNormal Time\033[0m:"
+	TZ="America/Los_Angeles" date +"  Los Angeles:	%H:%M:%S - %a, %b %d (%Z)"
+	TZ="America/New_York" date +"  New York:	   %H:%M:%S - %a, %b %d (%Z)"
+	date -u +"  UTC:			%H:%M:%S - %a, %b %d (%Z)"
+	TZ="Europe/London" date +"  London:		 %H:%M:%S - %a, %b %d (%Z)"
+	TZ="Asia/Seoul" date +"  Seoul:		  %H:%M:%S - %a, %b %d (%Z)"
+	TZ="Australia/Sydney" date +"  Sydney:		 %H:%M:%S - %a, %b %d (%Z)"
 }	
 
 # Function to remove things which aen't useful from bash history
