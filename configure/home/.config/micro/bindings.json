@@ -1,14 +1,18 @@
 {
+	"Alt-,": "PreviousTab",
+	"Alt-.": "NextTab",
 	"Alt-/": "lua:comment.comment",
-	"CtrlUnderscore": "lua:comment.comment",
-	"Ctrl-K": "DeleteLine",
 	"Ctrl-D": "DuplicateLine",
-	"Ctrl-O": "IndentLine",
-	"Ctrl-U": "OutdentLine",
+	"Ctrl-Delete": "DeleteWordRight",
+	"Ctrl-K": "DeleteLine",
 	"Ctrl-N": "AddTab",
-	"Ctrl-W": "Quit",
+	"Ctrl-O": "IndentLine",
 	"Ctrl-Q": "QuitAll",
 	"Ctrl-S": "Save",
-	"OldBackspace": "DeleteWordLeft",
-	"Ctrl-Delete": "DeleteWordRight"
+	"Ctrl-U": "OutdentLine",
+	"Ctrl-W": "Quit",
+	"CtrlBackslash": "Redo",
+	"CtrlUnderscore": "lua:comment.comment",
+	"F4": "command:jumptag",
+	"OldBackspace": "DeleteWordLeft"
 }

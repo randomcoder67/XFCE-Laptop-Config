@@ -212,6 +212,10 @@
 `Super+[` Decrease Volume 5%  
 `Super+X` System Menu  
 `Super+I` Link Markdown Files  
+`Super+[` Volume -5%  
+`Super+]` Volume +5%  
+`Super+-` Skip To Previous Track  
+`Super+=` Skip To Next Track  
 
 ### Xfwm 
 
