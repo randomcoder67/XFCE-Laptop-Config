@@ -178,8 +178,8 @@ t () {
 	curDateZone=$(date +"%a, %b %d (%Z)")
 	echo -e "\033[0;35m\033[1mMetric Time\033[0m:"
 	echo "  Days:		   $metricTimeDays - $curDateZone"
-	echo "  Seconds:		$metricTimeSeconds - $curDateZone"
 	echo "  Minutes:		$metricTimeMinutes - $curDateZone"
+	echo "  Seconds:		$metricTimeSeconds - $curDateZone"
 	echo -e "\033[0;35m\033[1mNormal Time\033[0m:"
 	TZ="America/Los_Angeles" date +"  Los Angeles:	%H:%M:%S - %a, %b %d (%Z)"
 	TZ="America/New_York" date +"  New York:	   %H:%M:%S - %a, %b %d (%Z)"
@@ -396,6 +396,7 @@ alias weather='goWeather'
 alias shows='~/Programs/terminal/alias/shows.sh'
 alias money='~/Programs/terminal/terminalPrograms/goBins/money'
 alias days='~/Programs/terminal/terminalPrograms/goBins/days'
+alias mt='~/Programs/terminal/terminalPrograms/goBins/metricTime'
 
 # File finders 
 

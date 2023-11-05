@@ -174,6 +174,7 @@
 `timer` timer program  
 `domount` disk mounting script  
 `render` markdown to html  
+`mt` metric time  
 
 ### Fun
 
