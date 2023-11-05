@@ -54,9 +54,10 @@ elif [[ "$1" == "-d" ]]; then
 		printf "%02d:%02d:%02d\n" $metricHours $metricMinutes $metricSeconds
 	# Print without seconds
 	else
+		curTimeZone=$(date +"%Z")
 		printf -v finalString "%02d:%02d" $metricHours $metricMinutes
 		echo "<txt> - $finalString</txt>"
-		echo "<tool>Metric Time</tool>"
+		echo "<tool>Metric Time ($curTimeZone)</tool>"
 	fi
 elif [[ "$1" == "-h" ]]; then
 	echo "Script to get various possible versions of \"metric time\""

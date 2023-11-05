@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 	"os"
+	"strconv"
 	"math"
 )
 
@@ -73,6 +74,26 @@ func baseMinutes(showSeconds bool) {
 	}
 }
 
+func convertToMetric(givenTime string) {
+	// Add 0 if not present
+	if len(givenTime) == 3 {
+		givenTime = "0" + givenTime
+	}
+	
+	// Split into hours and minutes
+	hours, _ := strconv.Atoi(givenTime[:2])
+	minutes, _ := strconv.Atoi(givenTime[2:])
+	
+	// Calculate the metric values
+	var totalSeconds int = hours*3600+minutes*60
+	var totalMetricSeconds int = int(math.Floor(float64(totalSeconds)/86400*100000))
+	var metricHours int = totalMetricSeconds/10000
+	var metricMinutes int = (totalMetricSeconds-metricHours*10000)/100
+	
+	// Print metric time
+	fmt.Printf("%02d:%02d\n", metricHours, metricMinutes)
+}
+
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("Error")
@@ -96,5 +117,7 @@ func main() {
 		} else {
 			baseDays(false)
 		}
+	} else if len(os.Args[1]) == 3 || len(os.Args[1]) == 4 {
+		convertToMetric(os.Args[1])
 	}
 }
