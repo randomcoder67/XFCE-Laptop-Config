@@ -86,7 +86,8 @@
 	  <property name="&lt;Super&gt;x" type="string" value="alacritty -o &quot;window.dimensions.lines=25&quot; -o &quot;window.dimensions.columns=24&quot; -o &quot;window.title=System Functions&quot; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/systemMenu.sh"/>
 	  <property name="&lt;Super&gt;i" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/mdLink.sh"/>
 	  <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=26&quot; -o &quot;window.dimensions.columns=24&quot; -o &quot;window.title=Soundboard&quot; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
-	  <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh -l"/>
+	  <property name="&lt;Super&gt;equal" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --next"/>
+	  <property name="&lt;Super&gt;minus" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --prev"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">
