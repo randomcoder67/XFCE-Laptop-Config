@@ -65,7 +65,7 @@ func renderList(w io.Writer, p *ast.List, entering bool) {
 		if p.ListFlags == 17 {
 			orderedList = true
 			var startNumber string = strconv.Itoa(p.Start + 1) // Glitch here, not working
-			fmt.Println(startNumber)
+			//fmt.Println(startNumber)
 			io.WriteString(w, ".nr step " + startNumber + " 1\n")
 		} else {
 			orderedList = false
@@ -163,8 +163,8 @@ func renderTableCell(w io.Writer, p *ast.TableCell, entering bool) {
 
 func renderHeading(w io.Writer, p *ast.Heading, entering bool) {
 	if entering {
-		var fontSize string = strconv.Itoa(18-(p.Level*3))
-		io.WriteString(w, ".ps +" + fontSize + "\n.B\n")
+		var fontSize string = strconv.Itoa(18-(p.Level*5))
+		io.WriteString(w, "\n.ps +" + fontSize + "\n.B\n")
 	} else {
 		io.WriteString(w, "\n.br\n.ps\n")
 	}
@@ -315,9 +315,11 @@ func main() {
 	homeDir, _ = os.UserHomeDir()
 	// Get arguments 
 	var inputFileName string
+	var outputFileName string
 	//var outputFileName string
 	if len(os.Args) == 3 {
 		inputFileName = os.Args[1]
+		outputFileName = os.Args[2]
 		//outputFileName = os.Args[2]
 	} else { // Exit if wrong number 
 		fmt.Println("Error, incorrect number of arguments")
@@ -348,12 +350,12 @@ func main() {
 		}
 		toReplaceWith = toReplaceWith + "."
 		toReplaceWith = strings.ReplaceAll(toReplaceWith, " .", ".")
-		fmt.Printf("%s, %s\n", stringToReplace, toReplaceWith)
+		//fmt.Printf("%s, %s\n", stringToReplace, toReplaceWith)
 		htmlFinal = strings.ReplaceAll(htmlFinal, stringToReplace, toReplaceWith)
 	}
 	
-	fmt.Println(imageLocs)
-	fmt.Println(imageDests)
+	//fmt.Println(imageLocs)
+	//fmt.Println(imageDests)
 	
 	for i, originalPath := range imageLocs {
 		cmd := exec.Command("convert", "-density", "200", "-units", "PixelsPerInch", originalPath, imageDests[i] + ".pdf")
@@ -372,8 +374,9 @@ func main() {
 	
 	// Setup and run command to convert to PS file with groff 
 	cmd := exec.Command("groff", "-ms", "-tb" ,"-UT", "pdf")
+	fmt.Println(htmlFinal)
 	cmd.Stdin = strings.NewReader(htmlFinal)
-	outfile, err := os.Create("output.pdf")
+	outfile, err := os.Create(outputFileName)
 	if err != nil {
 		panic(err)
 	}
