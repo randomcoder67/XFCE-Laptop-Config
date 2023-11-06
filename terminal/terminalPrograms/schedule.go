@@ -10,6 +10,7 @@ import (
 	"sort"
 	"io/fs"
 	"bytes"
+	"math"
 )
 
 const THEME_PATH string = "/Programs/output/updated/currentTheme.txt"
@@ -128,6 +129,34 @@ func convertDayToDate(day string, ahead int) string {
 	return dtFinal.Format("060102")
 }
 
+func convertToMetric(givenTime string) string {
+	// Add 0 if not present
+	if len(givenTime) == 3 {
+		givenTime = "0" + givenTime
+	}
+	
+	// Split into hours and minutes
+	hours, err := strconv.Atoi(givenTime[:2])
+	if err != nil || hours > 23 {
+		fmt.Println("Error, not a valid time")
+		os.Exit(1)
+	}
+	minutes, err := strconv.Atoi(givenTime[2:])
+	if err != nil || minutes > 59 {
+		fmt.Println("Error, not a valid time")
+		os.Exit(1)
+	}
+	
+	// Calculate the metric values
+	var totalSeconds int = hours*3600+minutes*60
+	var totalMetricSeconds int = int(math.Floor(float64(totalSeconds)/86400*100000))
+	var metricHours int = totalMetricSeconds/10000
+	var metricMinutes int = (totalMetricSeconds-metricHours*10000)/100
+	
+	// Return metric time
+	return fmt.Sprintf("%02d%02d", metricHours, metricMinutes)
+}
+
 func addEntry(time string, date string, description string, internal bool) {
 	fileName := homeDir + BASE_PATH + getYearWeek(date, 0) + ".csv"
 	fileContents := getFileContents(fileName)
@@ -207,7 +236,7 @@ func dateToDay(date string) string {
 	return weekday.String() + " " + strconv.Itoa(day) + suffix
 }
 
-func viewSchedule(toAdd int, internal bool) {
+func viewSchedule(toAdd int, internal bool, metricTime bool) {
 	var fileName string
 	var middleOfWeek string // Middle of week is to allow the output to split over two columns 
 	if toAdd > 0 { // If nextWeek is true, print next weeks schedule, not this weeks
@@ -275,11 +304,11 @@ func viewSchedule(toAdd int, internal bool) {
 		}
 		markdownSlices[curIndex] = append(markdownSlices[curIndex], []string{records[i][1],": " + records[i][2]})
 	}
-	printSchedule(markdownSlices[0], markdownSlices[1])
+	printSchedule(markdownSlices[0], markdownSlices[1], metricTime)
 }
 
 
-func printSchedule(columnA [][]string, columnB [][]string) {
+func printSchedule(columnA [][]string, columnB [][]string, metricTime bool) {
 	// Get length of largest slice, and make the other one the same length by adding blank lines 
 	columnALen := len(columnA)
 	columnBLen := len(columnB)
@@ -312,14 +341,25 @@ func printSchedule(columnA [][]string, columnB [][]string) {
 	for i:=0; i<lenA; i++ {
 		var toPrintA string
 		var toPrintB string
+		var timeStringA string = columnA[i][0]
+		var timeStringB string = columnB[i][0]
+		if metricTime {
+			if len(columnA[i]) == 2 {
+				timeStringA = convertToMetric(columnA[i][0])
+			}
+			if len(columnB[i]) == 2 {
+				timeStringB = convertToMetric(columnB[i][0])
+			}
+		}
+		
 		if len(columnA[i]) == 2 {
-			toPrintA = "  " + TIME_COLOUR + " " + columnA[i][0] + " " + RESET_COLOUR + columnA[i][1]
+			toPrintA = "  " + TIME_COLOUR + " " + timeStringA + " " + RESET_COLOUR + columnA[i][1]
 		} else {
 			toPrintA = DAY_COLOUR + columnA[i][0] + RESET_COLOUR
 		}
 		
 		if len(columnB[i]) == 2 {
-			toPrintB = "  " + TIME_COLOUR + " " + columnB[i][0] + " " + RESET_COLOUR + columnB[i][1]
+			toPrintB = "  " + TIME_COLOUR + " " + timeStringB + " " + RESET_COLOUR + columnB[i][1]
 		} else {
 			toPrintB = DAY_COLOUR + columnB[i][0] + RESET_COLOUR
 		}
@@ -373,7 +413,7 @@ func deleteEntry(time string, date string) {
 }
 
 func printHelp() {
-	fmt.Printf("Usage: \nTo View:\n  schedule [-n] [x] [-i] (-n for next week, x for x weeks ahead) (-i to show interal entries)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5] [-i]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n  -i for internal\nTo Remove:\n  schedule -d hhmm yymmdd/day\n")
+	fmt.Printf("Usage: \nTo View:\n  schedule [-n] [x] [-i] [-m] (-n for next week, x for x weeks ahead) (-i to show interal entries) (-m for metric time)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5] [-i]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n  -i for internal\nTo Remove:\n  schedule -d hhmm yymmdd/day\n")
 }
 
 // Error out if wrong arguments given
@@ -386,13 +426,14 @@ func errorOut() {
 // Function to parse args
 func parseArgs(args []string) {
 	var internal bool = false
+	var metricTime bool = false
 	// If only one arg, then just show schedule normally
 	if len(args) == 1 {
-		viewSchedule(0, false)
+		viewSchedule(0, false, false)
 		return
 	}
 	// If first arg is -i or -n, parse viewing options
-	if args[1] == "-i" || args[1] == "-n" {
+	if args[1] == "-i" || args[1] == "-n" || args[1] == "-m" {
 		var toAdd int = 0
 		for i:=1; i<len(args); {
 			if args[i] == "-i" { // -i means the user wants to see internal records
@@ -401,7 +442,7 @@ func parseArgs(args []string) {
 			} else if args[i] == "-n" { // -n means next week, or x week if "-n x"
 				toAdd = 1
 				i++
-				if len(args) > i && args[i] != "-i" { // Check for x, making sure it's not -i
+				if len(args) > i && args[i] != "-i" && args[i] != "-m" { // Check for x, making sure it's not -i
 					var err error
 					toAdd, err = strconv.Atoi(args[i])
 					if err != nil {
@@ -409,12 +450,15 @@ func parseArgs(args []string) {
 					}
 					i++
 				}
+			} else if args[i] == "-m" {
+				metricTime = true
+				i++
 			} else {
 				errorOut()
 			}
 		}
 		// View schedule with given options
-		viewSchedule(toAdd, internal)
+		viewSchedule(toAdd, internal, metricTime)
 	} else if args[1] == "-d" { // If first arg is -d, deleteEntry
 		if len(args) != 4 {
 			errorOut()

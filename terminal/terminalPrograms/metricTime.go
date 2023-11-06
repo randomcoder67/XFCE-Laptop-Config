@@ -81,8 +81,16 @@ func convertToMetric(givenTime string) {
 	}
 	
 	// Split into hours and minutes
-	hours, _ := strconv.Atoi(givenTime[:2])
-	minutes, _ := strconv.Atoi(givenTime[2:])
+	hours, err := strconv.Atoi(givenTime[:2])
+	if err != nil || hours > 23 {
+		fmt.Println("Error, not a valid time")
+		os.Exit(1)
+	}
+	minutes, err := strconv.Atoi(givenTime[2:])
+	if err != nil || minutes > 59 {
+		fmt.Println("Error, not a valid time")
+		os.Exit(1)
+	}
 	
 	// Calculate the metric values
 	var totalSeconds int = hours*3600+minutes*60
