@@ -45,6 +45,14 @@ makeMetricTimeProgram() {
 	go build -o ~/Programs/terminal/terminalPrograms/goBins/metricTime ~/Programs/terminal/terminalPrograms/metricTime.go
 }
 
+makeMdToGroffProgram() {
+	# Make Metric Time Program
+	echo "Rebuilding MD to Groff Program (Go)"
+	cd ~/Programs/terminal/terminalPrograms/mdToGroff
+	go mod tidy
+	go build -o ~/Programs/terminal/terminalPrograms/goBins/groffdoc ~/Programs/terminal/terminalPrograms/mdToGroff/groff.go
+}
+
 makeNotesRendererProgram() {
 	# Make Notes Renderer Program
 	echo "Rebuilding Notes Renderer Program (Go)"
@@ -87,6 +95,7 @@ if [ "$1" == "all" ]; then
 	makeMoneyProgram
 	makeTimerProgram
 	makeMetricTimeProgram
+	makeMdToGroffProgram
 	makeNotesRendererProgram
 	makeSoundboard
 	makeGoWeatherProgram
@@ -100,6 +109,7 @@ fi
 [ "$1" == "money" ] && makeMoneyProgram
 [ "$1" == "timer" ] && makeTimerProgram
 [ "$1" == "time" ] && makeMetricTimeProgram
+[ "$1" == "groff" ] && makeMdToGroffProgram
 [ "$1" == "render" ] && makeNotesRendererProgram
 [ "$1" == "soundboard" ] && makeSoundboard
 [ "$1" == "weather" ] && makeGoWeatherProgram

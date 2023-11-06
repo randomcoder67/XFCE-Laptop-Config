@@ -408,7 +408,7 @@ alias findh='find ~ -iname'
 # My terminal programs 
 
 alias albumart='~/Programs/terminal/terminalPrograms/albumArt.sh'
-alias groffdoc='python3 ~/Programs/terminal/terminalPrograms/mdToGroff.py'
+alias groffdoc='~/Programs/terminal/terminalPrograms/goBins/groffdoc'
 alias programs='~/Programs/terminal/alias/addRemove.sh'
 alias checkfiles='~/Programs/system/rofi/checkFiles.sh'
 alias rm='~/Programs/terminal/alias/rm.sh'
