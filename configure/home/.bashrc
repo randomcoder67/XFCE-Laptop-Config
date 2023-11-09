@@ -387,6 +387,7 @@ alias gtop='sudo intel_gpu_top'
 alias remake='~/Programs/configure/remake.sh'
 alias gripdo='grip --theme=dark -b'
 alias bookmarks='wc -l ~/Programs/output/updated/bookmarks.txt'
+alias serial='sudo cat /sys/devices/virtual/dmi/id/product_serial'
 
 # Info programs 
 
