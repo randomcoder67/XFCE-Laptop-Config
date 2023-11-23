@@ -30,7 +30,7 @@ func setTimer(secs int, silent bool) {
 	fmt.Printf("Timer Completed\n")
 	// If not silent, play the sound effect
 	if !silent {
-		soundEffectCommand := exec.Command("mpv", "--no-resume-playback", homeDir + SOUND_EFFECT_PATH)
+		soundEffectCommand := exec.Command("mpv", "--force-window=no", "--no-resume-playback", homeDir + SOUND_EFFECT_PATH)
 		soundEffectCommand.Start()
 	}
 	// Send system notification

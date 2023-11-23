@@ -12,6 +12,7 @@ import (
 	"strconv"
 	//"bytes"
 	"os/exec"
+	//"time"
 )
 
 // Function to get HTML from the internet
@@ -21,6 +22,7 @@ func getHTML(searchTerm []string) string {
 	for _, word := range searchTerm {
 		finalSearchTerm = finalSearchTerm + word + "+"
 	}
+	//fmt.Println("Before", "MAIN", time.Now())
 	// Get search results (omit last character of finalSearchTerm as it will always be a trailing "+")
 	resp, err := http.Get("https://www.youtube.com/results?search_query=" + finalSearchTerm[:len(finalSearchTerm)-1])
 	if err != nil {
@@ -32,6 +34,7 @@ func getHTML(searchTerm []string) string {
 		panic(err)
 	}
 	// Return the HTML
+	//fmt.Println("After", "MAIN", time.Now())
 	return string(responseHTML)
 }
 
@@ -71,6 +74,8 @@ func extractJSON(inputHTML string) map[string]interface{} {
 		panic(err)
 	}
 	// Return unmarshalled JSON
+	//fmt.Println(finalJSONString)
+	//os.Exit(0)
 	return finalJSON
 }
 
@@ -90,6 +95,7 @@ func displayVideos(inputJSON map[string]interface{}) {
 	videoData := [][]string{}
 	// Create index to display
 	var index int = 1
+	ch := make(chan string)
 	
 	// Iterate through videos
 	for _, data := range listOfVideos {
@@ -134,6 +140,18 @@ func displayVideos(inputJSON map[string]interface{}) {
 					}
 				}
 				
+				// Thumbnail testing
+				var videoThumbnail string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["thumbnail"].(map[string]interface{})["thumbnails"].([]interface{})[1].(map[string]interface{})["url"].(string)
+				
+				
+				
+				
+				imgName := strconv.Itoa(index)
+				//fmt.Println("Before", imgName, time.Now())
+				go downloadThumbnail(videoThumbnail, imgName + ".png", ch)
+				//fmt.Println("After", imgName, time.Now())
+				
+				
 				// Add video ID, title and channel to videoData, only data needed for mpv
 				singleVideoData := []string{videoID, videoTitle, videoChannel}
 				videoData = append(videoData, singleVideoData)
@@ -143,6 +161,9 @@ func displayVideos(inputJSON map[string]interface{}) {
 				index++
 			}
 		}
+	}
+	for i:=0; i<index-1; i++ {
+		_ = <- ch
 	}
 	
 	// Get user input of video to watch
@@ -182,6 +203,25 @@ func displayVideos(inputJSON map[string]interface{}) {
 	fmt.Println(mpvVideoCommand.String())
 	*/
 }
+
+func downloadThumbnail(thumbnailURL string, filename string, c chan string) {
+	resp, err := http.Get(thumbnailURL)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	responseHTML, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+	
+	fmt.Println(thumbnailURL)
+	
+	_ = responseHTML
+	//err = os.WriteFile(filename, responseHTML, 0666)
+	c <- filename
+}
+	
 	
 // Print help info
 func printHelp() {

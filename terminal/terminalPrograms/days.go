@@ -88,6 +88,9 @@ func viewDays(toShow int) {
 	for _, entryA := range daysSliceToUse {
 		if len(entryA[1]) > maxStringLength {
 			maxStringLength = len(entryA[1])
+			if strings.Contains(entryA[1], "ñ") {
+				maxStringLength--
+			}
 		}
 	}
 	// Print nicely formatted
@@ -99,10 +102,14 @@ func viewDays(toShow int) {
 		if daysLeftString == "1" {
 			theWordDayString = "day"
 		}
+		var lenItem = len(entry[1])
+		if strings.Contains(entry[1], "ñ") {
+			lenItem--
+		}
 		if daysLeftString == "0"  {
-			fmt.Printf("%s - %sToday %s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - len(entry[1]) + 2), strings.Repeat(" ", 14), t.Format("2006-01-02"))
+			fmt.Printf("%s - %sToday %s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - lenItem + 2), strings.Repeat(" ", 14), t.Format("2006-01-02"))
 		} else {
-			fmt.Printf("%s - %s%s %s from now%s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - len(entry[1]) + 2), daysLeftString, theWordDayString, strings.Repeat(" ", 10-len(theWordDayString)-len(daysLeftString)), t.Format("2006-01-02"))
+			fmt.Printf("%s - %s%s %s from now%s(%s)\n", entry[1], strings.Repeat(" ", maxStringLength - lenItem + 2), daysLeftString, theWordDayString, strings.Repeat(" ", 10-len(theWordDayString)-len(daysLeftString)), t.Format("2006-01-02"))
 		}
 	}
 	// Write final daysSlice to file

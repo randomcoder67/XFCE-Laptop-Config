@@ -25,6 +25,7 @@ elif [[ "$1" == "-p" ]]; then
 	done
 	read -p "Enter playlist to show (q to quit): " playlistSelection
 	[[ "$playlistSelection" == "q" ]] || [[ "$playlistSelection" == "" ]] || ((playlistSelection>index-1)) && exit
+	
 	id="${ids[$((playlistSelection-1))]}"
 	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox "https://www.youtube.com/playlist?list=$id" 2> /dev/null)
 elif [[ "$1" != "" ]]; then
@@ -50,13 +51,23 @@ numEntries="${#titles[@]}"
 IFS="$oldIFS"
 # Create index and iterate through titles
 index=1
+# Get size of terminal
+length="$(tput cols)"
 for title in "${titles[@]}"; do
 	liveUpcoming=""
 	#if [ $(echo "$wcJSON" | jq -r .entries[$((index-1))].live_status) == "is_upcoming" ]; then
 	#	liveUpcoming=" - (Live Upcoming)"
 	#fi
 	# Print the videos in format "index: title"
-	echo "${index}: ${title}${liveUpcoming} - ${channels[$((index-1))]}"
+	toPrint="${index}: ${title}${liveUpcoming} - ${channels[$((index-1))]}"
+	
+	printf -v _ %s%n "$toPrint" strLen
+	
+	if [[ "$strLen" -gt "$length" ]]; then
+		echo "${toPrint:0:$((length-3))}..."
+	else
+		echo "$toPrint"
+	fi
 	# Add one to index
 	indexA=$((index+1))
 	index=$indexA
@@ -72,6 +83,16 @@ IFS=','
 videos=( $(echo "$videoSelection") )
 IFS="$oldIFS"
 
+# Input a for all videos in playlist
+if [[ "$videoSelection" == "a" ]]; then
+	videos=()
+	i=1
+	for video in "${urls[@]}"; do
+		videos+=($i)
+		i=$((i+1))
+	done
+fi
+
 # Iterate through array and append selected videos to allVids variable
 allVids=""
 for video in "${videos[@]}"; do
@@ -81,7 +102,7 @@ for video in "${videos[@]}"; do
 done
 
 # Remove previous output file
-rm /tmp/mpv.out
+[ -f /tmp/mpv.out ] && rm /tmp/mpv.out
 # Launch mpv with allVids as the list of videos
 mpv --title='${media-title}' --ytdl-format="best" $allVids 2> /dev/null | sed -u '/Resuming playback/d' | sed -u '/Playing/d' >> /tmp/mpv.out & disown
 

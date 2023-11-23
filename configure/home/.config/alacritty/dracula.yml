@@ -61,6 +61,7 @@ colors:
 	white: '#f8f8f2'
 
 window:
+ dynamic_padding: true
  dimensions:
   columns: 100
   lines: 25
