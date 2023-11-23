@@ -141,10 +141,28 @@ elif [[ $selection == "Euro Truck Simulator 2" ]]; then
 	steam steam://rungameid/227300
 elif [[ $selection == "American Truck Simulator" ]]; then
 	steam steam://rungameid/270880
+elif [[ $selection == "Age of Empires II: HD Edition" ]]; then
+	steam steam://rungameid/221380
+elif [[ $selection == "Age of Empires II: Definitive Edition" ]]; then
+	steam steam://rungameid/813780
+elif [[ $selection == "Fallout 4" ]]; then
+	steam steam://rungameid/377160
+elif [[ $selection == "Horizon Zero Dawn" ]]; then
+	steam steam://rungameid/1151640
+elif [[ $selection == "Star Wars Empire at War" ]]; then
+	steam steam://rungameid/32470
 elif [[ $selection == "Noita" ]]; then
 	steam steam://rungameid/881100
 elif [[ $selection == "F1 2014" ]]; then
 	steam steam://rungameid/226580
+elif [[ $selection == "Project Cars 2" ]]; then
+	steam steam://rungameid/378860
+elif [[ $selection == "RimWorld" ]]; then
+	steam steam://rungameid/294100
+elif [[ $selection == "Stellaris" ]]; then
+	steam steam://rungameid/281990
+elif [[ $selection == "Dead Cells" ]]; then
+	steam steam://rungameid/588650
 elif [[ $selection == "Slime Rancher" ]]; then
 	"$HOME/.local/share/GOG/Slime Rancher/start.sh"
 elif [[ $selection == "PCSX2" ]]; then
