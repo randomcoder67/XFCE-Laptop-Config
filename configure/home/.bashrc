@@ -37,7 +37,7 @@ mkcdir () {
 
 # Grep but only show surrounding character, useful for files with very long lines, like a lot of HTML files
 grepc () {
-	grep --color=no -i -o -P ".{0,100}$1.{0,100}" $2
+	grep --color=no -i -I -o -P ".{0,100}$1.{0,100}" $2
 }
 
 # Shutdown with confirmation
@@ -278,8 +278,9 @@ alias his='history | grep'
 alias c='clear'
 alias cl='clear && ls'
 alias x='chmod +x'
-alias grep='grep -i --color=auto'
-alias grepa='grep -i -A 5 -B 5 --color=auto'
+alias grep='grep -i -I --color=auto'
+alias grepa='grep -i -I -A 5 -B 5 --color=auto'
+alias grepb='grep -i --color=auto'
 alias l='ls --group-directories-first --file-type -N --color=auto'
 alias ls='ls --group-directories-first --file-type -N --color=auto'
 alias lsa='ls --group-directories-first --file-type -NA --color=auto'
