@@ -95,7 +95,7 @@ func viewDays(toShow int) {
 	}
 	// Print nicely formatted
 	for _, entry := range daysSliceToUse {
-		t, _ := time.Parse("060102", entry[0])
+		t, _ := time.Parse("20060102", "20" + entry[0])
 		var daysLeft float64 = math.Abs(math.Ceil(t.Sub(timeNow).Hours()/24))
 		var daysLeftString string = strconv.FormatFloat(daysLeft,'f', 0, 64)
 		var theWordDayString string = "days"
