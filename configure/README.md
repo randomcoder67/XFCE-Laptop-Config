@@ -31,8 +31,8 @@
 `cl` clear and ls  
 `x` make file executable  
 `grep` grep (ignore case and binary files)  
-`grepa` grep (ignore case and print surrounding lines)  
-`grepc` grep (ignore case and print surrounding characters)  
+`grepa` grep (print surrounding lines)  
+`grepc` grep (print surrounding characters)  
 `grepb` grep (including binary files)  
 `l` lists files in directory  
 `ls` lists files in directory  

@@ -136,12 +136,18 @@ func displayVideos(inputJSON map[string]interface{}) {
 					videoViews, okay = videoViewsMap["simpleText"].(string)
 					if !okay {
 						videoViewsArray := data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["viewCountText"].(map[string]interface{})["runs"].([]interface{})
-						videoViews = videoViewsArray[0].(map[string]interface{})["text"].(string) + videoViewsArray[1].(map[string]interface{})["text"].(string)
+						if len(videoViewsArray) == 2 {
+							videoViews = videoViewsArray[0].(map[string]interface{})["text"].(string) + videoViewsArray[1].(map[string]interface{})["text"].(string)
+						} else {
+							videoViews = videoViewsArray[0].(map[string]interface{})["text"].(string)
+						}
 					}
 				}
 				
 				// Thumbnail testing
-				var videoThumbnail string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["thumbnail"].(map[string]interface{})["thumbnails"].([]interface{})[1].(map[string]interface{})["url"].(string)
+				var videoThumbnailIndex int = len(data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["thumbnail"].(map[string]interface{})["thumbnails"].([]interface{})) - 1
+					
+				var videoThumbnail string = data.(map[string]interface{})["videoRenderer"].(map[string]interface{})["thumbnail"].(map[string]interface{})["thumbnails"].([]interface{})[videoThumbnailIndex].(map[string]interface{})["url"].(string)
 				
 				
 				
@@ -215,7 +221,7 @@ func downloadThumbnail(thumbnailURL string, filename string, c chan string) {
 		panic(err)
 	}
 	
-	fmt.Println(thumbnailURL)
+	//fmt.Println(thumbnailURL)
 	
 	_ = responseHTML
 	//err = os.WriteFile(filename, responseHTML, 0666)
