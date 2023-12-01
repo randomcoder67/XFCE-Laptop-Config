@@ -18,7 +18,7 @@ ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metad
 
 # If no argument given, shuffle music from current playlist
 if [[ "$1" == "" ]]; then
-	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --no-resume-playback --loop-playlist "$HOME/Music/Current Playlist" --input-ipc-server="$socketName" & disown
+	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --no-resume-playback --loop-playlist "$HOME/Music/CurrentPlaylist" --input-ipc-server="$socketName" & disown
 # Present choice of playlists
 elif [[ "$1" == "--choice" ]]; then
 	playlists="All Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z]\)/\1 \2/g' | cut -d '/' -f 5)"

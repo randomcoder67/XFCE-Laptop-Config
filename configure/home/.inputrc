@@ -9,3 +9,6 @@ set completion-ignore-case On
 
 set colored-stats on
 set colored-completion-prefix on
+set show-all-if-ambiguous on
+set completion-ignore-case on
+TAB: menu-complete

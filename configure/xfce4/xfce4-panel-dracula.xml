@@ -92,7 +92,7 @@
 	<property name="plugin-10" type="string" value="tasklist"/>
 	<property name="plugin-11" type="string" value="pulseaudio">
 	  <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-	  <property name="known-players" type="string" value="Chrome;chromium.instance3206;cmus;com.github.marinm.songrec.desktop;firefox;Firefox Web Browser;org.kde.dragonplayer;qutebrowser;SongRec;Vivaldi;VLC media player"/>
+	  <property name="known-players" type="string" value="Chrome;chromium.instance3206;cmus;com.github.marinm.songrec.desktop;firefox;Firefox Web Browser;org.kde.dragonplayer;qutebrowser;SongRec;Vivaldi;vlc;VLC media player"/>
 	</property>
 	<property name="plugin-12" type="string" value="power-manager-plugin"/>
 	<property name="plugin-13" type="string" value="notification-plugin"/>
@@ -212,6 +212,7 @@
 		<value type="string" value="no network connection"/>
 	  </property>
 	  <property name="known-items" type="array">
+		<value type="string" value="vlc"/>
 		<value type="string" value="chrome_status_icon_1"/>
 		<value type="string" value="ulauncher"/>
 		<value type="string" value="obs"/>
