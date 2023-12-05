@@ -125,6 +125,8 @@ elif [[ $selection == "Chat - Destiny" ]]; then
 	firefox https://www.destiny.gg/embed/chat
 elif [[ $selection == "NASA Image of the Day" ]]; then
 	firefox https://www.nasa.gov/multimedia/imagegallery/iotd.html
+elif [[ $selection == "ChatGPT" ]]; then
+	firefox "https://chat.openai.com"
 elif [[ $selection == "Dead Cells" ]]; then
 	steam steam://rungameid/588650
 elif [[ $selection == "Terraria" ]]; then

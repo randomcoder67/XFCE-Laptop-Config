@@ -16,6 +16,12 @@ fi
 # Check if music is already playing
 ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metadata/artist} --shuffle --no-resume-playback --loop-playlist $HOME/Music/" | grep -vq "grep" && notify-send "Music already playing" && exit
 
+# Check if headphones plugged in (works but too slow to use)
+#if ! grep -A4 -i 'Headphone Playback Switch' /proc/asound/card0/codec#*  | grep "Amp-Out vals.*0x00 0x00" -q; then
+#	notify-send "Headphones Unplugged"
+#	exit
+#fi
+
 # If no argument given, shuffle music from current playlist
 if [[ "$1" == "" ]]; then
 	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --no-resume-playback --loop-playlist "$HOME/Music/CurrentPlaylist" --input-ipc-server="$socketName" & disown
