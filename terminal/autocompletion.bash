@@ -148,7 +148,7 @@ _musicCompletion() {
 	if [ "${#COMP_WORDS[@]}" != "2" ]; then
 		return 0
 	fi
-	COMPREPLY=( $(compgen -W "-a" -- "${COMP_WORDS[1]}") )
+	COMPREPLY=( $(compgen -W "--next --prev --choice -a -al" -- "${COMP_WORDS[1]}") )
 }
 
 _remakeCompletion() {
