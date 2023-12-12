@@ -8,9 +8,16 @@ If you want English (Non-US) download English International.
 
 ### Dual Booting with Arch
 
-Install Windows first on a seperate drive, with main drive disconnected. Then disconnect Windows drive and reconnect main, and install Arch. 
+Install Windows first on a seperate drive, with main drive disconnected. Then disconnect Windows drive and reconnect main, and [install Arch](archInstallGuide.md). 
 
 ## Setup
+
+### NVidia GPU Drivers
+
+Download [DDU](https://www.guru3d.com/download/display-driver-uninstaller-download/) and the correct [NVidia Drivers](https://www.nvidia.co.uk/Download/index.aspx?lang=en-uk)  
+Reboot into Safe Mode (shift+click on reboot, option 4 in advanced boot)  
+Run DDU to uninstall current drivers, using reboot option  
+Once rebooted, install NVidia drivers, deselecting NVidia experience options. Sometimes it fails, just run the installer again, that normally fixes it  
 
 ### Installation
 
@@ -33,8 +40,6 @@ Install Windows first on a seperate drive, with main drive disconnected. Then di
 [MediaInfo](https://mediaarea.net/en/MediaInfo)  
 [aria2](https://mediaarea.net/en/MediaInfo)  
 [OBS](https://obsproject.com/)  
-[DDU](https://www.guru3d.com/download/display-driver-uninstaller-download/)  
-[NVidia Drivers](https://www.nvidia.co.uk/Download/index.aspx?lang=en-uk)  
 [SpecialK](https://www.special-k.info/)  
 
 ### Windows Subsystem for Linux (WSL)
