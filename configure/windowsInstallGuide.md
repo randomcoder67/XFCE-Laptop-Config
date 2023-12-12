@@ -21,7 +21,8 @@ Once rebooted, install NVidia drivers, deselecting NVidia experience options. So
 
 ### Installation
 
-[7Zip](https://www.7-zip.org/)
+[Git](https://git-scm.com/downloads)  
+[7Zip](https://www.7-zip.org/)  
 [Steam](https://store.steampowered.com/about/)  
 [mpv](https://mpv.io/installation/)  
 [Firefox](https://www.mozilla.org/en-GB/firefox/new/)  
