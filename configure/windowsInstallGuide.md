@@ -40,7 +40,7 @@ Once rebooted, install NVidia drivers, deselecting NVidia experience options. So
 [yt-dlp](https://github.com/yt-dlp/yt-dlp)  
 [ffmpeg](https://ffmpeg.org/download.html)  
 [MediaInfo](https://mediaarea.net/en/MediaInfo)  
-[aria2](https://mediaarea.net/en/MediaInfo)  
+[aria2](https://aria2.github.io/)  
 [OBS](https://obsproject.com/)  
 [SpecialK](https://www.special-k.info/)  
 
