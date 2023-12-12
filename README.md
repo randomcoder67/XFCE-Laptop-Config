@@ -70,6 +70,11 @@ Events can be added as such: `schedule -a 1500 thu "Meeting With John"`
 Running `schedule` will display this weeks schedule:  
 ![Schedule Screenshot](configure/screenshots/schedule1.png)
 
+## Windows Install
+
+[Windows Install Guide](configure/windowsInstallGuide.md)
+
 ## Archive 
 
 In the `archive/publicCodeArchive` folder are old scripts, could still be useful for something.  
+
