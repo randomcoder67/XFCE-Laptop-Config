@@ -37,6 +37,11 @@ Refresh time set to 300 seconds, font size set to `Roboto 16` (doesn't matter fo
 `echo "<txt><span foreground='#b3b3ed'> </span></txt><tool>Network Download</tool>"`  
 `HOME/Programs/system/panel/networkDown.sh`
 
+`echo "<txt><span foreground='#8CFF82'> </span></txt><tool>GPU Usage</tool>"`  
+`echo "<txt><span foreground='#e64747'> </span></txt><tool>GPU Temperature</tool>"`  
+`echo "<txt><span foreground='#8CFF82'> </span></txt><tool>VRAM Usage</tool>"`  
+`echo "<txt><span foreground='#38ffea'> </span></txt><tool>Network Upload</tool>"`  
+
 Refresh time set to 2 seconds, font size `Roboto 16` for icons, `Roboto Mono 15` for scripts
 
 ## Date 
