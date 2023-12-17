@@ -176,6 +176,7 @@
 `domount` disk mounting script  
 `render` markdown to html  
 `mt` metric time  
+`downloadt` download time calculator  
 
 ### Fun
 
