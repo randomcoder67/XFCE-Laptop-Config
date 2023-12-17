@@ -178,8 +178,6 @@ elif [[ $selection == "FlightRadar24" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
 	firefox "https://www.flightradar24.com/${lat:0:5},${lon:0:5}/9"
-elif [[ $selection == "GOverlay" ]]; then
-	~/.local/bin/goverlay
 elif [[ $selection == "NetHogs" ]]; then
 	alacritty -e nethogs
 elif [[ $selection == "Google Maps" ]]; then
