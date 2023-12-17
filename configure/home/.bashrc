@@ -421,6 +421,7 @@ alias sky='~/Programs/terminal/terminalPrograms/astro/planets'
 alias timer='~/Programs/terminal/terminalPrograms/goBins/timer'
 alias domount='~/Programs/terminal/terminalPrograms/mount.sh'
 alias render='~/Programs/terminal/terminalPrograms/goBins/render'
+alias downloadt='~/Programs/terminal/terminalPrograms/goBins/downloadTime'
 
 # Fun 
 
