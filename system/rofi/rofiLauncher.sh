@@ -191,7 +191,7 @@ elif [[ $selection == "Go Weather" ]]; then
 elif [[ $selection == "pulsemixer" ]]; then
 	alacritty -e pulsemixer
 elif [[ $selection == "YouTube Subscriptions" ]]; then
-	firefox "https://www.youtube.com/feed/subscriptions"
+	alacritty -e gotube --subscriptions
 elif [[ $selection == "XColor Colour Picker" ]]; then
 	xcolor | tr -d '\n' | tee >(xargs notify-send) | tr -d '#' | xclip -selection c
 elif [[ "$selection" == "ZBar QR Code Scanner" ]]; then

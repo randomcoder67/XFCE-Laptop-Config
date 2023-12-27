@@ -292,6 +292,7 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 #alias gpg2='gpg2 --homedir "$XDG_DATA_HOME"/gnupg'
 alias cal="unbuffer cal -n 3 | sed '/^ *$/d'"
 alias as='echo "Use \as to run as command, disabled as too easy to type accidentally, creating unnecessary a.out file in home directory"'
+alias lsblk='lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,FSTYPE,MOUNTPOINTS'
 
 # Stream things  
 
