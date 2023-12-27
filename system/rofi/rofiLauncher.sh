@@ -62,8 +62,10 @@ elif [[ $selection == "Wikipedia" ]]; then
 		searchResults=$(curl "https://en.wikipedia.org/w/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
 		# Present results to user and allow them to pick desired page
 		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
-		urlString=${result// /_} # Replace spaces with "_" for url
-		firefox "https://en.wikipedia.org/wiki/$urlString"
+		if [[ "$urlString" != "" ]]; then
+			urlString=${result// /_} # Replace spaces with "_" for url
+			firefox "https://en.wikipedia.org/wiki/$urlString"
+		fi
 	fi
 elif [[ $selection == "Terraria Wiki" ]]; then
 	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
@@ -74,8 +76,10 @@ elif [[ $selection == "Terraria Wiki" ]]; then
 		searchResults=$(curl "https://terraria.wiki.gg/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
 		# Present results to user and allow them to pick desired page
 		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
-		urlString=${result// /_} # Replace spaces with "_" for url
-		firefox "https://terraria.wiki.gg/wiki/$urlString"
+		if [[ "$urlString" != "" ]]; then
+			urlString=${result// /_} # Replace spaces with "_" for url
+			firefox "https://terraria.wiki.gg/wiki/$urlString"
+		fi
 	fi
 elif [[ $selection == "Minecraft Wiki" ]]; then
 	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
@@ -86,8 +90,10 @@ elif [[ $selection == "Minecraft Wiki" ]]; then
 		searchResults=$(curl "https://minecraft.wiki/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
 		# Present results to user and allow them to pick desired page
 		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
-		urlString=${result// /_} # Replace spaces with "_" for url
-		firefox "https://minecraft.wiki/wiki/$urlString"
+		if [[ "$urlString" != "" ]]; then
+			urlString=${result// /_} # Replace spaces with "_" for url
+			firefox "https://minecraft.wiki/wiki/$urlString"
+		fi
 	fi
 elif [[ "$selection" == "Internet Archive" ]]; then
 	url=$(rofi -dmenu -p "Enter URL to find archives of")
