@@ -11,7 +11,8 @@ import (
 	"strings"
 )
 
-const logDir = "/Programs/output/log/" // The directory where the log JSON files are stored 
+const LOG_DIR string = "/Programs/output/log/" // The directory where the log JSON files are stored
+var HOME_DIR string
 
 var keyToFullName = map[string]string {
 	"stuff": "What Happened",
@@ -22,9 +23,8 @@ var keyToFullName = map[string]string {
 }
 
 func getJSON(fileName string) map[string]interface{} {
-	homeDir, _ := os.UserHomeDir()
 	//fmt.Println(fileName)
-	dat, err := os.ReadFile(homeDir + logDir + fileName)
+	dat, err := os.ReadFile(HOME_DIR + LOG_DIR + fileName)
 	if err != nil {
 		dat = []byte("{}")
 	}
@@ -37,9 +37,7 @@ func getJSON(fileName string) map[string]interface{} {
 	return curJSON
 }
 
-
-// Add a new entry for today (or yesterday if before 1700)
-func newEntry(previousDay bool) {
+func getDateParts(previousDay bool) (string, string, string) {
 	var dt time.Time
 	if time.Now().Hour() < 17 {
 		dt = time.Now().AddDate(0, 0, -1) // Get yesterdays date if time is before 1700 
@@ -69,8 +67,16 @@ func newEntry(previousDay bool) {
 	}
 	// Get year 
 	year := dt.Year() - 2000
+	
+	return dayString, monthString, strconv.Itoa(year)
+}
+
+// Add a new entry for today (or yesterday if before 1700)
+func newEntry(previousDay bool) {
+	dayString, monthString, yearString := getDateParts(previousDay)
+	
 	// Put month and year together into filename 
-	fileName := strconv.Itoa(year) + monthString + ".json"
+	fileName := yearString + monthString + ".json"
 	
 	// Read file 
 	curJSON := getJSON(fileName)
@@ -106,13 +112,12 @@ func newEntry(previousDay bool) {
 	// Create new map representing the day and add to the overall map
 	var toAdd = map[string]string{"stuff": stuff, "trips": trips, "video": video, "song": song, "learn": learn}
 	curJSON[dayString] = toAdd
-	homeDir, _ := os.UserHomeDir()
 	// Resave to file with indents 
 	newData, err := json.MarshalIndent(curJSON, "", "  ");
 	if err != nil {
 		panic(err)
 	}
-	err = os.WriteFile(homeDir + logDir + fileName, newData, 0666)
+	err = os.WriteFile(HOME_DIR + LOG_DIR + fileName, newData, 0666)
 	if err != nil {
 		panic(err)
 	}
@@ -124,14 +129,13 @@ func filterFiles(month bool, toFilter string) []string {
 	if month {
 		stringSlice = 4
 	}
-	homeDir, err := os.UserHomeDir()
-	files, err := ioutil.ReadDir(homeDir + logDir) // Get all files 
+	files, err := ioutil.ReadDir(HOME_DIR + LOG_DIR) // Get all files 
 	if err != nil {
 		panic(err)
 	}
 	filesToUse := []string{} // Make empty slice 
 	for _, file := range files {
-		if toFilter == file.Name()[0:stringSlice] { // Filter files 
+		if toFilter == file.Name()[0:stringSlice] && !strings.Contains(file.Name(), "Dreams") { // Filter files 
 			filesToUse = append(filesToUse, file.Name())
 		}
 	}
@@ -186,12 +190,13 @@ func findFavSongs(doTrim bool, year string) {
 func searchMonth(month string, toSearchA string) bool {
 	fileName := month + ".json"
 	curJSON := getJSON(fileName)
+	dreamsJSON := getJSON(month + "Dreams.json")
 	
 	//daysFound := make(map[string]struct{}) // Make empty map (essentially a set) for matching days 
 	
 	var notYetPrintedMonth bool = true
 	
-	for day, content := range curJSON { // Iterate through days 
+	for day, content := range curJSON { // Iterate through days
 		var notYetPrintedDay bool = true
 		for key, entry := range content.(map[string]interface{}) { // Iterate through categories 
 			// Check for match (case insensitive)
@@ -206,6 +211,20 @@ func searchMonth(month string, toSearchA string) bool {
 				}
 				fmt.Println(keyToFullName[key] + ": " + entry.(string)) // Print the key and matching value 
 				//daysFound[day] = struct{}{}
+			}
+		}
+		if dreamsJSON[day] != nil {
+			var dream string = dreamsJSON[day].(map[string]interface{})["dream"].(string)
+			if strings.Contains(strings.ToLower(dream), strings.ToLower(toSearchA)) {
+				if notYetPrintedMonth { // If in a new month, print the month
+					fmt.Println("Present in month: " + month)
+					notYetPrintedMonth = false
+				}
+				if notYetPrintedDay { // If in a new day, print the day 
+					fmt.Println(day + ":")
+					notYetPrintedDay = false
+				}
+				fmt.Println("Dreams: " + dream) // Print the key and matching value 
 			}
 		}
 	}
@@ -260,11 +279,18 @@ func getDay(date string) {
 		fmt.Println("Day not present")
 		os.Exit(0)
 	}
+	dreamsJSON := getJSON(year + month + "Dreams.json")
 	fmt.Printf("What Happened:	%s\n", requestedDay.(map[string]interface{})["stuff"].(string))
 	fmt.Printf("Where Were You:   %s\n", requestedDay.(map[string]interface{})["trips"].(string))
 	fmt.Printf("Favourite Video:  %s\n", requestedDay.(map[string]interface{})["video"].(string))
 	fmt.Printf("Favourite Song:   %s\n", requestedDay.(map[string]interface{})["song"].(string))
 	fmt.Printf("Learned:		  %s\n", requestedDay.(map[string]interface{})["learn"].(string))
+	if len(dreamsJSON) > 0 {
+		requestedDayDreams := dreamsJSON[day]
+		fmt.Printf("Dreams:		   %s\n", requestedDayDreams.(map[string]interface{})["dream"].(string))
+	} else {
+		fmt.Printf("Dreams:		   No Entry\n")
+	}
 }
 
 func getFilledDays(month string) {
@@ -286,9 +312,41 @@ func getFilledDays(month string) {
 	}
 }
 
+func addDream(previousDay bool) {
+	dayString, monthString, yearString := getDateParts(previousDay)
+	
+	// Put month and year together into filename 
+	fileName := yearString + monthString + "Dreams.json"
+	_ = dayString
+	
+	// Read file 
+	dreamJSON := getJSON(fileName)
+	
+	fmt.Println("Dream Last Night: ")
+	in := bufio.NewReader(os.Stdin)
+	dream, err := in.ReadString('\n')
+	
+	// Strip trailing newline
+	dream = strings.ReplaceAll(dream, "\n", "")
+	
+	// Create new map representing the day and add to the overall map
+	var toAdd = map[string]string{"dream": dream}
+	dreamJSON[dayString] = toAdd
+	// Resave to file with indents 
+	newData, err := json.MarshalIndent(dreamJSON, "", "  ");
+	if err != nil {
+		panic(err)
+	}
+	err = os.WriteFile(HOME_DIR + LOG_DIR + fileName, newData, 0666)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
 	// Get current year to pass to some functions 
 	currentYear := time.Now().Year() - 2000
+	HOME_DIR, _ = os.UserHomeDir()
 	// Parse command line arguments 
 	if len(os.Args) > 1 {
 		arg := os.Args[1]
@@ -343,6 +401,12 @@ func main() {
 			fmt.Println("Usage:\n  log - Add New Entry\n  -p Add New Entry (Previous Day)\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s yy/yymm string - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
 		} else if arg == "-p" {
 			newEntry(true)
+		} else if arg == "-da" {
+			if len(os.Args) == 3 && os.Args[2] == "-p" {
+				addDream(true)
+			} else {
+				addDream(false)
+			}
 		}
 	} else { // If no arguments, add new entry
 		newEntry(false)

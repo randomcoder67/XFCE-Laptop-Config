@@ -394,6 +394,7 @@ alias serial='sudo cat /sys/devices/virtual/dmi/id/product_serial'
 
 alias schedule='~/Programs/terminal/terminalPrograms/goBins/schedule'
 alias log='~/Programs/terminal/terminalPrograms/goBins/log'
+alias dreams='~/Programs/terminal/terminalPrograms/goBins/log -da'
 alias weather='goWeather'
 alias shows='~/Programs/terminal/alias/shows.sh'
 alias money='~/Programs/terminal/terminalPrograms/goBins/money'
