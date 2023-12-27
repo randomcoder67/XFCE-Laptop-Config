@@ -147,6 +147,7 @@
 
 `schedule` schedule program  
 `log` log program  
+`dreams` dream entry into log program  
 `weather` weather  
 `t` display time in various timezones  
 `shows` list show times in the week  
