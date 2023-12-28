@@ -209,8 +209,8 @@
 	  <property name="&lt;Super&gt;Page_Down" type="string" value="tile_down_right_key"/>
 	  <property name="&lt;Super&gt;d" type="string" value="show_desktop_key"/>
 	  <property name="&lt;Primary&gt;&lt;Super&gt;Shift_R" type="string" value="hide_window_key"/>
-	  <property name="&lt;Primary&gt;&lt;Super&gt;numbersign" type="string" value="move_window_to_monitor_right_key"/>
-	  <property name="&lt;Primary&gt;&lt;Super&gt;apostrophe" type="string" value="move_window_to_monitor_left_key"/>
+	  <property name="&lt;Primary&gt;&lt;Super&gt;numbersign" type="string" value="move_window_to_monitor_up_key"/>
+	  <property name="&lt;Primary&gt;&lt;Super&gt;apostrophe" type="string" value="move_window_to_monitor_down_key"/>
 	</property>
   </property>
   <property name="providers" type="array">

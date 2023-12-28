@@ -237,8 +237,8 @@
 `Super+,` Previous workspace  
 `Super+Ctrl+.` Move window to next workspace  
 `Super+Ctrl+,` Move window to previous workspace  
-`Super+Ctrl+#` Move window to right monitor  
-`Super+Ctrl+'` Move window to left monitor  
+`Super+Ctrl+#` Move window to upper monitor  
+`Super+Ctrl+'` Move window to lower monitor  
 `Super+Alt+.` Add new workspace  
 `Super+Alt+,` Remove last workspace  
 `Super+Left` Snap window to left  
