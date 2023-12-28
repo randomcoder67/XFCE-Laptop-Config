@@ -93,7 +93,7 @@ cp ~/Programs/configure/home/.config/systemd/user/files.service ~/.config/system
 cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/user/files.timer
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.service ~/.config/systemd/user/panelRefresh.service
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.timer ~/.config/systemd/user/panelRefresh.timer
-cp ~/Programs/configure/home/.config/alacritty/$currentTheme.yml ~/.config/alacritty/alacritty.yml
+cp ~/Programs/configure/home/.config/alacritty/$currentTheme.toml ~/.config/alacritty/alacritty.toml
 cp ~/Programs/configure/home/.config/btop/$currentTheme.conf ~/.config/btop/btop.conf
 cp ~/Programs/configure/home/.config/Code\ -\ OSS/User/$currentTheme.json ~/.config/Code\ -\ OSS/User/settings.json
 #cp ~/Programs/configure/home/.config/gtk-3.0/bookmarks ~/.config/gtk-3.0/bookmarks

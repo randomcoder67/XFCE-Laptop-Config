@@ -35,7 +35,7 @@ cp ~/.config/systemd/user/panelRefresh.service ~/Programs/configure/home/.config
 cp ~/.config/systemd/user/panelRefresh.timer ~/Programs/configure/home/.config/systemd/user/
 
 [ -d ~/Programs/configure/home/.config/alacritty ] || mkdir ~/Programs/configure/home/.config/alacritty
-cp ~/.config/alacritty/alacritty.yml "$HOME/Programs/configure/home/.config/alacritty/$currentTheme.yml"
+cp ~/.config/alacritty/alacritty.toml "$HOME/Programs/configure/home/.config/alacritty/$currentTheme.toml"
 [ -d ~/Programs/configure/home/.config/btop ] || mkdir ~/Programs/configure/home/.config/btop
 cp ~/.config/btop/btop.conf ~/Programs/configure/home/.config/btop/$currentTheme.conf
 [ -d ~/Programs/configure/home/.config/Code\ -\ OSS/User ] || mkdir -p ~/Programs/configure/home/.config/Code\ -\ OSS/User
