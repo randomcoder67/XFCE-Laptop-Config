@@ -61,8 +61,8 @@ elif [[ $selection == "Wikipedia" ]]; then
 		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
 		searchResults=$(curl "https://en.wikipedia.org/w/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
 		# Present results to user and allow them to pick desired page
-		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
-		if [[ "$urlString" != "" ]]; then
+		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -i -p "Choose Page")
+		if [[ "$result" != "" ]]; then
 			urlString=${result// /_} # Replace spaces with "_" for url
 			firefox "https://en.wikipedia.org/wiki/$urlString"
 		fi
@@ -75,8 +75,8 @@ elif [[ $selection == "Terraria Wiki" ]]; then
 		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
 		searchResults=$(curl "https://terraria.wiki.gg/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
 		# Present results to user and allow them to pick desired page
-		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
-		if [[ "$urlString" != "" ]]; then
+		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -i -p "Choose Page")
+		if [[ "$result" != "" ]]; then
 			urlString=${result// /_} # Replace spaces with "_" for url
 			firefox "https://terraria.wiki.gg/wiki/$urlString"
 		fi
@@ -89,8 +89,8 @@ elif [[ $selection == "Minecraft Wiki" ]]; then
 		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
 		searchResults=$(curl "https://minecraft.wiki/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
 		# Present results to user and allow them to pick desired page
-		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -p "Choose Page")
-		if [[ "$urlString" != "" ]]; then
+		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -i -p "Choose Page")
+		if [[ "$result" != "" ]]; then
 			urlString=${result// /_} # Replace spaces with "_" for url
 			firefox "https://minecraft.wiki/wiki/$urlString"
 		fi

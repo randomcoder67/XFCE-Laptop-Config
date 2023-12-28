@@ -452,4 +452,5 @@ source ~/Programs/terminal/autocompletion.bash
 #alias z='fasd_cd -d'	 # cd, same functionality as j in autojump
 #alias zz='fasd_cd -d -i'
 
+export _FASD_NOCASE=1
 eval "$(fasd --init auto)"
