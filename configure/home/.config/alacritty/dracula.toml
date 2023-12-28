@@ -1,0 +1,92 @@
+[colors.bright]
+black = "#7a71aa"
+blue = "#bd93f9"
+cyan = "#8be9fd"
+green = "#50fa7b"
+magenta = "#ff79d2"
+red = "#ff5555"
+white = "#f8f8f2"
+yellow = "#f1fa8c"
+
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[colors.footer_bar]
+background = "#282a36"
+foreground = "#f8f8f1"
+
+[colors.hints.end]
+background = "#282a36"
+foreground = "#f1fa8c"
+
+[colors.hints.start]
+background = "#f1fa8c"
+foreground = "#22212d"
+
+[colors.line_indicator]
+background = "None"
+foreground = "None"
+
+[colors.normal]
+black = "#262626"
+blue = "#9a7cff"
+cyan = "#38ffea"
+green = "#52ff6d"
+magenta = "#ff76c1"
+red = "#e64747"
+white = "#f8f8f1"
+yellow = "#ffff80"
+
+[colors.primary]
+background = "#22212d"
+bright_foreground = "#ffffff"
+foreground = "#f8f8f1"
+
+[colors.search.focused_match]
+background = "#ffb86c"
+foreground = "#44475a"
+
+[colors.search.matches]
+background = "#50fa7b"
+foreground = "#44475a"
+
+[colors.selection]
+background = "#44475a"
+text = "CellForeground"
+
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[cursor.style]
+shape = "Beam"
+
+[env]
+WINIT_X11_SCALE_FACTOR = "2"
+
+[font]
+size = 6
+
+[font.bold]
+family = "Roboto Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Roboto Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Roboto Mono"
+style = "Italic"
+
+[font.normal]
+family = "Roboto Mono"
+style = "Regular"
+
+[window]
+dynamic_padding = true
+
+[window.dimensions]
+columns = 100
+lines = 25
