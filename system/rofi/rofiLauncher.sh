@@ -196,6 +196,8 @@ elif [[ $selection == "Go Weather" ]]; then
 	alacritty -e goWeather
 elif [[ $selection == "pulsemixer" ]]; then
 	alacritty -e pulsemixer
+elif [[ $selection == "Soundboard" ]]; then
+	alacritty -o "window.dimensions.lines=26" -o "window.dimensions.columns=24" -o "window.title=Soundboard" -e "$HOME/Programs/system/keyboardOther/soundboard"
 elif [[ $selection == "YouTube Subscriptions" ]]; then
 	alacritty -e gotube --subscriptions
 elif [[ $selection == "XColor Colour Picker" ]]; then
