@@ -300,6 +300,7 @@
 `?` Toggle OSC  
 `m` Toggle Mute  
 `Shift+m` Show Metadata  
+`Shift+k` Lock window size  
 
 ### Rofi Bookmarks 
 
