@@ -3,7 +3,7 @@
 # Script to mount USB devices, presents commonly used options
 
 # Display disks to user
-lsblk
+lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,FSTYPE,MOUNTPOINTS
 # Prompt for option
 echo "Select Option to Mount:"
 echo "1. /dev/sda1 -> ~/Downloads/BackupMount"

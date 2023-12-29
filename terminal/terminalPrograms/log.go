@@ -286,8 +286,12 @@ func getDay(date string) {
 	fmt.Printf("Favourite Song:   %s\n", requestedDay.(map[string]interface{})["song"].(string))
 	fmt.Printf("Learned:		  %s\n", requestedDay.(map[string]interface{})["learn"].(string))
 	if len(dreamsJSON) > 0 {
-		requestedDayDreams := dreamsJSON[day]
-		fmt.Printf("Dreams:		   %s\n", requestedDayDreams.(map[string]interface{})["dream"].(string))
+		requestedDayDreams, ok := dreamsJSON[day]
+		if ok {
+			fmt.Printf("Dreams:		   %s\n", requestedDayDreams.(map[string]interface{})["dream"].(string))
+		} else {
+			fmt.Printf("Dreams:		   No Entry\n")
+		}
 	} else {
 		fmt.Printf("Dreams:		   No Entry\n")
 	}

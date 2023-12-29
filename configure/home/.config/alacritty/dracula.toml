@@ -29,7 +29,7 @@ background = "None"
 foreground = "None"
 
 [colors.normal]
-black = "#262626"
+black = "#22212d"
 blue = "#9a7cff"
 cyan = "#38ffea"
 green = "#52ff6d"
