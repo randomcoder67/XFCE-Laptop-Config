@@ -219,7 +219,7 @@ trim_history () {
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
 }
 
-# Get number of files in directory recursively (including hidden files)
+# Get number of files in directory recursively (only non hidden files)
 lcr () {
 	if [[ "$@" == "." ]]; then
 		find "$PWD" -name ".*" -prune -o -type f -print | wc -l
@@ -229,7 +229,7 @@ lcr () {
 	fi
 }
 
-# Get number of files in directory recursively (only non hidden files)
+# Get number of files in directory recursively (including hidden files)
 lcra () {
 	find "$@" -type f | wc -l
 }
@@ -264,6 +264,11 @@ mpvf () {
 	/usr/bin/mpv --really-quiet --save-position-on-quit "$result" & disown
 }
 
+do_mpvr () {
+	find "$(pwd)" -mindepth 1 | sort | tac > /tmp/tempPlaylist.m3u
+	/usr/bin/mpv --really-quiet --save-position-on-quit /tmp/tempPlaylist.m3u & disown
+}
+
 # Program Openers 
 
 alias p='_p'
@@ -271,6 +276,7 @@ alias mpv-yt='do_mpv-yt'
 alias m='_m'
 alias r='_r'
 alias mpv='do_mpv'
+alias mpvr='do_mpvr'
 
 # Unix terminal programs 
 
@@ -283,8 +289,8 @@ alias grepa='grep -i -I -A 5 -B 5 --color=auto'
 alias l='ls --group-directories-first --file-type -N --color=auto'
 alias ls='ls --group-directories-first --file-type -N --color=auto'
 alias lsa='ls --group-directories-first --file-type -NA --color=auto'
-alias lsl='ls --group-directories-first --file-type -N --color=auto -l'
-alias lsal='ls --group-directories-first --file-type -NA --color=auto -l'
+alias lsl='ls --group-directories-first --file-type -N --color=auto -l -h'
+alias lsal='ls --group-directories-first --file-type -NA --color=auto -l -h'
 alias mv='mv -i'
 alias cp='cp -i -r'
 alias diff='diff --color'

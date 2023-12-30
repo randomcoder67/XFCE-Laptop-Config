@@ -13,6 +13,7 @@
 `p` opens video/audio file (fasd)  
 `mpv` opens video/audio files (normal)  
 `mpv-yt` play YouTube videos/playlists in mpv  
+`mpvr` play all videos in folder in reverse  
 `pdf` opens pdf in zathura  
 
 ### System management 
