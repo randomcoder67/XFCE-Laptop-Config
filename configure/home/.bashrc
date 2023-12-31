@@ -349,6 +349,8 @@ alias yt-aria='yt-dlp --external-downloader aria2c --external-downloader-args ar
 alias yt-aria-limit='yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M --max-overall-download-limit=3M" -o "%(title)s.%(ext)s"'
 alias yt-folder='~/Programs/terminal/alias/ytdlpFolder.sh'
 alias yt-music='yt-dlp -f 140 -o "%(title)s - %(channel)s - %(album)s.%(ext)s"'
+alias yt-playlist='yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M" -o "%(title)s.%(ext)s" --embed-chapters --embed-thumbnail -f 22/bestvideo+bestaudio --cookies-from-browser firefox'
+alias yt-playlist-limit='yt-dlp --external-downloader aria2c --external-downloader-args aria2c:"-x 16 -j 16 -s 16 -k 1M --max-overall-download-limit=3M" -o "%(title)s.%(ext)s" --embed-chapters --embed-thumbnail -f 22/bestvideo+bestaudio --cookies-from-browser firefox'
 
 ## Web Alternatives
 

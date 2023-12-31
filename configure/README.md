@@ -95,6 +95,8 @@
 `yt-aria-limit` yt-dlp using aria2c as downloader (limited to 3MB/s)  
 `yt-folder` yt-dlp from an input file (-l to use download limit)  
 `yt-music` download music in format required for music-tag program  
+`yt-playlist` download playlist, includes cookies from firefox, embed chapters and thumbnail, and 22 quality setting  
+`yt-playlist-limit` download playlist (limited to 3MB/s)  
 
 #### Web Alternatives
 
