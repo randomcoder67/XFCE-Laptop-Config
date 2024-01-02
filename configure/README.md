@@ -27,7 +27,8 @@
 
 ### Unix terminal programs
 
-`his` searches history  
+`hs` shows command history  
+`his` searches command history  
 `c` clear  
 `cl` clear and ls  
 `x` make file executable  

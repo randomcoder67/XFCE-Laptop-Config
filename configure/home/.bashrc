@@ -280,6 +280,7 @@ alias mpvr='do_mpvr'
 
 # Unix terminal programs 
 
+alias hs='history'
 alias his='history | grep'
 alias c='clear'
 alias cl='clear && ls'
