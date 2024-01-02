@@ -5,7 +5,7 @@
 # Get playlist data into an array (yt-dlp -j gives each video as a seperate JSON block)
 oldIFS="$IFS"
 IFS=$'\n'
-playlistJSON=( $(yt-dlp -q -j --flat-playlist "$1" 2>/dev/null) )
+playlistJSON=( $(yt-dlp --cookies-from-browser firefox -q -j --flat-playlist "$1" 2>/dev/null) )
 IFS="$oldIFS"
 
 # Add up duration
