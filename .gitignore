@@ -12,8 +12,6 @@
 /system/keyboardOther/soundboard
 /system/rofi/addIcons
 /terminal/alias/passGen.sh
-/terminal/webAlternatives/go.sum
-/terminal/webAlternatives/youtubeSearch
 /terminal/terminalPrograms/astro
 /terminal/terminalPrograms/goBins
 /terminal/terminalPrograms/mdToGroff/go.sum
