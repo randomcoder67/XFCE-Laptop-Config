@@ -102,7 +102,6 @@
 #### Web Alternatives
 
 `wl` select video from YouTube Watch Later to play with mpv  
-`youtube` search YouTube  
 `ytlen` get length of YouTube playlist  
 
 #### Git
