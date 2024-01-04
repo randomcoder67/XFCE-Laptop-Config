@@ -5,6 +5,11 @@
 ![Screenshot 1](configure/screenshots/screenshot1.png)
 ![Screenshot 2](configure/screenshots/screenshot2.png)
 
+## Credit
+
+[mpv-osc-tethys](https://github.com/Zren/mpv-osc-tethys) for the mpv theme (mine is slightly modified, hence why it's included in this repo - added display of current speed and removed thumbnail previews)  
+[u/dasgudshit](https://www.reddit.com/r/mpv/comments/ob22cd/any_way_to_stop_automatic_resizing_when_youre/) for the mpv lockSize.lua script
+
 ## Installation 
 
 ### Dependancies
