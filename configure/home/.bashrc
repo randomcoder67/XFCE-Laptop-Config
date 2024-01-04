@@ -191,8 +191,8 @@ t () {
 
 # Function to remove things which aen't useful from bash history
 trim_history () {
-	# Remove literal "q", "ls", "l", "lsa", "exit", "c", "cl", "cd", "rm", "x", "gits", "gitd", "gitl", "htop", "btop", "nethogs", "cava", "vis", "qalc" and "history" from bash history
-	sed -i -r '/^(history|qalc|vis|cava|nethogs|btop|htop|gitl|gitd|gits|x|rm|cd|c|exit|lsa|ls|l|q)$/d' ~/.bash_history
+	# Remove literal "q", "ls", "l", "lsa", "exit", "c", "cl", "cd", "rm", "x", "gits", "gitd", "gitl", "htop", "btop", "nethogs", "cava", "vis", "qalc", "history" and "hs" from bash history
+	sed -i -r '/^(history|hs|qalc|vis|cava|nethogs|btop|htop|gitl|gitd|gits|x|rm|cd|c|exit|lsa|ls|l|q)$/d' ~/.bash_history
 	# Remove any usage of fasd z autojump command
 	sed -i '/^z .*/d' ~/.bash_history
 	sed -i '/^zz .*/d' ~/.bash_history
