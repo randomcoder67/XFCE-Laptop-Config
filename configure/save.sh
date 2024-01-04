@@ -34,6 +34,11 @@ cp ~/.config/systemd/user/files.timer ~/Programs/configure/home/.config/systemd/
 cp ~/.config/systemd/user/panelRefresh.service ~/Programs/configure/home/.config/systemd/user/
 cp ~/.config/systemd/user/panelRefresh.timer ~/Programs/configure/home/.config/systemd/user/
 
+[ -d ~/Programs/configure/home/.config/ranger ] || mkdir ~/Programs/configure/home/.config/ranger
+cp ~/.config/ranger/rc.conf ~/Programs/configure/home/.config/ranger/rc.conf
+cp ~/.config/ranger/scope.sh ~/Programs/configure/home/.config/ranger/scope.sh
+chmod -x ~/Programs/configure/home/.config/ranger/scope.sh
+
 [ -d ~/Programs/configure/home/.config/alacritty ] || mkdir ~/Programs/configure/home/.config/alacritty
 cp ~/.config/alacritty/alacritty.toml "$HOME/Programs/configure/home/.config/alacritty/$currentTheme.toml"
 [ -d ~/Programs/configure/home/.config/btop ] || mkdir ~/Programs/configure/home/.config/btop
@@ -51,7 +56,9 @@ cp ~/.config/htop/htoprc ~/Programs/configure/home/.config/htop/
 [ -d ~/Programs/configure/home/.config/mpv/scripts ] || mkdir ~/Programs/configure/home/.config/mpv/scripts
 cp ~/.config/mpv/mpv.conf ~/Programs/configure/home/.config/mpv/
 cp ~/.config/mpv/input.conf ~/Programs/configure/home/.config/mpv/
-cp ~/.config/mpv/scripts/* ~/Programs/configure/home/.config/mpv/scripts/
+cp ~/.config/mpv/scripts/oscPeek.lua ~/Programs/configure/home/.config/mpv/scripts/oscPeek.lua
+cp ~/.config/mpv/scripts/lockSize.lua ~/Programs/configure/home/.config/mpv/scripts/lockSize.lua
+cp ~/.config/mpv/scripts/osc_tethys.lua ~/Programs/configure/home/.config/mpv/scripts/osc_tethys.lua
 [ -d ~/Programs/configure/home/.config/neofetch ] || mkdir ~/Programs/configure/home/.config/neofetch
 cp ~/.config/neofetch/config.conf ~/Programs/configure/home/.config/neofetch/
 [ -d ~/Programs/configure/home/.config/qalculate ] || mkdir ~/Programs/configure/home/.config/qalculate

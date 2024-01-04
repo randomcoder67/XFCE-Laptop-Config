@@ -94,6 +94,9 @@ cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.service ~/.config/systemd/user/panelRefresh.service
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.timer ~/.config/systemd/user/panelRefresh.timer
 cp ~/Programs/configure/home/.config/alacritty/$currentTheme.toml ~/.config/alacritty/alacritty.toml
+cp ~/Programs/configure/home/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+cp ~/Programs/configure/home/.config/ranger/scope.sh ~/.config/ranger/scope.sh
+chmod +x ~/.config/ranger/scope.sh
 cp ~/Programs/configure/home/.config/btop/$currentTheme.conf ~/.config/btop/btop.conf
 cp ~/Programs/configure/home/.config/Code\ -\ OSS/User/$currentTheme.json ~/.config/Code\ -\ OSS/User/settings.json
 #cp ~/Programs/configure/home/.config/gtk-3.0/bookmarks ~/.config/gtk-3.0/bookmarks
@@ -101,7 +104,9 @@ cp ~/Programs/configure/home/.config/gtk-3.0/$currentTheme.css ~/.config/gtk-3.0
 cp ~/Programs/configure/home/.config/htop/htoprc ~/.config/htop/htoprc
 cp ~/Programs/configure/home/.config/mpv/mpv.conf ~/.config/mpv/mpv.conf
 cp ~/Programs/configure/home/.config/mpv/input.conf ~/.config/mpv/input.conf
-cp ~/Programs/configure/home/.config/mpv/scripts/* ~/.config/mpv/scripts/
+cp ~/Programs/configure/home/.config/mpv/scripts/oscPeek.lua ~/.config/mpv/scripts/oscPeek.lua
+cp ~/Programs/configure/home/.config/mpv/scripts/lockSize.lua ~/.config/mpv/scripts/lockSize.lua
+cp ~/Programs/configure/home/.config/mpv/scripts/osc_tethys.lua ~/.config/mpv/scripts/osc_tethys.lua
 cp ~/Programs/configure/home/.config/neofetch/config.conf ~/.config/neofetch/config.conf
 cp ~/Programs/configure/home/.config/qalculate/qalc.cfg ~/.config/qalculate/qalc.cfg
 cp ~/Programs/configure/home/.config/rofi/config.rasi ~/.config/rofi/config.rasi
