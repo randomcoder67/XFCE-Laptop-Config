@@ -35,11 +35,13 @@
 `grep` grep (ignore case)  
 `grepa` grep (print surrounding lines)  
 `grepc` grep (print surrounding characters)  
-`l` lists files in directory  
-`ls` lists files in directory  
-`lsa` lists files in directory (including hidden files)  
-`lsl` list files in directory (detail)  
-`lsal` list files in directory (including hidden files, detail)  
+`l` lists files/dirs in directory  
+`ls` lists files/dirs in directory  
+`lsa` lists files/dirs in directory (including hidden)  
+`lsl` list files/dirs in directory (detail)  
+`lsal` list files/dirs in directory (including hidden, detail)  
+`lsf` list files in directory (recursive)
+`lsaf` list files in directory (including hidden, recursive)
 `mv` moves file (asks for confirmation if overwriting)  
 `cp` copies file (asks for confirmation if overwriting)  
 `diff` checks for differences in files  
@@ -224,6 +226,7 @@
 `Super+]` Volume +5%  
 `Super+-` Skip To Previous Track  
 `Super+=` Skip To Next Track  
+`Super+Shift+C` Clear All Notifications  
 
 ### Xfwm 
 
