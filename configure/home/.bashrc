@@ -234,6 +234,20 @@ lcra () {
 	find "$@" -type f | wc -l
 }
 
+# Get all files in directory (recursive)
+lsf () {
+	for arg; do
+		find "${arg}/"** -type f 2> /dev/null | rev | cut -d "/" -f 1 | rev
+	done
+}
+
+# Get all files in directory (recursive and including hidden)
+lsaf () {
+	for arg; do
+		find "${arg}/"** "${arg}/".** -type f 2> /dev/null | rev | cut -d "/" -f 1 | rev
+	done
+}
+
 # Swap prompt for anonomous one and back
 anonprompt () {
 	if [[ "$PS1" == *"user"* ]]; then
