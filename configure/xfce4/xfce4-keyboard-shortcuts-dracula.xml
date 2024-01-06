@@ -89,6 +89,7 @@
 	  <property name="&lt;Super&gt;equal" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --next"/>
 	  <property name="&lt;Super&gt;minus" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --prev"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;c" type="string" value="pkill xfce4-notify"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">
