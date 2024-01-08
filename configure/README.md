@@ -120,7 +120,8 @@
 `nf` neofetch  
 `py` python3  
 `sq` ncdu to check files sizes  
-`bat` view files in terminal
+`bat` view files in terminal  
+`batl` view last file (alphabetical) in directory  
 `q` trims bash history and exits  
 `reload` reloads bashrc  
 `ghc` ghc with dynamic flag (necessary for Arch Linux)  
