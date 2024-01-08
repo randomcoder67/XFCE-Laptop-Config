@@ -27,7 +27,7 @@ if [[ "$1" == "" ]]; then
 	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --no-resume-playback --loop-playlist "$HOME/Music/CurrentPlaylist" --input-ipc-server="$socketName" & disown
 # Present choice of playlists
 elif [[ "$1" == "--choice" ]]; then
-	playlists="All Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z]\)/\1 \2/g' | cut -d '/' -f 5)"
+	playlists="All Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z][a-z]\)/\1 \2/g' | cut -d '/' -f 5)"
 	result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play")
 	folder=""
 	if [[ "$result" == "" ]]; then
