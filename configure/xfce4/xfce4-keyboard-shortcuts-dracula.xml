@@ -90,6 +90,8 @@
 	  <property name="&lt;Super&gt;minus" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --prev"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;c" type="string" value="pkill xfce4-notify"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;underscore" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --quit"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;plus" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --favourite"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">

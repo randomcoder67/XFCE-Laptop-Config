@@ -227,6 +227,8 @@
 `Super+]` Volume +5%  
 `Super+-` Skip To Previous Track  
 `Super+=` Skip To Next Track  
+`Super+Shift+=` Add Currently Playing Song To Favourites  
+`Super+Shift+-` Close Currently Playing Music  
 `Super+Shift+C` Clear All Notifications  
 
 ### Xfwm 
