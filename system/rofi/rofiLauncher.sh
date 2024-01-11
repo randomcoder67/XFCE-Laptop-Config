@@ -194,14 +194,16 @@ elif [[ $selection == "Intel GPU Top" ]]; then
 	alacritty -e sudo intel_gpu_top
 elif [[ $selection == "Go Weather" ]]; then
 	alacritty -e goWeather
+elif [[ $selection == "Play Music" ]]; then
+	"$HOME/Programs/terminal/alias/music.sh" --choice
 elif [[ $selection == "pulsemixer" ]]; then
 	alacritty -e pulsemixer
 elif [[ $selection == "Soundboard" ]]; then
 	alacritty -o "window.dimensions.lines=26" -o "window.dimensions.columns=24" -o "window.title=Soundboard" -e "$HOME/Programs/system/keyboardOther/soundboard"
 elif [[ $selection == "GoTube" ]]; then
-	alacritty -e gotube
+	alacritty -e gotube --log
 elif [[ $selection == "YouTube Subscriptions" ]]; then
-	alacritty -e gotube --subscriptions
+	alacritty -e gotube --log --subscriptions
 elif [[ $selection == "XColor Colour Picker" ]]; then
 	xcolor | tr -d '\n' | tee >(xargs notify-send) | tr -d '#' | xclip -selection c
 elif [[ "$selection" == "ZBar QR Code Scanner" ]]; then

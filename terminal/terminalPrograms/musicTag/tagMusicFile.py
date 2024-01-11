@@ -52,7 +52,7 @@ if sys.argv[1] == ".":
 else:
 	files = [sys.argv[1]]
 
-numArt = -1
+numArt = "-1"
 offset = "-1"
 genreSaved = "none"
 
@@ -70,22 +70,26 @@ for file in files:
 	albumCovers = getArt(albumID)
 	
 	correctArtLink = ""
-	if numArt == -1:
+	if numArt == "-1":
 		for index, entry in enumerate(albumCovers):
 			print(str(index) + ":")
 			print(entry[0])
 			print(entry[1])
 
 		correctArt = input("Which art to use: ")
-		numArt = int(correctArt)
+		numArt = correctArt
+		
 		correctArtLink = ""
 
 		if correctArt == "file":
-			correctArtLink = "file.jpg"
+			correctArtLink = "../file.jpg"
 		else:
 			correctArtLink = albumCovers[int(correctArt)][1]
 	else:
-		correctArtLink = albumCovers[numArt][1]
+		if numArt == "file":
+			correctArtLink = "../file.jpg"
+		else:
+			correctArtLink = albumCovers[int(numArt)][1]
 		
 
 	# Get other tags from filename 
@@ -152,7 +156,7 @@ for file in files:
 
 	def doTagging(fileA, titleA, artistA, albumA, artLinkA, genreA):
 		try:
-			if not artLinkA == "file.jpg":
+			if not artLinkA == "../file.jpg":
 				r = requests.get(artLinkA)
 			if artLinkA == "BLANKENTRY":
 				raise Exception("Blank Entry")
@@ -163,8 +167,8 @@ for file in files:
 			currentFile["album"] = albumA
 			currentFile["genre"] = genreA
 			
-			if artLinkA == "file.jpg":
-				with open("file.jpg", "rb") as img_in:
+			if artLinkA == "../file.jpg":
+				with open("../file.jpg", "rb") as img_in:
 					currentFile["artwork"] = img_in.read()
 			else:
 				open(tempFileName, "wb").write(r.content)
@@ -176,6 +180,7 @@ for file in files:
 
 			return True
 		except Exception as e:
+			print(e)
 			return False
 
 	if doTagging(fileName, titleB, artistB, albumB, correctArtLink, genreName):

@@ -33,6 +33,7 @@
 `cl` clear and ls  
 `x` make file executable  
 `grep` grep (ignore case)  
+`greps` grep (case sensitive)  
 `grepa` grep (print surrounding lines)  
 `grepc` grep (print surrounding characters)  
 `l` lists files/dirs in directory  
