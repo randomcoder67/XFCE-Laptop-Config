@@ -252,7 +252,7 @@ func searchMonth(month string, toSearchA string) bool {
 // Search function, calls searchMonth as needed 
 func search(date string, toSearch string) {
 	if len(date) == 4 { // If a year and month specified, call searchMonth once 
-		searchMonth(toSearch, date)
+		searchMonth(date, toSearch)
 	} else if len(date) == 2 { // Else get all files in specified year and run searchMonth for each of them 
 		filesToUse := filterFiles(false, date)
 		for i := range filesToUse {

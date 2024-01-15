@@ -207,6 +207,9 @@
 `Super+M` Mousepad  
 `Super+R` Identify Song  
 `Super+L` Play music from `~/Music/curPlaylist`  
+`Super+Shift+L` Play music from `~/Music/curPlaylist` in background  
+`Super+O` Choose playlist to play music from  
+`Super+Shift+O` Choose playlist to play music from in background  
 `Super+C` Calculator  
 `Super+H` htop  
 `Super+B` btop  
@@ -224,8 +227,7 @@
 `Super+[` Decrease Volume 5%  
 `Super+X` System Menu  
 `Super+I` Link Markdown Files  
-`Super+[` Volume -5%  
-`Super+]` Volume +5%  
+`Super+Shift+[` Play/Pause Music  
 `Super+-` Skip To Previous Track  
 `Super+=` Skip To Next Track  
 `Super+Shift+=` Add Currently Playing Song To Favourites  

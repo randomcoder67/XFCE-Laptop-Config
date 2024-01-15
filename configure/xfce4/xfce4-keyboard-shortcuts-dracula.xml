@@ -88,10 +88,13 @@
 	  <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=26&quot; -o &quot;window.dimensions.columns=24&quot; -o &quot;window.title=Soundboard&quot; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
 	  <property name="&lt;Super&gt;equal" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --next"/>
 	  <property name="&lt;Super&gt;minus" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --prev"/>
-	  <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;c" type="string" value="pkill xfce4-notify"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;underscore" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --quit"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;plus" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --favourite"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;braceleft" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --toggle-pause"/>
+	  <property name="&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --background"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice --background"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">
