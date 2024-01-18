@@ -170,7 +170,7 @@ channels = mono
 # a terminal that can change color definitions such as Gnome-terminal or rxvt.
 # default is to keep current terminal color
 ; background = default
-; foreground = default
+foreground = blue
 
 # SDL and sdl_glsl only support hex code colors, these are the default:
 ; background = '#111111'
