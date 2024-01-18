@@ -25,8 +25,9 @@ elif [[ "$1" == "--quit" ]]; then
 	exit
 fi
 
-backgroundArg1=""
-backgroundArg2=""
+# Default to dummy arguments that basically do nothing
+backgroundArg1="--pause=no"
+backgroundArg2="--fullscreen=no"
 doArg="$1"
 
 if [[ "$1" == "--background" ]]; then

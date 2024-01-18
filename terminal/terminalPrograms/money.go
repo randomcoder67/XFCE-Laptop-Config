@@ -8,6 +8,7 @@ import (
 	"time"
 	"encoding/csv"
 	"sort"
+	"os/exec"
 	"strconv"
 )
 
@@ -21,6 +22,21 @@ const RESET_COLOUR string = "\033[0m"
 
 var DATE_COLOUR string
 var homeDir string
+
+func termWidth() int {
+	cmd := exec.Command("stty", "size")
+	cmd.Stdin = os.Stdin
+	out, err := cmd.Output()
+	if err != nil {
+		panic(err)
+	}
+	split := strings.Split(string(out), " ")
+	width, err := strconv.Atoi(strings.ReplaceAll(split[1], "\n", ""))
+	if err != nil {
+		panic(err)
+	}
+	return width
+}
 
 func getFileContents(fileName string) string {
 	dat, _ := os.ReadFile(fileName)
@@ -107,6 +123,7 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 	var itemMaxLength int = 0
 	var priceMaxLength int = 0
 	var shopMaxLength int = 0
+	
 	for i:=0; i<len(records); i++ {
 		if len(records[i][1]) > itemMaxLength {
 			itemMaxLength = len(records[i][1])
@@ -119,6 +136,12 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 			shopMaxLength = len(records[i][3])
 		}
 	}
+	
+	var maxShopLen int = termWidth() - dateMaxLength - itemMaxLength - priceMaxLength - 16
+	if shopMaxLength > maxShopLen {
+		shopMaxLength = maxShopLen
+	}
+	
 	// Make totalSpent variable to add to
 	var totalSpent float64 = 0
 	
@@ -141,8 +164,16 @@ func viewEntries(shouldSearch bool, queryString string, dateFileCode string, sor
 		}
 		dateLength := 6
 		priceLength := len(records[i][2])
-		shopLength := len(records[i][3])
-		fmt.Printf("  %s│%s│%s│%s\n", " " + DATE_COLOUR + records[i][0] + RESET_COLOUR + strings.Repeat(" ", dateMaxLength-dateLength+1), " " + records[i][1] + strings.Repeat(" ", itemMaxLength-itemLength+1), " " + PRICE_COLOUR + records[i][2] + RESET_COLOUR + strings.Repeat(" ", priceMaxLength-priceLength+2), " " + records[i][3] + strings.Repeat(" ", shopMaxLength-shopLength+1))
+		var shopString string = records[i][3]
+		shopLength := len(shopString)
+		
+		
+		if shopLength > maxShopLen {
+			shopString = shopString[:maxShopLen-2] + ".."
+			shopLength = len(shopString)
+		}
+		
+		fmt.Printf("  %s│%s│%s│%s\n", " " + DATE_COLOUR + records[i][0] + RESET_COLOUR + strings.Repeat(" ", dateMaxLength-dateLength+1), " " + records[i][1] + strings.Repeat(" ", itemMaxLength-itemLength+1), " " + PRICE_COLOUR + records[i][2] + RESET_COLOUR + strings.Repeat(" ", priceMaxLength-priceLength+2), " " + shopString + strings.Repeat(" ", shopMaxLength-shopLength+1))
 	}
 	// Format and print the total money spent in the month
 	fmt.Printf("  %s┼%s┼%s┴%s\n", strings.Repeat("─", dateMaxLength+2), strings.Repeat("─", itemMaxLength+2), strings.Repeat("─", priceMaxLength+3), strings.Repeat("─", shopMaxLength+2))
