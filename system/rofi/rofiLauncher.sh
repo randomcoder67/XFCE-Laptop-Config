@@ -32,6 +32,27 @@ for x in "${programsA[@]}"; do
 	programs["$first"]=$second
 done
 
+wikiSearch () {
+	apiAddress="$1"
+	pageAddress="$2"
+	mainPage="$3"
+	wikiName="$4"
+	
+	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
+	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
+		firefox "$mainPage"
+	else # Otherwise, use API to search
+		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
+		searchResults=$(curl "${apiAddress}action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
+		# Present results to user and allow them to pick desired page
+		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -i -p "Choose Page")
+		if [[ "$result" != "" ]]; then
+			urlString=${result// /_} # Replace spaces with "_" for url
+			firefox "${pageAddress}${urlString}"
+		fi
+	fi
+}
+
 if [[ $selection == *"/"* ]]; then
 	newSelection=$(echo $selection | sed 's|~|'"${HOME}"'|g')
 	if [ $status -eq 10 ]; then
@@ -54,47 +75,13 @@ if [[ $selection == *"/"* ]]; then
 		fi
 	fi
 elif [[ $selection == "Wikipedia" ]]; then
-	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
-	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
-		firefox "https://en.wikipedia.org/wiki/Main_Page"
-	else # Otherwise, use API to search
-		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
-		searchResults=$(curl "https://en.wikipedia.org/w/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
-		# Present results to user and allow them to pick desired page
-		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -i -p "Choose Page")
-		if [[ "$result" != "" ]]; then
-			urlString=${result// /_} # Replace spaces with "_" for url
-			firefox "https://en.wikipedia.org/wiki/$urlString"
-		fi
-	fi
+	wikiSearch "https://en.wikipedia.org/w/api.php?" "https://en.wikipedia.org/wiki/" "https://en.wikipedia.org/wiki/Main_Page" "Wikipedia"
 elif [[ $selection == "Terraria Wiki" ]]; then
-	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
-	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
-		firefox "https://terraria.wiki.gg/wiki/Terraria_Wiki"
-	else # Otherwise, use API to search
-		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
-		searchResults=$(curl "https://terraria.wiki.gg/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
-		# Present results to user and allow them to pick desired page
-		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -i -p "Choose Page")
-		if [[ "$result" != "" ]]; then
-			urlString=${result// /_} # Replace spaces with "_" for url
-			firefox "https://terraria.wiki.gg/wiki/$urlString"
-		fi
-	fi
+	wikiSearch "https://terraria.wiki.gg/api.php?" "https://terraria.wiki.gg/wiki/" "https://terraria.wiki.gg/wiki/Terraria_Wiki" "Terraria Wiki"
 elif [[ $selection == "Minecraft Wiki" ]]; then
-	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
-	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
-		firefox "https://minecraft.wiki/"
-	else # Otherwise, use API to search
-		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
-		searchResults=$(curl "https://minecraft.wiki/api.php?action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
-		# Present results to user and allow them to pick desired page
-		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -i -p "Choose Page")
-		if [[ "$result" != "" ]]; then
-			urlString=${result// /_} # Replace spaces with "_" for url
-			firefox "https://minecraft.wiki/wiki/$urlString"
-		fi
-	fi
+	wikiSearch "https://minecraft.wiki/api.php?" "https://minecraft.wiki/wiki/" "https://minecraft.wiki/" "Minecraft Wiki"
+elif [[ $selection == "Kerbal Space Program Wiki" ]]; then
+	wikiSearch "https://wiki.kerbalspaceprogram.com/api.php?" "https://wiki.kerbalspaceprogram.com/wiki/" "https://wiki.kerbalspaceprogram.com/wiki/Main_Page" "Kerbal Space Program Wiki"
 elif [[ "$selection" == "Internet Archive" ]]; then
 	url=$(rofi -dmenu -p "Enter URL to find archives of")
 	firefox "https://web.archive.org/web/*/$url"
