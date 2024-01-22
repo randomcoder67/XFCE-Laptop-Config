@@ -347,6 +347,10 @@ func addDream(previousDay bool) {
 	}
 }
 
+func printHelp() {
+	fmt.Println("Usage:\n  log - Add New Entry\n  -p Add New Entry (Previous Day)\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s yy/yymm string - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
+}
+
 func main() {
 	// Get current year to pass to some functions 
 	currentYear := time.Now().Year() - 2000
@@ -402,7 +406,7 @@ func main() {
 				fmt.Println("Usage: log -f/fa (year)")
 			}
 		} else if arg == "-h" { // Display help
-			fmt.Println("Usage:\n  log - Add New Entry\n  -p Add New Entry (Previous Day)\n  -d yymmdd - Get Information For Date\n  -ds (mm/yymm) - Get Avalible Dates\n  -s yy/yymm string - Search Month/Year for string\n  -f - Get Favourite Song (only entries with 2 or more days)\n  -fa - Get Favourite Songs (all)")
+			printHelp()
 		} else if arg == "-p" {
 			newEntry(true)
 		} else if arg == "-da" {
@@ -411,6 +415,9 @@ func main() {
 			} else {
 				addDream(false)
 			}
+		} else {
+			printHelp()
+			os.Exit(1)
 		}
 	} else { // If no arguments, add new entry
 		newEntry(false)

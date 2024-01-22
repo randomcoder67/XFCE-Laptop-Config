@@ -170,6 +170,8 @@ elif [[ $selection == "Stellaris" ]]; then
 	steam steam://rungameid/281990
 elif [[ $selection == "Dead Cells" ]]; then
 	steam steam://rungameid/588650
+elif [[ $selection == "BeamNG.drive" ]]; then
+	steam steam://rungameid/284160
 elif [[ $selection == "Slime Rancher" ]]; then
 	"$HOME/.local/share/GOG/Slime Rancher/start.sh"
 elif [[ $selection == "PCSX2" ]]; then
