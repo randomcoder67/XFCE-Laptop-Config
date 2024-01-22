@@ -84,7 +84,7 @@ func getYearWeek(date string, ahead int) string { // Get year and week in format
 		} else if string(date[0]) == "n" { // nmon-nsun is always next week 
 			daysToAdd = 7
 		}
-		if ahead > 0 {
+		if ahead != 0 {
 			daysToAdd = 7 * ahead
 		}
 		givenYear, givenWeek = time.Now().AddDate(0, 0, daysToAdd).ISOWeek()
@@ -107,7 +107,7 @@ func convertDayToDate(day string, ahead int) string {
 		toAdd = 7
 		day = day[1:4] // Remove leading n from day variable 
 	}
-	if ahead > 0 {
+	if ahead != 0 {
 		toAdd = 7 * ahead
 	}
 	
@@ -239,7 +239,7 @@ func dateToDay(date string) string {
 func viewSchedule(toAdd int, internal bool, metricTime bool) {
 	var fileName string
 	var middleOfWeek string // Middle of week is to allow the output to split over two columns 
-	if toAdd > 0 { // If nextWeek is true, print next weeks schedule, not this weeks
+	if toAdd != 0 { // If nextWeek is true, print next weeks schedule, not this weeks
 		fileName = homeDir + BASE_PATH + getYearWeek("nmon", toAdd) + ".csv"
 		middleOfWeek = convertDayToDate("nthu", toAdd)
 	} else {
