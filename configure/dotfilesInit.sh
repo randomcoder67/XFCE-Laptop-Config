@@ -136,6 +136,9 @@ go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/term
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/money.go
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/timer.go
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/days.go
+go build -o ~/Programs/terminal/terminalPrograms/goBins/metricTime ~/Programs/terminal/terminalPrograms/metricTime.go
+go build -o ~/Programs/terminal/terminalPrograms/goBins/downloadTime ~/Programs/terminal/terminalPrograms/downloadTime.go
+go build -o ~/Programs/system/rofi/metoffice-geohash ~/Programs/system/rofi/geohash.go
 cd ~/Programs/terminal/terminalPrograms/notesRenderer
 go mod tidy
 go build -o ~/Programs/terminal/terminalPrograms/goBins ~/Programs/terminal/terminalPrograms/notesRenderer/render.go
