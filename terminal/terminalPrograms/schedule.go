@@ -20,6 +20,7 @@ const TIME_COLOUR string = "\033[35m\033[48;2;48;48;48m"
 const DAY_COLOUR_RAILSCASTS string = "\033[38;2;221;136;83m\033[1m"
 const DAY_COLOUR_DRACULA string = "\033[38;2;252;200;127m\033[1m"
 const HEADER_COLOUR string = "\033[31m\033[1m"
+const WEEK_NAME_COLOUR string = "\033[33m\033[1m"
 const RESET_COLOUR string = "\033[0m"
 
 var DAY_COLOUR string
@@ -252,6 +253,20 @@ func viewSchedule(toAdd int, internal bool, metricTime bool) {
 	r.Comma = '|'
 	records, _ := r.ReadAll()
 	
+	// Get week name, if present
+	fileName = homeDir + BASE_PATH + "Names" + fileName[len(fileName)-8:len(fileName)-6] + ".csv"
+	r2 := csv.NewReader(strings.NewReader(getFileContents(fileName)))
+	r2.Comma = '|'
+	names, _ := r2.ReadAll()
+	var startOfWeek string = getStartOfWeek(middleOfWeek)
+	var weekName string = ""
+	for _, item := range names {
+		if item[0] == startOfWeek {
+			weekName = item[1]
+		}
+	}
+	
+	
 	// If internal entries not requested, filter them out
 	if !internal {
 		tempRecords := [][]string{}
@@ -304,11 +319,11 @@ func viewSchedule(toAdd int, internal bool, metricTime bool) {
 		}
 		markdownSlices[curIndex] = append(markdownSlices[curIndex], []string{records[i][1],": " + records[i][2]})
 	}
-	printSchedule(markdownSlices[0], markdownSlices[1], metricTime)
+	printSchedule(markdownSlices[0], markdownSlices[1], weekName, metricTime)
 }
 
 
-func printSchedule(columnA [][]string, columnB [][]string, metricTime bool) {
+func printSchedule(columnA [][]string, columnB [][]string, weekName string, metricTime bool) {
 	// Get length of largest slice, and make the other one the same length by adding blank lines 
 	columnALen := len(columnA)
 	columnBLen := len(columnB)
@@ -338,6 +353,9 @@ func printSchedule(columnA [][]string, columnB [][]string, metricTime bool) {
 	
 	// Print the schedule in the correct format
 	fmt.Printf(strings.Repeat(" ", 36) + HEADER_COLOUR + "# Schedule" + RESET_COLOUR + "\n")
+	var weekNamePadding int = 36 + 5
+	weekNamePadding = weekNamePadding - (len(weekName)/2)
+	fmt.Printf(strings.Repeat(" ", weekNamePadding) + WEEK_NAME_COLOUR + weekName + RESET_COLOUR + "\n")
 	for i:=0; i<lenA; i++ {
 		var toPrintA string
 		var toPrintB string
@@ -413,7 +431,11 @@ func deleteEntry(time string, date string) {
 }
 
 func printHelp() {
-	fmt.Printf("Usage: \nTo View:\n  schedule [-n] [x] [-i] [-m] (-n for next week, x for x weeks ahead) (-i to show interal entries) (-m for metric time)\nTo Add:\n  schedule -a hhmm yymmdd/day description [0-3,5] [-i]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n  -i for internal\nTo Remove:\n  schedule -d hhmm yymmdd/day\n")
+	fmt.Printf("Usage: \n")
+	fmt.Printf("To View:\n  schedule [-n] [x] [-i] [-m] (-n for next week, x for x weeks ahead) (-i to show interal entries) (-mt for metric time)\n")
+	fmt.Printf("To Add:\n  schedule -a hhmm yymmdd/day description [0-3,5] [-i]\n  Where day is:\n  mon-sun = this week\n  nmon-nsun = next week\n  t = today\n  tm = tomorrow\n  0-3,5 = add for weeks 0-3 and 5 (where 0 is this week)\n  -i for internal\n")
+	fmt.Printf("To Remove:\n  schedule -d hhmm yymmdd/day\n")
+	fmt.Printf("To Name Week: \n  schedule -m yymmdd/day name [0-3,5]\n")
 }
 
 // Error out if wrong arguments given
@@ -433,7 +455,7 @@ func parseArgs(args []string) {
 		return
 	}
 	// If first arg is -i or -n, parse viewing options
-	if args[1] == "-i" || args[1] == "-n" || args[1] == "-m" {
+	if args[1] == "-i" || args[1] == "-n" || args[1] == "-mt" {
 		var toAdd int = 0
 		for i:=1; i<len(args); {
 			if args[i] == "-i" { // -i means the user wants to see internal records
@@ -442,7 +464,7 @@ func parseArgs(args []string) {
 			} else if args[i] == "-n" { // -n means next week, or x week if "-n x"
 				toAdd = 1
 				i++
-				if len(args) > i && args[i] != "-i" && args[i] != "-m" { // Check for x, making sure it's not -i
+				if len(args) > i && args[i] != "-i" && args[i] != "-mt" { // Check for x, making sure it's not -i
 					var err error
 					toAdd, err = strconv.Atoi(args[i])
 					if err != nil {
@@ -450,7 +472,7 @@ func parseArgs(args []string) {
 					}
 					i++
 				}
-			} else if args[i] == "-m" {
+			} else if args[i] == "-mt" {
 				metricTime = true
 				i++
 			} else {
@@ -489,6 +511,99 @@ func parseArgs(args []string) {
 		} else {
 			addEntry(inputTime, inputDate, inputDescription, internal)
 		}
+	} else if args[1] == "-m" {
+		if len(args) < 4 {
+			errorOut()
+		}
+		var inputDate string = args[2]
+		var inputName string = args[3]
+		var weekSpan string = "" // Week span optional, initialise here
+		for i:=4; i<len(args); { // Parse optional arguments
+			weekSpan = args[i]
+			i++
+		}
+		// Check if week span is entry and either add multiple or add one entry with given arguments
+		if weekSpan != "" {
+			addMultipleName(inputDate, inputName, weekSpan)
+		} else {
+			addName(inputDate, inputName)
+		}
+	}
+}
+
+func getStartOfWeek(date string) string {
+	givenDate, _ := time.Parse("060102", date)
+	var curDay int = int(givenDate.Weekday()) - 1
+	if curDay == -1 {
+		curDay = 6
+	}
+	dtFinal := givenDate.AddDate(0, 0, 0-curDay)
+	return dtFinal.Format("060102")
+}
+
+func addName(date string, name string) {
+	fileName := homeDir + BASE_PATH + "Names" + getYearWeek(date, 0)[:2] + ".csv"
+	fileContents := getFileContents(fileName)
+	if len(date) != 6 {
+		if stringInArray(date, validDates) {
+			date = convertDayToDate(date, 0)
+		} else {
+			fmt.Println("Error, incorrectly formatted date")
+			fmt.Printf("Usage: \n  schedule -a hhmm yymmdd/day description to add\n")
+			os.Exit(1)
+		}
+	}
+	
+	// Format name properly
+	name = strings.ReplaceAll(name, "\"", "'")
+	name = strings.ReplaceAll(name, "|", " ")
+	if len(name) > 37 {
+		name = name[:34] + "..."
+	}
+	
+	// Get start of week
+	date = getStartOfWeek(date)
+	
+	// Add new name and write to file
+	fileContents = fileContents + date + "|" + name + "\n"
+	err := os.WriteFile(fileName, []byte(fileContents), 0666)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func addMultipleName(date string, name string, repeat string) {
+	// Create slice to add required weeks to
+	var weeksToAdd = []int{}
+	// Split repeat at commas to get weeks
+	splitRepeat := strings.Split(repeat, ",")
+	for _, x := range splitRepeat {
+		if strings.Contains(x, "-") { // If of the form x-y, add number x to y inclusive
+			xSplit := strings.Split(x, "-")
+			start, _ := strconv.Atoi(xSplit[0])
+			end, _ := strconv.Atoi(xSplit[1])
+			for i:=start; i<end+1; i++ {
+				weeksToAdd = append(weeksToAdd, i)
+			}
+		} else { // Otherwise just add number
+			xInt, _ := strconv.Atoi(x)
+			weeksToAdd = append(weeksToAdd, xInt)
+		}
+	}
+	
+	// Get the given date as a time object
+	var givenDate string
+	if len(date) == 6 {
+		givenDate = date
+	} else {
+		givenDate = convertDayToDate(date, 0)
+	}
+	givenDateObject, _ := time.Parse("060102", givenDate)
+	
+	// Iterate through weeksToAdd
+	for _, toAdd := range weeksToAdd {
+		dateToAdd := givenDateObject.AddDate(0, 0, 7*toAdd) // Get the date by week offset (0 is this week)
+		addName(dateToAdd.Format("060102"), name) // Add the entry
 	}
 }
 
