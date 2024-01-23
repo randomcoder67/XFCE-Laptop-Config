@@ -51,6 +51,12 @@ makeDownloadTimeProgram() {
 	go build -o ~/Programs/terminal/terminalPrograms/goBins/downloadTime ~/Programs/terminal/terminalPrograms/downloadTime.go
 }
 
+makeMetOfficeGeohashProgram() {
+	# Make Metric Time Program
+	echo "Rebuilding MetOffice Geohash Program (Go)"
+	go build -o ~/Programs/system/rofi/metoffice-geohash ~/Programs/system/rofi/geohash.go
+}
+
 makeMdToGroffProgram() {
 	# Make Metric Time Program
 	echo "Rebuilding MD to Groff Program (Go)"
@@ -101,6 +107,7 @@ if [ "$1" == "all" ]; then
 	makeMoneyProgram
 	makeTimerProgram
 	makeMetricTimeProgram
+	makeMetOfficeGeohashProgram
 	makeDownloadTimeProgram
 	makeMdToGroffProgram
 	makeNotesRendererProgram
@@ -116,6 +123,7 @@ fi
 [ "$1" == "money" ] && makeMoneyProgram
 [ "$1" == "timer" ] && makeTimerProgram
 [ "$1" == "time" ] && makeMetricTimeProgram
+[ "$1" == "geohash" ] && makeMetOfficeGeohashProgram
 [ "$1" == "downloadt" ] && makeDownloadTimeProgram
 [ "$1" == "groff" ] && makeMdToGroffProgram
 [ "$1" == "render" ] && makeNotesRendererProgram

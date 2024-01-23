@@ -53,6 +53,14 @@ wikiSearch () {
 	fi
 }
 
+openMetOfficeCurLocation () {
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "12")
+	firefox "https://www.metoffice.gov.uk/weather/forecast/${geohash}"
+}
+	
+
 if [[ $selection == *"/"* ]]; then
 	newSelection=$(echo $selection | sed 's|~|'"${HOME}"'|g')
 	if [ $status -eq 10 ]; then
@@ -203,6 +211,8 @@ elif [[ "$selection" == "Sudoku" ]]; then
 	firefox "https://sudoku.com/"
 elif [[ "$selection" == "Sunrise and Sunset" ]]; then
 	firefox "https://www.timeanddate.com/sun/@$(cat $HOME/Programs/output/updated/curLocation.csv | tr "|" ",")"
+elif [[ "$selection" == "Weather MetOffice" ]]; then
+	openMetOfficeCurLocation
 elif [[ $selection == "Check All" ]]; then
 	firefox "https://mail.google.com/mail/u/1" "https://mail.google.com/mail/u/2" "https://outlook.office.com/mail/" "https://github.com" "https://old.reddit.com" "https://stackoverflow.com/" "https://www.bbc.co.uk/news" "https://www.nasa.gov/multimedia/imagegallery/iotd.html" "https://twitter.com/destidarko?lang=en" "https://calendar.google.com/calendar/u/0/embed?src=i54j4cu9pl4270asok3mqgdrhk@group.calendar.google.com&pli=1" "https://twitter.com/home" "https://discord.com/channels/@me"
 elif [[ -d ~/Videos/Media/$selection ]]; then # If a season of TV selected, get season and episode then play

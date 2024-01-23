@@ -11,6 +11,7 @@
 /system/keyboardOther/helpUI/helpUI
 /system/keyboardOther/soundboard
 /system/rofi/addIcons
+/system/rofi/metoffice-geohash
 /terminal/alias/passGen.sh
 /terminal/terminalPrograms/astro
 /terminal/terminalPrograms/goBins
