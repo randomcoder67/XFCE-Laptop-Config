@@ -7,7 +7,18 @@ dirName="$HOME/Programs/output/youtubeHistory"
 yearWeek=$(date +"%y%m")
 fileName="${yearWeek}.csv"
 
-output=$(yt-dlp --cookies-from-browser firefox --flat-playlist -J --playlist-end 2000 "https://www.youtube.com/feed/history")
+latestFile=$(ls "$dirName" | sort | tail -n 1)
+lastRanString=$(stat "${dirName}/${latestFile}" | grep "Change" | grep -Eo "[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}")
+lastRan=$(date -d "$lastRanString" +"%s")
+currentTime=$(date +"%s")
+
+difference=$((currentTime-lastRan))
+numEntriesToGetB=$((difference/864))
+numEntriesToGetA=$((numEntriesToGetB*10))
+numEntriesToGet=$((numEntriesToGetA+10))
+echo "Getting $numEntriesToGet most recent entries to YouTube history"
+
+output=$(yt-dlp --cookies-from-browser firefox --flat-playlist -J --playlist-end "$numEntriesToGet" "https://www.youtube.com/feed/history")
 
 echo "$output" | jq '.entries[] | [.title,.channel,.url] | @csv' > "${dirName}/${fileName}" 
 
