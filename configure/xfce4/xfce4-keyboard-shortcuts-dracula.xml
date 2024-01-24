@@ -95,6 +95,7 @@
 	  <property name="&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --background"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice --background"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;m" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --get-playing"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">

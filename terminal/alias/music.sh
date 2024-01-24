@@ -23,6 +23,11 @@ elif [[ "$1" == "--toggle-pause" ]]; then
 elif [[ "$1" == "--quit" ]]; then
 	echo "quit" | socat - "$socketName"
 	exit
+elif [[ "$1" == "--get-playing" ]]; then
+	title=$(echo '{ "command": ["get_property", "metadata/title"] }' | socat - "$socketName" | jq .data -r)
+	artist=$(echo '{ "command": ["get_property", "metadata/artist"] }' | socat - "$socketName" | jq .data -r)
+	notify-send "${title} - ${artist}"
+	exit
 fi
 
 # Default to dummy arguments that basically do nothing
