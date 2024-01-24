@@ -63,6 +63,16 @@ elif [[ "$doArg" == "--choice" ]]; then
 	folder=""
 	if [[ "$result" == "" ]]; then
 		exit
+	elif [[ "$result" == "Favourites" ]]; then
+		playlists="All Soundtracks"$'\n'"$(find $HOME/Music/Favourites -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z][a-z]\)/\1 \2/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 6)"
+		result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play")
+		if [[ "$result" == "" ]]; then
+			exit
+		elif [[ "$result" == "All Soundtracks" ]]; then
+			folder="$HOME/Music/Favourites/"
+		else
+			folder="$HOME/Music/Favourites/$(echo $result | sed 's/ //g')"
+		fi
 	elif [[ "$result" == "All Music" ]]; then
 		folder="$HOME/Music"
 	else
