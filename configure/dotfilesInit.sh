@@ -23,6 +23,7 @@ mkdir ~/Programs/output
 mkdir ~/Programs/output/log
 mkdir ~/Programs/output/money
 mkdir ~/Programs/output/schedule
+mkdir ~/Programs/output/youtubeHistory
 mkdir ~/Programs/output/.streams
 mkdir ~/Programs/output/.streams/panel
 mkdir ~/Programs/output/.streams/destinyDownload

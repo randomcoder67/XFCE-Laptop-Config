@@ -372,6 +372,7 @@ alias yt-playlist-limit='yt-dlp --external-downloader aria2c --external-download
 
 alias ytlen='~/Programs/terminal/webAlternatives/youtubeLength.sh'
 alias wl='~/Programs/terminal/webAlternatives/watchlater.sh'
+alias ythis='~/Programs/terminal/webAlternatives/saveYoutubeHistory.sh'
 
 ## Git 
 
