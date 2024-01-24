@@ -106,6 +106,7 @@
 
 `wl` select video from YouTube Watch Later to play with mpv  
 `ytlen` get length of YouTube playlist  
+`ythis` save YouTube history to  
 
 #### Git
 
