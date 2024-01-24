@@ -233,6 +233,7 @@
 `Super+=` Skip To Next Track  
 `Super+Shift+=` Add Currently Playing Song To Favourites  
 `Super+Shift+-` Close Currently Playing Music  
+`Super+Shift+M` Display Currently Playing Song  
 `Super+Shift+C` Clear All Notifications  
 
 ### Xfwm 
