@@ -134,6 +134,7 @@
 `music` play music (defaults to curPlaylist, use `-a artist` to play music by given artist)  
 `tagmusic` run music tag program (Usage: `tagmusic filename.m4a AppleMusicAlbumID`)  
 `files` get number of files and programs in rofiLauncher.sh  
+`vol` get current volume  
 `mtmv` perl-rename  
 `savedotfiles` copy current dotfiles to ~/Programs/configure  
 `songs` show file of songs identified with songrec  
@@ -224,8 +225,8 @@
 `Super+K` Expand Left Window in Horizontal Split  
 `Super+J` Expand Right Window in Horizontal Split  
 `Ctrl+Alt+Del` Logout  
-`Super+]` Increase Volume 5%  
-`Super+[` Decrease Volume 5%  
+`Super+]` Increase Volume 3%  
+`Super+[` Decrease Volume 3%  
 `Super+X` System Menu  
 `Super+I` Link Markdown Files  
 `Super+Shift+[` Play/Pause Music  

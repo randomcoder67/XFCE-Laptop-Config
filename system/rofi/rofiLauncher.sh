@@ -11,7 +11,7 @@
 ## Add ~/.local/bin to $PATH
 PATH=$PATH:$HOME/.local/bin
 
-selection=$(cat ~/Programs/output/updated/files.txt | rofi -refilter-timeout-limit 16000 -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
+selection=$(cat ~/Programs/output/updated/files.txt | rofi -refilter-timeout-limit 18000 -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
 status=$?
 
 [[ "$selection" == "" ]] && exit
@@ -110,7 +110,7 @@ elif [[ $selection == "qalc" ]]; then
 elif [[ $selection == "LibreOffice Writer" ]]; then
 	libreoffice --writer
 elif [[ $selection == "Google Earth" ]]; then
-	~/.local/bin/googleEarth/googleearth
+	~/Downloads/GoogleEarthPro/googleearthFull/googleearth
 elif [[ "$selection" == "Shuffle Playlist" ]]; then
 	mpv --title='${metadata/title}'\ -\ '${metadata/artist}' --geometry=25% --shuffle --no-resume-playback "~/Music/currentPlaylist"
 elif [[ $selection == "Kick - Destiny" ]]; then
