@@ -20,6 +20,7 @@ elif [[ "$command" == "-h" ]]; then
 	echo "Usage:"
 	echo "  programs -a name commandName - Add entry"
 	echo "  programs -d name/commandName - Delete entry"
+	exit
 fi
 
 # Re sort the programs.txt file

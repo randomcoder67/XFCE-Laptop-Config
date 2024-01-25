@@ -111,11 +111,14 @@ _scheduleCompletion() {
 		if [ "${COMP_WORDS[1]}" == "-a" ] && [ "${#COMP_WORDS[@]}" == "4" ]; then # day string options
 			COMPREPLY=( $(compgen -W "t tm mon tue wed thu fri sat sun nmon ntue nwed nthu nfri nsat nsun" -- "${COMP_WORDS[3]}") )
 			return 0
+		elif [ "${COMP_WORDS[1]}" == "-m" ] && [ "${#COMP_WORDS[@]}" == "3" ]; then
+			COMPREPLY=( $(compgen -W "t tm mon tue wed thu fri sat sun nmon ntue nwed nthu nfri nsat nsun" -- "${COMP_WORDS[3]}") )
+			return 0
 		else
 			return 0
 		fi
 	fi
-	COMPREPLY=( $(compgen -W "-h -n -i -a -d" -- "${COMP_WORDS[1]}") )
+	COMPREPLY=( $(compgen -W "-h -n -i -a -m -d" -- "${COMP_WORDS[1]}") )
 }
 
 _moneyCompletion() {
