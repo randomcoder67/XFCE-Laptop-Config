@@ -207,6 +207,7 @@
 `Super+W` Firefox  
 `Super+E` Thunar File Manager  
 `Super+M` Mousepad  
+`Super+Shift+M` Mousepad (New Window)  
 `Super+R` Identify Song  
 `Super+L` Play music from `~/Music/curPlaylist`  
 `Super+Shift+L` Play music from `~/Music/curPlaylist` in background  
@@ -230,11 +231,11 @@
 `Super+X` System Menu  
 `Super+I` Link Markdown Files  
 `Super+Shift+[` Play/Pause Music  
+`Super+Shift+]` Display Currently Playing Song  
 `Super+-` Skip To Previous Track  
 `Super+=` Skip To Next Track  
 `Super+Shift+=` Add Currently Playing Song To Favourites  
 `Super+Shift+-` Close Currently Playing Music  
-`Super+Shift+M` Display Currently Playing Song  
 `Super+Shift+C` Clear All Notifications  
 
 ### Xfwm 

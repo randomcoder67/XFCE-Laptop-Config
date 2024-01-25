@@ -26,7 +26,11 @@ elif [[ "$1" == "--quit" ]]; then
 elif [[ "$1" == "--get-playing" ]]; then
 	title=$(echo '{ "command": ["get_property", "metadata/title"] }' | socat - "$socketName" | jq .data -r)
 	artist=$(echo '{ "command": ["get_property", "metadata/artist"] }' | socat - "$socketName" | jq .data -r)
-	notify-send "${title} - ${artist}"
+	if [[ "$title" != "" ]]; then
+		notify-send "${title} - ${artist}"
+	else
+		notify-send "No Music Playing"
+	fi
 	exit
 fi
 
