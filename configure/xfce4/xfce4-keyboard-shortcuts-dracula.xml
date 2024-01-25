@@ -41,7 +41,6 @@
 	  <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
 	  <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -r"/>
 	  <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xfce4-session-logout"/>
-	  <property name="&lt;Alt&gt;&lt;Super&gt;s" type="string" value="orca"/>
 	  <property name="&lt;Primary&gt;&lt;Alt&gt;f" type="string" value="thunar"/>
 	  <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4"/>
 	  <property name="&lt;Primary&gt;&lt;Shift&gt;Escape" type="string" value="xfce4-taskmanager"/>
@@ -93,9 +92,10 @@
 	  <property name="&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --background"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice --background"/>
-	  <property name="&lt;Shift&gt;&lt;Super&gt;m" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --get-playing"/>
 	  <property name="&lt;Super&gt;bracketright" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ +3%"/>
 	  <property name="&lt;Super&gt;bracketleft" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ -3%"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;braceright" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --get-playing"/>
+	  <property name="&lt;Shift&gt;&lt;Super&gt;m" type="string" value="mousepad -o window"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">
