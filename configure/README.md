@@ -36,7 +36,7 @@
 `greps` grep (case sensitive)  
 `grepa` grep (print surrounding lines)  
 `grepc` grep (print surrounding characters)  
-`l` lists files/dirs in directory  
+`l` lists files/dirs in directory (one per line)  
 `ls` lists files/dirs in directory  
 `lsa` lists files/dirs in directory (including hidden)  
 `lsl` list files/dirs in directory (detail)  
