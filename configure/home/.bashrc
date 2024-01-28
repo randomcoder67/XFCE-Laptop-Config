@@ -283,6 +283,12 @@ do_mpvr () {
 	/usr/bin/mpv --really-quiet --save-position-on-quit /tmp/tempPlaylist.m3u & disown
 }
 
+# latexmk helper
+do_latexmk () {
+	/usr/bin/latexmk -silent -pdf "$1"
+	/usr/bin/latexmk -silent -c
+}
+
 # Program Openers 
 
 alias p='_p'
@@ -413,6 +419,7 @@ alias rmedir='find . -type d -empty -delete'
 alias gtop='sudo intel_gpu_top'
 alias remake='~/Programs/configure/remake.sh'
 alias gripdo='grip --theme=dark -b'
+alias latexmk='do_latexmk'
 alias bookmarks='wc -l ~/Programs/output/updated/bookmarks.txt'
 alias serial='sudo cat /sys/devices/virtual/dmi/id/product_serial'
 
