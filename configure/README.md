@@ -39,6 +39,7 @@
 `l` lists files/dirs in directory (one per line)  
 `ls` lists files/dirs in directory  
 `lsa` lists files/dirs in directory (including hidden)  
+`la` lists files/dirs in directory (one per line, including hidden)  
 `lsl` list files/dirs in directory (detail)  
 `lsal` list files/dirs in directory (including hidden, detail)  
 `lsf` list files in directory (recursive)
