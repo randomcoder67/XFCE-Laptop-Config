@@ -127,6 +127,8 @@ elif [[ $selection == "NASA Image of the Day" ]]; then
 	firefox https://www.nasa.gov/multimedia/imagegallery/iotd.html
 elif [[ $selection == "ChatGPT" ]]; then
 	firefox "https://chat.openai.com"
+elif [[ $selection == "Bard" ]]; then
+	firefox "https://bard.google.com/chat"
 elif [[ $selection == "Dead Cells" ]]; then
 	steam steam://rungameid/588650
 elif [[ $selection == "Terraria" ]]; then
@@ -177,6 +179,8 @@ elif [[ $selection == "RideWithGPS" ]]; then
 	firefox "https://ridewithgps.com/routes/new"
 elif [[ $selection == "ITVX" ]]; then
 	firefox "https://www.itv.com"
+elif [[ $selection == "VSCode" ]]; then
+	"$HOME/Downloads/VSCode-linux-x64/bin/code"
 elif [[ $selection == "FlightRadar24" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)

@@ -4,7 +4,7 @@
 
 notify-send -t 9000 "Listening to audio"
 # Listen for song with songrec, timeout of 10s incase the song can't be recognised
-song=$(timeout 10s songrec recognize -d pipewire)
+song=$(timeout 10s songrec recognize -d "alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp__sink.monitor")
 if ! [[ "$song" == "" ]]; then
 	notify-send -t 9000 "$song"
 	time=$(date +"%y%m%d %H:%M")
