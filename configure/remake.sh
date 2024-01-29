@@ -113,7 +113,7 @@ if [ "$1" == "all" ]; then
 	makeNotesRendererProgram
 	makeSoundboard
 	makeGoWeatherProgram
-	makeYouTubeProgram
+	#makeYouTubeProgram
 	makeOtherPrograms
 fi
 [ "$1" == "gamesUI" ] && makeGamesUI
