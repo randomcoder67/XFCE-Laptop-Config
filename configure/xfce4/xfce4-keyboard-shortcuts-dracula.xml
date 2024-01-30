@@ -55,8 +55,6 @@
 	  <property name="&lt;Super&gt;s" type="string" value="xfce4-settings-manager"/>
 	  <property name="&lt;Super&gt;p" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/desktopMonitor.sh -s"/>
 	  <property name="&lt;Alt&gt;F1" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiLauncher.sh"/>
-	  <property name="&lt;Super&gt;v" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiBookmarks.sh"/>
-	  <property name="&lt;Super&gt;q" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiQuery.sh"/>
 	  <property name="&lt;Super&gt;m" type="string" value="mousepad"/>
 	  <property name="&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh"/>
 	  <property name="&lt;Super&gt;c" type="string" value="alacritty -e qalc"/>
@@ -96,6 +94,8 @@
 	  <property name="&lt;Super&gt;bracketleft" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ -3%"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;braceright" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --get-playing"/>
 	  <property name="&lt;Shift&gt;&lt;Super&gt;m" type="string" value="mousepad -o window"/>
+	  <property name="&lt;Super&gt;q" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiBookmarks.sh"/>
+	  <property name="&lt;Super&gt;v" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiQuery.sh"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">
