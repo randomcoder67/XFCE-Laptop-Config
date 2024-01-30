@@ -201,8 +201,8 @@
 
 `Super` Launcher  
 `Super+F` Search files (~)  
-`Super+V` Bookmarks (`ctrl+a` to add, `ctrl+w` to remove, `shift+enter` to type selected item)  
-`Super+Q` Rofi system usage information  
+`Super+Q` Bookmarks (`ctrl+a` to add, `ctrl+w` to remove, `shift+enter` to type selected item)  
+`Super+V` Rofi system usage information  
 `Super+Return` Alacritty  
 `Super+Shift+Return` Xfce4 Terminal  
 `Super+W` Firefox  
