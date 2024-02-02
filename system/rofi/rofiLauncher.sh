@@ -59,6 +59,13 @@ openMetOfficeCurLocation () {
 	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "12")
 	firefox "https://www.metoffice.gov.uk/weather/forecast/${geohash}"
 }
+
+openMetOfficeObservations () {
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "12")
+	firefox "https://www.metoffice.gov.uk/weather/observations/${geohash}"
+}
 	
 
 if [[ $selection == *"/"* ]]; then
@@ -202,9 +209,9 @@ elif [[ $selection == "pulsemixer" ]]; then
 elif [[ $selection == "Soundboard" ]]; then
 	alacritty -o "window.dimensions.lines=26" -o "window.dimensions.columns=24" -o "window.title=Soundboard" -e "$HOME/Programs/system/keyboardOther/soundboard"
 elif [[ $selection == "GoTube" ]]; then
-	alacritty -e gotube --log
+	alacritty -e gotube
 elif [[ $selection == "YouTube Subscriptions" ]]; then
-	alacritty -e gotube --log --subscriptions
+	alacritty -e gotube --subscriptions
 elif [[ $selection == "XColor Colour Picker" ]]; then
 	xcolor | tr -d '\n' | tee >(xargs notify-send) | tr -d '#' | xclip -selection c
 elif [[ "$selection" == "ZBar QR Code Scanner" ]]; then
@@ -217,6 +224,8 @@ elif [[ "$selection" == "Sunrise and Sunset" ]]; then
 	firefox "https://www.timeanddate.com/sun/@$(cat $HOME/Programs/output/updated/curLocation.csv | tr "|" ",")"
 elif [[ "$selection" == "Weather MetOffice" ]]; then
 	openMetOfficeCurLocation
+elif [[ "$selection" == "Observations MetOffice" ]]; then
+	openMetOfficeObservations
 elif [[ $selection == "Check All" ]]; then
 	firefox "https://mail.google.com/mail/u/1" "https://mail.google.com/mail/u/2" "https://outlook.office.com/mail/" "https://github.com" "https://old.reddit.com" "https://stackoverflow.com/" "https://www.bbc.co.uk/news" "https://www.nasa.gov/multimedia/imagegallery/iotd.html" "https://twitter.com/destidarko?lang=en" "https://calendar.google.com/calendar/u/0/embed?src=i54j4cu9pl4270asok3mqgdrhk@group.calendar.google.com&pli=1" "https://twitter.com/home" "https://discord.com/channels/@me"
 elif [[ -d ~/Videos/Media/$selection ]]; then # If a season of TV selected, get season and episode then play
