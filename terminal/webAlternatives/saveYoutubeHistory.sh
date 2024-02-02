@@ -16,7 +16,7 @@ difference=$((currentTime-lastRan))
 numEntriesToGetB=$((difference/864))
 numEntriesToGetA=$((numEntriesToGetB*10))
 numEntriesToGet=$((numEntriesToGetA+10))
-echo "Getting $numEntriesToGet most recent entries to YouTube history"
+echo "Saving $numEntriesToGet most recent entries to YouTube history"
 
 output=$(yt-dlp --cookies-from-browser firefox --flat-playlist -J --playlist-end "$numEntriesToGet" "https://www.youtube.com/feed/history")
 

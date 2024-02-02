@@ -44,6 +44,10 @@
 `lsal` list files/dirs in directory (including hidden, detail)  
 `lsf` list files in directory (recursive)
 `lsaf` list files in directory (including hidden, recursive)
+`lsd` list only directories
+`lsdl` list only directories (detail)
+`lsda` list only directories (including hidden)
+`lsdal` list only directories (including hidden, detail)
 `mv` moves file (asks for confirmation if overwriting)  
 `cp` copies file (asks for confirmation if overwriting)  
 `diff` checks for differences in files  
