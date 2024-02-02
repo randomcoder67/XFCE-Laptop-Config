@@ -213,7 +213,7 @@ trim_history () {
 	# Remove any usage of ms, msn, rs and pdf when not going into a different folder
 	sed -i -r '/^(ms[n]?|rs|pdf) [^\/\>\<|:&]* ?$/d' ~/.bash_history
 	# Remove anything in all caps, as it will basically always be a mistype
-	sed -i '/^[A-Z ]*$/d' ~/.bash_history
+	sed -i '/^[A-Z0-9 ]*$/d' ~/.bash_history
 	# Remove all duplicates, keeping most recent
 	tac ~/.bash_history | awk '!x[$0]++' | tac > ~/.bash_history_no_dupes && command mv ~/.bash_history_no_dupes ~/.bash_history
 	#sed --in-place 's/[[:space:]]\+$//' .bash_history && awk -i inplace '!seen[$0]++' .bash_history
@@ -314,10 +314,12 @@ alias la='ls --group-directories-first --file-type -NA -1 --color=auto'
 alias lsa='ls --group-directories-first --file-type -NA --color=auto'
 alias lsl='ls --group-directories-first --file-type -N --color=auto -l -h'
 alias lsal='ls --group-directories-first --file-type -NA --color=auto -l -h'
-alias lsd='/usr/bin/ls --group-directories-first -N --color=auto -d */'
-alias lsdl='/usr/bin/ls --group-directories-first -N --color=auto -l -h -d */'
-alias lsda='/usr/bin/ls --group-directories-first -N --color=auto -d */ .*/'
-alias lsdal='/usr/bin/ls --group-directories-first -N --color=auto -l -h -d */ .*/'
+alias ld='/usr/bin/ls --group-directories-first -N -1 --color=auto -d */ 2> /dev/null'
+alias lda='/usr/bin/ls --group-directories-first -N -1 --color=auto -d */ .*/ 2> /dev/null'
+alias lsd='/usr/bin/ls --group-directories-first -N --color=auto -d */ 2> /dev/null'
+alias lsdl='/usr/bin/ls --group-directories-first -N --color=auto -l -h -d */ 2> /dev/null'
+alias lsda='/usr/bin/ls --group-directories-first -N --color=auto -d */ .*/ 2> /dev/null'
+alias lsdal='/usr/bin/ls --group-directories-first -N --color=auto -l -h -d */ .*/ 2> /dev/null'
 alias mv='mv -i'
 alias cp='cp -i -r'
 alias diff='diff --color'
