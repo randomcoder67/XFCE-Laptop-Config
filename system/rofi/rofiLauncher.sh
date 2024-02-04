@@ -220,6 +220,15 @@ elif [[ "$selection" == "Discord" ]]; then
 	firefox "https://discord.com/channels/@me"
 elif [[ "$selection" == "Sudoku" ]]; then
 	firefox "https://sudoku.com/"
+elif [[ "$selection" == "Geocaching" ]]; then
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	firefox "https://www.geocaching.com/play/map?lat=${lat:0:5}&lng=${lon:0:5}&zoom=13&asc=true&sort=distance&st=N+56%C2%B0+20.003%27+W+2%C2%B0+47.058%27&ot=coords"
+elif [[ "$selection" == "Munzee" ]]; then
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "9")
+	firefox "https://www.munzee.com/map/${geohash}/13"
 elif [[ "$selection" == "Sunrise and Sunset" ]]; then
 	firefox "https://www.timeanddate.com/sun/@$(cat $HOME/Programs/output/updated/curLocation.csv | tr "|" ",")"
 elif [[ "$selection" == "Weather MetOffice" ]]; then
