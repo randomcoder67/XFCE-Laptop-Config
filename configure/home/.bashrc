@@ -146,7 +146,12 @@ _r () {
 
 # Open images in Ristretto (normal)
 rs () {
-	ristretto "$@" & disown
+	toOpen=$@
+	if [[ "$toOpen" == "" ]]; then
+		ristretto . & disown
+	else
+		ristretto "$@" & disown
+	fi
 }
 
 # Move image and tags with tmsu
