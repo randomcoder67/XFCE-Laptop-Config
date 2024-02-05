@@ -229,6 +229,10 @@ elif [[ "$selection" == "Munzee" ]]; then
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
 	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "9")
 	firefox "https://www.munzee.com/map/${geohash}/13"
+elif [[ "$selection" == "OS Maps" ]]; then
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	firefox "https://explore.osmaps.com/?lat=${lat}&lon=${lon}&zoom=11.5&style=Leisure&type=2d"
 elif [[ "$selection" == "Sunrise and Sunset" ]]; then
 	firefox "https://www.timeanddate.com/sun/@$(cat $HOME/Programs/output/updated/curLocation.csv | tr "|" ",")"
 elif [[ "$selection" == "Weather MetOffice" ]]; then
