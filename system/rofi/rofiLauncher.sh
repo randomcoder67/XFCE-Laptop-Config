@@ -209,9 +209,9 @@ elif [[ $selection == "pulsemixer" ]]; then
 elif [[ $selection == "Soundboard" ]]; then
 	alacritty -o "window.dimensions.lines=26" -o "window.dimensions.columns=24" -o "window.title=Soundboard" -e "$HOME/Programs/system/keyboardOther/soundboard"
 elif [[ $selection == "GoTube" ]]; then
-	alacritty -e gotube
+	alacritty -o 'window.title="GoTube"' -e gotube
 elif [[ $selection == "YouTube Subscriptions" ]]; then
-	alacritty -e gotube --subscriptions
+	alacritty -o 'window.title="GoTube"' -e gotube --subscriptions
 elif [[ $selection == "XColor Colour Picker" ]]; then
 	xcolor | tr -d '\n' | tee >(xargs notify-send) | tr -d '#' | xclip -selection c
 elif [[ "$selection" == "ZBar QR Code Scanner" ]]; then
