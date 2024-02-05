@@ -149,6 +149,8 @@
 `emails` open emails.md file  
 `lc` count items in folder  
 `lca` count items in folder (include hidden)  
+`lcd` count directories in folder  
+`lcda` count directories in folder (including hidden)  
 `rmedir` remove empty dirs  
 `gtop` Intel GPU Top (needs sudo)  
 `remake` Recompile all of my programs/scripts  
