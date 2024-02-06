@@ -4,6 +4,7 @@
 
 socketName=/tmp/mpv.playlist
 favouritesDir="$HOME/Music/Favourites/"
+shuffleArgs="--shuffle=yes"
 
 # Music controls
 if [[ "$1" == "--next" ]]; then
@@ -63,13 +64,16 @@ if [[ "$doArg" == "" ]]; then
 # Present choice of playlists
 elif [[ "$doArg" == "--choice" ]]; then
 	playlists="All Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z][a-z]\)/\1 \2/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 5)"
-	result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play")
+	result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play" -kb-custom-1 "Shift+Return")
+	[ $? -eq 10 ] && shuffleArgs="--shuffle=no"
 	folder=""
 	if [[ "$result" == "" ]]; then
 		exit
 	elif [[ "$result" == "Favourites" ]]; then
+		shuffleArgs="--shuffle=yes"
 		playlists="All Soundtracks"$'\n'"$(find $HOME/Music/Favourites -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z][a-z]\)/\1 \2/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 6)"
-		result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play")
+		result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play" -kb-custom-1 "Shift+Return")
+		[ $? -eq 10 ] && shuffleArgs="--shuffle=no"
 		if [[ "$result" == "" ]]; then
 			exit
 		elif [[ "$result" == "All Soundtracks" ]]; then
@@ -82,7 +86,7 @@ elif [[ "$doArg" == "--choice" ]]; then
 	else
 		folder="$HOME/Music/$(echo $result | sed 's/ //g')"
 	fi
-	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --no-resume-playback --loop-playlist "$folder" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
+	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' "$shuffleArgs" --no-resume-playback --loop-playlist "$folder" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
 # Shuffle music of a particular artist (or artists with | to delimit)
 elif [[ "$doArg" == "-a" ]]; then
 	find "$HOME/Music/" -maxdepth 1 -type f | sort | grep -iE ".*-.* $2 .*-.*" | xargs -d '\n' /usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --loop-playlist --no-resume-playback "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
