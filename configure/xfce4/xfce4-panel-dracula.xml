@@ -239,7 +239,7 @@
 	  <property name="font" type="string" value="Roboto 16"/>
 	</property>
 	<property name="plugin-30" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/metricTime.sh -d"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/uptime.sh"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="2000"/>
