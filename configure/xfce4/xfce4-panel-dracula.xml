@@ -163,7 +163,7 @@
 	  <property name="font" type="string" value="Roboto 12"/>
 	</property>
 	<property name="plugin-21" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelDestiny.sh -d"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh Destiny Destiny NONE -d"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
@@ -179,7 +179,7 @@
 	  <property name="font" type="string" value="Roboto 12"/>
 	</property>
 	<property name="plugin-23" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelChudLogic.sh -d"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh ChudLogic ChudLogic chudlogic -d"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
@@ -187,7 +187,7 @@
 	  <property name="font" type="string" value="Roboto 16"/>
 	</property>
 	<property name="plugin-24" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/dustinedenPanel.jpg&lt;/img&gt;&lt;tool&gt;Dustin Eden&lt;/tool&gt;&quot;"/>
+	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/kuihmanPanel.jpg&lt;/img&gt;&lt;tool&gt;Kuihman&lt;/tool&gt;&quot;"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
@@ -195,7 +195,7 @@
 	  <property name="font" type="string" value="Roboto 12"/>
 	</property>
 	<property name="plugin-25" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelDustinEden.sh -d"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh Kuihman KuihmanLive NONE -d"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
@@ -231,7 +231,7 @@
 	  <property name="font" type="string" value="Roboto 12"/>
 	</property>
 	<property name="plugin-27" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelNMIXX.sh -d"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh NMIXX NMIXXOfficial NONE -d"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
@@ -242,7 +242,7 @@
 	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/uptime.sh"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="2000"/>
+	  <property name="update-period" type="int" value="5000"/>
 	  <property name="enable-single-row" type="bool" value="true"/>
 	  <property name="font" type="string" value="Roboto Medium 16"/>
 	</property>
