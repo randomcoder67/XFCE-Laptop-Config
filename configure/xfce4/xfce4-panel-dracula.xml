@@ -179,7 +179,7 @@
 	  <property name="font" type="string" value="Roboto 12"/>
 	</property>
 	<property name="plugin-23" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh ChudLogic ChudLogic chudlogic -d"/>
+	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh &quot;Chud Logic&quot; ChudLogic chudlogic -d"/>
 	  <property name="use-label" type="bool" value="false"/>
 	  <property name="text" type="string" value="(genmon)"/>
 	  <property name="update-period" type="int" value="300000"/>
