@@ -57,14 +57,8 @@
 	  <property name="&lt;Alt&gt;F1" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiLauncher.sh"/>
 	  <property name="&lt;Super&gt;m" type="string" value="mousepad"/>
 	  <property name="&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh"/>
-	  <property name="&lt;Super&gt;c" type="string" value="alacritty -e qalc"/>
-	  <property name="&lt;Super&gt;h" type="string" value="alacritty -e htop"/>
-	  <property name="&lt;Super&gt;b" type="string" value="alacritty -e btop"/>
-	  <property name="&lt;Super&gt;g" type="string" value="alacritty -e pulsemixer"/>
 	  <property name="&lt;Super&gt;r" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/songrec.sh"/>
 	  <property name="&lt;Super&gt;f" type="string" value="rofi -show find -modi find:~/Programs/system/rofi/finder.sh"/>
-	  <property name="&lt;Super&gt;n" type="string" value="alacritty -e nethogs"/>
-	  <property name="&lt;Super&gt;u" type="string" value="alacritty -e /home/GENERICUSERNAME/.local/bin/cava"/>
 	  <property name="&lt;Super&gt;y" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/xcolor.sh"/>
 	  <property name="&lt;Super&gt;k" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/tile.sh -d"/>
 	  <property name="&lt;Super&gt;j" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/tile.sh -d -r"/>
@@ -96,6 +90,12 @@
 	  <property name="&lt;Super&gt;v" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiQuery.sh"/>
 	  <property name="&lt;Super&gt;x" type="string" value="alacritty -o &quot;window.dimensions.lines=25&quot; -o &quot;window.dimensions.columns=24&quot; -o &apos;window.title=&quot;System Functions&quot;&apos; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/systemMenu.sh"/>
 	  <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=26&quot; -o &quot;window.dimensions.columns=24&quot; -o &apos;window.title=&quot;Soundboard&quot;&apos; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
+	  <property name="&lt;Super&gt;h" type="string" value="alacritty -o &apos;window.title=&quot;htop&quot;&apos; -e htop"/>
+	  <property name="&lt;Super&gt;c" type="string" value="alacritty -o &apos;window.title=&quot;qalc&quot;&apos; -e qalc"/>
+	  <property name="&lt;Super&gt;g" type="string" value="alacritty -o &apos;window.title=&quot;pulsemixer&quot;&apos; -e pulsemixer"/>
+	  <property name="&lt;Super&gt;n" type="string" value="alacritty -o &apos;window.title=&quot;nethogs&quot;&apos; -e nethogs"/>
+	  <property name="&lt;Super&gt;u" type="string" value="alacritty -o &apos;window.title=&quot;cava&quot;&apos; -e /home/GENERICUSERNAME/.local/bin/cava"/>
+	  <property name="&lt;Super&gt;b" type="string" value="alacritty -o &apos;window.title=&quot;btop&quot;&apos; -e btop"/>
 	</property>
   </property>
   <property name="xfwm4" type="empty">

@@ -103,9 +103,9 @@ elif [[ "$selection" == "Internet Archive" ]]; then
 elif [[ $selection == "~" ]]; then
 	xdg-open "$selection"
 elif [[ $selection == "btop" ]]; then
-	alacritty -e btop
+	alacritty -o 'window.title="btop"' -e btop
 elif [[ $selection == "htop" ]]; then
-	alacritty -e htop
+	alacritty -o 'window.title="htop"' -e htop
 elif [[ $selection == "Lossless Cut" ]]; then
 	"~/Programs/otherPrograms/LosslessCut-linux-x64/losslesscut"
 elif [[ $selection == "Mousepad" ]]; then
@@ -113,7 +113,7 @@ elif [[ $selection == "Mousepad" ]]; then
 elif [[ $selection == "mpv" ]]; then
 	mpv --player-operation-mode=pseudo-gui
 elif [[ $selection == "qalc" ]]; then
-	alacritty -e qalc
+	alacritty -o 'window.title="qalc"' -e qalc
 elif [[ $selection == "LibreOffice Writer" ]]; then
 	libreoffice --writer
 elif [[ $selection == "Google Earth" ]]; then
@@ -193,19 +193,19 @@ elif [[ $selection == "FlightRadar24" ]]; then
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
 	firefox "https://www.flightradar24.com/${lat:0:5},${lon:0:5}/9"
 elif [[ $selection == "NetHogs" ]]; then
-	alacritty -e nethogs
+	alacritty -o 'window.title="nethogs"' -e nethogs
 elif [[ $selection == "Google Maps" ]]; then
 	firefox "https://www.google.co.uk/maps"
 elif [[ $selection == "cava" ]]; then
 	alacritty -e "$HOME/.local/bin/cava"
 elif [[ $selection == "Intel GPU Top" ]]; then
-	alacritty -e sudo intel_gpu_top
+	alacritty -o 'window.title="Intel GPU Top"' -e sudo intel_gpu_top
 elif [[ $selection == "Go Weather" ]]; then
-	alacritty -e goWeather
+	alacritty -o 'window.title="GoWeather"' -e goWeather
 elif [[ $selection == "Play Music" ]]; then
 	"$HOME/Programs/terminal/alias/music.sh" --choice
 elif [[ $selection == "pulsemixer" ]]; then
-	alacritty -e pulsemixer
+	alacritty -o 'window.title="pulsemixer"' -e pulsemixer
 elif [[ $selection == "Soundboard" ]]; then
 	alacritty -o "window.dimensions.lines=26" -o "window.dimensions.columns=24" -o "window.title=Soundboard" -e "$HOME/Programs/system/keyboardOther/soundboard"
 elif [[ $selection == "GoTube" ]]; then
