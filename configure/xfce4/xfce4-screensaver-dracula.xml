@@ -9,6 +9,7 @@
 	<property name="enabled" type="bool" value="true"/>
 	<property name="embedded-keyboard" type="empty">
 	  <property name="enabled" type="bool" value="true"/>
+	  <property name="displayed" type="bool" value="true"/>
 	</property>
   </property>
   <property name="saver" type="empty">
