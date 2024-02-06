@@ -29,7 +29,7 @@ liveTwitch="false"
 
 if [[ "$youtubeChannelAt" != "NONE" ]]; then
 	# Download and check for internet
-	if ! curl "https://www.youtube.com/@${youtubeChannelAt}/live" > ${saveLoc}/${channelName}YouTube.html; then
+	if ! curl "https://www.youtube.com/@${youtubeChannelAt}/live" > "${saveLoc}/${channelName}YouTube.html"; then
 		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$noInternetColour'>  </span>"
 			echo "noInternet" > "$XDG_STATE_HOME/streams/${channelName}.txt"
@@ -39,22 +39,22 @@ if [[ "$youtubeChannelAt" != "NONE" ]]; then
 		fi
 	
 	# Check for live status
-	elif grep -q "Pop-out chat" ${saveLoc}/${channelName}YouTube.html; then
+	elif grep -q "Pop-out chat" "${saveLoc}/${channelName}YouTube.html"; then
 		# Check if stream scheduled
-		if grep -q "Live in" ${saveLoc}/${channelName}YouTube.html
+		if grep -q "Live in" "${saveLoc}/${channelName}YouTube.html"
 		then
 			if [[ "$argA" == "-t" ]]; then
 				echo "<span foreground='#$upcomingColour'>  </span>"
 				echo "notLive" > "$XDG_STATE_HOME/streams/${channelName}.txt"
 			else
 				echo "<txt><span foreground='#$upcomingColour'>  </span></txt>"
-				liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ${saveLoc}/${channelName}YouTube.html | cut -d "\"" -f 5)
+				liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 5)
 				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ${saveLoc}/${channelName}YouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
 				echo "<tool>Stream Schedueled at $liveAt - $streamTitle</tool>"
 			fi
 			liveYouTube="true"
 		# Or waiting for streamer
-		elif grep -q "Waiting for ${channelName}" ${saveLoc}/${channelName}YouTube.html; then
+		elif grep -q "Waiting for ${channelName}" "${saveLoc}/${channelName}YouTube.html"; then
 			if [[ "$argA" == "-t" ]]; then
 				echo "<span foreground='#$upcomingColour'>  </span>"
 				echo "notLive" > "$XDG_STATE_HOME/streams/${channelName}.txt"
@@ -70,7 +70,7 @@ if [[ "$youtubeChannelAt" != "NONE" ]]; then
 				echo "youtube" > "$XDG_STATE_HOME/streams/${channelName}.txt"
 			else
 				echo "<txt><span foreground='#$liveColour'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh YouTube ${channelName} ${youtubeChannelAt}</txtclick>"
-				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ${saveLoc}/${channelName}YouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
+				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 9 | sed 's/&/and/g')
 				echo "<tool>YouTube - $streamTitle</tool>"
 			fi
 			liveYouTube="true"
@@ -79,13 +79,13 @@ if [[ "$youtubeChannelAt" != "NONE" ]]; then
 fi
 
 if [[ "$twitchAt" != "NONE" ]] && [[ "$liveYouTube" == "false" ]]; then
-	if yt-dlp --write-info-json --skip-download https://www.twitch.tv/${twitchAt} -P ${saveLoc} -o "${channelName}TwitchMetadata.%(ext)s"; then
+	if yt-dlp --write-info-json --skip-download "https://www.twitch.tv/${twitchAt}" -P ${saveLoc} -o "${channelName}TwitchMetadata.%(ext)s"; then
 		if [[ "$argA" == "-t" ]]; then
 			echo "<span foreground='#$liveColour'>  </span>"
 			echo "twitch" > "$XDG_STATE_HOME/streams/${channelName}.txt"
 		else
 			echo "<txt><span foreground='#$liveColour'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh Twitch ${channelName} ${twitchAt}</txtclick>"
-			streamTitle=$(cat ${saveLoc}/${channelName}TwitchMetadata.info.json | jq -r .description | sed 's/&/and/g')
+			streamTitle=$(cat "${saveLoc}/${channelName}TwitchMetadata.info.json" | jq -r .description | sed 's/&/and/g')
 			echo "<tool>Twitch - $streamTitle</tool>"
 		fi
 		liveTwitch="true"
@@ -101,7 +101,7 @@ if [[ "$liveYouTube" == "false" ]] && [[ "$liveTwitch" == "false" ]]; then
 		if [[ "$youtubeChannelAt" != "NONE" ]]; then
 			urlOpenString="${urlOpenString} --new-tab 'https://www.youtube.com/@${youtubeChannelAt}'"
 		fi
-		if [[ "$twitchChannelAt" != "NONE" ]]; then
+		if [[ "$twitchAt" != "NONE" ]]; then
 			urlOpenString="${urlOpenString} --new-tab 'https://www.twitch.tv/${twitchAt}/videos?filter=archives&sort=time'"
 		fi
 		echo "<txt>  </txt><txtclick>${urlOpenString}</txtclick>"
