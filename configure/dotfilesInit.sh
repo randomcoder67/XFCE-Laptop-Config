@@ -3,6 +3,7 @@
 # Script to initalise dotfiles in given theme
 
 currentTheme=""
+username="$2"
 
 if [[ "$1" == "railscasts" ]]; then
 	echo "Loading Railscasts"
@@ -95,7 +96,7 @@ cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.service ~/.config/systemd/user/panelRefresh.service
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.timer ~/.config/systemd/user/panelRefresh.timer
 cp ~/Programs/configure/home/.config/alacritty/$currentTheme.toml ~/.config/alacritty/alacritty.toml
-cp ~/Programs/configure/home/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+sed "s/GENERICUSERNAME/$username/g" ~/Programs/configure/home/.config/ranger/rc.conf ~/.config/ranger/rc.conf
 cp ~/Programs/configure/home/.config/ranger/scope.sh ~/.config/ranger/scope.sh
 chmod +x ~/.config/ranger/scope.sh
 cp ~/Programs/configure/home/.config/btop/$currentTheme.conf ~/.config/btop/btop.conf
