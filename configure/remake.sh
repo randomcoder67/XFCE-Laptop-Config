@@ -5,7 +5,7 @@
 makeGamesUI() {
 	# Make Games UI
 	echo "Rebuilding Games UI (c)"
-	cd ~/Programs/myRepos/mediaUI
+	cd ~/Programs/myRepos/Media-UI
 	make
 }
 
@@ -82,7 +82,7 @@ makeSoundboard() {
 makeGoWeatherProgram() {
 	# Make Go Weather Program
 	echo "Rebuilding Weather Program (Go)"
-	cd ~/Programs/myRepos/goWeather
+	cd ~/Programs/myRepos/Go-Terminal-Weather
 	go build -o goWeather main.go bbcWeather.go metoffice.go definitions.go web.go display.go
 }
 

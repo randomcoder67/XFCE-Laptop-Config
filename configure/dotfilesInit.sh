@@ -168,21 +168,17 @@ systemctl --user start panelRefresh.timer
 git config --global core.pager cat
 
 git clone "https://github.com/randomcoder67/Media-UI" $HOME/Programs/myRepos/Media-UI
-mv "$HOME/Programs/myRepos/Media-UI" "$HOME/Programs/myRepos/mediaUI"
-cd "$HOME/Programs/myRepos/mediaUI"
+cd "$HOME/Programs/myRepos/Media-UI"
 make
 mkdir ~/.config/micro/syntax
 mkdir ~/.local/share/gtksourceview-3.0/language-specs/
 mkdir ~/.local/share/gtksourceview-4/language-specs/
 git clone "https://github.com/randomcoder67/Consistent-Syntax-Highlighting" $HOME/Programs/myRepos/Consistent-Syntax-Highlighting
-mv "$HOME/Programs/myRepos/Consistent-Syntax-Highlighting" "$HOME/Programs/myRepos/syntaxHighlighting"
-cd "$HOME/Programs/myRepos/syntaxHighlighting"
+cd "$HOME/Programs/myRepos/Consistent-Syntax-Highlighting"
 make
 git clone "https://github.com/randomcoder67/Go-Terminal-Weather" $HOME/Programs/myRepos/Go-Terminal-Weather
-mv "$HOME/Programs/myRepos/Go-Terminal-Weather" "$HOME/Programs/myRepos/goWeather"
-cd "$HOME/Programs/myRepos/goWeather"
+cd "$HOME/Programs/myRepos/Go-Terminal-Weather"
 make
 git clone "https://github.com/randomcoder67/Go-Terminal-Strava" $HOME/Programs/myRepos/Go-Terminal-Strava
-mv "$HOME/Programs/myRepos/Go-Terminal-Strava" "$HOME/Programs/myRepos/goStrava"
-cd "$HOME/Programs/myRepos/goStrava"
+cd "$HOME/Programs/myRepos/Go-Terminal-Strava"
 make
