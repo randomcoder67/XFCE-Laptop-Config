@@ -199,7 +199,7 @@ elif [[ $selection == "Google Maps" ]]; then
 elif [[ $selection == "cava" ]]; then
 	alacritty -e "$HOME/.local/bin/cava"
 elif [[ $selection == "Intel GPU Top" ]]; then
-	alacritty -o 'window.title="Intel GPU Top"' -e sudo intel_gpu_top
+	alacritty -o 'window.title="intel-gpu-top"' -e sudo intel_gpu_top
 elif [[ $selection == "Go Weather" ]]; then
 	alacritty -o 'window.title="GoWeather"' -e goWeather
 elif [[ $selection == "Play Music" ]]; then
