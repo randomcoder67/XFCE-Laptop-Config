@@ -10,6 +10,7 @@
 /system/keyboardOther/helpUI/go.sum
 /system/keyboardOther/helpUI/helpUI
 /system/keyboardOther/soundboard
+/system/keyboardOther/capsLock.sh
 /system/rofi/addIcons
 /system/rofi/metoffice-geohash
 /terminal/alias/passGen.sh
