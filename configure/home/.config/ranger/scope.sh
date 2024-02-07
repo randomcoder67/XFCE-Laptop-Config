@@ -16,22 +16,22 @@ IFS=$'\n'
 ## example, gets only one #.
 
 ## Meanings of exit codes:
-## code | meaning	| action of ranger
+## code | meaning    | action of ranger
 ## -----+------------+-------------------------------------------
-## 0	| success	| Display stdout as preview
-## 1	| no preview | Display no preview at all
-## 2	| plain text | Display the plain content of the file
-## 3	| fix width  | Don't reload when width changes
-## 4	| fix height | Don't reload when height changes
-## 5	| fix both   | Don't ever reload
-## 6	| image	  | Display the image `$IMAGE_CACHE_PATH` points to as an image preview
-## 7	| image	  | Display the file directly as an image
+## 0    | success    | Display stdout as preview
+## 1    | no preview | Display no preview at all
+## 2    | plain text | Display the plain content of the file
+## 3    | fix width  | Don't reload when width changes
+## 4    | fix height | Don't reload when height changes
+## 5    | fix both   | Don't ever reload
+## 6    | image      | Display the image `$IMAGE_CACHE_PATH` points to as an image preview
+## 7    | image      | Display the file directly as an image
 
 ## Script arguments
-FILE_PATH="${1}"		 # Full path of the highlighted file
-PV_WIDTH="${2}"		  # Width of the preview pane (number of fitting characters)
+FILE_PATH="${1}"         # Full path of the highlighted file
+PV_WIDTH="${2}"          # Width of the preview pane (number of fitting characters)
 ## shellcheck disable=SC2034 # PV_HEIGHT is provided for convenience and unused
-PV_HEIGHT="${3}"		 # Height of the preview pane (number of fitting characters)
+PV_HEIGHT="${3}"         # Height of the preview pane (number of fitting characters)
 IMAGE_CACHE_PATH="${4}"  # Full path that should be used to cache image preview
 PV_IMAGE_ENABLED="${5}"  # 'True' if image previews are enabled, 'False' otherwise.
 
@@ -48,7 +48,7 @@ BAT_STYLE="${BAT_STYLE:-plain}"
 OPENSCAD_IMGSIZE="${RNGR_OPENSCAD_IMGSIZE:-1000,1000}"
 OPENSCAD_COLORSCHEME="${RNGR_OPENSCAD_COLORSCHEME:-Tomorrow Night}"
 SQLITE_TABLE_LIMIT=20  # Display only the top <limit> tables in database, set to 0 for no exhaustive preview (only the sqlite_master table is displayed).
-SQLITE_ROW_LIMIT=5	 # Display only the first and the last (<limit> - 1) records in each table, set to 0 for no limits.
+SQLITE_ROW_LIMIT=5     # Display only the first and the last (<limit> - 1) records in each table, set to 0 for no limits.
 
 handle_extension() {
 	case "${FILE_EXTENSION_LOWER}" in
@@ -190,24 +190,24 @@ handle_image() {
 
 		## PDF
 		# application/pdf)
-		#	 pdftoppm -f 1 -l 1 \
-		#			  -scale-to-x "${DEFAULT_SIZE%x*}" \
-		#			  -scale-to-y -1 \
-		#			  -singlefile \
-		#			  -jpeg -tiffcompression jpeg \
-		#			  -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
-		#		 && exit 6 || exit 1;;
+		#     pdftoppm -f 1 -l 1 \
+		#              -scale-to-x "${DEFAULT_SIZE%x*}" \
+		#              -scale-to-y -1 \
+		#              -singlefile \
+		#              -jpeg -tiffcompression jpeg \
+		#              -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
+		#         && exit 6 || exit 1;;
 
 
 		## ePub, MOBI, FB2 (using Calibre)
 		# application/epub+zip|application/x-mobipocket-ebook|\
 		# application/x-fictionbook+xml)
-		#	 # ePub (using https://github.com/marianosimone/epub-thumbnailer)
-		#	 epub-thumbnailer "${FILE_PATH}" "${IMAGE_CACHE_PATH}" \
-		#		 "${DEFAULT_SIZE%x*}" && exit 6
-		#	 ebook-meta --get-cover="${IMAGE_CACHE_PATH}" -- "${FILE_PATH}" \
-		#		 >/dev/null && exit 6
-		#	 exit 1;;
+		#     # ePub (using https://github.com/marianosimone/epub-thumbnailer)
+		#     epub-thumbnailer "${FILE_PATH}" "${IMAGE_CACHE_PATH}" \
+		#         "${DEFAULT_SIZE%x*}" && exit 6
+		#     ebook-meta --get-cover="${IMAGE_CACHE_PATH}" -- "${FILE_PATH}" \
+		#         >/dev/null && exit 6
+		#     exit 1;;
 
 		## Font
 		application/font*|application/*opentype)
@@ -233,48 +233,48 @@ handle_image() {
 		## Preview archives using the first image inside.
 		## (Very useful for comic book collections for example.)
 		# application/zip|application/x-rar|application/x-7z-compressed|\
-		#	 application/x-xz|application/x-bzip2|application/x-gzip|application/x-tar)
-		#	 local fn=""; local fe=""
-		#	 local zip=""; local rar=""; local tar=""; local bsd=""
-		#	 case "${mimetype}" in
-		#		 application/zip) zip=1 ;;
-		#		 application/x-rar) rar=1 ;;
-		#		 application/x-7z-compressed) ;;
-		#		 *) tar=1 ;;
-		#	 esac
-		#	 { [ "$tar" ] && fn=$(tar --list --file "${FILE_PATH}"); } || \
-		#	 { fn=$(bsdtar --list --file "${FILE_PATH}") && bsd=1 && tar=""; } || \
-		#	 { [ "$rar" ] && fn=$(unrar lb -p- -- "${FILE_PATH}"); } || \
-		#	 { [ "$zip" ] && fn=$(zipinfo -1 -- "${FILE_PATH}"); } || return
+		#     application/x-xz|application/x-bzip2|application/x-gzip|application/x-tar)
+		#     local fn=""; local fe=""
+		#     local zip=""; local rar=""; local tar=""; local bsd=""
+		#     case "${mimetype}" in
+		#         application/zip) zip=1 ;;
+		#         application/x-rar) rar=1 ;;
+		#         application/x-7z-compressed) ;;
+		#         *) tar=1 ;;
+		#     esac
+		#     { [ "$tar" ] && fn=$(tar --list --file "${FILE_PATH}"); } || \
+		#     { fn=$(bsdtar --list --file "${FILE_PATH}") && bsd=1 && tar=""; } || \
+		#     { [ "$rar" ] && fn=$(unrar lb -p- -- "${FILE_PATH}"); } || \
+		#     { [ "$zip" ] && fn=$(zipinfo -1 -- "${FILE_PATH}"); } || return
 		#
-		#	 fn=$(echo "$fn" | python -c "from __future__ import print_function; \
-		#			 import sys; import mimetypes as m; \
-		#			 [ print(l, end='') for l in sys.stdin if \
-		#			   (m.guess_type(l[:-1])[0] or '').startswith('image/') ]" |\
-		#		 sort -V | head -n 1)
-		#	 [ "$fn" = "" ] && return
-		#	 [ "$bsd" ] && fn=$(printf '%b' "$fn")
+		#     fn=$(echo "$fn" | python -c "from __future__ import print_function; \
+		#             import sys; import mimetypes as m; \
+		#             [ print(l, end='') for l in sys.stdin if \
+		#               (m.guess_type(l[:-1])[0] or '').startswith('image/') ]" |\
+		#         sort -V | head -n 1)
+		#     [ "$fn" = "" ] && return
+		#     [ "$bsd" ] && fn=$(printf '%b' "$fn")
 		#
-		#	 [ "$tar" ] && tar --extract --to-stdout \
-		#		 --file "${FILE_PATH}" -- "$fn" > "${IMAGE_CACHE_PATH}" && exit 6
-		#	 fe=$(echo -n "$fn" | sed 's/[][*?\]/\\\0/g')
-		#	 [ "$bsd" ] && bsdtar --extract --to-stdout \
-		#		 --file "${FILE_PATH}" -- "$fe" > "${IMAGE_CACHE_PATH}" && exit 6
-		#	 [ "$bsd" ] || [ "$tar" ] && rm -- "${IMAGE_CACHE_PATH}"
-		#	 [ "$rar" ] && unrar p -p- -inul -- "${FILE_PATH}" "$fn" > \
-		#		 "${IMAGE_CACHE_PATH}" && exit 6
-		#	 [ "$zip" ] && unzip -pP "" -- "${FILE_PATH}" "$fe" > \
-		#		 "${IMAGE_CACHE_PATH}" && exit 6
-		#	 [ "$rar" ] || [ "$zip" ] && rm -- "${IMAGE_CACHE_PATH}"
-		#	 ;;
+		#     [ "$tar" ] && tar --extract --to-stdout \
+		#         --file "${FILE_PATH}" -- "$fn" > "${IMAGE_CACHE_PATH}" && exit 6
+		#     fe=$(echo -n "$fn" | sed 's/[][*?\]/\\\0/g')
+		#     [ "$bsd" ] && bsdtar --extract --to-stdout \
+		#         --file "${FILE_PATH}" -- "$fe" > "${IMAGE_CACHE_PATH}" && exit 6
+		#     [ "$bsd" ] || [ "$tar" ] && rm -- "${IMAGE_CACHE_PATH}"
+		#     [ "$rar" ] && unrar p -p- -inul -- "${FILE_PATH}" "$fn" > \
+		#         "${IMAGE_CACHE_PATH}" && exit 6
+		#     [ "$zip" ] && unzip -pP "" -- "${FILE_PATH}" "$fe" > \
+		#         "${IMAGE_CACHE_PATH}" && exit 6
+		#     [ "$rar" ] || [ "$zip" ] && rm -- "${IMAGE_CACHE_PATH}"
+		#     ;;
 	esac
 
 	# openscad_image() {
-	#	 TMPPNG="$(mktemp -t XXXXXX.png)"
-	#	 openscad --colorscheme="${OPENSCAD_COLORSCHEME}" \
-	#		 --imgsize="${OPENSCAD_IMGSIZE/x/,}" \
-	#		 -o "${TMPPNG}" "${1}"
-	#	 mv "${TMPPNG}" "${IMAGE_CACHE_PATH}"
+	#     TMPPNG="$(mktemp -t XXXXXX.png)"
+	#     openscad --colorscheme="${OPENSCAD_COLORSCHEME}" \
+	#         --imgsize="${OPENSCAD_IMGSIZE/x/,}" \
+	#         -o "${TMPPNG}" "${1}"
+	#     mv "${TMPPNG}" "${IMAGE_CACHE_PATH}"
 	# }
 
 	case "${FILE_EXTENSION_LOWER}" in
@@ -284,11 +284,11 @@ handle_image() {
 	   ## move/rename it to jpg. This works because image libraries are
 	   ## smart enough to handle it.
 	   # csg|scad)
-	   #	 openscad_image "${FILE_PATH}" && exit 6
-	   #	 ;;
+	   #     openscad_image "${FILE_PATH}" && exit 6
+	   #     ;;
 	   # 3mf|amf|dxf|off|stl)
-	   #	 openscad_image <(echo "import(\"${FILE_PATH}\");") && exit 6
-	   #	 ;;
+	   #     openscad_image <(echo "import(\"${FILE_PATH}\");") && exit 6
+	   #     ;;
 	   drawio)
 		   draw.io -x "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" \
 			   --width "${DEFAULT_SIZE%x*}" && exit 6

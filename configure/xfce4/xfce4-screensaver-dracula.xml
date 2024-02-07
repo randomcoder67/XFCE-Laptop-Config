@@ -2,27 +2,27 @@
 
 <channel name="xfce4-screensaver" version="1.0">
   <property name="lock" type="empty">
-	<property name="sleep-activation" type="bool" value="true"/>
-	<property name="saver-activation" type="empty">
-	  <property name="enabled" type="bool" value="false"/>
-	</property>
-	<property name="enabled" type="bool" value="true"/>
-	<property name="embedded-keyboard" type="empty">
-	  <property name="enabled" type="bool" value="true"/>
-	  <property name="displayed" type="bool" value="true"/>
-	</property>
+    <property name="sleep-activation" type="bool" value="true"/>
+    <property name="saver-activation" type="empty">
+      <property name="enabled" type="bool" value="false"/>
+    </property>
+    <property name="enabled" type="bool" value="true"/>
+    <property name="embedded-keyboard" type="empty">
+      <property name="enabled" type="bool" value="true"/>
+      <property name="displayed" type="bool" value="true"/>
+    </property>
   </property>
   <property name="saver" type="empty">
-	<property name="mode" type="int" value="0"/>
-	<property name="enabled" type="bool" value="true"/>
-	<property name="idle-activation" type="empty">
-	  <property name="enabled" type="bool" value="false"/>
-	</property>
+    <property name="mode" type="int" value="0"/>
+    <property name="enabled" type="bool" value="true"/>
+    <property name="idle-activation" type="empty">
+      <property name="enabled" type="bool" value="false"/>
+    </property>
   </property>
   <property name="screensavers" type="empty">
-	<property name="xfce-blank" type="empty">
-	  <property name="dpms-sleep-after" type="double" value="0"/>
-	  <property name="arguments" type="string" value=""/>
-	</property>
+    <property name="xfce-blank" type="empty">
+      <property name="dpms-sleep-after" type="double" value="0"/>
+      <property name="arguments" type="string" value=""/>
+    </property>
   </property>
 </channel>
