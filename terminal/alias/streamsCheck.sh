@@ -2,113 +2,122 @@
 
 # Script to check which streamers are live and where
 
-function chudlogicTwitch() {
-	if yt-dlp -q -F "https://www.twitch.tv/chudlogic" 2>/dev/null > /dev/null; then
-		echo "live" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.txt
+saveLoc="$HOME/Programs/output/.streams/streamsCheck"
+
+function checkYouTube() {
+	# Set variables
+	local channelName="$1"
+	local youtubeChannelAt="$2"
+	
+	# Get space-padded name
+	local printableChannelName="${channelName}:"
+	spacesToAdd="$(($longestName-${#channelName}))"
+	for i in $(seq 0 $((spacesToAdd))); do
+		printableChannelName="${printableChannelName} "
+	done
+	
+	# Check live status
+	if ! curl -s "https://www.youtube.com/@${youtubeChannelAt}/live" > "${saveLoc}/${channelName}YouTube.html"; then
+		echo "${printableChannelName} No Internet" > "${saveLoc}/results/${channelName}.txt"
+		return 0
+	# If no error, then there is an internet connection
+	elif grep -q "Pop-out chat" "${saveLoc}/${channelName}YouTube.html"; then
+		# Check if stream scheduled
+		if grep -q "Live in" "${saveLoc}/${channelName}YouTube.html"
+		then
+			local liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 5)
+			return 0
+			#local streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ${saveLoc}/${channelName}YouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
+			echo "${printableChannelName} Scheduled (YouTube) at ${liveAt}" > "${saveLoc}/results/${channelName}.txt"
+			return 0
+		# Or waiting for streamer
+		elif grep -q "Waiting for ${channelName}" "${saveLoc}/${channelName}YouTube.html"; then
+			echo "${printableChannelName} Waiting for Streamer (YouTube)" > "${saveLoc}/results/${channelName}.txt"
+		# Otherwise they are live now
+		else
+			#local streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 9 | sed 's/&/and/g')
+			echo "${printableChannelName} Live (YouTube)" > "${saveLoc}/results/${channelName}.txt"
+			return 0
+		fi
 	else
-		echo "offline" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.txt
+		echo "${printableChannelName} Not Live" > "${saveLoc}/results/${channelName}.txt"
+		return 1
 	fi
 }
 
-function nerdcubedTwitch() {
-	if yt-dlp -q -F "https://www.twitch.tv/nerdcubed" 2>/dev/null > /dev/null; then
-		echo "live" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.txt
+function checkTwitch() {
+	# Set variables
+	local channelName="$1"
+	local twitchAt="$2"
+	
+	# Get space-padded name
+	local printableChannelName="${channelName}:"
+	spacesToAdd="$(($longestName-${#channelName}))"
+	for i in $(seq 0 $((spacesToAdd))); do
+		printableChannelName="${printableChannelName} "
+	done
+	
+	# Check live status
+	if yt-dlp -q --write-info-json --skip-download "https://www.twitch.tv/${twitchAt}" -P ${saveLoc} -o "${channelName}TwitchMetadata.%(ext)s" 2>/dev/null > /dev/null; then
+		#streamTitle=$(cat "${saveLoc}/${channelName}TwitchMetadata.info.json" | jq -r .description | sed 's/&/and/g')
+		echo "${printableChannelName} Live (Twitch)" > "${saveLoc}/results/${channelName}.txt"
+		return 0
 	else
-		echo "offline" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.txt
+		echo "${printableChannelName} Not Live" > "${saveLoc}/results/${channelName}.txt"
+		return 1
 	fi
 }
 
-function dustinedenTwitch() {
-	if yt-dlp -q -F "https://www.twitch.tv/dustineden" 2>/dev/null > /dev/null; then
-		echo "live" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
-	else
-		echo "offline" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
+function checkAllPlatforms() {
+	local channelName="$1"
+	local youtubeChannelAt="$2"
+	local twitchAt="$3"
+	
+	local liveYouTube="false"
+	local liveTwitch="false"
+	
+	if [[ "$youtubeChannelAt" != "NONE" ]]; then
+		checkYouTube "$channelName" "$youtubeChannelAt" && local liveYouTube="true"
+	fi
+	if [[ "$liveYouTube" == "false" ]] && [[ "$twitchAt" != "NONE" ]]; then
+		checkTwitch "$channelName" "$twitchAt" && local liveTwitch="true"
 	fi
 }
 
-# Get webpages, runs all commands in parralel and waits for them all to finish, twice as fast as having them in series
-timeout 10 curl -s "https://www.youtube.com/@Destiny/live" > ~/Programs/output/.streams/streamsCheck/destinyYouTube.html &
-timeout 10 curl -s "https://rumble.com/c/Destiny" > ~/Programs/output/.streams/streamsCheck/destinyRumble.html &
-timeout 10 curl -s "https://www.youtube.com/@ChudLogic/live" > ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html &
-#timeout 10 curl -s "https://www.twitch.tv/chudlogic" > ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.html &
-#timeout 10 curl -s "https://www.twitch.tv/nerdcubed" > ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.html &
-chudlogicTwitch &
-nerdcubedTwitch &
-timeout 10 curl -s "https://www.youtube.com/@ManyATrueNerd/live" > ~/Programs/output/.streams/streamsCheck/matnYouTube.html &
-timeout 10 curl -s "https://www.youtube.com/@NMIXXOfficial/live" > ~/Programs/output/.streams/streamsCheck/nmixxYouTube.html &
-dustinedenTwitch &
-timeout 10 curl -s "https://www.youtube.com/@NoahSundayCompletionist" > ~/Programs/output/.streams/streamsCheck/noahsundayYouTube.html
-#timeout 10 curl -s "https://www.twitch.tv/dustineden" > ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.html &
+# Define streamers, and their YouTube and Twitch @s
+streamers=( "Destiny" "Destiny" "NONE" "Chud Logic" "ChudLogic" "chudlogic" "Kuihman" "Kuihman" "NONE" "NerdCubed" "NerdCubed" "nerdcubed" "MATN" "ManyATrueNerd" "NONE" "Dustin Eden" "NONE" "dustineden" "Noah Sunday" "NoahSundayCompletionist" "NONE" "NMIXX" "NMIXXOfficial" "NONE" )
+
+# Count number of streamers
+numStreamers=$((${#streamers[@]}/3))
+longestName=0
+
+# Find longest name
+for i in $(seq 0 $((numStreamers-1))); do
+	offset=$((i*3))
+	
+	currentName="${streamers[$offset]}"
+	currentLength=${#currentName}
+	
+	if (( currentLength > longestName )); then
+		longestName="$currentLength"
+	fi
+done
+
+# Check all platforms for each streamer
+for i in $(seq 0 $((numStreamers-1))); do
+	offset=$((i*3))
+	channelName="${streamers[$offset]}"
+	youtubeChannelAt="${streamers[$((offset+1))]}"
+	twitchAt="${streamers[$((offset+2))]}"
+	
+	checkAllPlatforms "$channelName" "$youtubeChannelAt" "$twitchAt" &
+done
+
+# Wait for background commands to finish
 wait
 
-# Destiny check 
-if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/destinyYouTube.html
-then
-	echo "Destiny:	 Live (YouTube)"
-#elif yt-dlp --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/112.0" --cookies-from-browser firefox -F https://kick.com/destiny 2>/dev/null >> /dev/null
-#then
-#	echo "Destiny:	 Live (Kick)"
-elif grep -q "class=video-item--live" ~/Programs/output/.streams/streamsCheck/destinyRumble.html
-then
-	echo "Destiny:	 Live (Rumble)"
-else
-	echo "Destiny:	 Not Live"
-fi
-
-# Chud Logic Check 
-if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html
-then
-	if grep -q "Live in" ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html; then
-		liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html | cut -d "\"" -f 5)
-		echo "Chud Logic:  Scheduled (YouTube) at $liveAt"
-	elif grep -q "Waiting for Chud Logic" ~/Programs/output/.streams/streamsCheck/chudlogicYouTube.html; then
-		echo "Chud Logic:  Waiting (YouTube)"
-	else
-		echo "Chud Logic:  Live (YouTube)"
-	fi
-elif grep -q "live" ~/Programs/output/.streams/streamsCheck/chudlogicTwitch.txt
-then
-	echo "Chud Logic:  Live (Twitch)"
-else
-	echo "Chud Logic:  Not Live"
-fi
-
-# NerdCubed check 
-if grep -q "live" ~/Programs/output/.streams/streamsCheck/nerdcubedTwitch.txt
-then
-	echo "NerdCubed:   Live (Twitch)"
-else
-	echo "NerdCubed:   Not Live"
-fi
-
-# MATN Check
-if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/matnYouTube.html
-then
-	echo "MATN:		Live (YouTube)"
-else
-	echo "MATN:		Not Live"
-fi
-
-# Dustin Eden Check
-if grep -q "live" ~/Programs/output/.streams/streamsCheck/dustinedenTwitch.txt
-then
-	echo "Dustin Eden: Live (Twitch)"
-else
-	echo "Dustin Eden: Not Live"
-fi
-
-# Noah Sunday Check
-if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/noahsundayYouTube.html
-then
-	echo "Noah Sunday: Live (YouTube)"
-else
-	echo "Noah Sunday: Not Live"
-fi
-
-# NMIXX Check
-if grep -q "Pop-out chat" ~/Programs/output/.streams/streamsCheck/nmixxYouTube.html
-then
-	echo "NMIXX:	   Live (YouTube)"
-else
-	echo "NMIXX:	   Not Live"
-fi
+# Print results
+for i in $(seq 0 $((numStreamers-1))); do
+	offset=$((i*3))
+	cat "${saveLoc}/results/${streamers[$offset]}.txt"
+done
