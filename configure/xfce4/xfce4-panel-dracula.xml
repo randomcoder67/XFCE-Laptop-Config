@@ -3,256 +3,256 @@
 <channel name="xfce4-panel" version="1.0">
   <property name="configver" type="int" value="2"/>
   <property name="panels" type="array">
-	<value type="int" value="1"/>
-	<property name="dark-mode" type="bool" value="true"/>
-	<property name="panel-1" type="empty">
-	  <property name="position" type="string" value="p=6;x=1120;y=22"/>
-	  <property name="size" type="uint" value="36"/>
-	  <property name="length" type="double" value="100"/>
-	  <property name="plugin-ids" type="array">
-		<value type="int" value="9"/>
-		<value type="int" value="10"/>
-		<value type="int" value="5"/>
-		<value type="int" value="7"/>
-		<value type="int" value="28"/>
-		<value type="int" value="20"/>
-		<value type="int" value="21"/>
-		<value type="int" value="22"/>
-		<value type="int" value="23"/>
-		<value type="int" value="24"/>
-		<value type="int" value="25"/>
-		<value type="int" value="26"/>
-		<value type="int" value="27"/>
-		<value type="int" value="6"/>
-		<value type="int" value="8"/>
-		<value type="int" value="14"/>
-		<value type="int" value="31"/>
-		<value type="int" value="16"/>
-		<value type="int" value="17"/>
-		<value type="int" value="18"/>
-		<value type="int" value="19"/>
-		<value type="int" value="1"/>
-		<value type="int" value="30"/>
-		<value type="int" value="12"/>
-		<value type="int" value="29"/>
-		<value type="int" value="11"/>
-		<value type="int" value="13"/>
-		<value type="int" value="2"/>
-		<value type="int" value="3"/>
-		<value type="int" value="4"/>
-	  </property>
-	  <property name="background-style" type="uint" value="1"/>
-	  <property name="background-rgba" type="array">
-		<value type="double" value="0.13333333333333333"/>
-		<value type="double" value="0.12941176470588237"/>
-		<value type="double" value="0.17647058823529413"/>
-		<value type="double" value="1"/>
-	  </property>
-	  <property name="position-locked" type="bool" value="true"/>
-	  <property name="icon-size" type="uint" value="0"/>
-	  <property name="span-monitors" type="bool" value="false"/>
-	  <property name="output-name" type="string" value="Primary"/>
-	</property>
+    <value type="int" value="1"/>
+    <property name="dark-mode" type="bool" value="true"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=6;x=1120;y=22"/>
+      <property name="size" type="uint" value="36"/>
+      <property name="length" type="double" value="100"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="9"/>
+        <value type="int" value="10"/>
+        <value type="int" value="5"/>
+        <value type="int" value="7"/>
+        <value type="int" value="28"/>
+        <value type="int" value="20"/>
+        <value type="int" value="21"/>
+        <value type="int" value="22"/>
+        <value type="int" value="23"/>
+        <value type="int" value="24"/>
+        <value type="int" value="25"/>
+        <value type="int" value="26"/>
+        <value type="int" value="27"/>
+        <value type="int" value="6"/>
+        <value type="int" value="8"/>
+        <value type="int" value="14"/>
+        <value type="int" value="31"/>
+        <value type="int" value="16"/>
+        <value type="int" value="17"/>
+        <value type="int" value="18"/>
+        <value type="int" value="19"/>
+        <value type="int" value="1"/>
+        <value type="int" value="30"/>
+        <value type="int" value="12"/>
+        <value type="int" value="29"/>
+        <value type="int" value="11"/>
+        <value type="int" value="13"/>
+        <value type="int" value="2"/>
+        <value type="int" value="3"/>
+        <value type="int" value="4"/>
+      </property>
+      <property name="background-style" type="uint" value="1"/>
+      <property name="background-rgba" type="array">
+        <value type="double" value="0.13333333333333333"/>
+        <value type="double" value="0.12941176470588237"/>
+        <value type="double" value="0.17647058823529413"/>
+        <value type="double" value="1"/>
+      </property>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="icon-size" type="uint" value="0"/>
+      <property name="span-monitors" type="bool" value="false"/>
+      <property name="output-name" type="string" value="Primary"/>
+    </property>
   </property>
   <property name="plugins" type="empty">
-	<property name="plugin-1" type="string" value="clock">
-	  <property name="digital-layout" type="uint" value="2"/>
-	  <property name="digital-date-format" type="string" value="%b, %a %d"/>
-	  <property name="digital-date-font" type="string" value="Roboto Medium 16"/>
-	  <property name="timezone" type="string" value="Europe/London"/>
-	</property>
-	<property name="plugin-2" type="string" value="clock">
-	  <property name="timezone" type="string" value="America/New_York"/>
-	  <property name="tooltip-format" type="string" value="New York (%Z)"/>
-	  <property name="digital-layout" type="uint" value="3"/>
-	  <property name="digital-time-format" type="string" value="%H:%M |"/>
-	  <property name="digital-time-font" type="string" value="Roboto Medium 16"/>
-	</property>
-	<property name="plugin-3" type="string" value="clock">
-	  <property name="timezone" type="string" value="Europe/London"/>
-	  <property name="tooltip-format" type="string" value="London (%Z)"/>
-	  <property name="digital-layout" type="uint" value="3"/>
-	  <property name="digital-time-font" type="string" value="Roboto Medium 16"/>
-	  <property name="digital-time-format" type="string" value="%H:%M |"/>
-	</property>
-	<property name="plugin-4" type="string" value="clock">
-	  <property name="timezone" type="string" value="Asia/Seoul"/>
-	  <property name="tooltip-format" type="string" value="Seoul (%Z)"/>
-	  <property name="digital-layout" type="uint" value="3"/>
-	  <property name="digital-time-font" type="string" value="Roboto Medium 16"/>
-	  <property name="digital-time-format" type="string" value="%H:%M "/>
-	</property>
-	<property name="plugin-5" type="string" value="separator">
-	  <property name="expand" type="bool" value="true"/>
-	  <property name="style" type="uint" value="0"/>
-	</property>
-	<property name="plugin-7" type="string" value="pager">
-	  <property name="rows" type="uint" value="1"/>
-	  <property name="workspace-scrolling" type="bool" value="true"/>
-	</property>
-	<property name="plugin-9" type="string" value="applicationsmenu"/>
-	<property name="plugin-10" type="string" value="tasklist"/>
-	<property name="plugin-11" type="string" value="pulseaudio">
-	  <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-	  <property name="known-players" type="string" value="Chrome;chromium.instance3206;cmus;com.github.marinm.songrec.desktop;firefox;Firefox Web Browser;org.gnome.Totem;org.kde.dragonplayer;org.kde.haruna;qutebrowser;smplayer;SongRec;Vivaldi;vlc;VLC media player"/>
-	</property>
-	<property name="plugin-12" type="string" value="power-manager-plugin"/>
-	<property name="plugin-13" type="string" value="notification-plugin"/>
-	<property name="plugin-6" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;txt&gt;&lt;span foreground=&apos;#8CFF82&apos;&gt; &lt;/span&gt;&lt;/txt&gt;&lt;tool&gt;CPU Usage&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="30000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
-	<property name="plugin-8" type="string" value="genmon">
-	  <property name="command" type="string" value="python3 /home/GENERICUSERNAME/Programs/system/panel/cpu.py"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="2000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto Mono 15"/>
-	</property>
-	<property name="plugin-14" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;txt&gt;&lt;span foreground=&apos;#e64747&apos;&gt; &lt;/span&gt;&lt;/txt&gt;&lt;tool&gt;CPU Temperature&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="30000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
-	<property name="plugin-16" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;txt&gt;&lt;span foreground=&apos;#FEFE7F&apos;&gt; &lt;/span&gt;&lt;/txt&gt;&lt;tool&gt;RAM Usage&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="30000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
-	<property name="plugin-17" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/ram.sh"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="2000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto Mono 15"/>
-	</property>
-	<property name="plugin-18" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;txt&gt;&lt;span foreground=&apos;#9a7cff&apos;&gt; &lt;/span&gt;&lt;/txt&gt;&lt;tool&gt;Network Download&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="30000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
-	<property name="plugin-19" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/networkDown.sh"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="2000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto Mono 15"/>
-	</property>
-	<property name="plugin-20" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/destinyPanel.jpg&lt;/img&gt;&lt;tool&gt;Destiny&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 12"/>
-	</property>
-	<property name="plugin-21" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh Destiny Destiny NONE -d"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
-	<property name="plugin-22" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/chudlogicPanel.jpg&lt;/img&gt;&lt;tool&gt;Chud Logic&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 12"/>
-	</property>
-	<property name="plugin-23" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh &quot;Chud Logic&quot; ChudLogic chudlogic -d"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
-	<property name="plugin-24" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/kuihmanPanel.jpg&lt;/img&gt;&lt;tool&gt;Kuihman&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 12"/>
-	</property>
-	<property name="plugin-25" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh Kuihman KuihmanLive NONE -d"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
-	<property name="plugin-28" type="string" value="separator">
-	  <property name="style" type="uint" value="0"/>
-	</property>
-	<property name="plugin-29" type="string" value="systray">
-	  <property name="known-legacy-items" type="array">
-		<value type="string" value="networkmanager applet"/>
-		<value type="string" value="yad"/>
-		<value type="string" value="gigolo"/>
-		<value type="string" value="xfmpc"/>
-		<value type="string" value="networking disabled"/>
-		<value type="string" value="no network connection"/>
-	  </property>
-	  <property name="known-items" type="array">
-		<value type="string" value="vlc"/>
-		<value type="string" value="chrome_status_icon_1"/>
-		<value type="string" value="ulauncher"/>
-		<value type="string" value="obs"/>
-		<value type="string" value="steam"/>
-	  </property>
-	</property>
-	<property name="plugin-26" type="string" value="genmon">
-	  <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/nmixxPanel.jpg&lt;/img&gt;&lt;tool&gt;NMIXX&lt;/tool&gt;&quot;"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 12"/>
-	</property>
-	<property name="plugin-27" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh NMIXX NMIXXOfficial NONE -d"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="300000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto 16"/>
-	</property>
-	<property name="plugin-30" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/uptime.sh"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="5000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto Medium 16"/>
-	</property>
-	<property name="plugin-31" type="string" value="genmon">
-	  <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/cputemp.sh"/>
-	  <property name="use-label" type="bool" value="false"/>
-	  <property name="text" type="string" value="(genmon)"/>
-	  <property name="update-period" type="int" value="2000"/>
-	  <property name="enable-single-row" type="bool" value="true"/>
-	  <property name="font" type="string" value="Roboto Mono 15"/>
-	</property>
+    <property name="plugin-1" type="string" value="clock">
+      <property name="digital-layout" type="uint" value="2"/>
+      <property name="digital-date-format" type="string" value="%b, %a %d"/>
+      <property name="digital-date-font" type="string" value="Roboto Medium 16"/>
+      <property name="timezone" type="string" value="Europe/London"/>
+    </property>
+    <property name="plugin-2" type="string" value="clock">
+      <property name="timezone" type="string" value="America/New_York"/>
+      <property name="tooltip-format" type="string" value="New York (%Z)"/>
+      <property name="digital-layout" type="uint" value="3"/>
+      <property name="digital-time-format" type="string" value="%H:%M |"/>
+      <property name="digital-time-font" type="string" value="Roboto Medium 16"/>
+    </property>
+    <property name="plugin-3" type="string" value="clock">
+      <property name="timezone" type="string" value="Europe/London"/>
+      <property name="tooltip-format" type="string" value="London (%Z)"/>
+      <property name="digital-layout" type="uint" value="3"/>
+      <property name="digital-time-font" type="string" value="Roboto Medium 16"/>
+      <property name="digital-time-format" type="string" value="%H:%M |"/>
+    </property>
+    <property name="plugin-4" type="string" value="clock">
+      <property name="timezone" type="string" value="Asia/Seoul"/>
+      <property name="tooltip-format" type="string" value="Seoul (%Z)"/>
+      <property name="digital-layout" type="uint" value="3"/>
+      <property name="digital-time-font" type="string" value="Roboto Medium 16"/>
+      <property name="digital-time-format" type="string" value="%H:%M "/>
+    </property>
+    <property name="plugin-5" type="string" value="separator">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-7" type="string" value="pager">
+      <property name="rows" type="uint" value="1"/>
+      <property name="workspace-scrolling" type="bool" value="true"/>
+    </property>
+    <property name="plugin-9" type="string" value="applicationsmenu"/>
+    <property name="plugin-10" type="string" value="tasklist"/>
+    <property name="plugin-11" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="known-players" type="string" value="Chrome;chromium.instance3206;cmus;com.github.marinm.songrec.desktop;firefox;Firefox Web Browser;org.gnome.Totem;org.kde.dragonplayer;org.kde.haruna;qutebrowser;smplayer;SongRec;Vivaldi;vlc;VLC media player"/>
+    </property>
+    <property name="plugin-12" type="string" value="power-manager-plugin"/>
+    <property name="plugin-13" type="string" value="notification-plugin"/>
+    <property name="plugin-6" type="string" value="genmon">
+      <property name="command" type="string" value="echo &quot;&lt;txt&gt;&lt;span foreground=&apos;#8CFF82&apos;&gt; &lt;/span&gt;&lt;/txt&gt;&lt;tool&gt;CPU Usage&lt;/tool&gt;&quot;"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="30000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
+    </property>
+    <property name="plugin-8" type="string" value="genmon">
+      <property name="command" type="string" value="python3 /home/GENERICUSERNAME/Programs/system/panel/cpu.py"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="2000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto Mono 15"/>
+    </property>
+    <property name="plugin-14" type="string" value="genmon">
+      <property name="command" type="string" value="echo &quot;&lt;txt&gt;&lt;span foreground=&apos;#e64747&apos;&gt; &lt;/span&gt;&lt;/txt&gt;&lt;tool&gt;CPU Temperature&lt;/tool&gt;&quot;"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="30000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
+    </property>
+    <property name="plugin-16" type="string" value="genmon">
+      <property name="command" type="string" value="echo &quot;&lt;txt&gt;&lt;span foreground=&apos;#FEFE7F&apos;&gt; &lt;/span&gt;&lt;/txt&gt;&lt;tool&gt;RAM Usage&lt;/tool&gt;&quot;"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="30000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
+    </property>
+    <property name="plugin-17" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/ram.sh"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="2000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto Mono 15"/>
+    </property>
+    <property name="plugin-18" type="string" value="genmon">
+      <property name="command" type="string" value="echo &quot;&lt;txt&gt;&lt;span foreground=&apos;#9a7cff&apos;&gt; &lt;/span&gt;&lt;/txt&gt;&lt;tool&gt;Network Download&lt;/tool&gt;&quot;"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="30000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
+    </property>
+    <property name="plugin-19" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/networkDown.sh"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="2000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto Mono 15"/>
+    </property>
+    <property name="plugin-20" type="string" value="genmon">
+      <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/destinyPanel.jpg&lt;/img&gt;&lt;tool&gt;Destiny&lt;/tool&gt;&quot;"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="300000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 12"/>
+    </property>
+    <property name="plugin-21" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh Destiny Destiny NONE -d"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="300000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
+    </property>
+    <property name="plugin-22" type="string" value="genmon">
+      <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/chudlogicPanel.jpg&lt;/img&gt;&lt;tool&gt;Chud Logic&lt;/tool&gt;&quot;"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="300000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 12"/>
+    </property>
+    <property name="plugin-23" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh &quot;Chud Logic&quot; ChudLogic chudlogic -d"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="300000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
+    </property>
+    <property name="plugin-24" type="string" value="genmon">
+      <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/kuihmanPanel.jpg&lt;/img&gt;&lt;tool&gt;Kuihman&lt;/tool&gt;&quot;"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="300000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 12"/>
+    </property>
+    <property name="plugin-25" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh Kuihman KuihmanLive NONE -d"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="300000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
+    </property>
+    <property name="plugin-28" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-29" type="string" value="systray">
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="yad"/>
+        <value type="string" value="gigolo"/>
+        <value type="string" value="xfmpc"/>
+        <value type="string" value="networking disabled"/>
+        <value type="string" value="no network connection"/>
+      </property>
+      <property name="known-items" type="array">
+        <value type="string" value="vlc"/>
+        <value type="string" value="chrome_status_icon_1"/>
+        <value type="string" value="ulauncher"/>
+        <value type="string" value="obs"/>
+        <value type="string" value="steam"/>
+      </property>
+    </property>
+    <property name="plugin-26" type="string" value="genmon">
+      <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/nmixxPanel.jpg&lt;/img&gt;&lt;tool&gt;NMIXX&lt;/tool&gt;&quot;"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="300000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 12"/>
+    </property>
+    <property name="plugin-27" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh NMIXX NMIXXOfficial NONE -d"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="300000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
+    </property>
+    <property name="plugin-30" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/uptime.sh"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="5000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto Medium 16"/>
+    </property>
+    <property name="plugin-31" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/cputemp.sh"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="2000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto Mono 15"/>
+    </property>
   </property>
 </channel>

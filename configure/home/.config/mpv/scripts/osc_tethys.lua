@@ -249,52 +249,52 @@ end
 -- default user option values
 -- do not touch, change them in osc.conf
 local user_opts = {
-	showwindowed = true,		-- show OSC when windowed?
-	showfullscreen = true,	  -- show OSC when fullscreen?
-	idlescreen = true,		  -- show mpv logo on idle
-	scalewindowed = 1,		  -- scaling of the controller when windowed
-	scalefullscreen = 1,		-- scaling of the controller when fullscreen
-	scaleforcedwindow = 2,	  -- scaling when rendered on a forced window
-	vidscale = true,			-- scale the controller with the video?
-	valign = 0.8,			   -- vertical alignment, -1 (top) to 1 (bottom)
-	halign = 0,				 -- horizontal alignment, -1 (left) to 1 (right)
-	barmargin = 0,			  -- vertical margin of top/bottombar
-	boxalpha = 80,			  -- alpha of the background box,
+	showwindowed = true,        -- show OSC when windowed?
+	showfullscreen = true,      -- show OSC when fullscreen?
+	idlescreen = true,          -- show mpv logo on idle
+	scalewindowed = 1,          -- scaling of the controller when windowed
+	scalefullscreen = 1,        -- scaling of the controller when fullscreen
+	scaleforcedwindow = 2,      -- scaling when rendered on a forced window
+	vidscale = true,            -- scale the controller with the video?
+	valign = 0.8,               -- vertical alignment, -1 (top) to 1 (bottom)
+	halign = 0,                 -- horizontal alignment, -1 (left) to 1 (right)
+	barmargin = 0,              -- vertical margin of top/bottombar
+	boxalpha = 80,              -- alpha of the background box,
 								-- 0 (opaque) to 255 (fully transparent)
-	hidetimeout = 500,		  -- duration in ms until the OSC hides if no
+	hidetimeout = 500,          -- duration in ms until the OSC hides if no
 								-- mouse movement. enforced non-negative for the
 								-- user, but internally negative is "always-on".
-	fadeduration = 200,		 -- duration of fade out in ms, 0 = no fade
-	deadzonesize = 0.5,		 -- size of deadzone
-	minmousemove = 0,		   -- minimum amount of pixels the mouse has to
+	fadeduration = 200,         -- duration of fade out in ms, 0 = no fade
+	deadzonesize = 0.5,         -- size of deadzone
+	minmousemove = 0,           -- minimum amount of pixels the mouse has to
 								-- move between ticks to make the OSC show up
-	iamaprogrammer = false,	 -- use native mpv values and disable OSC
+	iamaprogrammer = false,     -- use native mpv values and disable OSC
 								-- internal track list management (and some
 								-- functions that depend on it)
 	-- layout = "bottombar",
 	layout = "tethys",
-	seekbarstyle = "bar",	   -- bar, diamond or knob
-	seekbarhandlesize = 0.6,	-- size ratio of the diamond and knob handle
+	seekbarstyle = "bar",       -- bar, diamond or knob
+	seekbarhandlesize = 0.6,    -- size ratio of the diamond and knob handle
 	seekrangestyle = "inverted",-- bar, line, slider, inverted or none
 	seekrangeseparate = true,   -- whether the seekranges overlay on the bar-style seekbar
-	seekrangealpha = 200,	   -- transparency of seekranges
-	seekbarkeyframes = true,	-- use keyframes when dragging the seekbar
+	seekrangealpha = 200,       -- transparency of seekranges
+	seekbarkeyframes = true,    -- use keyframes when dragging the seekbar
 	title = "${media-title}",   -- string compatible with property-expansion
 								-- to be shown as OSC title
-	tooltipborder = 1,		  -- border of tooltip in bottom/topbar
-	timetotal = false,		  -- display total time instead of remaining time?
-	timems = false,			 -- display timecodes with milliseconds?
+	tooltipborder = 1,          -- border of tooltip in bottom/topbar
+	timetotal = false,          -- display total time instead of remaining time?
+	timems = false,             -- display timecodes with milliseconds?
 	tcspace = 100, -- timecode spacing (compensate font size estimation)
-	visibility = "auto",		-- only used at init to set visibility_mode(...)
-	-- visibility = "always",		-- only used at init to set visibility_mode(...)
-	boxmaxchars = 80,		   -- title crop threshold for box layout
-	boxvideo = false,		   -- apply osc_param.video_margins to video
-	windowcontrols = "auto",	-- whether to show window controls
+	visibility = "auto",        -- only used at init to set visibility_mode(...)
+	-- visibility = "always",        -- only used at init to set visibility_mode(...)
+	boxmaxchars = 80,           -- title crop threshold for box layout
+	boxvideo = false,           -- apply osc_param.video_margins to video
+	windowcontrols = "auto",    -- whether to show window controls
 	windowcontrols_alignment = "right", -- which side to show window controls on
-	greenandgrumpy = false,	 -- disable santa hat
-	livemarkers = true,		 -- update seekbar chapter markers on duration change
-	chapters_osd = true,		-- whether to show chapters OSD on next/prev
-	playlist_osd = true,		-- whether to show playlist OSD on next/prev
+	greenandgrumpy = false,     -- disable santa hat
+	livemarkers = true,         -- update seekbar chapter markers on duration change
+	chapters_osd = true,        -- whether to show chapters OSD on next/prev
+	playlist_osd = true,        -- whether to show playlist OSD on next/prev
 	chapter_fmt = "Chapter: %s", -- chapter print format for seekbar-hover. "no" to disable
 	unicodeminus = false, -- whether to use the Unicode minus sign character
 }
@@ -303,13 +303,13 @@ local user_opts = {
 opt.read_options(user_opts, "osc", function(list) update_options(list) end)
 
 local osc_param = { -- calculated by osc_init()
-	playresy = 0,						   -- canvas size Y
-	playresx = 0,						   -- canvas size X
+	playresy = 0,                           -- canvas size Y
+	playresx = 0,                           -- canvas size X
 	display_aspect = 1,
 	unscaled_y = 0,
 	areas = {},
 	video_margins = {
-		l = 0, r = 0, t = 0, b = 0,		 -- left/right/top/bottom
+		l = 0, r = 0, t = 0, b = 0,         -- left/right/top/bottom
 	},
 }
 
@@ -391,8 +391,8 @@ table.sort(ordered, function(a, b)
 	end
 end)
 -- for _, bind in pairs(ordered) do
---	 jsonstr, err = utils.format_json(bind)
---	 print(jsonstr)
+--     jsonstr, err = utils.format_json(bind)
+--     print(jsonstr)
 -- end
 
 function isIgnored(bind, ignoredKeys)
@@ -1160,7 +1160,7 @@ local thumbnailer_options = {
 
 	-- Adjust background padding
 	-- Examples:
-	--   topbar:	   0, 10, 10, 10
+	--   topbar:       0, 10, 10, 10
 	--   bottombar:   10,  0, 10, 10
 	--   slimbox/box: 10, 10, 10, 10
 	pad_top   = 10,
@@ -1984,26 +1984,26 @@ end
 
 -- internal states, do not touch
 local state = {
-	showtime,							   -- time of last invocation (last mouse move)
+	showtime,                               -- time of last invocation (last mouse move)
 	osc_visible = false,
-	anistart,							   -- time when the animation started
-	anitype,								-- current type of animation
-	animation,							  -- current animation alpha
-	mouse_down_counter = 0,				 -- used for softrepeat
-	active_element = nil,				   -- nil = none, 0 = background, 1+ = see elements[]
-	active_event_source = nil,			  -- the "button" that issued the current event
+	anistart,                               -- time when the animation started
+	anitype,                                -- current type of animation
+	animation,                              -- current animation alpha
+	mouse_down_counter = 0,                 -- used for softrepeat
+	active_element = nil,                   -- nil = none, 0 = background, 1+ = see elements[]
+	active_event_source = nil,              -- the "button" that issued the current event
 	rightTC_trem = not user_opts.timetotal, -- if the right timecode should display total or remaining time
-	tc_ms = user_opts.timems,			   -- Should the timecodes display their time with milliseconds
-	mp_screen_sizeX, mp_screen_sizeY,	   -- last screen-resolution, to detect resolution changes to issue reINITs
-	initREQ = false,						-- is a re-init request pending?
-	marginsREQ = false,					 -- is a margins update pending?
-	last_mouseX, last_mouseY,			   -- last mouse position, to detect significant mouse movement
+	tc_ms = user_opts.timems,               -- Should the timecodes display their time with milliseconds
+	mp_screen_sizeX, mp_screen_sizeY,       -- last screen-resolution, to detect resolution changes to issue reINITs
+	initREQ = false,                        -- is a re-init request pending?
+	marginsREQ = false,                     -- is a margins update pending?
+	last_mouseX, last_mouseY,               -- last mouse position, to detect significant mouse movement
 	mouse_in_window = false,
 	message_text,
 	message_hide_timer,
 	fullscreen = false,
 	tick_timer = nil,
-	tick_last_time = 0,					 -- when the last tick() was run
+	tick_last_time = 0,                     -- when the last tick() was run
 	hide_timer = nil,
 	cache_state = nil,
 	idle = false,
@@ -2015,7 +2015,7 @@ local state = {
 	border = true,
 	maximized = false,
 	osd = mp.create_osd_overlay("ass-events"),
-	chapter_list = {},					  -- sorted by time
+	chapter_list = {},                      -- sorted by time
 }
 
 local window_control_box_width = 80
@@ -2173,7 +2173,7 @@ end
 
 -- align:  -1 .. +1
 -- frame:  size of the containing area
--- obj:	size of the object that should be positioned inside the area
+-- obj:    size of the object that should be positioned inside the area
 -- margin: min. distance from object to frame (as long as -1 <= align <= +1)
 function get_align(align, frame, obj, margin)
 	return (frame / 2) + (((frame / 2) - margin - (obj / 2)) * align)
@@ -2483,8 +2483,8 @@ function prepare_elements()
 			-- ass_draw_rr_h_cw(static_ass, 0, 0, elem_geo.w, elem_geo.h, r1, slider_lo.stype == "diamond")
 			-- the "hole"
 			-- ass_draw_rr_h_ccw(static_ass, slider_lo.border, slider_lo.border,
-			--				   elem_geo.w - slider_lo.border, elem_geo.h - slider_lo.border,
-			--				   r2, slider_lo.stype == "diamond")
+			--                   elem_geo.w - slider_lo.border, elem_geo.h - slider_lo.border,
+			--                   r2, slider_lo.stype == "diamond")
 			-- static_ass:draw_stop()
 
 
@@ -2672,12 +2672,12 @@ function render_elements(master_ass)
 					local pend = get_slider_ele_pos_for(element, range["end"])
 					-- Note: round_rect_ccw(x0, y0, x1, y1, r1, r2)
 					-- elem_ass:round_rect_ccw(
-					--	 pstart,
-					--	 foH - innerH / cacheBgRatio,
-					--	 pend,
-					--	 foH + innerH / cacheBgRatio,
-					--	 innerH / cacheBgRatio,
-					--	 nil
+					--     pstart,
+					--     foH - innerH / cacheBgRatio,
+					--     pend,
+					--     foH + innerH / cacheBgRatio,
+					--     innerH / cacheBgRatio,
+					--     nil
 					-- )
 					elem_ass:round_rect_ccw(
 						pstart,
@@ -3217,10 +3217,10 @@ local layouts = {}
 layouts["box"] = function ()
 
 	local osc_geo = {
-		w = 550,	-- width
-		h = 138,	-- height
-		r = 10,	 -- corner-radius
-		p = 15,	 -- padding
+		w = 550,    -- width
+		h = 138,    -- height
+		r = 10,     -- corner-radius
+		p = 15,     -- padding
 	}
 
 	-- make sure the OSC actually fits into the video
@@ -3393,9 +3393,9 @@ end
 layouts["slimbox"] = function ()
 
 	local osc_geo = {
-		w = 660,	-- width
-		h = 70,	 -- height
-		r = 10,	 -- corner-radius
+		w = 660,    -- width
+		h = 70,     -- height
+		r = 10,     -- corner-radius
 	}
 
 	-- make sure the OSC actually fits into the video
@@ -4174,7 +4174,7 @@ layouts["tethys"] = function()
 
 	-- Seekbar
 	-- geo = { x = sb_l, y = geo.y, an = geo.an,
-	--		 w = math.max(0, sb_r - sb_l), h = geo.h }
+	--         w = math.max(0, sb_r - sb_l), h = geo.h }
 	geo = {
 		x = osc_geo.x,
 		y = osc_geo.y,
@@ -5394,36 +5394,36 @@ end)
 
 -- mouse show/hide bindings
 mp.set_key_bindings({
-	{"mouse_move",			  function(e) process_event("mouse_move", nil) end},
-	{"mouse_leave",			 mouse_leave},
+	{"mouse_move",              function(e) process_event("mouse_move", nil) end},
+	{"mouse_leave",             mouse_leave},
 }, "showhide", "force")
 mp.set_key_bindings({
-	{"mouse_move",			  function(e) process_event("mouse_move", nil) end},
-	{"mouse_leave",			 mouse_leave},
+	{"mouse_move",              function(e) process_event("mouse_move", nil) end},
+	{"mouse_leave",             mouse_leave},
 }, "showhide_wc", "force")
 do_enable_keybindings()
 
 --mouse input bindings
 mp.set_key_bindings({
-	{"mbtn_left",		   function(e) process_event("mbtn_left", "up") end,
+	{"mbtn_left",           function(e) process_event("mbtn_left", "up") end,
 							function(e) process_event("mbtn_left", "down")  end},
-	{"shift+mbtn_left",	 function(e) process_event("shift+mbtn_left", "up") end,
+	{"shift+mbtn_left",     function(e) process_event("shift+mbtn_left", "up") end,
 							function(e) process_event("shift+mbtn_left", "down")  end},
-	{"mbtn_right",		  function(e) process_event("mbtn_right", "up") end,
+	{"mbtn_right",          function(e) process_event("mbtn_right", "up") end,
 							function(e) process_event("mbtn_right", "down")  end},
 	-- alias to shift_mbtn_left for single-handed mouse use
-	{"mbtn_mid",			function(e) process_event("shift+mbtn_left", "up") end,
+	{"mbtn_mid",            function(e) process_event("shift+mbtn_left", "up") end,
 							function(e) process_event("shift+mbtn_left", "down")  end},
-	{"wheel_up",			function(e) process_event("wheel_up", "press") end},
-	{"wheel_down",		  function(e) process_event("wheel_down", "press") end},
-	{"mbtn_left_dbl",	   "ignore"},
+	{"wheel_up",            function(e) process_event("wheel_up", "press") end},
+	{"wheel_down",          function(e) process_event("wheel_down", "press") end},
+	{"mbtn_left_dbl",       "ignore"},
 	{"shift+mbtn_left_dbl", "ignore"},
-	{"mbtn_right_dbl",	  "ignore"},
+	{"mbtn_right_dbl",      "ignore"},
 }, "input", "force")
 mp.enable_key_bindings("input")
 
 mp.set_key_bindings({
-	{"mbtn_left",		   function(e) process_event("mbtn_left", "up") end,
+	{"mbtn_left",           function(e) process_event("mbtn_left", "up") end,
 							function(e) process_event("mbtn_left", "down")  end},
 }, "window-controls", "force")
 mp.enable_key_bindings("window-controls")

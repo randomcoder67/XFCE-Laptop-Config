@@ -182,16 +182,16 @@ t () {
 	metricTimeSeconds=$(~/Programs/terminal/terminalPrograms/goBins/metricTime -s -s)
 	curDateZone=$(date +"%a, %b %d (%Z)")
 	echo -e "\033[0;35m\033[1mMetric Time\033[0m:"
-	echo "  Days:		   $metricTimeDays - $curDateZone"
-	echo "  Minutes:		$metricTimeMinutes - $curDateZone"
-	echo "  Seconds:		$metricTimeSeconds - $curDateZone"
+	echo "  Days:           $metricTimeDays - $curDateZone"
+	echo "  Minutes:        $metricTimeMinutes - $curDateZone"
+	echo "  Seconds:        $metricTimeSeconds - $curDateZone"
 	echo -e "\033[0;35m\033[1mNormal Time\033[0m:"
-	TZ="America/Los_Angeles" date +"  Los Angeles:	%H:%M:%S - %a, %b %d (%Z)"
-	TZ="America/New_York" date +"  New York:	   %H:%M:%S - %a, %b %d (%Z)"
-	date -u +"  UTC:			%H:%M:%S - %a, %b %d (%Z)"
-	TZ="Europe/London" date +"  London:		 %H:%M:%S - %a, %b %d (%Z)"
-	TZ="Asia/Seoul" date +"  Seoul:		  %H:%M:%S - %a, %b %d (%Z)"
-	TZ="Australia/Sydney" date +"  Sydney:		 %H:%M:%S - %a, %b %d (%Z)"
+	TZ="America/Los_Angeles" date +"  Los Angeles:    %H:%M:%S - %a, %b %d (%Z)"
+	TZ="America/New_York" date +"  New York:       %H:%M:%S - %a, %b %d (%Z)"
+	date -u +"  UTC:            %H:%M:%S - %a, %b %d (%Z)"
+	TZ="Europe/London" date +"  London:         %H:%M:%S - %a, %b %d (%Z)"
+	TZ="Asia/Seoul" date +"  Seoul:          %H:%M:%S - %a, %b %d (%Z)"
+	TZ="Australia/Sydney" date +"  Sydney:         %H:%M:%S - %a, %b %d (%Z)"
 }	
 
 # Function to remove things which aen't useful from bash history
@@ -490,13 +490,13 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 source ~/Programs/output/otherScripts/aliases.sh
 source ~/Programs/terminal/autocompletion.bash
 
-#alias a='fasd -a'		# any
-#alias s='fasd -si'	   # show / search / select
-#alias d='fasd -d'		# directory
-#alias f='fasd -f'		# file
-#alias sd='fasd -sid'	 # interactive directory selection
-#alias sf='fasd -sif'	 # interactive file selection
-#alias z='fasd_cd -d'	 # cd, same functionality as j in autojump
+#alias a='fasd -a'        # any
+#alias s='fasd -si'       # show / search / select
+#alias d='fasd -d'        # directory
+#alias f='fasd -f'        # file
+#alias sd='fasd -sid'     # interactive directory selection
+#alias sf='fasd -sif'     # interactive file selection
+#alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 #alias zz='fasd_cd -d -i'
 
 export _FASD_NOCASE=1
