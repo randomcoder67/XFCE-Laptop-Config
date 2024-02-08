@@ -69,7 +69,7 @@ if [[ "$youtubeChannelAt" != "NONE" ]]; then
 				echo "<span foreground='#$liveColour'>  </span>"
 				echo "youtube" > "$XDG_STATE_HOME/streams/${channelName}.txt"
 			else
-				echo "<txt><span foreground='#$liveColour'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh YouTube ${channelName} ${youtubeChannelAt}</txtclick>"
+				echo "<txt><span foreground='#$liveColour'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh YouTube \"${channelName}\" \"${youtubeChannelAt}\"</txtclick>"
 				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 9 | sed 's/&/and/g')
 				echo "<tool>YouTube - $streamTitle</tool>"
 			fi
@@ -84,7 +84,7 @@ if [[ "$twitchAt" != "NONE" ]] && [[ "$liveYouTube" == "false" ]]; then
 			echo "<span foreground='#$liveColour'>  </span>"
 			echo "twitch" > "$XDG_STATE_HOME/streams/${channelName}.txt"
 		else
-			echo "<txt><span foreground='#$liveColour'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh Twitch ${channelName} ${twitchAt}</txtclick>"
+			echo "<txt><span foreground='#$liveColour'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh Twitch \"${channelName}\" \"${twitchAt}\"</txtclick>"
 			streamTitle=$(cat "${saveLoc}/${channelName}TwitchMetadata.info.json" | jq -r .description | sed 's/&/and/g')
 			echo "<tool>Twitch - $streamTitle</tool>"
 		fi
