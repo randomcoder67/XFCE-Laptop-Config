@@ -528,6 +528,8 @@ func parseArgs(args []string) {
 		} else {
 			addName(inputDate, inputName)
 		}
+	} else {
+		errorOut()
 	}
 }
 
