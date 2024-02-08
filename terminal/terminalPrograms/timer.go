@@ -23,7 +23,7 @@ func setTimer(secs int, silent bool) {
 	fmt.Printf("\n")
 	for i:=0; i<secs; i++ {
 		// Print time remaining, reduce time remaining and sleep for a second
-		fmt.Printf("%sTime Remaining: %s			 \n", LINE_RESET, encodeTime(remainingSecs))
+		fmt.Printf("%sTime Remaining: %s              \n", LINE_RESET, encodeTime(remainingSecs))
 		remainingSecs--
 		time.Sleep(time.Second)
 	}

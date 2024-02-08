@@ -111,8 +111,8 @@ gsettings set org.xfce.mousepad.preferences.view color-scheme 'Railscasts'
 gsettings set org.xfce.mousepad.preferences.view tab-width uint32 4
 
 
-#echo '(gtk_accel_path "<Actions>/win.edit.convert.tabs-to-spaces" "")' >> ~/.config/Mousepad/accels.scm	
-echo '(gtk_accel_path "<Actions>/app.preferences.view.show-whitespace" "<Primary><Alt>w")' >> ~/.config/Mousepad/accels.scm	
+#echo '(gtk_accel_path "<Actions>/win.edit.convert.tabs-to-spaces" "")' >> ~/.config/Mousepad/accels.scm
+echo '(gtk_accel_path "<Actions>/app.preferences.view.show-whitespace" "<Primary><Alt>w")' >> ~/.config/Mousepad/accels.scm
 #echo '(gtk_accel_path "<Actions>/win.file.new-window" "<Primary><Shift>n")' >> ~/.config/Mousepad/accels.scm	
 #echo '(gtk_accel_path "<Actions>/win.document.previous-tab" "<Primary>Page_Up")' >> ~/.config/Mousepad/accels.scm	
 echo '(gtk_accel_path "<Actions>/win.document.next-tab" "<Primary>Tab")' >> ~/.config/Mousepad/accels.scm	

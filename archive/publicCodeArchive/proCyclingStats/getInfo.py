@@ -108,7 +108,7 @@ def main(cursesScreen):
 		lengthA = len(riderCont)
 		globalIndex = 7
 
-		for i, x in enumerate(riderCont):			
+		for i, x in enumerate(riderCont):
 			timeGap = ""
 			if not i == 0:
 				timeGap = f"@{x.find('span', class_='time').text}"

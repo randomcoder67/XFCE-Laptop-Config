@@ -22,7 +22,7 @@ fi
 # Do timer
 for i in $(seq $timeTotal); do
 	sleep 1
-	echo -e "Time Remaining: $((timeTotal-i)) secs		  
+	echo -e "Time Remaining: $((timeTotal-i)) secs
 	\e[2A"
 done
 # Echo empty line to put prompton correct line

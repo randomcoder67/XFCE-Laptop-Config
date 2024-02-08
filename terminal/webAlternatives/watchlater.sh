@@ -110,7 +110,7 @@ mpv --title='${media-title}' --ytdl-format="best" --ytdl-raw-options=mark-watche
 i=0
 echo ""
 while [[ "$(cat /tmp/mpv.out)" == "" ]]; do
-	echo -ne "${LINE_RESET}Loading ${chars[$((i%4))]}			 \n"
+	echo -ne "${LINE_RESET}Loading ${chars[$((i%4))]}           \n"
 	i=$((i+1))
 	sleep 0.2
 done

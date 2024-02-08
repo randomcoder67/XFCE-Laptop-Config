@@ -8,7 +8,7 @@ int main(void)
 {
 	initscr();
 
-	addstr("-----------------------\n|	 Sound Board	 |\n|	Random Sounds	|\n-----------------------\n\n");
+	addstr("-----------------------\n|     Sound Board     |\n|    Random Sounds    |\n-----------------------\n\n");
 	refresh();
 
 	noecho();
