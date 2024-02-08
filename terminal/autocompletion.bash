@@ -137,7 +137,7 @@ _savedotfilesCompletion() {
 	if [ "${#COMP_WORDS[@]}" != "2" ]; then
 		return 0
 	fi
-	COMPREPLY=( $(compgen -W "$(grep -A 2 'Options are' ~/Programs/configure/save.sh | tail -n 2 | sed 's/	echo \"  //g' | tr -d \"\"\")" -- "${COMP_WORDS[1]}") )
+	COMPREPLY=( $(compgen -W "$(grep -A 2 'Options are' ~/Programs/configure/save.sh | tail -n 2 | sed 's/echo \"  //g' | tr -d \"\"\")" -- "${COMP_WORDS[1]}") )
 }
 
 _removeCompletion() {

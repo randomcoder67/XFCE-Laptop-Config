@@ -280,20 +280,20 @@ func getDay(date string) {
 		os.Exit(0)
 	}
 	dreamsJSON := getJSON(year + month + "Dreams.json")
-	fmt.Printf("What Happened:	%s\n", requestedDay.(map[string]interface{})["stuff"].(string))
+	fmt.Printf("What Happened:    %s\n", requestedDay.(map[string]interface{})["stuff"].(string))
 	fmt.Printf("Where Were You:   %s\n", requestedDay.(map[string]interface{})["trips"].(string))
 	fmt.Printf("Favourite Video:  %s\n", requestedDay.(map[string]interface{})["video"].(string))
 	fmt.Printf("Favourite Song:   %s\n", requestedDay.(map[string]interface{})["song"].(string))
-	fmt.Printf("Learned:		  %s\n", requestedDay.(map[string]interface{})["learn"].(string))
+	fmt.Printf("Learned:          %s\n", requestedDay.(map[string]interface{})["learn"].(string))
 	if len(dreamsJSON) > 0 {
 		requestedDayDreams, ok := dreamsJSON[day]
 		if ok {
-			fmt.Printf("Dreams:		   %s\n", requestedDayDreams.(map[string]interface{})["dream"].(string))
+			fmt.Printf("Dreams:           %s\n", requestedDayDreams.(map[string]interface{})["dream"].(string))
 		} else {
-			fmt.Printf("Dreams:		   No Entry\n")
+			fmt.Printf("Dreams:           No Entry\n")
 		}
 	} else {
-		fmt.Printf("Dreams:		   No Entry\n")
+		fmt.Printf("Dreams:           No Entry\n")
 	}
 }
 

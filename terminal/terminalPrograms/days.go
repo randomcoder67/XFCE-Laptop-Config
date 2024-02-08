@@ -149,7 +149,7 @@ func main() {
 				fmt.Println("Error, incorrectly formatted arguments")
 				printHelp()
 				os.Exit(1)
-			}		   
+			}
 		} else if os.Args[1] == "-h" || os.Args[1] == "--help" || os.Args[1] == "help" {
 			printHelp()
 			os.Exit(0)
