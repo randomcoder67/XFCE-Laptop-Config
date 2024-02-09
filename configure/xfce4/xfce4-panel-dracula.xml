@@ -163,7 +163,7 @@
       <property name="font" type="string" value="Roboto 12"/>
     </property>
     <property name="plugin-21" type="string" value="genmon">
-      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh Destiny Destiny NONE -d"/>
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelStreamChecker.sh Destiny Destiny NONE -d"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value="(genmon)"/>
       <property name="update-period" type="int" value="300000"/>
@@ -179,7 +179,7 @@
       <property name="font" type="string" value="Roboto 12"/>
     </property>
     <property name="plugin-23" type="string" value="genmon">
-      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh &quot;Chud Logic&quot; ChudLogic chudlogic -d"/>
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelStreamChecker.sh &quot;Chud Logic&quot; ChudLogic chudlogic -d"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value="(genmon)"/>
       <property name="update-period" type="int" value="300000"/>
@@ -195,7 +195,7 @@
       <property name="font" type="string" value="Roboto 12"/>
     </property>
     <property name="plugin-25" type="string" value="genmon">
-      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh Kuihman KuihmanLive NONE -d"/>
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelStreamChecker.sh Kuihman KuihmanLive NONE -d"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value="(genmon)"/>
       <property name="update-period" type="int" value="300000"/>
@@ -231,7 +231,7 @@
       <property name="font" type="string" value="Roboto 12"/>
     </property>
     <property name="plugin-27" type="string" value="genmon">
-      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/streamChecker.sh NMIXX NMIXXOfficial NONE -d"/>
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelStreamChecker.sh NMIXX NMIXXOfficial NONE -d"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value="(genmon)"/>
       <property name="update-period" type="int" value="300000"/>
