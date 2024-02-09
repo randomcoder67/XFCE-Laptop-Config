@@ -3,7 +3,7 @@
 # Script to present a Rofi window to the user and allow them to select a bookmark to copy or type
 
 # Present the Rofi window to user, get the selected item and the return status (used to know which keys were pressed)
-item=$(awk -F 'DELIM' '{print $1}' ~/Programs/output/updated/bookmarks.txt | rofi -kb-custom-1 "Ctrl+a" -kb-custom-2 "Ctrl+w" -kb-custom-3 "Shift+Return" -dmenu -i -p "Bookmarks")
+item=$("$HOME/Programs/output/updated/bookmarksIcons.sh" | rofi -kb-custom-1 "Ctrl+a" -kb-custom-2 "Ctrl+w" -kb-custom-3 "Shift+Return" -dmenu -show-icons -i -p "Bookmarks")
 status=$?
 
 # status=10 means the user selected to add a bookmark
@@ -19,11 +19,13 @@ if [ $status -eq 10 ]; then
 	else
 		echo "$itemAlias""DELIM""$itemToAdd" >> ~/Programs/output/updated/bookmarks.txt
 	fi
+	"$HOME/Programs/system/rofi/addIconsBookmarks.sh"
 # status=11 means the user selected to remove a bookmark
 elif [ $status -eq 11 ]; then
 	# Get line number of match and remove it
 	lineNum=$(grep -En "^${item}DELIM" ~/Programs/output/updated/bookmarks.txt | cut -d ":" -f 1)
 	sed -i "${lineNum}d" ~/Programs/output/updated/bookmarks.txt
+	"$HOME/Programs/system/rofi/addIconsBookmarks.sh"
 # status=12 means the user selected to open a bookmark in Firefox if possible
 elif [ $status -eq 12 ]; then
 	# keyup Shift as the shortcut is Shift+Return, this prevents the bookmark being typed as capital letters
