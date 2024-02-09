@@ -83,7 +83,10 @@ function checkAllPlatforms() {
 }
 
 # Define streamers, and their YouTube and Twitch @s
-streamers=( "Destiny" "Destiny" "NONE" "Chud Logic" "ChudLogic" "chudlogic" "Kuihman" "Kuihman" "NONE" "NerdCubed" "NerdCubed" "nerdcubed" "MATN" "ManyATrueNerd" "NONE" "Dustin Eden" "NONE" "dustineden" "Noah Sunday" "NoahSundayCompletionist" "NONE" "NMIXX" "NMIXXOfficial" "NONE" )
+oldIFS="$IFS"
+IFS=$'\n'
+streamers=( $(cat "$HOME/Programs/output/updated/streamers.txt") )
+IFS="$oldIFS"
 
 # Count number of streamers
 numStreamers=$((${#streamers[@]}/3))

@@ -22,7 +22,7 @@ if [ $status -eq 10 ]; then
 # status=11 means the user selected to remove a bookmark
 elif [ $status -eq 11 ]; then
 	# Get line number of match and remove it
-	lineNum=$(grep -Fn "$item" ~/Programs/output/updated/bookmarks.txt | cut -d ":" -f 1)
+	lineNum=$(grep -En "^${item}DELIM" ~/Programs/output/updated/bookmarks.txt | cut -d ":" -f 1)
 	sed -i "${lineNum}d" ~/Programs/output/updated/bookmarks.txt
 # status=12 means the user selected to open a bookmark in Firefox if possible
 elif [ $status -eq 12 ]; then
@@ -31,8 +31,7 @@ elif [ $status -eq 12 ]; then
 	# Some string substitution to get correct format for grep
 	itemA=$(echo "$item" | sed 's/\[/\\[/g' | sed 's/\]/\\]/g')
 	# Finding bookmark from alias and check if url
-	toOpen=$(grep "$itemA" ~/Programs/output/updated/bookmarks.txt | awk -F 'DELIM' '{print $2}' | tr -d '\n')
-	echo $toOpen
+	toOpen=$(grep -E "^${itemA}DELIM" ~/Programs/output/updated/bookmarks.txt | awk -F 'DELIM' '{print $2}' | tr -d '\n')
 	if echo "$toOpen" | grep -q -E 'https?://(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)'; then # If so, open it
 		firefox "$toOpen"
 	else

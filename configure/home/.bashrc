@@ -344,7 +344,7 @@ alias matn='mpv --title="Many A True Nerd" https://www.youtube.com/@ManyATrueNer
 alias noahsunday='mpv --title="Noah Sunday - Completionist" https://www.youtube.com/@NoahSundayCompletionist/live & disown'
 alias nmixx='mpv --title="NMIXX" https://www.youtube.com/@NMIXXOfficial/live & disown'
 alias dgg='firefox https://destiny.gg/embed/chat & disown'
-alias streams='~/Programs/terminal/alias/streamsCheck.sh'
+alias streams='~/Programs/terminal/alias/terminalStreamChecker.sh'
 alias wstream='~/Programs/terminal/alias/destinyDownload.sh'
 
 # cd Shortcuts 
