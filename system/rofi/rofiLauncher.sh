@@ -14,7 +14,7 @@ PATH=$PATH:$HOME/.local/bin
 selection=$(cat ~/Programs/output/updated/files.txt | rofi -refilter-timeout-limit 18000 -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
 status=$?
 
-[[ "$selection" == "" ]] && exit
+[[ "$status" == 1 ]] && exit
 
 IFS=$'\n'
 
@@ -122,6 +122,8 @@ elif [[ "$selection" == "Streamers" ]]; then
 	
 	# Get choice from user
 	choiceNum=$(echo "$toOffer" | rofi -dmenu -format "i" -i -p "Select Stream")
+	status="$?"
+	[[ "$status" == 1 ]] && exit
 	# Get offset and paramaters for streamLauncher.sh
 	offset=$((3*choiceNum))
 	platform="${toRun[$offset]}"
@@ -137,6 +139,34 @@ elif [[ "$selection" == "Minecraft Wiki" ]]; then
 	wikiSearch "https://minecraft.wiki/api.php?" "https://minecraft.wiki/wiki/" "https://minecraft.wiki/" "Minecraft Wiki"
 elif [[ "$selection" == "Kerbal Space Program Wiki" ]]; then
 	wikiSearch "https://wiki.kerbalspaceprogram.com/api.php?" "https://wiki.kerbalspaceprogram.com/wiki/" "https://wiki.kerbalspaceprogram.com/wiki/Main_Page" "Kerbal Space Program Wiki"
+elif [[ "$selection" == "Dead Cells Wiki" ]]; then
+	wikiSearch "https://deadcells.wiki.gg/api.php?" "https://deadcells.wiki.gg/wiki/" "https://deadcells.wiki.gg/wiki/Dead_Cells_Wiki" "Dead Cells Wiki"
+elif [[ "$selection" == "StarSector Wiki" ]]; then
+	wikiSearch "https://starsector.fandom.com/api.php?" "https://starsector.fandom.com/wiki/" "https://starsector.fandom.com/wiki/Starsector_Wiki" "StarSector Wiki"
+elif [[ "$selection" == "Surviving Mars Wiki" ]]; then
+	wikiSearch "https://survivingmars.paradoxwikis.com/api.php?" "https://survivingmars.paradoxwikis.com/" "https://survivingmars.paradoxwikis.com/Surviving_Mars_Wiki" "Surviving Mars Wiki"
+elif [[ "$selection" == "Timberborn Wiki" ]]; then
+	wikiSearch "https://timberborn.wiki.gg/api.php?" "https://timberborn.wiki.gg/wiki/" "https://timberborn.wiki.gg/wiki/Timberborn_Wiki" "Timberborn Wiki"
+elif [[ "$selection" == "Anno 1800 Wiki" ]]; then
+	wikiSearch "https://anno1800.fandom.com/api.php?" "https://anno1800.fandom.com/wiki/" "https://anno1800.fandom.com/wiki/Anno_1800_Wiki" "Anno 1800 Wiki"
+elif [[ "$selection" == "Children of Morta Wiki" ]]; then
+	wikiSearch "https://childrenofmorta.fandom.com/api.php?" "https://childrenofmorta.fandom.com/wiki/" "https://childrenofmorta.fandom.com/wiki/Children_Of_Morta_Wiki" "Children of Morta Wiki"
+elif [[ "$selection" == "Project Zomboid Wiki" ]]; then
+	wikiSearch "https://pzwiki.net/api.php?" "https://pzwiki.net/wiki/" "https://pzwiki.net/wiki/Project_Zomboid_Wiki" "Project Zomboid Wiki"
+elif [[ "$selection" == "Space Engineers Wiki" ]]; then
+	wikiSearch "https://spaceengineers.fandom.com/api.php?" "https://spaceengineers.fandom.com/wiki/" "https://spaceengineers.fandom.com/wiki/Space_Engineers_Wiki" "Space Engineers Wiki"
+elif [[ "$selection" == "Noita Wiki" ]]; then
+	wikiSearch "https://noita.wiki.gg/api.php?" "https://noita.wiki.gg/wiki/" "https://noita.wiki.gg/wiki/Noita_Wiki" "Noita Wiki"
+elif [[ "$selection" == "Mario Wiki" ]]; then
+	wikiSearch "https://www.mariowiki.com/api.php?" "https://www.mariowiki.com/" "https://www.mariowiki.com/" "Mario Wiki"
+elif [[ "$selection" == "CrossCode Wiki" ]]; then
+	wikiSearch "https://crosscode.fandom.com/api.php?" "https://crosscode.fandom.com/wiki/" "https://crosscode.fandom.com/wiki/CrossCode_Wiki" "CrossCode Wiki"
+elif [[ "$selection" == "No Man's Sky Wiki" ]]; then
+	wikiSearch "https://nomanssky.fandom.com/api.php?" "https://nomanssky.fandom.com/wiki/" "https://nomanssky.fandom.com/wiki/No_Man%27s_Sky_Wiki" "No Man's Sky Wiki"
+elif [[ "$selection" == "Forza Wiki" ]]; then
+	wikiSearch "https://forza.fandom.com/api.php?" "https://forza.fandom.com/wiki/" "https://forza.fandom.com/wiki/Forza_Wiki" "Forza Wiki"
+elif [[ "$selection" == "Dragons's Dogma Wiki" ]]; then
+	wikiSearch "https://dragonsdogma.fandom.com/api.php?" "https://dragonsdogma.fandom.com/wiki/" "https://dragonsdogma.fandom.com/wiki/Dragon%27s_Dogma_Wiki" "Dragons's Dogma Wiki"
 elif [[ "$selection" == "Internet Archive" ]]; then
 	url=$(rofi -dmenu -p "Enter URL to find archives of")
 	firefox "https://web.archive.org/web/*/$url"

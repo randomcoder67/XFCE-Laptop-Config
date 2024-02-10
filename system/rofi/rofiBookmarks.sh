@@ -6,6 +6,8 @@
 index=$("$HOME/Programs/output/updated/bookmarksIcons.sh" | rofi -kb-custom-1 "Ctrl+a" -kb-custom-2 "Ctrl+w" -kb-custom-3 "Shift+Return" -dmenu -show-icons -i -format "d" -p "Bookmarks")
 status=$?
 
+[[ "$status" == 1 ]] && exit
+
 # status=10 means the user selected to add a bookmark
 if [ $status -eq 10 ]; then
 	# Get new bookmark to add
