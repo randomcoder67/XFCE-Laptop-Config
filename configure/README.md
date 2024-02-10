@@ -214,6 +214,7 @@
 `Super+Return` Alacritty  
 `Super+Shift+Return` Xfce4 Terminal  
 `Super+W` Firefox  
+`Super+S` GoTube  
 `Super+E` Thunar File Manager  
 `Super+M` Mousepad  
 `Super+Shift+M` Mousepad (New Window)  
@@ -230,7 +231,6 @@
 `Super+U` cava visualiser  
 `Super+Y` colour pick, copies to clipboard  
 `Super+Backtick` Screenshot Utility  
-`Super+S` Settings Manager  
 `Super+P` Plugging/Unplugging from Monitor  
 `Super+K` Expand Left Window in Horizontal Split  
 `Super+J` Expand Right Window in Horizontal Split  
