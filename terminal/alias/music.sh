@@ -50,7 +50,7 @@ elif [[ "$2" == "--background" ]]; then
 fi
 
 # Check if music is already playing
-ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metadata/artist} --shuffle --no-resume-playback --loop-playlist $HOME/Music/" | grep -vq "grep" && notify-send "Music already playing" && exit
+ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metadata/artist} --no-resume-playback --loop-playlist $HOME/Music/" | grep -vq "grep" && notify-send "Music already playing" && exit
 
 # Check if headphones plugged in (works but too slow to use)
 #if ! grep -A4 -i 'Headphone Playback Switch' /proc/asound/card0/codec#*  | grep "Amp-Out vals.*0x00 0x00" -q; then
@@ -60,7 +60,7 @@ ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metad
 
 # If no argument given, shuffle music from current playlist
 if [[ "$doArg" == "" ]]; then
-	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --no-resume-playback --loop-playlist "$HOME/Music/CurrentPlaylist" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
+	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --no-resume-playback --loop-playlist "$HOME/Music/CurrentPlaylist" "$shuffleArgs" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
 # Present choice of playlists
 elif [[ "$doArg" == "--choice" ]]; then
 	playlists="All Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z][a-z]\)/\1 \2/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 5)"
@@ -86,10 +86,10 @@ elif [[ "$doArg" == "--choice" ]]; then
 	else
 		folder="$HOME/Music/$(echo $result | sed 's/ //g')"
 	fi
-	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' "$shuffleArgs" --no-resume-playback --loop-playlist "$folder" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
+	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --no-resume-playback --loop-playlist "$folder" "$shuffleArgs" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
 # Shuffle music of a particular artist (or artists with | to delimit)
 elif [[ "$doArg" == "-a" ]]; then
-	find "$HOME/Music/" -maxdepth 1 -type f | sort | grep -iE ".*-.* $2 .*-.*" | xargs -d '\n' /usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --loop-playlist --no-resume-playback "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
+	find "$HOME/Music/" -maxdepth 1 -type f | sort | grep -iE ".*-.* $2 .*-.*" | xargs -d '\n' /usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --loop-playlist --no-resume-playback "$shuffleArgs" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
 elif [[ "$doArg" == "-al" ]]; then
-	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --shuffle --no-resume-playback --loop-playlist "$HOME/Music" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
+	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --no-resume-playback --loop-playlist "$HOME/Music" "$shuffleArgs" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
 fi
