@@ -486,6 +486,7 @@ export EDITOR="nano"
 export VISUAL="micro"
 export MICRO_TRUECOLOR=1
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export PASSWORD_STORE_CLIP_TIME=120
 
 source ~/Programs/output/otherScripts/aliases.sh
 source ~/Programs/terminal/autocompletion.bash
