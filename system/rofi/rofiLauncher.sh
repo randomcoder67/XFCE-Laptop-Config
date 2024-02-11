@@ -39,6 +39,9 @@ wikiSearch () {
 	wikiName="$4"
 	
 	searchTerm=$(rofi -dmenu -p "Enter Search Term (Blank for homepage)") # Get search term from user
+	
+	[[ "$?" == "1" ]] && exit
+	
 	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
 		firefox "$mainPage"
 	else # Otherwise, use API to search
@@ -46,6 +49,7 @@ wikiSearch () {
 		searchResults=$(curl "${apiAddress}action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
 		# Present results to user and allow them to pick desired page
 		result=$(echo $searchResults | jq .query.search.[].title -r | rofi -dmenu -i -p "Choose Page")
+		[[ "$?" == "1" ]] && exit
 		if [[ "$result" != "" ]]; then
 			urlString=${result// /_} # Replace spaces with "_" for url
 			firefox "${pageAddress}${urlString}"
