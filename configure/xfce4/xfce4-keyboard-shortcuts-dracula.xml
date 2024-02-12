@@ -44,7 +44,6 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;f" type="string" value="thunar"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;Escape" type="string" value="xfce4-taskmanager"/>
-      <property name="&lt;Super&gt;e" type="string" value="thunar"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="override" type="bool" value="true"/>
@@ -96,6 +95,7 @@
       <property name="&lt;Super&gt;u" type="string" value="alacritty -o &apos;window.title=&quot;cava&quot;&apos; -e /home/GENERICUSERNAME/.local/bin/cava"/>
       <property name="&lt;Super&gt;b" type="string" value="alacritty -o &apos;window.title=&quot;btop&quot;&apos; -e btop"/>
       <property name="&lt;Super&gt;s" type="string" value="alacritty -o &apos;window.title=&quot;GoTube&quot;&apos; -e /home/GENERICUSERNAME/.local/bin/gotube"/>
+      <property name="&lt;Super&gt;e" type="string" value="alacritty -o &apos;window.title=&quot;ranger&quot;&apos; -e ranger"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
