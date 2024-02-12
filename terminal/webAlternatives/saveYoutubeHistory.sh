@@ -19,6 +19,7 @@ numEntriesToGet=$((numEntriesToGetA+10))
 echo "Saving $numEntriesToGet most recent entries to YouTube history"
 
 output=$(yt-dlp --cookies-from-browser firefox --flat-playlist -J --playlist-end "$numEntriesToGet" "https://www.youtube.com/feed/history")
+[[ "$?" == "1" ]] && exit
 
 echo "$output" | jq '.entries[] | [.title,.channel,.url] | @csv' | tac >> "${dirName}/${fileName}" 
 
