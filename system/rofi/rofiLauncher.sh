@@ -286,6 +286,8 @@ elif [[ "$selection" == "GoTube" ]]; then
 	alacritty -o 'window.title="GoTube"' -e gotube
 elif [[ "$selection" == "YouTube Subscriptions" ]]; then
 	alacritty -o 'window.title="GoTube"' -e gotube --subscriptions
+elif [[ "$selection" == "ranger" ]]; then
+	alacritty -o 'window.title="ranger"' -e ranger
 elif [[ "$selection" == "XColor Colour Picker" ]]; then
 	xcolor | tr -d '\n' | tee >(xargs notify-send) | tr -d '#' | xclip -selection c
 elif [[ "$selection" == "ZBar QR Code Scanner" ]]; then
