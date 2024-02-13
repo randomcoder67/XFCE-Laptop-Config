@@ -326,6 +326,7 @@
 `m` Toggle Mute  
 `Shift+m` Show Metadata  
 `Shift+k` Lock window size  
+`Shift+v` Toggle Mono Audio  
 
 ### Rofi Bookmarks 
 
