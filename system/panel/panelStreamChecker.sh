@@ -49,7 +49,7 @@ if [[ "$youtubeChannelAt" != "NONE" ]]; then
 			else
 				echo "<txt><span foreground='#$upcomingColour'>  </span></txt>"
 				liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 5)
-				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 9 | sed 's/&/and/g')
+				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 9 | sed 's/&/and/g' | sed 's/\\u0026/and/g')
 				echo "<tool>Stream Schedueled at $liveAt - $streamTitle</tool>"
 			fi
 			liveYouTube="true"
