@@ -6,9 +6,17 @@ uptimeNormal=$(uptime | tr -s " ")
 uptimeFormatted=$(echo "$uptimeNormal" | cut -d " " -f 4 | grep -o [0-9:]*)
 uptimeSince="$(uptime -s)"
 
-loadOneMinute=$(echo "$uptimeNormal" | cut -d " " -f 9 | grep -o [0-9.]*)
-loadFiveMinutes=$(echo "$uptimeNormal" | cut -d " " -f 10 | grep -o [0-9.]*)
-loadFifteenMinutes=$(echo "$uptimeNormal" | cut -d " " -f 11 | grep -o [0-9.]*)
+targetSplit="9"
+loadOneMinute=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o [0-9.]*)
+# Sometimes there is an extra item in the split, because of "min" text
+if [[ "$loadOneMinute" == "" ]]; then
+	targetSplit="10"
+	loadOneMinute=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o [0-9.]*)
+fi
+targetSplit=$((targetSplit+1))
+loadFiveMinutes=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o [0-9.]*)
+targetSplit=$((targetSplit+1))
+loadFifteenMinutes=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o [0-9.]*)
 
 if [[ "${#uptimeFormatted}" == "4" ]]; then
 	uptimeFormatted="0${uptimeFormatted}"
