@@ -70,7 +70,7 @@ if [[ "$youtubeChannelAt" != "NONE" ]]; then
 				echo "youtube" > "$XDG_STATE_HOME/streams/${channelName}.txt"
 			else
 				echo "<txt><span foreground='#$liveColour'>  </span></txt><txtclick>$HOME/Programs/system/panel/streamLauncher.sh YouTube \"${channelName}\" \"${youtubeChannelAt}\"</txtclick>"
-				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 9 | sed 's/&/and/g')
+				streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 9 | sed 's/&/and/g' | sed 's/\\u0026/and/g')
 				echo "<tool>YouTube - $streamTitle</tool>"
 			fi
 			liveYouTube="true"
