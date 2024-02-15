@@ -208,8 +208,8 @@ elif [[ "$selection" == "NASA Image of the Day" ]]; then
 	firefox https://www.nasa.gov/multimedia/imagegallery/iotd.html
 elif [[ "$selection" == "ChatGPT" ]]; then
 	firefox "https://chat.openai.com"
-elif [[ "$selection" == "Bard" ]]; then
-	firefox "https://bard.google.com/chat"
+elif [[ "$selection" == "Gemini" ]]; then
+	firefox "https://gemini.google.com/app"
 elif [[ "$selection" == "Dead Cells" ]]; then
 	steam steam://rungameid/588650
 elif [[ "$selection" == "Terraria" ]]; then
