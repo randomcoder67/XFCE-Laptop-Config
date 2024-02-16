@@ -143,6 +143,10 @@ elif [[ "$selection" == "Streamers" ]]; then
 			firefox "https://www.youtube.com/@${channelAt}/live"
 		fi
 	fi
+elif [[ "$selection" == "Gmail ("* ]]; then
+	emailAddress="${selection#*(}"
+	emailAddress="${emailAddress%*)}"
+	firefox "https://mail.google.com/mail/u/${emailAddress}"
 elif [[ "$selection" == "Wikipedia" ]]; then
 	wikiSearch "https://en.wikipedia.org/w/api.php?" "https://en.wikipedia.org/wiki/" "https://en.wikipedia.org/wiki/Main_Page" "Wikipedia"
 elif [[ "$selection" == "Terraria Wiki" ]]; then
@@ -177,7 +181,7 @@ elif [[ "$selection" == "No Man's Sky Wiki" ]]; then
 	wikiSearch "https://nomanssky.fandom.com/api.php?" "https://nomanssky.fandom.com/wiki/" "https://nomanssky.fandom.com/wiki/No_Man%27s_Sky_Wiki" "No Man's Sky Wiki"
 elif [[ "$selection" == "Forza Wiki" ]]; then
 	wikiSearch "https://forza.fandom.com/api.php?" "https://forza.fandom.com/wiki/" "https://forza.fandom.com/wiki/Forza_Wiki" "Forza Wiki"
-elif [[ "$selection" == "Dragons's Dogma Wiki" ]]; then
+elif [[ "$selection" == "Dragon's Dogma Wiki" ]]; then
 	wikiSearch "https://dragonsdogma.fandom.com/api.php?" "https://dragonsdogma.fandom.com/wiki/" "https://dragonsdogma.fandom.com/wiki/Dragon%27s_Dogma_Wiki" "Dragons's Dogma Wiki"
 elif [[ "$selection" == "Internet Archive" ]]; then
 	url=$(rofi -dmenu -p "Enter URL to find archives of")
