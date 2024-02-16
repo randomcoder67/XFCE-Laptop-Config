@@ -125,7 +125,7 @@ elif [[ "$selection" == "Streamers" ]]; then
 	done
 	
 	# Get choice from user
-	choiceNum=$(echo "$toOffer" | rofi -dmenu -format "i" -i -p "Select Stream")
+	choiceNum=$(echo "$toOffer" | rofi -dmenu -format "i" -kb-custom-1 "Shift+Return" -i -p "Select Stream")
 	status="$?"
 	[[ "$status" == 1 ]] && exit
 	# Get offset and paramaters for streamLauncher.sh
@@ -134,7 +134,15 @@ elif [[ "$selection" == "Streamers" ]]; then
 	channelName="${toRun[$((offset+1))]}"
 	channelAt="${toRun[$((offset+2))]}"
 	# Launch Stream
-	"$HOME/Programs/system/panel/streamLauncher.sh" "$platform" "$channelName" "$channelAt"
+	if [[ "$status" == 0 ]]; then
+		"$HOME/Programs/system/panel/streamLauncher.sh" "$platform" "$channelName" "$channelAt"
+	elif [[ "$status" == 10 ]]; then
+		if [[ "$platform" == "Twitch" ]]; then
+			firefox "https://www.twitch.tv/${channelAt}"
+		elif [[ "$platform" == "YouTube" ]]; then
+			firefox "https://www.youtube.com/@${channelAt}/live"
+		fi
+	fi
 elif [[ "$selection" == "Wikipedia" ]]; then
 	wikiSearch "https://en.wikipedia.org/w/api.php?" "https://en.wikipedia.org/wiki/" "https://en.wikipedia.org/wiki/Main_Page" "Wikipedia"
 elif [[ "$selection" == "Terraria Wiki" ]]; then
