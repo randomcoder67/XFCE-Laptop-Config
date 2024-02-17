@@ -12,3 +12,6 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export GRIPHOME="$XDG_CONFIG_HOME/grip"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
+export EDITOR="nano"
+export VISUAL="micro"
