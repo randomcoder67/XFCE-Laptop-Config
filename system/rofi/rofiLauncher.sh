@@ -149,6 +149,10 @@ elif [[ "$selection" == "Gmail ("* ]]; then
 	firefox "https://mail.google.com/mail/u/${emailAddress}"
 elif [[ "$selection" == "Outlook ("* ]]; then
 	firefox "https://outlook.office.com/mail/"
+elif [[ "$selection" == "The Trainline" ]]; then
+	firefox "https://www.thetrainline.com/"
+elif [[ "$selection" == "RealTimeTrains" ]]; then
+	firefox "https://www.realtimetrains.co.uk/"
 elif [[ "$selection" == "Wikipedia" ]]; then
 	wikiSearch "https://en.wikipedia.org/w/api.php?" "https://en.wikipedia.org/wiki/" "https://en.wikipedia.org/wiki/Main_Page" "Wikipedia"
 elif [[ "$selection" == "Terraria Wiki" ]]; then

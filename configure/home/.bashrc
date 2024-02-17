@@ -482,8 +482,6 @@ HISTFILESIZE=20000
 
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$PATH:~/.local/bin:~/.npm/bin:~/.local/share/npm/bin
-export EDITOR="nano"
-export VISUAL="micro"
 export MICRO_TRUECOLOR=1
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export PASSWORD_STORE_CLIP_TIME=120
