@@ -90,6 +90,7 @@ cp ~/Programs/configure/$currentTheme.css ~/.local/share/themes/Greybird-dark/gt
 cp ~/Programs/configure/home/.bashrc ~/.bashrc
 cp ~/Programs/configure/home/.inputrc ~/.inputrc
 cp ~/Programs/configure/home/.profile ~/.profile
+cp ~/Programs/configure/home/.bash_profile ~/.bash_profile
 
 cp ~/Programs/configure/home/.config/systemd/user/files.service ~/.config/systemd/user/files.service
 cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/user/files.timer

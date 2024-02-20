@@ -76,6 +76,7 @@ if [[ $selection == *"/"* ]]; then
 	newSelection=$(echo $selection | sed 's|~|'"${HOME}"'|g')
 	if [ $status -eq 10 ]; then
 		selectedProgramName=$(~/Programs/output/updated/launchersIcons.sh | rofi -dmenu -show-icons -i -p "Select Which Program to Use")
+		[[ "$?" == 1 ]] && exit
 		selectedProgram=${programs[$selectedProgramName]}
 		if [[ "$selectedProgramName" == "mpv" ]]; then
 			if [[ "$selection" == *".m4a" ]]; then
@@ -194,6 +195,8 @@ elif [[ "$selection" == "Internet Archive" ]]; then
 	firefox "https://web.archive.org/web/*/$url"
 elif [[ "$selection" == "~" ]]; then
 	xdg-open "$selection"
+elif [[ "$selection" == "Reindex Files" ]]; then
+	"$HOME/Programs/system/rofi/checkFiles.sh" && notify-send -t 5000 "Reindexed files"
 elif [[ "$selection" == "btop" ]]; then
 	alacritty -o 'window.title="btop"' -e btop
 elif [[ "$selection" == "htop" ]]; then
