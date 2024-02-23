@@ -89,6 +89,11 @@ pdf () {
 	done
 }
 
+# Open folder/files in Lite-XL
+lt () {
+	lite-xl "$@" & disown
+}
+
 # Open file with Mousepad (fasd)
 _m () {
 	result=$(fasd -fi $@)
