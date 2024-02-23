@@ -8,6 +8,7 @@
 `ms` opens file(s) in mousepad (normal)  
 `mn` open file in new window in mousepad (fasd)  
 `msn` opens file(s) in new window in mousepad (normal)  
+`lt` opens file(s)/folder in Lite-Xl  
 `r` opens image in Ristretto (fasd)  
 `rs` opens image(s) in Ristretto (normal)  
 `p` opens video/audio file (fasd)  
