@@ -94,7 +94,7 @@
     <property name="plugin-10" type="string" value="tasklist"/>
     <property name="plugin-11" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="known-players" type="string" value="Chrome;chromium.instance3206;cmus;com.github.marinm.songrec.desktop;firefox;Firefox Web Browser;org.gnome.Totem;org.kde.dragonplayer;org.kde.haruna;qutebrowser;smplayer;SongRec;Vivaldi;vlc;VLC media player"/>
+      <property name="known-players" type="string" value="Chrome;chromium.instance3206;cmus;com.github.marinm.songrec.desktop;firefox;Firefox Web Browser;org.gnome.Rhythmbox3;org.gnome.Totem;org.kde.dragonplayer;org.kde.haruna;qutebrowser;smplayer;SongRec;Vivaldi;vlc;VLC media player"/>
     </property>
     <property name="plugin-12" type="string" value="power-manager-plugin"/>
     <property name="plugin-13" type="string" value="notification-plugin"/>

@@ -70,7 +70,6 @@ openMetOfficeObservations () {
 	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "12")
 	firefox "https://www.metoffice.gov.uk/weather/observations/${geohash}"
 }
-	
 
 if [[ $selection == *"/"* ]]; then
 	newSelection=$(echo $selection | sed 's|~|'"${HOME}"'|g')
