@@ -195,6 +195,7 @@
 `sky` get position of planets in sky  
 `timer` timer program  
 `domount` disk mounting script  
+`ipodsync` sync iPod Shuffle 4th gen with CurrentPlaylist folder  
 `render` markdown to html  
 `mt` metric time  
 `downloadt` download time calculator  

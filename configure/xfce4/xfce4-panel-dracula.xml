@@ -207,6 +207,7 @@
     </property>
     <property name="plugin-29" type="string" value="systray">
       <property name="known-legacy-items" type="array">
+        <value type="string" value="guake"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="yad"/>
         <value type="string" value="gigolo"/>
@@ -215,6 +216,7 @@
         <value type="string" value="no network connection"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="Yakuake"/>
         <value type="string" value="vlc"/>
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="ulauncher"/>
