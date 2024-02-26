@@ -6,7 +6,7 @@ oldIFS="$IFS"
 IFS=$'\n'
 
 # Get results and form array
-results=$(grep -ir --include=*.md "^# " "$HOME/Work/")
+results=$(grep -ir --include=*.md "^# " "$HOME/Programs/website/content/")
 resultsArray=( $results )
 
 # Get selection, only presenting titles and returning index
