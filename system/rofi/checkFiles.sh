@@ -43,6 +43,7 @@ sed -i "/~\/Downloads\/BackupDec/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Programs\/configure\/home/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Videos\/Media/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Programs\/output\/updated\/filesFinal.txt/d" ~/Programs/output/updated/files.txt
+sed -i "/~\/Programs\/website\/emojis/d" ~/Programs/output/updated/files.txt
 sed -i "/~\/Programs\/.venv/d" ~/Programs/output/updated/files.txt
 #sed -i "/~\/Programs\/organisation/d" ~/Programs/output/updated/files.txt
 # Remove curPlaylist so there aren't duplicate songs. Super+L can be used to play music from curPlaylist 
