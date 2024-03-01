@@ -441,6 +441,7 @@ alias gripdo='grip --theme=dark -b'
 alias latexmk='do_latexmk'
 alias bookmarks='wc -l ~/Programs/output/updated/bookmarks.txt'
 alias serial='sudo cat /sys/devices/virtual/dmi/id/product_serial'
+alias pyweb='python3 -m http.server -d'
 
 # Info programs 
 
