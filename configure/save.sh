@@ -69,6 +69,8 @@ cp ~/.config/zathura/zathurarc ~/Programs/configure/home/.config/zathura/zathura
 cp ~/.config/qalculate/qalc.cfg ~/Programs/configure/home/.config/qalculate/
 [ -d ~/Programs/configure/home/.config/rofi ] || mkdir ~/Programs/configure/home/.config/rofi
 cp ~/.config/rofi/config.rasi ~/Programs/configure/home/.config/rofi/
+[ -d ~/Programs/configure/home/.config/tmux ] || mkdir ~/Programs/configure/home/.config/tmux
+cp ~/.config/tmux/tmux.conf ~/Programs/configure/home/.config/tmux/
 [ -d ~/Programs/configure/home/.config/songrec ] || mkdir ~/Programs/configure/home/.config/songrec
 cp ~/.config/songrec/preferences.toml ~/Programs/configure/home/.config/songrec/
 [ -d ~/Programs/configure/home/.config/npm ] || mkdir ~/Programs/configure/home/.config/npm

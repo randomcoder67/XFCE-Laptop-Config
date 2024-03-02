@@ -113,6 +113,7 @@ cp ~/Programs/configure/home/.config/mpv/scripts/osc_tethys.lua ~/.config/mpv/sc
 cp ~/Programs/configure/home/.config/neofetch/config.conf ~/.config/neofetch/config.conf
 cp ~/Programs/configure/home/.config/qalculate/qalc.cfg ~/.config/qalculate/qalc.cfg
 cp ~/Programs/configure/home/.config/rofi/config.rasi ~/.config/rofi/config.rasi
+cp ~/Programs/configure/home/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf
 cp ~/Programs/configure/home/.config/songrec/preferences.toml ~/.config/songrec/preferences.toml
 cp ~/Programs/configure/home/.config/npm/npmrc ~/.config/npm/npmrc
 cp ~/Programs/configure/home/.config/micro/bindings.json ~/.config/micro/bindings.json
