@@ -329,6 +329,10 @@ elif [[ "$selection" == "OS Maps" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
 	firefox "https://explore.osmaps.com/?lat=${lat}&lon=${lon}&zoom=11.5&style=Leisure&type=2d"
+elif [[ "$selection" == "OpenStreetMap" ]]; then
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	firefox "https://www.openstreetmap.org/#map=12/${lat}/${lon}"
 elif [[ "$selection" == "Sunrise and Sunset" ]]; then
 	firefox "https://www.timeanddate.com/sun/@$(cat $HOME/Programs/output/updated/curLocation.csv | tr "|" ",")"
 elif [[ "$selection" == "Weather MetOffice" ]]; then
