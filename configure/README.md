@@ -162,6 +162,7 @@
 `anonprompt` swap prompt for one without username or hostname  
 `serial` get serial number  
 `pyweb` start simple http server with root as given directory  
+`cmatrix` cmatrix with speed of 6  
 
 ### Info programs
 
