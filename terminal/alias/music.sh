@@ -63,7 +63,7 @@ if [[ "$doArg" == "" ]]; then
 	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --no-resume-playback --loop-playlist "$HOME/Music/CurrentPlaylist" "$shuffleArgs" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
 # Present choice of playlists
 elif [[ "$doArg" == "--choice" ]]; then
-	playlists="All Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z][a-z]\)/\1 \2/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 5)"
+	playlists="All Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([A-Z][a-z]\)/ \1/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 5 | sed 's/^ //g')"
 	result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play" -kb-custom-1 "Shift+Return")
 	[ $? -eq 10 ] && shuffleArgs="--shuffle=no"
 	folder=""
@@ -71,7 +71,7 @@ elif [[ "$doArg" == "--choice" ]]; then
 		exit
 	elif [[ "$result" == "Favourites" ]]; then
 		shuffleArgs="--shuffle=yes"
-		playlists="All Soundtracks"$'\n'"$(find $HOME/Music/Favourites -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([^/]\)\([A-Z][a-z]\)/\1 \2/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 6)"
+		playlists="All Soundtracks"$'\n'"$(find $HOME/Music/Favourites -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([A-Z][a-z]\)/ \1/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 6 | sed 's/^ //g')"
 		result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play" -kb-custom-1 "Shift+Return")
 		[ $? -eq 10 ] && shuffleArgs="--shuffle=no"
 		if [[ "$result" == "" ]]; then
