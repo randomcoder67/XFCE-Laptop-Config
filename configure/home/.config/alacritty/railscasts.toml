@@ -25,8 +25,11 @@ foreground = "0xe6e1dc"
 [cursor.style]
 shape = "Beam"
 
+[env]
+WINIT_X11_SCALE_FACTOR = "2"
+
 [font]
-size = 7
+size = 6
 
 [font.bold]
 family = "Roboto Mono"
@@ -47,3 +50,26 @@ style = "Regular"
 [window.dimensions]
 columns = 100
 lines = 25
+
+[window]
+dynamic_padding = true
+
+# https://mitjafelicijan.com/alacritty-open-links-with-modifier.html
+[[hints.enabled]]
+command = "xdg-open"
+post_processing = true
+regex = "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;9~"
+key = "Tab"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;9~"
+key = "Tab"
+mods = "Control|Shift"
