@@ -144,7 +144,7 @@ _removeCompletion() {
 	if [ "${#COMP_WORDS[@]}" != "2" ]; then
 		return 0
 	fi
-	COMPREPLY=( $(compgen -W "$(pacman -Qe | cut -d ' ' -f 1)" -- "${COMP_WORDS[1]}") )
+	COMPREPLY=( $(compgen -W "$(pacman -Q | cut -d ' ' -f 1)" -- "${COMP_WORDS[1]}") )
 }
 
 _musicCompletion() {
