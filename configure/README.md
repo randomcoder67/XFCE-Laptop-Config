@@ -155,7 +155,6 @@
 `rmedir` remove empty dirs  
 `gtop` Intel GPU Top (needs sudo)  
 `remake` Recompile all of my programs/scripts  
-`gripdo` launch grip in dark mode and open in browser  
 `bookmarks` get number of bookmarks  
 `lcr` count items in folder (recursive)  
 `lcra` count items in folder (recursive and include hidden)  
