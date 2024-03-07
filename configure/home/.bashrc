@@ -442,6 +442,7 @@ alias bookmarks='wc -l ~/Programs/output/updated/bookmarks.txt'
 alias serial='sudo cat /sys/devices/virtual/dmi/id/product_serial'
 alias pyweb='python3 -m http.server -d'
 alias cmatrix='cmatrix -u 6'
+alias tmux='oldterm="$TERM"; TERM="xterm-kitty"; tmux; TERM="$oldterm"'
 
 # Info programs 
 

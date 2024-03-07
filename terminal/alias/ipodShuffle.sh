@@ -22,6 +22,8 @@ rm "${ipodMount}/iPod_Control/Music/"*.m4a
 echo "Copying new music"
 cp ~/Music/CurrentPlaylist/* "${ipodMount}/iPod_Control/Music/"
 
+# NEED TO REMOVE NON ENGLISH CHARACTERS (korean etc)
+
 echo "Building database"
 python3 "${ipodScriptLoc}" "${ipodMount}/"
 

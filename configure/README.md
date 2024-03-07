@@ -162,6 +162,7 @@
 `serial` get serial number  
 `pyweb` start simple http server with root as given directory  
 `cmatrix` cmatrix with speed of 6  
+`tmux` tmux setting TERM to xterm-kitty and then back to default when exiting  
 
 ### Info programs
 
