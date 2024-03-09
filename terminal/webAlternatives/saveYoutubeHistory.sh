@@ -25,3 +25,6 @@ echo "$output" | jq '.entries[] | [.title,.channel,.url] | @csv' | tac >> "${dir
 
 cat -n "${dirName}/${fileName}" | sort -uk2 | sort -n | cut -f2- > "${tempDirName}/youtubeHistoryTemp.csv"
 mv "${tempDirName}/youtubeHistoryTemp.csv" "${dirName}/${fileName}"
+
+# Ensure all videos in certain playlist downloaded
+~/Programs/output/otherScripts/syncVideos.sh
