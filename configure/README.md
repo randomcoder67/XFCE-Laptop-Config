@@ -51,8 +51,6 @@
 `lsdl` list only directories (detail)  
 `lsda` list only directories (including hidden)  
 `lsdal` list only directories (including hidden, detail)  
-`mv` moves file (asks for confirmation if overwriting)  
-`cp` copies file (asks for confirmation if overwriting)  
 `diff` checks for differences in files  
 `wget` wget with history file set to XDG cache directory  
 `mkcdir` make directory and cd into it  
@@ -190,6 +188,8 @@
 `programs` add or remove programs from Rofi Launcher  
 `checkfiles` updates list of files for Rofi Launcher  
 `rm` delete files or directories, moves to recycle bin  
+`mv` move files or directories, moves to recycle bin if overwriting  
+`cp` copy files or directories, moves to recycle bin if overwriting  
 `backup` backup program  
 `stuff` query and edit list of owned stuff  
 `strava` run strava program  
