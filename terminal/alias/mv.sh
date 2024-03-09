@@ -38,12 +38,12 @@ if [[ "$2" == "-t" ]]; then
 			continue
 		fi
 		if ! test -e "${dest}/$arg"; then
-			"$command" "$command2" "$arg" "${dest}/"
+			"$command" $command2 "$arg" "${dest}/"
 		else
 			read -p "Destination already exists, overwrite (y/N) " confirmationVar
 			if [[ "$confirmationVar" == "y" ]]; then
 				trash-put -- "${dest}/${arg}"
-				"$command" "$command2" "$arg" "${dest}/"
+				"$command" $command2 "$arg" "${dest}/"
 			fi
 		fi
 	done
@@ -68,13 +68,15 @@ else
 			dest="${dest}/${arg##*/}"
 		fi
 		
+		echo $arg $dest
+		
 		if ! test -e "$dest"; then
-			"$command" "$command2" "$arg" "$dest"
+			"$command" $command2 "$arg" "$dest"
 		else
 			read -p "Destination already exists, overwrite (y/N) " confirmationVar
 			if [[ "$confirmationVar" == "y" ]]; then
 				trash-put -- "$dest"
-				"$command" "$command2" "$arg" "$dest"
+				"$command" $command2 "$arg" "$dest"
 			fi
 		fi
 	done
