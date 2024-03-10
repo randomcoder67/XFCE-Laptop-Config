@@ -3,11 +3,6 @@
 # mv using trash-cli
 
 # Check for trash-cli
-if ! command -v trash-put &> /dev/null; then
-    echo "Error: trash-cli not found. Please install it."
-    exit 1
-fi
-
 command=""
 command2=""
 if [[ "$1" == "-c" ]]; then
@@ -24,6 +19,15 @@ if [ "$#" -lt 3 ]; then
 	echo "  $command [-t] source dest"
 	exit 1
 fi
+
+if ! command -v trash-put &> /dev/null; then
+    echo "Error: trash-cli not found. Please install it."
+	echo "WARNING: trash-cli not installed, using "$command" as normal"
+	shift
+	"$command" $command2 "$@"
+	exit
+fi
+
 
 if [[ "$2" == "-t" ]]; then
 	if ! test -e "$3"; then
