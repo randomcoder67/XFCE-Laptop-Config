@@ -72,8 +72,6 @@ else
 			dest="${dest}/${arg##*/}"
 		fi
 		
-		echo $arg $dest
-		
 		if ! test -e "$dest"; then
 			"$command" $command2 "$arg" "$dest"
 		else
