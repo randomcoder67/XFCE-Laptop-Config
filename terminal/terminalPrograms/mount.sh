@@ -20,6 +20,7 @@ read -p "Enter option (q to quit): " inputVar
 [ "$inputVar" == "3" ] && sudo mount /dev/sda ~/Downloads/USBDrive
 if [ "$inputVar" == "4" ]; then
 	mounted=$(lsblk | grep sda | grep -E "part|disk /" | cut -d " " -f 1 | tr -d "└─")
+	[[ "$mounted" == "" ]] && exit
 	sudo umount "/dev/$mounted"
 fi
 
