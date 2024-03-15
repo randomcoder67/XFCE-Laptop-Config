@@ -398,6 +398,7 @@ alias ythis='~/Programs/terminal/webAlternatives/saveYoutubeHistory.sh'
 ## Git 
 
 alias gp='git pull'
+alias gps='git push'
 alias gits='git status'
 alias gitd='git diff'
 alias gitl='git log --reverse'
