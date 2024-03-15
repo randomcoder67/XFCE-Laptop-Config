@@ -117,6 +117,7 @@
 #### Git
 
 `gp` git pull  
+`gps` git push  
 `gits` git status  
 `gitd` git diff  
 `gitl` git log  
