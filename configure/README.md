@@ -219,7 +219,8 @@
 `Super+Shift+Return` Xfce4 Terminal  
 `Super+W` Firefox  
 `Super+S` GoTube  
-`Super+E` Thunar File Manager  
+`Super+E` Ranger File Manager  
+`Super+Shift+E` Thunar File Manager  
 `Super+M` Mousepad  
 `Super+Shift+M` Mousepad (New Window)  
 `Super+R` Identify Song  

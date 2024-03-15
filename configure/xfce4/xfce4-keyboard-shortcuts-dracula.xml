@@ -96,6 +96,7 @@
       <property name="&lt;Super&gt;b" type="string" value="alacritty -o &apos;window.title=&quot;btop&quot;&apos; -e btop"/>
       <property name="&lt;Super&gt;s" type="string" value="alacritty -o &apos;window.title=&quot;GoTube&quot;&apos; -e /home/GENERICUSERNAME/.local/bin/gotube"/>
       <property name="&lt;Super&gt;e" type="string" value="alacritty -o &apos;window.title=&quot;ranger&quot;&apos; -e ranger"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;e" type="string" value="thunar"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
