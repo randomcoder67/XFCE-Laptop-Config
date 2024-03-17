@@ -7,6 +7,8 @@
 int main(void)
 {
 	initscr();
+	
+	curs_set(0);
 
 	addstr("-----------------------\n|     Sound Board     |\n|    Random Sounds    |\n-----------------------\n\n");
 	refresh();
