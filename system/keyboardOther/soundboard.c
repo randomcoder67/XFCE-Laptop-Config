@@ -19,12 +19,12 @@ int main(void)
 	addstr("Metal Pipe - p\n");
 	addstr("Bruh - b\n");
 	addstr("Riff - k\n");
-	addstr("Op - o\n");
+	addstr("Oh Shit - o\n");
 	addstr("Augggghhhhh - u\n");
 	addstr("Free WiFi - f\n");
 	addstr("Pizza - y\n");
 	addstr("What the dog doin' - w\n");
-	addstr("Minecraft Death - m\n");
+	addstr("Mr Swags - m\n");
 	addstr("Error - e\n");
 	addstr("Violin - z\n");
 	addstr("Gnome - i\n");
@@ -58,7 +58,7 @@ int main(void)
 			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/riff.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'o') {
-			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/op.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/ohShit.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'u') {
 			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/augh.m4a 2>/dev/null >> /dev/null & disown");
@@ -73,7 +73,7 @@ int main(void)
 			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/dog.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'm') {
-			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/minecraftDeath.m4a 2>/dev/null >> /dev/null & disown");
+			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/mrSwags.m4a 2>/dev/null >> /dev/null & disown");
 		}
 		if (a == 'e') {
 			system("mpv --no-resume-playback --force-window=no ~/Programs/output/.sounds/error.m4a 2>/dev/null >> /dev/null & disown");

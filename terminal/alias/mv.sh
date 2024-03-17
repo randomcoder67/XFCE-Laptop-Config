@@ -69,7 +69,11 @@ else
 		fi
 		
 		if [ -d "$dest" ]; then
-			dest="${dest}/${arg##*/}"
+			if [[ "${arg##*/}" == "" ]]; then
+				dest="${dest}/${arg}"
+			else
+				dest="${dest}/${arg##*/}"
+			fi
 		fi
 		
 		if ! test -e "$dest"; then
