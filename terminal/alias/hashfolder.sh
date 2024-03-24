@@ -4,18 +4,21 @@
 
 [ "$1" == "" ] && echo "Usage: ./hashfolder.sh folder" && exit
 
-IFS=$'\n'
 
+hash_command="sha256sum"
+input_folder="$1"
 if [[ "$1" == "-h" ]]; then
 	echo "Usage: hashfolder [-l] folder/ (-l for sha512 instead of sha256)"
 elif [[ "$1" == "-l" ]]; then
-	filesA=( $(find "$2" -type f | sort) )
-	for fileA in "${filesA[@]}"; do
-		sha512sum "$fileA"
-	done
-else
-	filesA=( $(find "$1" -type f | sort) )
-	for fileA in "${filesA[@]}"; do
-		sha256sum "$fileA"
-	done
+	hash_command="sha512sum"
+	input_folder="$2"
 fi
+
+oldIFS="$IFS"
+IFS=$'\n'
+filesA=( $(find "$input_folder" -type f | sort) )
+IFS="$oldIFS"
+
+for fileA in "${filesA[@]}"; do
+	"$hash_command" "$fileA"
+done

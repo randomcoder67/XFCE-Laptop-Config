@@ -18,19 +18,21 @@ fi
 windows=$(wmctrl -lG | grep -P "^.{11}$workspaceNum" | tr -s ' ')
 
 # Get the stack of windows
-stack=( $(xprop -root | grep "STACKING(WINDOW)" | cut -d "#" -f 2 | tac -s ' ' | sed 's/,//g' | sed 's/0x/0x0/g') )
+stack=( $(xprop -root | grep "STACKING(WINDOW)" | cut -d "#" -f 2 | tac -s ',' | tr -d '\n' | sed 's/,//g' | sed 's/0x/0x0/g') )
 
 # Filter the stack array to only windows on the current desktop
 stackFiltered=()
 for x in "${stack[@]}"; do
 	if [[ "$windows" = *"$x"* ]]; then
-		stackFiltered+=("$x")
+		stackFiltered+=("${x/ /}")
 	fi
 done
 
 doneA=0
 
+echo moving
 for windowID in "${stackFiltered[@]}"; do
+	echo $windowID
 	wmctrl -r "$windowID" -i -b add,maxmized_vert
 	if echo "$windows" | grep "$windowID" | grep -i "firefox"; then
 		xdotool windowsize "$windowID" 1476 1330

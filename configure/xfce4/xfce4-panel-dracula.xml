@@ -207,6 +207,7 @@
     </property>
     <property name="plugin-29" type="string" value="systray">
       <property name="known-legacy-items" type="array">
+        <value type="string" value="javaembeddedframe"/>
         <value type="string" value="guake"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="yad"/>
@@ -225,7 +226,7 @@
       </property>
     </property>
     <property name="plugin-26" type="string" value="genmon">
-      <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/chudlogicnoirPanel.jpg&lt;/img&gt;&lt;tool&gt;Chud Logic Noir&lt;/tool&gt;&quot;"/>
+      <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/nicholasdeorioPanel.jpg&lt;/img&gt;&lt;tool&gt;nicholasdeorio&lt;/tool&gt;&quot;"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value="(genmon)"/>
       <property name="update-period" type="int" value="300000"/>
@@ -233,7 +234,7 @@
       <property name="font" type="string" value="Roboto 12"/>
     </property>
     <property name="plugin-27" type="string" value="genmon">
-      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelStreamChecker.sh &quot;Chud Logic Noir&quot; chudlogicnoir NONE -d"/>
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelStreamChecker.sh nicholasdeorio deorio NONE -d"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value="(genmon)"/>
       <property name="update-period" type="int" value="300000"/>
