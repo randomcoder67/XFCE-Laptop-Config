@@ -30,11 +30,13 @@ done
 
 doneA=0
 
+wmctrl -lG
 echo moving
 for windowID in "${stackFiltered[@]}"; do
 	echo $windowID
-	wmctrl -r "$windowID" -i -b add,maxmized_vert
-	if echo "$windows" | grep "$windowID" | grep -i "firefox"; then
+	wmctrl -r "$windowID" -i -b add,maximized_vert
+	if echo "$windows" | grep "$windowID" | grep -i -q "firefox"; then
+		wmctrl -r "$windowID" -i -b remove,maximized_vert
 		xdotool windowsize "$windowID" 1476 1330
 		xdotool windowmove "$windowID" 0 36
 	elif [[ "$doneA" == 0 ]]; then

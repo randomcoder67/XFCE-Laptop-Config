@@ -5,9 +5,9 @@
 xdotool keyup Control_L Control_R Shift_L Shift_R Super_R Super_L 1 2 3 4 5 6 7 8 9 0
 
 if [ "$1" == "1" ]; then
-	xdotool type ϕ
+	xdotool type ε
 elif [ "$1" == "2" ]; then
-	xdotool type ψ
+	xdotool type ∪
 elif [ "$1" == "3" ]; then
 	xdotool type ¬
 elif [ "$1" == "4" ]; then
