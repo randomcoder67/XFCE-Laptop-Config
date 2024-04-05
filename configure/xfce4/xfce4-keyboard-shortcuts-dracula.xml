@@ -87,7 +87,6 @@
       <property name="&lt;Super&gt;q" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiBookmarks.sh"/>
       <property name="&lt;Super&gt;v" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiQuery.sh"/>
       <property name="&lt;Super&gt;x" type="string" value="alacritty -o &quot;window.dimensions.lines=25&quot; -o &quot;window.dimensions.columns=24&quot; -o &apos;window.title=&quot;System Functions&quot;&apos; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/systemMenu.sh"/>
-      <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=26&quot; -o &quot;window.dimensions.columns=24&quot; -o &apos;window.title=&quot;Soundboard&quot;&apos; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
       <property name="&lt;Super&gt;h" type="string" value="alacritty -o &apos;window.title=&quot;htop&quot;&apos; -e htop"/>
       <property name="&lt;Super&gt;c" type="string" value="alacritty -o &apos;window.title=&quot;qalc&quot;&apos; -e qalc"/>
       <property name="&lt;Super&gt;g" type="string" value="alacritty -o &apos;window.title=&quot;pulsemixer&quot;&apos; -e pulsemixer"/>
@@ -97,6 +96,7 @@
       <property name="&lt;Super&gt;s" type="string" value="alacritty -o &apos;window.title=&quot;GoTube&quot;&apos; -e /home/GENERICUSERNAME/.local/bin/gotube"/>
       <property name="&lt;Super&gt;e" type="string" value="alacritty -o &apos;window.title=&quot;ranger&quot;&apos; -e ranger"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;e" type="string" value="thunar"/>
+      <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=26&quot; -o &quot;window.dimensions.columns=24&quot; -o &apos;window.title=&quot;Soundboard&quot;&apos; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
