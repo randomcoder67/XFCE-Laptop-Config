@@ -172,7 +172,8 @@ handle_image() {
 
 		# Video (mkv)
 		video/x-matroska)
-			ffmpeg -dump_attachment:t "${IMAGE_CACHE_PATH}" -i "${FILE_PATH}"
+            ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
+			#ffmpeg -dump_attachment:t "${IMAGE_CACHE_PATH}" -i "${FILE_PATH}"
 			exit 0;;
 		# Video (other)
 		video/*)
