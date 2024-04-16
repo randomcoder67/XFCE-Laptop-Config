@@ -86,6 +86,7 @@ style = "Regular"
 
 [window]
 dynamic_padding = true
+#dynamic_title = false
 
 [window.dimensions]
 columns = 100

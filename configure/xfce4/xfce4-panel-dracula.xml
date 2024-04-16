@@ -155,7 +155,7 @@
       <property name="font" type="string" value="Roboto Mono 15"/>
     </property>
     <property name="plugin-20" type="string" value="genmon">
-      <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/destinyPanel.jpg&lt;/img&gt;&lt;tool&gt;Destiny&lt;/tool&gt;&quot;"/>
+      <property name="command" type="string" value="echo &quot;&lt;img&gt;/home/GENERICUSERNAME/Programs/output/.pictures/harmfulopinionsPanel.jpg&lt;/img&gt;&lt;tool&gt;Harmful Opinions&lt;/tool&gt;&quot;"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value="(genmon)"/>
       <property name="update-period" type="int" value="300000"/>
@@ -163,7 +163,7 @@
       <property name="font" type="string" value="Roboto 12"/>
     </property>
     <property name="plugin-21" type="string" value="genmon">
-      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelStreamChecker.sh Destiny Destiny NONE -d"/>
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/panelStreamChecker.sh &quot;Harmful Opinions&quot; HarmfulOpinions harmfulopinions -d"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value="(genmon)"/>
       <property name="update-period" type="int" value="300000"/>

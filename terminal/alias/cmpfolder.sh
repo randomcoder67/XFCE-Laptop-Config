@@ -11,7 +11,7 @@ filesB=( $(find "$2" -type f | sort) )
 if [[ "$3" == "-o" ]]; then
 	for fileA in "${filesA[@]}"; do
 		fileName=$(basename "$fileA")
-		echo "$fileName"
+		#echo "$fileName"
 		fileToCmp="${2}/${fileName}"
 		cmp "$fileA" "$fileToCmp"
 	done
@@ -20,7 +20,7 @@ fi
 
 index=0
 for fileA in "${filesA[@]}"; do
-	echo "$fileA"
+	#echo "$fileA"
 	fileToCmp="${filesB[index]}"
 	indexA=$((index+1))
 	index="$indexA"
