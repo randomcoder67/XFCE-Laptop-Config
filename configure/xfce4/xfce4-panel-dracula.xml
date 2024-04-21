@@ -32,7 +32,7 @@
         <value type="int" value="18"/>
         <value type="int" value="19"/>
         <value type="int" value="1"/>
-        <value type="int" value="30"/>
+        <value type="int" value="15"/>
         <value type="int" value="12"/>
         <value type="int" value="29"/>
         <value type="int" value="11"/>
@@ -241,14 +241,6 @@
       <property name="enable-single-row" type="bool" value="true"/>
       <property name="font" type="string" value="Roboto 16"/>
     </property>
-    <property name="plugin-30" type="string" value="genmon">
-      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/uptime.sh"/>
-      <property name="use-label" type="bool" value="false"/>
-      <property name="text" type="string" value="(genmon)"/>
-      <property name="update-period" type="int" value="5000"/>
-      <property name="enable-single-row" type="bool" value="true"/>
-      <property name="font" type="string" value="Roboto Medium 16"/>
-    </property>
     <property name="plugin-31" type="string" value="genmon">
       <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/cputemp.sh"/>
       <property name="use-label" type="bool" value="false"/>
@@ -256,6 +248,14 @@
       <property name="update-period" type="int" value="2000"/>
       <property name="enable-single-row" type="bool" value="true"/>
       <property name="font" type="string" value="Roboto Mono 15"/>
+    </property>
+    <property name="plugin-15" type="string" value="genmon">
+      <property name="command" type="string" value="/home/GENERICUSERNAME/Programs/system/panel/uptime.sh"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="text" type="string" value="(genmon)"/>
+      <property name="update-period" type="int" value="5000"/>
+      <property name="enable-single-row" type="bool" value="true"/>
+      <property name="font" type="string" value="Roboto 16"/>
     </property>
   </property>
 </channel>

@@ -2,21 +2,21 @@
 
 # Script to display uptime
 
-uptimeNormal=$(uptime | tr -s " ")
-uptimeFormatted=$(echo "$uptimeNormal" | cut -d " " -f 4 | grep -o [0-9:]*)
+uptimeNormal=$(uptime | tr -s " ")z
+uptimeFormatted=$(echo "$uptimeNormal" | cut -d " " -f 4 | grep -o '[0-9:]*')
 uptimeSince="$(uptime -s)"
 
 targetSplit="9"
-loadOneMinute=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o [0-9.]*)
+loadOneMinute=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o '[0-9.]*')
 # Sometimes there is an extra item in the split, because of "min" text
 if [[ "$loadOneMinute" == "" ]]; then
 	targetSplit="10"
-	loadOneMinute=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o [0-9.]*)
+	loadOneMinute=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o '[0-9.]*')
 fi
 targetSplit=$((targetSplit+1))
-loadFiveMinutes=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o [0-9.]*)
+loadFiveMinutes=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o '[0-9.]*')
 targetSplit=$((targetSplit+1))
-loadFifteenMinutes=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o [0-9.]*)
+loadFifteenMinutes=$(echo "$uptimeNormal" | cut -d " " -f "$targetSplit" | grep -o '[0-9.]*')
 
 if [[ "${#uptimeFormatted}" == "4" ]]; then
 	uptimeFormatted="0${uptimeFormatted}"
