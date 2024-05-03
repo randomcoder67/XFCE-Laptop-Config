@@ -25,7 +25,7 @@ cp ~/Music/CurrentPlaylist/* "${ipodMount}/iPod_Control/Music/"
 # NEED TO REMOVE NON ENGLISH CHARACTERS (korean etc)
 
 echo "Building database"
-python3 "${ipodScriptLoc}" "${ipodMount}/"
+python3 "${ipodScriptLoc}" -t -p -u "${ipodMount}/"
 
 echo "Syncing and unmounting"
 sync
