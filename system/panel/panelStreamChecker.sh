@@ -5,6 +5,7 @@
 
 # Constants
 
+enabledFile="$HOME/Programs/output/updated/enablePanelCheckers.txt"
 saveLoc="$HOME/Programs/output/.streams/panel"
 channelName="$1"
 youtubeChannelAt="$2"
@@ -16,6 +17,7 @@ notLiveColour="e6e1dc"
 liveColour="da4939"
 upcomingColour="a5c261"
 noInternetColour="ffc66d"
+disabledColour="9a7cff"
 
 if [[ "$4" == "-d" ]]; then
 	notLiveColour="fefef8"
@@ -26,6 +28,20 @@ fi
 
 liveYouTube="false"
 liveTwitch="false"
+
+enabled="$(cat $enabledFile)"
+echo -en "A:${enabled}:B"
+
+if [[ "$enabled" == "disabled" ]]; then
+	if [[ "$argA" == "-t" ]]; then
+		echo "<span foreground='#$disabledColour'>  </span>"
+		echo "disabled" > "$XDG_STATE_HOME/streams/${channelName}.txt"
+	else
+		echo "<txt><span foreground='#$disabledColour'>  </span></txt>"
+		echo "<tool>Stream Checkers Disabled</tool>"
+	fi
+	exit
+fi
 
 if [[ "$youtubeChannelAt" != "NONE" ]]; then
 	# Download and check for internet

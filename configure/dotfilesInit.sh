@@ -34,6 +34,7 @@ mkdir ~/Programs/output/.pictures
 mkdir ~/Programs/output/.sounds
 mkdir ~/Programs/output/.temp
 mkdir ~/Programs/output/updated
+echo "enabled" > ~/Programs/output/updated/enablePanelCheckers.txt
 
 mkdir ~/Downloads/BackupMount
 mkdir ~/Downloads/USBDrive
