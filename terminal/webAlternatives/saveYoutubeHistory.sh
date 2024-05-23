@@ -7,6 +7,11 @@ dirName="$HOME/Programs/output/youtubeHistory"
 yearWeek=$(date +"%y%m")
 fileName="${yearWeek}.csv"
 
+if [[ "$1" == "-s" ]]; then
+	grep -ir "$2" "$dirName"
+	exit
+fi
+
 latestFile=$(ls "$dirName" | sort | tail -n 1)
 lastRanString=$(stat "${dirName}/${latestFile}" | grep "Change" | grep -Eo "[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}")
 lastRan=$(date -d "$lastRanString" +"%s")
