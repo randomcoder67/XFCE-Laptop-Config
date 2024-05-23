@@ -11,7 +11,7 @@ if [[ "$1" == "-s" ]]; then
 elif [[ "$1" == "-h" ]]; then
 	wcJSON=$(yt-dlp -J --flat-playlist --cookies-from-browser firefox --playlist-end 100 "https://www.youtube.com/feed/history" 2> /dev/null)
 elif [[ "$1" == "-p" ]]; then
-	playlistsJSON=$(yt-dlp --flat-playlist -J --cookies-from-browser firefox "https://www.youtube.com/feed/library" 2> /dev/null)
+	playlistsJSON=$(yt-dlp --flat-playlist -J --cookies-from-browser firefox "https://www.youtube.com/feed/playlists" 2> /dev/null)
 	oldIFS="$IFS"
 	IFS=$'\n'
 	ids=( $(echo "$playlistsJSON" | jq -r '.entries[] | select(.ie_key=="YoutubeTab") | .id') )
