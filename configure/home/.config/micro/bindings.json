@@ -13,6 +13,7 @@
     "Ctrl-W": "Quit",
     "CtrlBackslash": "Redo",
     "CtrlUnderscore": "lua:comment.comment",
+    "F3": "FindNext",
     "F4": "command:jumptag",
     "OldBackspace": "DeleteWordLeft"
 }
