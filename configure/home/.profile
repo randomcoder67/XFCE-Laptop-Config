@@ -12,6 +12,10 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export GRIPHOME="$XDG_CONFIG_HOME/grip"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+#export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
+
+#export _JAVA_OPTIONS=-"Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 
 export EDITOR="nano"
 export VISUAL="micro"
+export BROWSER="firefox"
