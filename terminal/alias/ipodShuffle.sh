@@ -23,15 +23,15 @@ echo "Mounting iPod to ${ipodMount}"
 sudo mount -o rw,users,umask=000 "/dev/sd${driveLetter}" "${ipodMount}/"
 
 echo "Deleting old music"
-rm "${ipodMount}/iPod_Control/Music/"*.m4a
+rm "${ipodMount}/iPod_Control/Music/MainMusic/"*.m4a
 
 echo "Copying new music"
-cp ~/Music/CurrentPlaylist/* "${ipodMount}/iPod_Control/Music/"
+cp ~/Music/CurrentPlaylist/* "${ipodMount}/iPod_Control/Music/MainMusic/"
 
 # NEED TO REMOVE NON ENGLISH CHARACTERS (korean etc)
 
 echo "Building database"
-python3 "${ipodScriptLoc}" -u "${ipodMount}/"
+python3 "${ipodScriptLoc}" -d -u "${ipodMount}/"
 
 echo "Syncing and unmounting"
 sync
