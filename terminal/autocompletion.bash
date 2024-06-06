@@ -161,6 +161,13 @@ _remakeCompletion() {
 	COMPREPLY=( $(compgen -W "$(cat ~/Programs/configure/remake.sh | grep '$1' | cut -d \" -f 4)" -- "${COMP_WORDS[1]}") )
 }
 
+_xclipCompletion () {
+	if [ "${#COMP_WORDS[@]}" != "2" ]; then
+		return 0
+	fi
+	COMPREPLY=( $(compgen -W "-in -out -loops -display -help -selection -noutf8 -target -rmlastnl -version -silent -quiet -verbose" -- "${COMP_WORDS[1]}") )
+}
+
 _yt-dlpCompletion() {
     local cur prev opts fileopts diropts keywords
     COMPREPLY=()
@@ -204,6 +211,7 @@ complete -F _savedotfilesCompletion savedotfiles
 complete -F _removeCompletion remove
 complete -F _musicCompletion music
 complete -F _remakeCompletion remake
+complete -F _xclipCompletion xclip
 complete -o default glow
 complete -o default rsync
 complete -o default pkgfile
