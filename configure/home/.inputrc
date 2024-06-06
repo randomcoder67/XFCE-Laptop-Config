@@ -1,5 +1,5 @@
 # Make autocomplete case insensitive
-set completion-ignore-case On
+set completion-ignore-case on
 
 # Ctrl-Delete: delete next word
 "\e[3;5~": kill-word
