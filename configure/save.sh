@@ -65,6 +65,8 @@ cp ~/.config/neofetch/config.conf ~/Programs/configure/home/.config/neofetch/
 [ -d ~/Programs/configure/home/.config/qalculate ] || mkdir ~/Programs/configure/home/.config/qalculate
 [ -d ~/Programs/configure/home/.config/zathura ] || mkdir ~/Programs/configure/home/.config/zathura
 cp ~/.config/zathura/zathurarc ~/Programs/configure/home/.config/zathura/zathurarc
+[ -d ~/Programs/configure/home/.config/newsboat ] || mkdir ~/Programs/configure/home/.config/newsboat
+cp ~/.config/newsboat/config ~/Programs/configure/home/.config/newsboat/config
 
 cp ~/.config/qalculate/qalc.cfg ~/Programs/configure/home/.config/qalculate/
 [ -d ~/Programs/configure/home/.config/rofi ] || mkdir ~/Programs/configure/home/.config/rofi
