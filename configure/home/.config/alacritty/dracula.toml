@@ -111,3 +111,8 @@ mods = "Control"
 chars = "\u001B[27;6;9~"
 key = "Tab"
 mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0019"
+key = "z"
+mods = "Control|Shift"
