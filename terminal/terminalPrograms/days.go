@@ -13,6 +13,7 @@ import (
 )
 
 const SAVE_LOC = "/Programs/output/updated/days.csv"
+const OLD_LOC = "/Programs/output/updated/daysOld.csv"
 var homeDir string
 var timeNow time.Time
 
@@ -26,21 +27,24 @@ func openFile(filename string) string {
 }
 
 // Remove any dates before today from the slice
-func trimOldDates(inputSlice [][]string) [][]string {
+func trimOldDates(inputSlice [][]string) ([][]string, [][]string) {
 	// Get current date in same format
 	var nowString string = timeNow.Format("060102")
 	// Create new slice to return and filter to only current or newer dates
 	outputSlice := [][]string{}
+	oldSlice := [][]string{}
 	for _, entry := range inputSlice {
 		if entry[0] >= nowString {
 			outputSlice = append(outputSlice, entry)
+		} else {
+			oldSlice = append(oldSlice, entry)
 		}
 	}
-	return outputSlice
+	return outputSlice, oldSlice
 }
 
 // Write the trimmed slice back to the file, permenantly removing older dates
-func updateFile(finalDaysSlice [][]string) {
+func writeFile(finalDaysSlice [][]string, filename string) {
 	toWrite := new(bytes.Buffer)
 	w := csv.NewWriter(toWrite)
 	// "|" as delimiter
@@ -50,10 +54,22 @@ func updateFile(finalDaysSlice [][]string) {
 	}
 	w.Flush()
 	// Write to file
-	err := os.WriteFile(homeDir + SAVE_LOC, []byte(toWrite.String()), 0666)
+	err := os.WriteFile(filename, []byte(toWrite.String()), 0666)
 	if err != nil {
 		panic(err)
 	}
+}
+
+func updateFile(newData [][]string, filename string) {
+	oldDataRaw := openFile(homeDir + OLD_LOC)
+	oldData := [][]string{}
+	if oldDataRaw != "" {
+		r := csv.NewReader(strings.NewReader(oldDataRaw))
+		r.Comma = '|'
+		oldData, _ = r.ReadAll()
+	}
+	fullData := append(oldData, newData...)
+	writeFile(fullData, filename)
 }
 
 // View number of days until saved dates
@@ -71,7 +87,7 @@ func viewDays(toShow int) {
 	r.Comma = '|'
 	daysSlice, _ := r.ReadAll()
 	// Trim old dates
-	daysSlice = trimOldDates(daysSlice)
+	daysSlice, oldSlice := trimOldDates(daysSlice)
 	// Sort closest to furthest away
 	sort.SliceStable(daysSlice, func(i, j int) bool{ // Sort records by date and time 
 		return daysSlice[i][0]+daysSlice[i][1] < daysSlice[j][0]+daysSlice[j][1] // Combining to yymmddhhmm 
@@ -113,7 +129,8 @@ func viewDays(toShow int) {
 		}
 	}
 	// Write final daysSlice to file
-	updateFile(daysSlice)
+	writeFile(daysSlice, homeDir + SAVE_LOC)
+	updateFile(oldSlice, homeDir + OLD_LOC)
 }
 
 // Add a new day to the file
