@@ -12,6 +12,13 @@ if [[ "$1" == "-s" ]]; then
 	exit
 fi
 
+wc -l "$HOME/.bash_history"
+read -p "Backup Bash history? (y/N): " doBashHistoryBackup
+if [[ "$doBashHistoryBackup" == "y" ]] || [[ "$doBashHistoryBackup" == "Y" ]]; then
+	cp "$HOME/.bash_history" "$HOME/Downloads/.bash_history_backup"
+	echo "Bash history backed up to ~/Downloads"
+fi
+
 latestFile=$(ls "$dirName" | sort | tail -n 1)
 lastRanString=$(stat "${dirName}/${latestFile}" | grep "Change" | grep -Eo "[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}")
 lastRan=$(date -d "$lastRanString" +"%s")

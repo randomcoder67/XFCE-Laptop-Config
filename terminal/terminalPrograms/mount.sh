@@ -28,3 +28,4 @@ if [ "$inputVar" == "6" ]; then
 	sudo umount "/dev/$mounted"
 fi
 
+lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,FSTYPE,MOUNTPOINTS
