@@ -4,7 +4,7 @@
 
 while true
 do
-	fileName=$(date +"d%y%m%dt%H%M%S") # File name is set to current date + time in oorder to make sure no files are overwritten
+	fileName=$(date +"d%y%m%dt%H%M%S") # File name is set to current date + time in order to make sure no files are overwritten
 
 	# Download YouTube and Rumble pages to check for livestream
 	timeout 10 curl -s "https://www.youtube.com/@Destiny/live" > ~/Programs/output/.streams/destinyDownload/destinyYouTube.html

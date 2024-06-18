@@ -11,16 +11,22 @@
 ## Add ~/.local/bin to $PATH
 PATH=$PATH:$HOME/.local/bin
 
-selection=$(cat ~/Programs/output/updated/files.txt | rofi -refilter-timeout-limit 20000 -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
+selection=$(cat ~/Programs/output/updated/files.txt | rofi -refilter-timeout-limit 10000 -kb-custom-1 "Shift+Return" -dmenu -show-icons -i -p "Launcher")
 status=$?
 
-[[ "$status" == 1 ]] && exit
+[[ "$status" != 0 ]] && [[ "$status" != 10 ]] && exit
 
+oldIFS="$IFS"
 IFS=$'\n'
 
 declare -A programs
 
+#notify-send "Exit Code: A:${status}:B"
+#notify-send "Selection: A:${selection}:B"
+
 programsA=( $(cat ~/Programs/output/updated/programs.txt) )
+
+IFS="$oldIFS"
 
 if (( ${#programsA[@]} == 0 )); then
 	exit
@@ -72,7 +78,7 @@ openMetOfficeObservations () {
 }
 
 if [[ $selection == *"/"* ]]; then
-	newSelection=$(echo $selection | sed 's|~|'"${HOME}"'|g')
+	newSelection=$(echo "$selection" | sed 's|~|'"${HOME}"'|g')
 	if [ $status -eq 10 ]; then
 		selectedProgramName=$(~/Programs/output/updated/launchersIcons.sh | rofi -dmenu -show-icons -i -p "Select Which Program to Use")
 		[[ "$?" == 1 ]] && exit
@@ -93,7 +99,7 @@ if [[ $selection == *"/"* ]]; then
 			xdg-open "$newSelection"
 		fi
 	fi
-elif [[ "$selection" == "Streamers" ]]; then
+elif [[ "$selection" == "Live Streams" ]]; then
 	# Read in list of streamers
 	oldIFS="$IFS"
 	IFS=$'\n'
@@ -143,6 +149,14 @@ elif [[ "$selection" == "Streamers" ]]; then
 			firefox "https://www.youtube.com/@${channelAt}/live"
 		fi
 	fi
+elif [[ "$selection" == "Live TV" ]]; then
+	toOpen=$(cat "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 1 | rofi -dmenu -format "i" -kb-custom-1 "Shift+Return" -i -p "Select Stream")
+	toOpenA=$((toOpen+1))
+	toOpen=$toOpenA
+	name=$(sed "${toOpen}q;d" "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 1)
+	streamURL=$(sed "${toOpen}q;d" "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 2)
+	notify-send "Opening ${name} TV Feed"
+	mpv "${streamURL}" --title="${name}" || notify-send "Error, live feed failed to open"
 elif [[ "$selection" == "Gmail ("* ]]; then
 	emailAddress="${selection#*(}"
 	emailAddress="${emailAddress%*)}"
@@ -203,7 +217,7 @@ elif [[ "$selection" == "htop" ]]; then
 elif [[ "$selection" == "Lossless Cut" ]]; then
 	"~/Programs/otherPrograms/LosslessCut-linux-x64/losslesscut"
 elif [[ "$selection" == "Upscayl" ]]; then
-	"$HOME/Downloads/upscayl.AppImage"
+	"$HOME/Downloads/otherPrograms/upscayl.AppImage"
 elif [[ "$selection" == "Mousepad" ]]; then
 	mousepad -o window
 elif [[ "$selection" == "mpv" ]]; then
@@ -213,7 +227,11 @@ elif [[ "$selection" == "qalc" ]]; then
 elif [[ "$selection" == "LibreOffice Writer" ]]; then
 	libreoffice --writer
 elif [[ "$selection" == "Google Earth" ]]; then
-	~/Downloads/GoogleEarthPro/googleearthFull/googleearth
+	"$HOME/Downloads/otherPrograms/GoogleEarthPro/googleearthFull/googleearth"
+elif [[ "$selection" == "Cubiomes Viewer" ]]; then
+	"$HOME/Downloads/otherPrograms/cubiomesViewer/cubiomes-viewer-static-linux"
+elif [[ "$selection" == "MultiMC" ]]; then
+	"$HOME/Downloads/otherPrograms/MultiMC/MultiMC"
 elif [[ "$selection" == "Shuffle Playlist" ]]; then
 	mpv --title='${metadata/title}'\ -\ '${metadata/artist}' --geometry=25% --shuffle --no-resume-playback "~/Music/currentPlaylist"
 elif [[ "$selection" == "Kick - Destiny" ]]; then
@@ -229,7 +247,7 @@ elif [[ "$selection" == "Chat - Destiny" ]]; then
 elif [[ "$selection" == "NASA Image of the Day" ]]; then
 	firefox https://www.nasa.gov/multimedia/imagegallery/iotd.html
 elif [[ "$selection" == "ChatGPT" ]]; then
-	firefox "https://chat.openai.com"
+	firefox "https://chatgpt.com/"
 elif [[ "$selection" == "Gemini" ]]; then
 	firefox "https://gemini.google.com/app"
 elif [[ "$selection" == "Dead Cells" ]]; then
@@ -270,6 +288,10 @@ elif [[ "$selection" == "Stellaris" ]]; then
 	steam steam://rungameid/281990
 elif [[ "$selection" == "Dead Cells" ]]; then
 	steam steam://rungameid/588650
+elif [[ "$selection" == "GitHub Website" ]]; then
+	firefox "https://randomcoder67.github.io"
+elif [[ "$selection" == "Schizo Website" ]]; then
+	firefox "https://www.schizoposting.xyz"
 elif [[ "$selection" == "BeamNG.drive" ]]; then
 	steam steam://rungameid/284160
 elif [[ "$selection" == "Slime Rancher" ]]; then
@@ -278,12 +300,16 @@ elif [[ "$selection" == "PCSX2" ]]; then
 	"$HOME/.local/share/games/pcsx2.AppImage"
 elif [[ "$selection" == "SimCity 4" ]]; then
 	steam steam://rungameid/24780
+elif [[ "$selection" == "Quick Tile" ]]; then
+	"$HOME/Programs/system/keyboardOther/quickTile.sh"
 elif [[ "$selection" == "RideWithGPS" ]]; then
 	firefox "https://ridewithgps.com/routes/new"
+elif [[ "$selection" == "Pro Cycling Stats" ]]; then
+	firefox "https://www.procyclingstats.com/index.php"
 elif [[ "$selection" == "ITVX" ]]; then
 	firefox "https://www.itv.com"
 elif [[ "$selection" == "VSCode" ]]; then
-	"$HOME/Downloads/VSCode-linux-x64/bin/code"
+	"$HOME/Downloads/otherPrograms/VSCode-linux-x64/bin/code"
 elif [[ "$selection" == "FlightRadar24" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
@@ -291,7 +317,13 @@ elif [[ "$selection" == "FlightRadar24" ]]; then
 elif [[ "$selection" == "NetHogs" ]]; then
 	alacritty -o 'window.title="nethogs"' -e nethogs
 elif [[ "$selection" == "Google Maps" ]]; then
-	firefox "https://www.google.co.uk/maps"
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	firefox "https://www.google.co.uk/maps/@${lat},${lon},10z"
+elif [[ "$selection" == "Bing Maps" ]]; then
+	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
+	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
+	firefox "https://www.bing.com/maps?cp=${lat}%7E${lon}&lvl=9.0"
 elif [[ "$selection" == "cava" ]]; then
 	alacritty -e "$HOME/.local/bin/cava"
 elif [[ "$selection" == "Intel GPU Top" ]]; then
@@ -342,8 +374,10 @@ elif [[ "$selection" == "Weather MetOffice" ]]; then
 elif [[ "$selection" == "Observations MetOffice" ]]; then
 	openMetOfficeObservations
 elif [[ $selection == "Check All" ]]; then
-	firefox "https://mail.google.com/mail/u/1" "https://mail.google.com/mail/u/2" "https://mail.google.com/mail/u/0" "https://outlook.office.com/mail/" "https://github.com" "https://old.reddit.com" "https://stackoverflow.com/" "https://www.bbc.co.uk/news" "https://www.nasa.gov/multimedia/imagegallery/iotd.html" "https://twitter.com/destidarko?lang=en" "https://calendar.google.com/calendar/u/0/embed?src=i54j4cu9pl4270asok3mqgdrhk@group.calendar.google.com&pli=1" "https://twitter.com/home" "https://discord.com/channels/@me"
+	gmailAddresses="$(grep gmail "$HOME/Programs/output/updated/programsIcons.sh" | sed 's/.*(\(.*\)).*/https:\/\/mail.google.com\/mail\/u\/\1/g' | tr "\n" " ")"
+	firefox $gmailAddresses "https://outlook.office.com/mail/" "https://github.com" "https://old.reddit.com" "https://stackoverflow.com/" "https://www.bbc.co.uk/news" "https://www.nasa.gov/multimedia/imagegallery/iotd.html" "https://twitter.com/destidarko?lang=en" "https://calendar.google.com/calendar/u/0/embed?src=i54j4cu9pl4270asok3mqgdrhk@group.calendar.google.com&pli=1" "https://discord.com/channels/@me"
 elif [[ -d ~/Videos/Media/$selection ]]; then # If a season of TV selected, get season and episode then play
+	notify-send "HERE"
 	season=$(ls "$HOME/Videos/Media/$selection" | tr -d '/' | sed -n 's/Season\([0-9]*\)/\1\0/p' | sort -n | grep -Eo "Season[0-9]+" | rofi -dmenu -i -p "Select Season")
 	episode=$(ls "$HOME/Videos/Media/$selection/$season" | tr -d '/' | sed -n 's/Episode\([0-9]*\).*/\1\0/p' | sort -n | grep -Eo "Episode[0-9]+" | rofi -dmenu -i -p "Select Episode")
 	episodeNumA=${episode/Episode}

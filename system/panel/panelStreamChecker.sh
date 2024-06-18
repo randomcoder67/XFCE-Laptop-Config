@@ -57,7 +57,7 @@ if [[ "$youtubeChannelAt" != "NONE" ]]; then
 	# Check for live status
 	elif grep -q "Pop-out chat" "${saveLoc}/${channelName}YouTube.html"; then
 		# Check if stream scheduled
-		if grep -q "Live in" "${saveLoc}/${channelName}YouTube.html"
+		if grep -q "Live in" "${saveLoc}/${channelName}YouTube.html" || grep "Waiting for" "${saveLoc}/${channelName}YouTube.html" | grep -v -q "Internet connection"
 		then
 			if [[ "$argA" == "-t" ]]; then
 				echo "<span foreground='#$upcomingColour'>  </span>"
