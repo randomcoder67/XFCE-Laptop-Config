@@ -20,18 +20,18 @@ for arg; do
 				if [ -z "$(ls -A "$fileName")" ]; then # Check if empty 
 					read -p "rm: $fileName is an empty directory, do you want to delete (y/N) " uservar
 						if [ "$uservar" == "y" ]; then
-							trash-put "$fileName"
+							trash-put -- "$fileName"
 						fi
 				else
 					read -p "rm: $fileName is a directory (not empty), do you want to delete (y/N) " uservar
 					if [ "$uservar" == "y" ]; then
-							trash-put "$fileName"
+							trash-put -- "$fileName"
 					fi
 				fi
 			else
 				read -p "rm: $fileName, do you want to delete (y/N) " uservar
 				if [ "$uservar" == "y" ]; then
-					trash-put "$fileName"
+					trash-put -- "$fileName"
 				fi
 			fi
 		else
