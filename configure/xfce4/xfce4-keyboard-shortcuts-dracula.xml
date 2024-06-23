@@ -53,7 +53,6 @@
       <property name="&lt;Super&gt;grave" type="string" value="xfce4-screenshooter"/>
       <property name="&lt;Alt&gt;F1" type="string" value="/home/GENERICUSERNAME/Programs/system/rofi/rofiLauncher.sh"/>
       <property name="&lt;Super&gt;m" type="string" value="mousepad"/>
-      <property name="&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh"/>
       <property name="&lt;Super&gt;r" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/songrec.sh"/>
       <property name="&lt;Super&gt;f" type="string" value="rofi -show find -modi find:~/Programs/system/rofi/finder.sh"/>
       <property name="&lt;Super&gt;y" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/xcolor.sh"/>
@@ -75,9 +74,6 @@
       <property name="&lt;Shift&gt;&lt;Super&gt;underscore" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --quit"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;plus" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --favourite"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;braceleft" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --toggle-pause"/>
-      <property name="&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
-      <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --background"/>
-      <property name="&lt;Shift&gt;&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice --background"/>
       <property name="&lt;Super&gt;bracketright" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ +3%"/>
       <property name="&lt;Super&gt;bracketleft" type="string" value="pactl set-sink-volume @DEFAULT_SINK@ -3%"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;braceright" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --get-playing"/>
@@ -94,6 +90,12 @@
       <property name="&lt;Super&gt;e" type="string" value="alacritty -o &apos;window.title=&quot;ranger&quot;&apos; -e ranger"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;e" type="string" value="thunar"/>
       <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=26&quot; -o &quot;window.dimensions.columns=24&quot; -o &apos;window.title=&quot;Soundboard&quot;&apos; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
+      <property name="&lt;Super&gt;apostrophe" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/brightness.sh --up"/>
+      <property name="&lt;Super&gt;semicolon" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/brightness.sh --down"/>
+      <property name="&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --background"/>
+      <property name="&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice --background"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

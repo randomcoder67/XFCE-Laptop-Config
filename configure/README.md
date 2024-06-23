@@ -243,6 +243,8 @@
 `Ctrl+Alt+Del` Logout  
 `Super+]` Increase Volume 3%  
 `Super+[` Decrease Volume 3%  
+`Super+'` Increase Brightness  
+`Super+;` Decrease Brightness  
 `Super+X` System Menu  
 `Super+I` Link Markdown Files  
 `Super+Shift+[` Play/Pause Music  

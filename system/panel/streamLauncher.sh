@@ -10,6 +10,6 @@ if [[ "$platform" == "YouTube" ]]; then
 	notify-send "Opening ${channelName} YouTube Stream"
 	mpv --no-resume-playback --ytdl-format=best --title="${channelName} - YouTube" "https://www.youtube.com/@${channelAt}/live" || notify-send "Error, stream failed to open"
 elif [[ "$platform" == "Twitch" ]]; then
-	mpv --no-resume-playback --ytdl-format=best --title="${channelName} - Twitch" "https://www.twitch.tv/${channelAt}" || notify-send "Error, stream failed to open"
 	notify-send "Opening ${channelName} Twitch Stream"
+	mpv --no-resume-playback --ytdl-format=best --title="${channelName} - Twitch" "https://www.twitch.tv/${channelAt}" || notify-send "Error, stream failed to open"
 fi

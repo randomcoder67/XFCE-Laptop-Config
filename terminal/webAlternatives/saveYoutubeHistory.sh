@@ -8,7 +8,7 @@ yearWeek=$(date +"%y%m")
 fileName="${yearWeek}.csv"
 
 if [[ "$1" == "-s" ]]; then
-	grep -ir "$2" "$dirName"
+	grep --color=auto -ir "$2" "$dirName"
 	exit
 fi
 
