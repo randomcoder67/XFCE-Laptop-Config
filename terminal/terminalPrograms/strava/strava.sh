@@ -46,6 +46,8 @@ init () {
 	currentTimeEpoch=$(date +"%s")
 
 	# If not expired, don't need to anything else
+	#echo "$currentTimeEpoch"
+	#echo "$expireTimeEpoch"
 	if (( "$((currentTimeEpoch-expireTimeEpoch))" < 0 )); then
 		#rm "strava$1.txt"
 		return

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Remove mod5 from AltGr
 xmodmap -e 'remove mod5 = ISO_Level3_Shift'

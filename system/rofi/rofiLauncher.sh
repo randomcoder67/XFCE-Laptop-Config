@@ -133,6 +133,7 @@ elif [[ "$selection" == "Live Streams" ]]; then
 	# Get choice from user
 	choiceNum=$(echo "$toOffer" | rofi -dmenu -format "i" -kb-custom-1 "Shift+Return" -i -p "Select Stream")
 	status="$?"
+	[[ "$choiceNum" == "-1" ]] && exit
 	[[ "$status" == 1 ]] && exit
 	# Get offset and paramaters for streamLauncher.sh
 	offset=$((3*choiceNum))
@@ -155,6 +156,7 @@ elif [[ "$selection" == "Live TV" ]]; then
 	toOpen=$toOpenA
 	name=$(sed "${toOpen}q;d" "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 1)
 	streamURL=$(sed "${toOpen}q;d" "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 2)
+	[[ "$name" == "" ]] && exit
 	notify-send "Opening ${name} TV Feed"
 	mpv "${streamURL}" --title="${name}" || notify-send "Error, live feed failed to open"
 elif [[ "$selection" == "Gmail ("* ]]; then
@@ -205,6 +207,7 @@ elif [[ "$selection" == "Dragon's Dogma Wiki" ]]; then
 	wikiSearch "https://dragonsdogma.fandom.com/api.php?" "https://dragonsdogma.fandom.com/wiki/" "https://dragonsdogma.fandom.com/wiki/Dragon%27s_Dogma_Wiki" "Dragons's Dogma Wiki"
 elif [[ "$selection" == "Internet Archive" ]]; then
 	url=$(rofi -dmenu -p "Enter URL to find archives of")
+	[[ "$url" == "" ]] && exit
 	firefox "https://web.archive.org/web/*/$url"
 elif [[ "$selection" == "~" ]]; then
 	xdg-open "$selection"
@@ -216,8 +219,6 @@ elif [[ "$selection" == "htop" ]]; then
 	alacritty -o 'window.title="htop"' -e htop
 elif [[ "$selection" == "Lossless Cut" ]]; then
 	"~/Programs/otherPrograms/LosslessCut-linux-x64/losslesscut"
-elif [[ "$selection" == "Upscayl" ]]; then
-	"$HOME/Downloads/otherPrograms/upscayl.AppImage"
 elif [[ "$selection" == "Mousepad" ]]; then
 	mousepad -o window
 elif [[ "$selection" == "mpv" ]]; then
@@ -226,12 +227,6 @@ elif [[ "$selection" == "qalc" ]]; then
 	alacritty -o 'window.title="qalc"' -e qalc
 elif [[ "$selection" == "LibreOffice Writer" ]]; then
 	libreoffice --writer
-elif [[ "$selection" == "Google Earth" ]]; then
-	"$HOME/Downloads/otherPrograms/GoogleEarthPro/googleearthFull/googleearth"
-elif [[ "$selection" == "Cubiomes Viewer" ]]; then
-	"$HOME/Downloads/otherPrograms/cubiomesViewer/cubiomes-viewer-static-linux"
-elif [[ "$selection" == "MultiMC" ]]; then
-	"$HOME/Downloads/otherPrograms/MultiMC/MultiMC"
 elif [[ "$selection" == "Shuffle Playlist" ]]; then
 	mpv --title='${metadata/title}'\ -\ '${metadata/artist}' --geometry=25% --shuffle --no-resume-playback "~/Music/currentPlaylist"
 elif [[ "$selection" == "Kick - Destiny" ]]; then

@@ -15,8 +15,10 @@ elif [[ "$1" == "--prev" ]]; then
 	exit
 elif [[ "$1" == "--favourite" ]]; then
 	currentlyPlaying=$(echo '{ "command": ["get_property", "path"] }' | socat - "$socketName" | jq .data -r)
-	cp "$currentlyPlaying" "$favouritesDir"
-	notify-send "Added song to favourites"
+	if [[ "$currentlyPlaying" == *"Favourites"* ]]; then
+		rm "$currentlyPlaying"
+		notify-send "Removed song from favourites"
+	fi
 	exit
 elif [[ "$1" == "--toggle-pause" ]]; then
 	echo "cycle pause" | socat - "$socketName"
@@ -50,7 +52,16 @@ elif [[ "$2" == "--background" ]]; then
 fi
 
 # Check if music is already playing
-ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metadata/artist} --no-resume-playback --loop-playlist $HOME/Music/" | grep -vq "grep" && notify-send "Music already playing" && exit
+if ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metadata/artist} --no-resume-playback --loop-playlist $HOME/Music/" | grep -vq "grep"; then
+	paused=$(echo '{ "command": ["get_property", "pause"] }' | socat - "$socketName" | jq .data -r)
+	if [[ "$paused" == "true" ]]; then
+		echo "cycle pause" | socat - "$socketName"
+		notify-send "Music already active, unpausing"
+	else
+		notify-send "Music already playing"
+	fi
+	exit
+fi
 
 # Check if headphones plugged in (works but too slow to use)
 #if ! grep -A4 -i 'Headphone Playback Switch' /proc/asound/card0/codec#*  | grep "Amp-Out vals.*0x00 0x00" -q; then

@@ -20,6 +20,5 @@ filesA=( $(find "$input_folder" -type f | sort) )
 IFS="$oldIFS"
 
 for fileA in "${filesA[@]}"; do
-	echo "$fileA"
 	"$hash_command" "$fileA"
 done

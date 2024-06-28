@@ -100,8 +100,8 @@ elif [[ "$1" == "make" ]]; then
 	
 	cp "$backupDir""/$backup1""/hashesOriginal.txt" "$backupDir""/$hashHistory""/original${fileNameDate}.txt"
 	
-	echo "Making additional backup of .bash_history to Downloads"
-	cp "$HOME/.bash_history" "$HOME/Downloads/.bash_history_backup"
+	#echo "Making additional backup of .bash_history to Downloads"
+	#cp "$HOME/.bash_history" "$HOME/Downloads/.bash_history_backup"
 	
 	echo "Done!"
 	#gpg -c "$backupDir""/$backup1""/hashesBackup.txt"
