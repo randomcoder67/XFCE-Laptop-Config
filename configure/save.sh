@@ -29,6 +29,8 @@ cp ~/.inputrc ~/Programs/configure/home/
 cp ~/.profile ~/Programs/configure/home/
 cp ~/.bash_profile ~/Programs/configure/home/
 
+cp ~/.config/mimeapps.list ~/Programs/configure/home/.config/mimeapps.list
+
 [ -d ~/Programs/configure/home/.config/systemd/user ] || mkdir -p ~/Programs/configure/home/.config/systemd/user
 cp ~/.config/systemd/user/files.service ~/Programs/configure/home/.config/systemd/user/
 cp ~/.config/systemd/user/files.timer ~/Programs/configure/home/.config/systemd/user/

@@ -29,15 +29,13 @@ mkdir ~/Programs/output/.streams
 mkdir ~/Programs/output/.streams/panel
 mkdir ~/Programs/output/.streams/destinyDownload
 mkdir ~/Programs/output/.streams/streamsCheck
+mkdir ~/Programs/output/.streams/streamsCheck/results
 mkdir ~/Programs/output/.timers
 mkdir ~/Programs/output/.pictures
 mkdir ~/Programs/output/.sounds
 mkdir ~/Programs/output/.temp
 mkdir ~/Programs/output/updated
 echo "enabled" > ~/Programs/output/updated/enablePanelCheckers.txt
-
-mkdir ~/Downloads/BackupMount
-mkdir ~/Downloads/USBDrive
 
 echo "$currentTheme" > ~/Programs/output/updated/currentTheme.txt
 
@@ -53,6 +51,9 @@ mkdir ~/Videos
 mkdir ~/Music
 mkdir ~/Work
 mkdir ~/Pictures/mpv
+
+mkdir ~/Downloads/BackupMount
+mkdir ~/Downloads/USBDrive
 
 mkdir -p ~/.local/share/rofi/themes
 mkdir -p ~/.local/share/gtksourceview-3.0/styles
@@ -73,12 +74,15 @@ mkdir ~/.config/gtk-3.0
 mkdir -p ~/.config/Code\ -\ OSS/User/
 mkdir ~/.config/alacritty
 mkdir ~/.config/npm
+mkdir ~/.config/tmux
+mkdir ~/.config/newsboat
 mkdir ~/.config/micro
 mkdir ~/.config/micro/colorschemes
 mkdir ~/.config/cava
 mkdir ~/.config/vis
 mkdir ~/.config/cool-retro-term
 mkdir ~/.config/zathura
+mkdir ~/.config/ranger
 
 mkdir ~/.local/share/gnupg
 chmod 700 ~/.local/share/gnupg
@@ -93,12 +97,14 @@ cp ~/Programs/configure/home/.inputrc ~/.inputrc
 cp ~/Programs/configure/home/.profile ~/.profile
 cp ~/Programs/configure/home/.bash_profile ~/.bash_profile
 
+cp ~/Programs/configure/home/.config/mimeapps.list ~/.config/mimeapps.list
+
 cp ~/Programs/configure/home/.config/systemd/user/files.service ~/.config/systemd/user/files.service
 cp ~/Programs/configure/home/.config/systemd/user/files.timer ~/.config/systemd/user/files.timer
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.service ~/.config/systemd/user/panelRefresh.service
 cp ~/Programs/configure/home/.config/systemd/user/panelRefresh.timer ~/.config/systemd/user/panelRefresh.timer
 cp ~/Programs/configure/home/.config/alacritty/$currentTheme.toml ~/.config/alacritty/alacritty.toml
-sed "s/GENERICUSERNAME/$username/g" ~/Programs/configure/home/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+sed "s/GENERICUSERNAME/$username/g" ~/Programs/configure/home/.config/ranger/rc.conf > ~/.config/ranger/rc.conf
 cp ~/Programs/configure/home/.config/ranger/scope.sh ~/.config/ranger/scope.sh
 chmod +x ~/.config/ranger/scope.sh
 cp ~/Programs/configure/home/.config/btop/$currentTheme.conf ~/.config/btop/btop.conf
@@ -172,6 +178,7 @@ systemctl --user start panelRefresh.timer
 
 git config --global core.pager cat
 
+exit
 git clone "https://github.com/randomcoder67/Media-UI" $HOME/Programs/myRepos/Media-UI
 cd "$HOME/Programs/myRepos/Media-UI"
 make
