@@ -1,0 +1,14 @@
+[Default Applications]
+application/x-powershell=org.xfce.mousepad.desktop
+application/x-shellscript=org.xfce.mousepad.desktop
+text/plain=org.xfce.mousepad.desktop
+application/json=org.xfce.mousepad.desktop
+application/json-patch+json=org.xfce.mousepad.desktop
+
+[Added Associations]
+application/x-powershell=org.xfce.mousepad.desktop;
+application/x-shellscript=org.xfce.mousepad.desktop;
+text/plain=org.xfce.mousepad.desktop;
+application/json=org.xfce.mousepad.desktop;
+application/json-patch+json=firefox.desktop;org.xfce.mousepad.desktop;
+application/vnd.apple.mpegurl=org.xfce.mousepad.desktop;
