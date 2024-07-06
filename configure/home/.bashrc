@@ -406,6 +406,8 @@ alias serial='sudo cat /sys/devices/virtual/dmi/id/product_serial'
 alias pyweb='python3 -m http.server -d'
 alias cmatrix='cmatrix -u 6'
 
+alias duf='duf -hide special'
+
 function songs () {
 	if [[ "$1" == "-e" ]]; then
 		"$VISUAL" ~/Programs/output/updated/songs.txt

@@ -38,6 +38,15 @@ for x in "${programsA[@]}"; do
 	programs["$first"]=$second
 done
 
+openFirefox() {
+	url="$1"
+	if ~/Programs/system/rofi/onDesktop.sh -q "firefox"; then
+		firefox "$url"
+	else
+		firefox --new-window "$url"
+	fi
+}
+
 wikiSearch () {
 	apiAddress="$1"
 	pageAddress="$2"
@@ -49,7 +58,7 @@ wikiSearch () {
 	[[ "$?" == "1" ]] && exit
 	
 	if [[ "$searchTerm" == "" ]]; then # If blank, open main page
-		firefox "$mainPage"
+		openFirefox "$mainPage"
 	else # Otherwise, use API to search
 		finalSearchTerm=${searchTerm// /+} # Replaces spaces with "+" for url
 		searchResults=$(curl "${apiAddress}action=query&format=json&errorformat=bc&prop=&list=search&srsearch=$finalSearchTerm")
@@ -58,23 +67,23 @@ wikiSearch () {
 		[[ "$?" == "1" ]] && exit
 		if [[ "$result" != "" ]]; then
 			urlString=${result// /_} # Replace spaces with "_" for url
-			firefox "${pageAddress}${urlString}"
+			openFirefox "${pageAddress}${urlString}"
 		fi
 	fi
 }
 
-openMetOfficeCurLocation () {
+openMetOfficeWeather () {
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
 	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "12")
-	firefox "https://www.metoffice.gov.uk/weather/forecast/${geohash}"
+	openFirefox "https://www.metoffice.gov.uk/weather/forecast/${geohash}"
 }
 
 openMetOfficeObservations () {
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
 	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "12")
-	firefox "https://www.metoffice.gov.uk/weather/observations/${geohash}"
+	openFirefox "https://www.metoffice.gov.uk/weather/observations/${geohash}"
 }
 
 if [[ $selection == *"/"* ]]; then
@@ -145,9 +154,9 @@ elif [[ "$selection" == "Live Streams" ]]; then
 		"$HOME/Programs/system/panel/streamLauncher.sh" "$platform" "$channelName" "$channelAt"
 	elif [[ "$status" == 10 ]]; then
 		if [[ "$platform" == "Twitch" ]]; then
-			firefox "https://www.twitch.tv/${channelAt}"
+			openFirefox "https://www.twitch.tv/${channelAt}"
 		elif [[ "$platform" == "YouTube" ]]; then
-			firefox "https://www.youtube.com/@${channelAt}/live"
+			openFirefox "https://www.youtube.com/@${channelAt}/live"
 		fi
 	fi
 elif [[ "$selection" == "Live TV" ]]; then
@@ -156,19 +165,26 @@ elif [[ "$selection" == "Live TV" ]]; then
 	toOpen=$toOpenA
 	name=$(sed "${toOpen}q;d" "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 1)
 	streamURL=$(sed "${toOpen}q;d" "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 2)
+	player=$(sed "${toOpen}q;d" "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 3)
 	[[ "$name" == "" ]] && exit
-	notify-send "Opening ${name} TV Feed"
-	mpv "${streamURL}" --title="${name}" || notify-send "Error, live feed failed to open"
+	notify-send "Opening ${name} TV Feed in ${player}"
+	if [[ "$player" == "mpv" ]]; then
+		mpv "${streamURL}" --title="${name}" --force-window=immediate || notify-send "Error, live feed failed to open"
+	elif [[ "$player" == "vlc" ]]; then
+		vlc "${streamURL}" --meta-title="${name}" || notify-send "Error, live feed failed to open"
+	else
+		$player "${streamURL}" || notify-send "Error, live feed failed to open"
+	fi
 elif [[ "$selection" == "Gmail ("* ]]; then
 	emailAddress="${selection#*(}"
 	emailAddress="${emailAddress%*)}"
-	firefox "https://mail.google.com/mail/u/${emailAddress}"
+	openFirefox "https://mail.google.com/mail/u/${emailAddress}"
 elif [[ "$selection" == "Outlook ("* ]]; then
-	firefox "https://outlook.office.com/mail/"
+	openFirefox "https://outlook.office.com/mail/"
 elif [[ "$selection" == "The Trainline" ]]; then
-	firefox "https://www.thetrainline.com/"
+	openFirefox "https://www.thetrainline.com/"
 elif [[ "$selection" == "RealTimeTrains" ]]; then
-	firefox "https://www.realtimetrains.co.uk/"
+	openFirefox "https://www.realtimetrains.co.uk/"
 elif [[ "$selection" == "Wikipedia" ]]; then
 	wikiSearch "https://en.wikipedia.org/w/api.php?" "https://en.wikipedia.org/wiki/" "https://en.wikipedia.org/wiki/Main_Page" "Wikipedia"
 elif [[ "$selection" == "Terraria Wiki" ]]; then
@@ -208,7 +224,7 @@ elif [[ "$selection" == "Dragon's Dogma Wiki" ]]; then
 elif [[ "$selection" == "Internet Archive" ]]; then
 	url=$(rofi -dmenu -p "Enter URL to find archives of")
 	[[ "$url" == "" ]] && exit
-	firefox "https://web.archive.org/web/*/$url"
+	openFirefox "https://web.archive.org/web/*/$url"
 elif [[ "$selection" == "~" ]]; then
 	xdg-open "$selection"
 elif [[ "$selection" == "Reindex Files" ]]; then
@@ -229,22 +245,24 @@ elif [[ "$selection" == "LibreOffice Writer" ]]; then
 	libreoffice --writer
 elif [[ "$selection" == "Shuffle Playlist" ]]; then
 	mpv --title='${metadata/title}'\ -\ '${metadata/artist}' --geometry=25% --shuffle --no-resume-playback "~/Music/currentPlaylist"
+elif [[ "$selection" == "Tour de France (ITV 4)" ]]; then
+	openFirefox "https://www.itv.com/watch?channel=itv4"
 elif [[ "$selection" == "Kick - Destiny" ]]; then
-	firefox https://www.kick.com/destiny
+	openFirefox https://www.kick.com/destiny
 elif [[ "$selection" == "Rumble - Destiny" ]]; then
-	firefox https://rumble.com/c/Destiny
+	openFirefox https://rumble.com/c/Destiny
 elif [[ "$selection" == "Twitter - Destiny" ]]; then
-	firefox https://twitter.com/TheOmniLiberal
+	openFirefox https://twitter.com/TheOmniLiberal
 elif [[ "$selection" == "BBC News" ]]; then
-	firefox https://www.bbc.co.uk/news
+	openFirefox https://www.bbc.co.uk/news
 elif [[ "$selection" == "Chat - Destiny" ]]; then
-	firefox https://www.destiny.gg/embed/chat
+	openFirefox https://www.destiny.gg/embed/chat
 elif [[ "$selection" == "NASA Image of the Day" ]]; then
-	firefox https://www.nasa.gov/multimedia/imagegallery/iotd.html
+	openFirefox https://www.nasa.gov/multimedia/imagegallery/iotd.html
 elif [[ "$selection" == "ChatGPT" ]]; then
-	firefox "https://chatgpt.com/"
+	openFirefox "https://chatgpt.com/"
 elif [[ "$selection" == "Gemini" ]]; then
-	firefox "https://gemini.google.com/app"
+	openFirefox "https://gemini.google.com/app"
 elif [[ "$selection" == "Dead Cells" ]]; then
 	steam steam://rungameid/588650
 elif [[ "$selection" == "Terraria" ]]; then
@@ -284,9 +302,9 @@ elif [[ "$selection" == "Stellaris" ]]; then
 elif [[ "$selection" == "Dead Cells" ]]; then
 	steam steam://rungameid/588650
 elif [[ "$selection" == "GitHub Website" ]]; then
-	firefox "https://randomcoder67.github.io"
+	openFirefox "https://randomcoder67.github.io"
 elif [[ "$selection" == "Schizo Website" ]]; then
-	firefox "https://www.schizoposting.xyz"
+	openFirefox "https://www.schizoposting.xyz"
 elif [[ "$selection" == "BeamNG.drive" ]]; then
 	steam steam://rungameid/284160
 elif [[ "$selection" == "Slime Rancher" ]]; then
@@ -298,27 +316,27 @@ elif [[ "$selection" == "SimCity 4" ]]; then
 elif [[ "$selection" == "Quick Tile" ]]; then
 	"$HOME/Programs/system/keyboardOther/quickTile.sh"
 elif [[ "$selection" == "RideWithGPS" ]]; then
-	firefox "https://ridewithgps.com/routes/new"
+	openFirefox "https://ridewithgps.com/routes/new"
 elif [[ "$selection" == "Pro Cycling Stats" ]]; then
-	firefox "https://www.procyclingstats.com/index.php"
+	openFirefox "https://www.procyclingstats.com/index.php"
 elif [[ "$selection" == "ITVX" ]]; then
-	firefox "https://www.itv.com"
+	openFirefox "https://www.itv.com"
 elif [[ "$selection" == "VSCode" ]]; then
 	"$HOME/Downloads/otherPrograms/VSCode-linux-x64/bin/code"
 elif [[ "$selection" == "FlightRadar24" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
-	firefox "https://www.flightradar24.com/${lat:0:5},${lon:0:5}/9"
+	openFirefox "https://www.flightradar24.com/${lat:0:5},${lon:0:5}/9"
 elif [[ "$selection" == "NetHogs" ]]; then
 	alacritty -o 'window.title="nethogs"' -e nethogs
 elif [[ "$selection" == "Google Maps" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
-	firefox "https://www.google.co.uk/maps/@${lat},${lon},10z"
+	openFirefox "https://www.google.co.uk/maps/@${lat},${lon},10z"
 elif [[ "$selection" == "Bing Maps" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
-	firefox "https://www.bing.com/maps?cp=${lat}%7E${lon}&lvl=9.0"
+	openFirefox "https://www.bing.com/maps?cp=${lat}%7E${lon}&lvl=9.0"
 elif [[ "$selection" == "cava" ]]; then
 	alacritty -e "$HOME/.local/bin/cava"
 elif [[ "$selection" == "Intel GPU Top" ]]; then
@@ -342,30 +360,30 @@ elif [[ "$selection" == "XColor Colour Picker" ]]; then
 elif [[ "$selection" == "ZBar QR Code Scanner" ]]; then
 	zbarcam -1 | sed 's/QR-Code://g' | tee >(xargs notify-send) | xclip -selection c
 elif [[ "$selection" == "Discord" ]]; then
-	firefox "https://discord.com/channels/@me"
+	openFirefox "https://discord.com/channels/@me"
 elif [[ "$selection" == "Sudoku" ]]; then
-	firefox "https://sudoku.com/"
+	openFirefox "https://sudoku.com/"
 elif [[ "$selection" == "Geocaching" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
-	firefox "https://www.geocaching.com/play/map?lat=${lat:0:5}&lng=${lon:0:5}&zoom=13&asc=true&sort=distance&st=N+56%C2%B0+20.003%27+W+2%C2%B0+47.058%27&ot=coords"
+	openFirefox "https://www.geocaching.com/play/map?lat=${lat:0:5}&lng=${lon:0:5}&zoom=13&asc=true&sort=distance&st=N+56%C2%B0+20.003%27+W+2%C2%B0+47.058%27&ot=coords"
 elif [[ "$selection" == "Munzee" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
 	geohash=$("$HOME/Programs/system/rofi/metoffice-geohash" "$lat" "$lon" "9")
-	firefox "https://www.munzee.com/map/${geohash}/13"
+	openFirefox "https://www.munzee.com/map/${geohash}/13"
 elif [[ "$selection" == "OS Maps" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
-	firefox "https://explore.osmaps.com/?lat=${lat}&lon=${lon}&zoom=11.5&style=Leisure&type=2d"
+	openFirefox "https://explore.osmaps.com/?lat=${lat}&lon=${lon}&zoom=11.5&style=Leisure&type=2d"
 elif [[ "$selection" == "OpenStreetMap" ]]; then
 	lat=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 1)
 	lon=$(cat $HOME/Programs/output/updated/curLocation.csv | cut -d "|" -f 2)
-	firefox "https://www.openstreetmap.org/#map=12/${lat}/${lon}"
+	openFirefox "https://www.openstreetmap.org/#map=12/${lat}/${lon}"
 elif [[ "$selection" == "Sunrise and Sunset" ]]; then
-	firefox "https://www.timeanddate.com/sun/@$(cat $HOME/Programs/output/updated/curLocation.csv | tr "|" ",")"
+	openFirefox "https://www.timeanddate.com/sun/@$(cat $HOME/Programs/output/updated/curLocation.csv | tr "|" ",")"
 elif [[ "$selection" == "Weather MetOffice" ]]; then
-	openMetOfficeCurLocation
+	openMetOfficeWeather
 elif [[ "$selection" == "Observations MetOffice" ]]; then
 	openMetOfficeObservations
 elif [[ $selection == "Check All" ]]; then

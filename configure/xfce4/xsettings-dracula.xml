@@ -2,7 +2,7 @@
 
 <channel name="xsettings" version="1.0">
   <property name="Net" type="empty">
-    <property name="ThemeName" type="string" value="draculaTheme"/>
+    <property name="ThemeName" type="string" value="DraculaGitHub"/>
     <property name="IconThemeName" type="string" value="Papirus-Dark"/>
     <property name="DoubleClickTime" type="empty"/>
     <property name="DoubleClickDistance" type="empty"/>
@@ -40,5 +40,8 @@
   </property>
   <property name="Gdk" type="empty">
     <property name="WindowScalingFactor" type="empty"/>
+  </property>
+  <property name="Xfce" type="empty">
+    <property name="SyncThemes" type="bool" value="true"/>
   </property>
 </channel>
