@@ -241,6 +241,8 @@ elif [[ "$selection" == "mpv" ]]; then
 	mpv --player-operation-mode=pseudo-gui
 elif [[ "$selection" == "qalc" ]]; then
 	alacritty -o 'window.title="qalc"' -e qalc
+elif [[ "$selection" == "Newsboat" ]]; then
+	alacritty -o 'window.title="Newsboat"' -e newsboat
 elif [[ "$selection" == "LibreOffice Writer" ]]; then
 	libreoffice --writer
 elif [[ "$selection" == "Shuffle Playlist" ]]; then
