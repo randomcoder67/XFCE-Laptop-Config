@@ -23,7 +23,7 @@ function checkYouTube() {
 	# If no error, then there is an internet connection
 	elif grep -q "Pop-out chat" "${saveLoc}/${channelName}YouTube.html"; then
 		# Check if stream scheduled
-		if grep -q "Live in" "${saveLoc}/${channelName}YouTube.html"; then
+		if grep -q "Live in" "${saveLoc}/${channelName}YouTube.html" || grep "Waiting for" "${saveLoc}/${channelName}YouTube.html" | grep -v -q "Internet connection"; then
 			local liveAt=$(awk '/subtitleText/ { match($0, /subtitleText/); print substr($0, RSTART, RLENGTH + 60); }' "${saveLoc}/${channelName}YouTube.html" | cut -d "\"" -f 5)
 			#local streamTitle=$(awk '/videoDescriptionHeaderRenderer/ { match($0, /videoDescriptionHeaderRenderer/); print substr($0, RSTART, RLENGTH + 200); }' ${saveLoc}/${channelName}YouTube.html | cut -d "\"" -f 9 | sed 's/&/and/g')
 			echo "${printableChannelName} Scheduled (YouTube) at ${liveAt}" > "${saveLoc}/results/${channelName}.txt"
