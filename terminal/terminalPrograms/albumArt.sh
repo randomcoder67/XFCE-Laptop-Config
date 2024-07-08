@@ -28,10 +28,10 @@ fi
 echo "Converting files"
 if [[ $1 == "-d" ]]; then
 	for x in "${!filesChecking[@]}"; do
-		convert "${filesChecking[$x]}".jpg -resize 1400x1400 "${tempDirectory}art/art2/$(echo ${filesChecking[$x]} | cut -d "/" -f 8)".jpg
+		magick "${filesChecking[$x]}".jpg -resize 1400x1400 "${tempDirectory}art/art2/$(echo ${filesChecking[$x]} | cut -d "/" -f 8)".jpg
 	done
 else
-	convert "${tempDirectory}"art/*.jpg -resize 1400x1400 "${tempDirectory}"art/art2/*.jpg
+	magick "${tempDirectory}"art/*.jpg -resize 1400x1400 "${tempDirectory}"art/art2/*.jpg
 fi
 
 echo "Creating montage"
