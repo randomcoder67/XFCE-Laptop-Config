@@ -7,6 +7,8 @@ tempDirectory="$HOME/Programs/output/.temp/" # Set directory to store the files 
 IFS=$'\n'
 files=( $(find "$HOME/Music/CurrentPlaylist" -mindepth 1 | grep -vP "^.$") ) # Get files excluding useless stuff
 
+[ -d "${tempDirectory}/art" ] && rm -rf "$tempDirectory"/art
+
 mkdir -p "${tempDirectory}art/art2" # Make directories
 
 echo "Extracting album art"
