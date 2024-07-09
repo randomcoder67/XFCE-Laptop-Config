@@ -6,6 +6,15 @@
 index=$("$HOME/Programs/output/updated/bookmarksIcons.sh" | rofi -kb-custom-1 "Ctrl+a" -kb-custom-2 "Ctrl+w" -kb-custom-3 "Shift+Return" -dmenu -show-icons -i -format "d" -p "Bookmarks")
 status=$?
 
+openFirefox() {
+	url="$1"
+	if ~/Programs/system/rofi/onDesktop.sh -q "firefox"; then
+		firefox "$url"
+	else
+		firefox --new-window "$url"
+	fi
+}
+
 [[ "$status" == 1 ]] && exit
 
 # status=10 means the user selected to add a bookmark
@@ -34,7 +43,7 @@ elif [ $status -eq 12 ]; then
 	# Get bookmark, remove alias and check if url
 	toOpen=$(sed "${index}q;d" ~/Programs/output/updated/bookmarks.txt | awk -F 'DELIM' '{print $2}' | tr -d '\n')
 	if echo "$toOpen" | grep -q -E 'https?://(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)'; then # If so, open it
-		firefox "$toOpen"
+		openFirefox "$toOpen"
 	else
 		notify-send "Not a URL"
 	fi
