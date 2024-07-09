@@ -242,7 +242,7 @@ elif [[ "$selection" == "mpv" ]]; then
 elif [[ "$selection" == "qalc" ]]; then
 	alacritty -o 'window.title="qalc"' -e qalc
 elif [[ "$selection" == "Newsboat" ]]; then
-	alacritty -o 'window.title="Newsboat"' -e newsboat
+	alacritty -o 'window.title="Newsboat"' -e sh -c "newsboat; podboat"
 elif [[ "$selection" == "LibreOffice Writer" ]]; then
 	libreoffice --writer
 elif [[ "$selection" == "Shuffle Playlist" ]]; then

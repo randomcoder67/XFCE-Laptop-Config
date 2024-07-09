@@ -407,7 +407,7 @@ alias pyweb='python3 -m http.server -d'
 alias cmatrix='cmatrix -u 6'
 
 alias duf='duf -hide special'
-alias newsboat='newsboat; podboat -a'
+alias rss='newsboat; podboat -a'
 
 function songs () {
 	if [[ "$1" == "-e" ]]; then

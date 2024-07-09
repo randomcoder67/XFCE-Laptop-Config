@@ -2,5 +2,5 @@ include /usr/share/doc/newsboat/contrib/colorschemes/kinda-maia
 confirm-mark-feed-read no
 macro m set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser
 download-path "~/Videos/Podcasts/%n
-download-filename-format "%t.%e"
+download-filename-format "%y%m%d-%H%M-%t.%e"
 player mpv
