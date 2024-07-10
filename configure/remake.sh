@@ -131,4 +131,3 @@ fi
 [ "$1" == "weather" ] && makeGoWeatherProgram
 [ "$1" == "youtube" ] && makeYouTubeProgram
 [ "$1" == "other" ] && makeOtherPrograms
-

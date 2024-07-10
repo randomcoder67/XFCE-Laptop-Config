@@ -283,7 +283,7 @@ do_yt-dlp () {
 }
 
 archiveplaylist() {
-	yt-dlp --firefox-cookies -J --flat-playlist "$1" | jq '.entries[] | [.title,.channel,.url]| @csv' > "$2"
+	yt-dlp --cookies-from-browser firefox -J --flat-playlist "$1" | jq '.entries[] | [.title,.channel,.url]| @csv' > "$2"
 }
 
 streamchecker () {
