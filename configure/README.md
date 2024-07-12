@@ -235,6 +235,7 @@
 `Super+N` NetHogs  
 `Super+G` pulsemixer  
 `Super+U` cava visualiser  
+`Super+I` Emoji Picker  
 `Super+Y` colour pick, copies to clipboard  
 `Super+Backtick` Screenshot Utility  
 `Super+P` Plugging/Unplugging from Monitor  

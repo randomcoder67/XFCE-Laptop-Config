@@ -96,6 +96,7 @@
       <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --background"/>
       <property name="&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice --background"/>
+      <property name="&lt;Super&gt;i" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/emojiPicker.sh"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
