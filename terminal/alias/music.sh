@@ -5,6 +5,7 @@
 socketName=/tmp/mpv.playlist
 favouritesDir="$HOME/Music/Favourites/"
 shuffleArgs="--shuffle=yes"
+toDownloadFile="$HOME/Videos/YouTube/toDownload.txt"
 
 # Music controls
 if [[ "$1" == "--next" ]]; then
@@ -14,10 +15,17 @@ elif [[ "$1" == "--prev" ]]; then
 	echo "playlist-prev" | socat - "$socketName"
 	exit
 elif [[ "$1" == "--favourite" ]]; then
-	currentlyPlaying=$(echo '{ "command": ["get_property", "path"] }' | socat - "$socketName" | jq .data -r)
-	if [[ "$currentlyPlaying" == *"Favourites"* ]]; then
-		rm "$currentlyPlaying"
-		notify-send "Removed song from favourites"
+	filepath=$(echo '{ "command": ["get_property", "path"] }' | socat - "$socketName" | jq .data -r)
+	if [[ "$filepath" == "$HOME/Videos/YouTube/NewMusic"* ]]; then
+		if [[ "$2" == "--add" ]]; then
+			[[ "$filepath" == "$HOME/Videos/YouTube/NewMusic/"* ]] && trash-put "$filepath" || exit
+			file=$(echo '{ "command": ["get_property", "filename"] }' | socat - "$socketName" | jq .data -r | rev | cut -d "." -f 2- | rev)
+			echo "$file" >> "$toDownloadFile"
+			notify-send "Added to list and deleted"
+		elif [[ "$2" == "--remove" ]]; then
+			[[ "$filepath" == "$HOME/Videos/YouTube/NewMusic/"* ]] && trash-put "$filepath" || exit
+			notify-send "Deleted"
+		fi
 	fi
 	exit
 elif [[ "$1" == "--toggle-pause" ]]; then
@@ -25,15 +33,6 @@ elif [[ "$1" == "--toggle-pause" ]]; then
 	exit
 elif [[ "$1" == "--quit" ]]; then
 	echo "quit" | socat - "$socketName"
-	exit
-elif [[ "$1" == "--get-playing" ]]; then
-	title=$(echo '{ "command": ["get_property", "metadata/title"] }' | socat - "$socketName" | jq .data -r)
-	artist=$(echo '{ "command": ["get_property", "metadata/artist"] }' | socat - "$socketName" | jq .data -r)
-	if [[ "$title" != "" ]]; then
-		notify-send "${title} - ${artist}"
-	else
-		notify-send "No Music Playing"
-	fi
 	exit
 fi
 
@@ -52,14 +51,26 @@ elif [[ "$2" == "--background" ]]; then
 fi
 
 # Check if music is already playing
-if ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metadata/artist} --no-resume-playback --loop-playlist $HOME/Music/" | grep -vq "grep"; then
+if ps -ax | grep "/usr/bin/mpv --really-quiet --title=\${metadata/title} - \${metadata/artist} --no-resume-playback --loop-playlist" | grep -vq "grep"; then
 	paused=$(echo '{ "command": ["get_property", "pause"] }' | socat - "$socketName" | jq .data -r)
 	if [[ "$paused" == "true" ]]; then
 		echo "cycle pause" | socat - "$socketName"
 		notify-send "Music already active, unpausing"
 	else
-		notify-send "Music already playing"
-	fi
+		toPrint="No Music Playing"
+		filepath=$(echo '{ "command": ["get_property", "path"] }' | socat - "$socketName" | jq .data -r)
+		if [[ "$filepath" == "$HOME/Videos/YouTube/NewMusic"* ]]; then
+			file=$(echo '{ "command": ["get_property", "filename"] }' | socat - "$socketName" | jq .data -r | rev | cut -d "." -f 2- | rev)
+			toPrint="$file"
+		else
+			title=$(echo '{ "command": ["get_property", "metadata/title"] }' | socat - "$socketName" | jq .data -r)
+			artist=$(echo '{ "command": ["get_property", "metadata/artist"] }' | socat - "$socketName" | jq .data -r)
+			if [[ "$title" != "" ]]; then
+				toPrint="${title} - ${artist}"
+			fi
+		fi
+		notify-send "$toPrint"
+		fi
 	exit
 fi
 
@@ -74,7 +85,7 @@ if [[ "$doArg" == "" ]]; then
 	/usr/bin/mpv --really-quiet --title='${metadata/title}'\ -\ '${metadata/artist}' --no-resume-playback --loop-playlist "$HOME/Music/CurrentPlaylist" "$shuffleArgs" "$backgroundArg1" "$backgroundArg2" --input-ipc-server="$socketName" & disown
 # Present choice of playlists
 elif [[ "$doArg" == "--choice" ]]; then
-	playlists="All Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([A-Z][a-z]\)/ \1/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 5 | sed 's/^ //g')"
+	playlists="All Music"$'\n'"New Music"$'\n'"$(find $HOME/Music/ -maxdepth 1 -mindepth 1 -type d | sort | sed 's/\([A-Z][a-z]\)/ \1/g' | sed 's/\([a-z]\)\([0-9]\)/\1 \2/g' | cut -d '/' -f 5 | sed 's/^ //g')"
 	result=$(echo -e "$playlists" | rofi -dmenu -i -p "Select Music To Play" -kb-custom-1 "Shift+Return")
 	[ $? -eq 10 ] && shuffleArgs="--shuffle=no"
 	folder=""
@@ -94,6 +105,8 @@ elif [[ "$doArg" == "--choice" ]]; then
 		fi
 	elif [[ "$result" == "All Music" ]]; then
 		folder="$HOME/Music"
+	elif [[ "$result" == "New Music" ]]; then
+		folder="$HOME/Videos/YouTube/NewMusic"
 	else
 		folder="$HOME/Music/$(echo $result | sed 's/ //g')"
 	fi

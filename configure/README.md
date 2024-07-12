@@ -225,7 +225,7 @@
 `Super+M` Mousepad  
 `Super+Shift+M` Mousepad (New Window)  
 `Super+R` Identify Song  
-`Super+L` Play music from `~/Music/curPlaylist`  
+`Super+L` Play music from `~/Music/curPlaylist`/Unpause/Display Current Song  
 `Super+Shift+L` Play music from `~/Music/curPlaylist` in background  
 `Super+O` Choose playlist to play music from  
 `Super+Shift+O` Choose playlist to play music from in background  
@@ -249,10 +249,10 @@
 `Super+X` System Menu  
 `Super+I` Link Markdown Files  
 `Super+Shift+[` Play/Pause Music  
-`Super+Shift+]` Display Currently Playing Song  
+`Super+Shift+]` Delete Song if playing New Music  
 `Super+-` Skip To Previous Track  
 `Super+=` Skip To Next Track  
-`Super+Shift+=` Add Currently Playing Song To Favourites  
+`Super+Shift+=` Save Song to toDownload.txt and Delete if playing New Music  
 `Super+Shift+-` Close Currently Playing Music  
 `Super+Shift+C` Clear All Notifications  
 
