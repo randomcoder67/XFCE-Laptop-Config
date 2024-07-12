@@ -34,7 +34,6 @@ find ~ -mount -maxdepth 1 -type f | sed 's|'"${HOME}"'|~|g' >> ~/Programs/output
 
 # Remove certain folders which have large numbers of files 
 sed -i "/~\/\.config\/Code/d" ~/Programs/output/updated/files2.txt
-sed -i "/~\/\.config\/conky\/conky/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/\.config\/chromium\/Default/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/\.config\/discord\/0\.0\.25\/modules/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/\.config\/google-chrome/d" ~/Programs/output/updated/files2.txt
@@ -48,8 +47,6 @@ sed -i "/~\/Downloads\/emojis/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/Downloads\/VSCode-linux-x64/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/Programs\/.venv/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/Programs\/output\/.covers/d" ~/Programs/output/updated/files2.txt
-sed -i "/~\/Programs\/newPrograms\/other\/conky/d" ~/Programs/output/updated/files2.txt
-sed -i "/~\/Programs\/newPrograms\/other\/leftwm/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/Programs\/newPrograms\/other\/200018109-CS3104-P1\/Tests/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/Programs\/archive\/privateCodeArchive\/minecraftItemSorting/d" ~/Programs/output/updated/files2.txt
 sed -i "/~\/Programs\/archive\/privateCodeArchive\/gotubeTestingStuff/d" ~/Programs/output/updated/files2.txt
@@ -65,7 +62,7 @@ sed -i "/~\/Music\/curPlaylist/d" ~/Programs/output/updated/files2.txt
 echo "$HOME/.config/Code - OSS/User/settings.json" >> ~/Programs/output/updated/files2.txt
 
 # Add necessary echo commands to filesIcons.sh and make executable 
-~/Programs/system/rofi/addIcons.sh >> ~/Programs/output/updated/filesIcons.sh
+~/Programs/system/rofi/addIcons.sh | sed 's/`/\\`/g' >> ~/Programs/output/updated/filesIcons.sh
 chmod +x ~/Programs/output/updated/filesIcons.sh
 
 # Run script 

@@ -7,6 +7,11 @@ application/json-patch+json=org.xfce.mousepad.desktop
 image/jpeg=org.xfce.ristretto.desktop
 image/png=org.xfce.ristretto.desktop
 image/webp=org.xfce.ristretto.desktop
+text/x-python=org.xfce.mousepad.desktop
+text/x-python3=org.xfce.mousepad.desktop
+text/css=org.xfce.mousepad.desktop
+text/x-csrc=org.xfce.mousepad.desktop
+text/x-chdr=org.xfce.mousepad.desktop
 
 [Added Associations]
 application/x-powershell=org.xfce.mousepad.desktop;
@@ -18,3 +23,8 @@ application/vnd.apple.mpegurl=org.xfce.mousepad.desktop;
 image/jpeg=org.xfce.ristretto.desktop;
 image/png=org.xfce.ristretto.desktop;
 image/webp=org.xfce.ristretto.desktop;
+text/x-python=org.xfce.mousepad.desktop;
+text/x-python3=geany.desktop;org.xfce.mousepad.desktop;
+text/css=org.xfce.mousepad.desktop;geany.desktop;
+text/x-csrc=org.xfce.mousepad.desktop;geany.desktop;
+text/x-chdr=org.xfce.mousepad.desktop;

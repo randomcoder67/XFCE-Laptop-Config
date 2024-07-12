@@ -244,7 +244,7 @@ elif [[ "$selection" == "qalc" ]]; then
 elif [[ "$selection" == "Newsboat RSS" ]]; then
 	alacritty -o 'window.title="Newsboat"' -e sh -c "newsboat; podboat"
 elif [[ "$selection" == "Emoji Picker" ]]; then
-	cat "$HOME/Downloads/allEmojis.txt" | rofi -dmenu -p "Pick Emoji" | cut -d " " -f 1 | tr -d '\n' | xclip -selection c
+	~/Programs/system/keyboardOther/emojiPicker.sh
 elif [[ "$selection" == "LibreOffice Writer" ]]; then
 	libreoffice --writer
 elif [[ "$selection" == "Shuffle Playlist" ]]; then
