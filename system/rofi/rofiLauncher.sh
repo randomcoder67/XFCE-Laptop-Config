@@ -161,6 +161,7 @@ elif [[ "$selection" == "Live Streams" ]]; then
 	fi
 elif [[ "$selection" == "Live TV" ]]; then
 	toOpen=$(cat "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 1 | rofi -dmenu -format "i" -kb-custom-1 "Shift+Return" -i -p "Select Stream")
+	[[ "$toOpen" == "" ]] && exit
 	toOpenA=$((toOpen+1))
 	toOpen=$toOpenA
 	name=$(sed "${toOpen}q;d" "$HOME/Programs/output/updated/tvChannels.txt" | cut -d '|' -f 1)
