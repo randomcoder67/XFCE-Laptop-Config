@@ -88,8 +88,6 @@
       <property name="&lt;Super&gt;e" type="string" value="alacritty -o &apos;window.title=&quot;ranger&quot;&apos; -e ranger"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;e" type="string" value="thunar"/>
       <property name="&lt;Super&gt;a" type="string" value="alacritty -o &quot;window.dimensions.lines=26&quot; -o &quot;window.dimensions.columns=24&quot; -o &apos;window.title=&quot;Soundboard&quot;&apos; -e /home/GENERICUSERNAME/Programs/system/keyboardOther/soundboard"/>
-      <property name="&lt;Super&gt;apostrophe" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/brightness.sh --up"/>
-      <property name="&lt;Super&gt;semicolon" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/brightness.sh --down"/>
       <property name="&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --background"/>
       <property name="&lt;Super&gt;o" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --choice"/>
@@ -97,6 +95,8 @@
       <property name="&lt;Super&gt;i" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/emojiPicker.sh"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;plus" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --favourite --add"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;braceright" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --favourite --remove"/>
+      <property name="&lt;Super&gt;apostrophe" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/brightness.sh --down"/>
+      <property name="&lt;Super&gt;numbersign" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/brightness.sh --up"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
