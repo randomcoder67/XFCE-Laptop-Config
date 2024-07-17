@@ -97,6 +97,7 @@
       <property name="&lt;Shift&gt;&lt;Super&gt;braceright" type="string" value="/home/GENERICUSERNAME/Programs/terminal/alias/music.sh --favourite --remove"/>
       <property name="&lt;Super&gt;apostrophe" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/brightness.sh --down"/>
       <property name="&lt;Super&gt;numbersign" type="string" value="/home/GENERICUSERNAME/Programs/system/keyboardOther/brightness.sh --up"/>
+      <property name="&lt;Super&gt;semicolon" type="string" value="pactl set-sink-mute @DEFAULT_SINK@ toggle"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
